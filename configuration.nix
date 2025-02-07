@@ -8,8 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      "${builtins.fetchTarball "https://github.com/nix-community/disko/archive/master.tar.gz"}/module.nix"
-      ./disk-config.nix
     ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
@@ -31,7 +29,14 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
+  users.users.retinotopic.isNormalUser = true;
+  home-manager = {
+    users = {
+      retinotopic = ./home.nix;
+    };
+    useGlobalPkgs = true;
+    useUserPackages = true;
+  };
   # Fonts with Cyrillic support
   fonts.packages = with pkgs; [
     noto-fonts
@@ -47,13 +52,6 @@
   services.xserver.videoDrivers = ["nvidia"];
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.retinotopic = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "input" "networkmanager" ]; # Enable ‘sudo’ for the user.
-  };
-
   programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
@@ -65,6 +63,7 @@
 
   environment.systemPackages = with pkgs; [
     vim
+    home-manager
     wget
     helix
     fastfetch
@@ -74,6 +73,7 @@
     pipewire
     pwvucontrol
     amnezia-vpn
+    git
   ];
 
   environment.sessionVariables = {
