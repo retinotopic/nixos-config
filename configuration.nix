@@ -2,13 +2,12 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
+  imports = [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-    ];
+  ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
   # Use the systemd-boot EFI boot loader.
@@ -19,7 +18,7 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
-  time.timeZone = "Europe/Russia";
+  time.timeZone = "Europe/Moscow";
   
   # Basic network configuration
   networking = {
@@ -29,20 +28,26 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  users.users.retinotopic.isNormalUser = true;
+  users.users.retinotopic = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" ];
+  };
+  
   home-manager = {
     users = {
       retinotopic = ./home.nix;
     };
-    useGlobalPkgs = true;
     useUserPackages = true;
+    # useGlobalPkgs = true;
   };
-  # Fonts with Cyrillic support
+  
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
     dejavu_fonts
+    jetbrains-mono
+    font-awesome
   ]; 
   
   services.pipewire = {
@@ -54,26 +59,20 @@
   # services.libinput.enable = true;
   programs.firefox.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
 
   environment.systemPackages = with pkgs; [
     vim
-    home-manager
+    foot
     wget
     helix
     fastfetch
     kitty
-    telegram-desktop
     byedpi
     pipewire
     pwvucontrol
-    amnezia-vpn
+    telegram-desktop
     git
+    dolphin
   ];
 
   environment.sessionVariables = {

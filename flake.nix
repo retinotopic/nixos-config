@@ -1,10 +1,10 @@
 {
   description = "my nixos flake";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.11";
     disko.url = "https://github.com/nix-community/disko/archive/master.tar.gz";   
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -15,7 +15,7 @@
       modules = [
         inputs.home-manager.nixosModules.home-manager
         ./configuration.nix
-         inputs.disko.nixosModules.disko
+        inputs.disko.nixosModules.disko
         ./disk-config.nix
       ];
     };

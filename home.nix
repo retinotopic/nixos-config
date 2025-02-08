@@ -4,6 +4,8 @@
 {
   imports = [
     ./configs/helix.nix
+    ./configs/waybar.nix
+    ./configs/hyprland.nix
   ];
   home.username = "retinotopic";
   home.homeDirectory = "/home/retinotopic";
