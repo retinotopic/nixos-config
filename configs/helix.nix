@@ -1,5 +1,5 @@
 {
-    programs.helix = {
+  programs.helix = {
     enable = true;
     settings = {
         theme = "everforest_dark";
@@ -55,21 +55,5 @@
             display-signature-help-docs = true;
         };
     };
-    };
+  };
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

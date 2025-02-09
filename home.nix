@@ -3,26 +3,39 @@
 
 {
   imports = [
-    ./configs/helix.nix
     ./configs/waybar.nix
     ./configs/hyprland.nix
+    ./configs/foot.nix
+    # ./configs/helix.nix
   ];
-  home.username = "retinotopic";
-  home.homeDirectory = "/home/retinotopic";
-
-
-  programs.git = {
-
-    enable = true;
-
-    userName = "retinotopic";
-
-   userEmail = "retinotopic@proton.me";
-
+  
+  home = {
+    file = {
+      ".config/helix" = {
+        source = ./helix;
+        recursive = true;        
+      };
+      # ".config/helix".source = config.lib.file.mkOutOfStoreSymlink "/home/retinotopic/nixos-config/helix";
+    };
+      
+    username = "retinotopic";
+    homeDirectory = "/home/retinotopic";
+    stateVersion = "24.11";
   };
 
-  home.stateVersion = "24.11";
+  programs = {
+    git = {
+      enable = true;
+      userName = "retinotopic";
+      userEmail = "retinotopic@proton.me";
+    };
+    # helix = {
+      # enable = true;
+    # };
 
-  programs.home-manager.enable = true;
+    home-manager = {
+      enable = true;       
+    }; 
+  };
 
 }
