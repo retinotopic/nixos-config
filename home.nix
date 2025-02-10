@@ -32,7 +32,9 @@
     # helix = {
       # enable = true;
     # };
-
+    btop.enable = true;
+    foot.enable = true;
+    yazi.enable = true;
     home-manager = {
       enable = true;       
     }; 

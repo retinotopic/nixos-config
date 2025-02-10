@@ -8,7 +8,7 @@
 monitor=,preferred,auto,auto
 
 $terminal = foot
-$fileManager = dolphin
+$fileManager = thunar
 $menu = wofi --show drun
 
 # exec-once = $terminal
@@ -17,6 +17,8 @@ $menu = wofi --show drun
 exec-once = killall -q waybar;sleep .5 && waybar
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
+env = LIBVA_DRIVER_NAME,nvidia
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 
 general {
     gaps_in = 5

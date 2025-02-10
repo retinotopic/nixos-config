@@ -5,19 +5,32 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+  imports = [ 
+        ./hardware-configuration.nix
   ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   
-  # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Set your time zone.
   time.timeZone = "Europe/Moscow";
   
   # Basic network configuration
@@ -28,6 +41,7 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
   users.users.retinotopic = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ];
@@ -50,29 +64,39 @@
     font-awesome
   ]; 
   
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
+  services = {
+    xserver.videoDrivers = ["nvidia"];
+    fstrim.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
   };
-  services.xserver.videoDrivers = ["nvidia"];
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
-  programs.firefox.enable = true;
 
+  programs = {
+    firefox.enable = true;
+    vim.enable = true;
+    git.enable = true;
+    htop.enable = true;
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin
+        thunar-volman
+      ];
+    };
+  }; 
 
   environment.systemPackages = with pkgs; [
-    vim
-    foot
     wget
     helix
     fastfetch
     kitty
     byedpi
-    pipewire
     pwvucontrol
-    telegram-desktop
-    git
-    dolphin
+    docker-compose
   ];
 
   environment.sessionVariables = {
@@ -85,6 +109,22 @@
     nvidia.modesetting.enable = true;
     nvidia.open = false;
   };
+  
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal
+    ];
+    configPackages = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal
+    ];
+  };
+
+  virtualisation.docker.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

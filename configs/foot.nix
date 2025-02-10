@@ -26,7 +26,7 @@
         bright7 = "d3c6aa"; # white
       };
       main = {
-        font = "JetBrains Mono:size=16";
+        font = "JetBrains Mono ExtraBold:size=13";
         dpi-aware = "yes";
       };
     };
