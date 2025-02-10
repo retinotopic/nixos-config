@@ -22,7 +22,11 @@
     homeDirectory = "/home/retinotopic";
     stateVersion = "24.11";
   };
-
+  
+  home.packages = with pkgs; [
+    telegram-desktop
+  ];
+  
   programs = {
     git = {
       enable = true;
