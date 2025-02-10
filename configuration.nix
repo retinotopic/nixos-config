@@ -26,21 +26,23 @@
       options = "--delete-older-than 7d";
     };
   };
-
+  
   nixpkgs.config.allowUnfree = true;
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+  };
+  boot.extraModulePackages = with config.boot.kernelPackages ; [ amneziawg ] ;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   time.timeZone = "Europe/Moscow";
-  
-  # Basic network configuration
+
   networking = {
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     hostName = "nixos"; # Define your hostname.
+    nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
   };
-  # Configure network proxy if necessary
+
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
@@ -75,6 +77,14 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    
+    resolved = { 
+      enable = true;
+      dnssec = "true";
+      domains = [ "~." ];
+      fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+      dnsovertls = "true";
+    };
   };
 
   programs = {
@@ -99,7 +109,10 @@
     byedpi
     pwvucontrol
     docker-compose
-    pkgs-unstable.amnezia-vpn 
+    pkgs-unstable.amnezia-vpn
+    amneziawg-go
+    pkgs-unstable.amneziawg-tools
+    linuxKernel.packages.linux_zen.amneziawg # for zen amd cpus only
   ];
 
   environment.sessionVariables = {
