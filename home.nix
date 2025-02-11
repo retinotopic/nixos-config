@@ -23,6 +23,17 @@
     stateVersion = "24.11";
   };
   
+  services = {
+    hyprpaper.enable = true;
+    hyprpaper.settings = {
+      ipc = "off";
+      splash = false;
+      splash_offset = 2.0;
+      preload = [ "${./nixos-everforest.png}" ];
+      wallpaper = [ "HDMI-A-1, ${./nixos-everforest.png}" ];
+    };   
+  };
+  
   home.packages = with pkgs; [
     telegram-desktop
     pkgs-unstable.vivaldi

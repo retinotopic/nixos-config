@@ -13,8 +13,8 @@ $menu = wofi --show drun
 
 # exec-once = $terminal
 # exec-once = nm-applet &
-# exec-once = waybar & hyprpaper & firefox
-exec-once = killall -q waybar;sleep .5 && waybar
+exec-once = waybar & hyprpaper & firefox
+# exec-once = killall -q waybar;sleep .5 && waybar
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
 env = LIBVA_DRIVER_NAME,nvidia
