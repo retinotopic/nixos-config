@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 
 {
@@ -25,6 +25,7 @@
   
   home.packages = with pkgs; [
     telegram-desktop
+    pkgs-unstable.vivaldi
   ];
   
   programs = {
@@ -33,9 +34,6 @@
       userName = "retinotopic";
       userEmail = "retinotopic@proton.me";
     };
-    # helix = {
-      # enable = true;
-    # };
     btop.enable = true;
     foot.enable = true;
     yazi.enable = true;

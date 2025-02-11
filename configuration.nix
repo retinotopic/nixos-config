@@ -27,7 +27,6 @@
     };
   };
   
-  nixpkgs.config.allowUnfree = true;
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader.systemd-boot.enable = true;
@@ -51,14 +50,7 @@
     extraGroups = [ "wheel" "networkmanager" ];
   };
   
-  home-manager = {
-    users = {
-      retinotopic = ./home.nix;
-    };
-    useUserPackages = true;
-    # useGlobalPkgs = true;
-  };
-  
+
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
@@ -109,7 +101,6 @@
     byedpi
     pwvucontrol
     docker-compose
-    pkgs-unstable.amnezia-vpn
     amneziawg-go
     pkgs-unstable.amneziawg-tools
     linuxKernel.packages.linux_zen.amneziawg # for zen amd cpus only

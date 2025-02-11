@@ -14,20 +14,34 @@
     
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs: let 
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: let 
     system = "x86_64-linux";
-    pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+
+    specialArgs = {
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    };
+    
   in {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-
-      inherit system;
-      specialArgs = { inherit pkgs-unstable; }; 
-      
+      inherit specialArgs;
       modules = [
-        inputs.home-manager.nixosModules.home-manager
+      
         ./configuration.nix
         inputs.disko.nixosModules.disko
         ./disk-config.nix
+        { nixpkgs.config.allowUnfree = true; }
+        
+        home-manager.nixosModules.home-manager 
+        {
+          home-manager.users = {
+            retinotopic = import ./home.nix;
+          };
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit (specialArgs) pkgs-unstable; };
+        }
       ];
     };
   };
