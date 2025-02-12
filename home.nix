@@ -34,9 +34,8 @@
     };   
   };
   
-  home.packages = with pkgs; [
-    telegram-desktop
-    pkgs-unstable.vivaldi
+  home.packages = [
+    pkgs.telegram-desktop
   ];
   
   programs = {
