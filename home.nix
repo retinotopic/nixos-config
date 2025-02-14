@@ -44,6 +44,13 @@
       userName = "retinotopic";
       userEmail = "retinotopic@proton.me";
     };
+    fish.enable = true;
+    direnv = {
+      enable = true;
+      enableBashIntegration = true; # see note on other shells below
+      nix-direnv.enable = true;
+    };
+    bash.enable = true; # see note on other shells below    
     btop.enable = true;
     foot.enable = true;
     yazi.enable = true;
