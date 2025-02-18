@@ -84,6 +84,7 @@
     vim.enable = true;
     git.enable = true;
     htop.enable = true;
+    dconf.enable = true;
     thunar = {
       enable = true;
       plugins = with pkgs.xfce; [
@@ -104,6 +105,9 @@
     amneziawg-go
     pkgs-unstable.amneziawg-tools
     linuxKernel.packages.linux_zen.amneziawg # for zen amd cpus only
+    mate.engrampa
+    unrar
+    unzip
   ];
 
   environment.sessionVariables = {

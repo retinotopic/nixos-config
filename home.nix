@@ -31,11 +31,12 @@
       splash_offset = 2.0;
       preload = [ "${./nixos-everforest.png}" ];
       wallpaper = [ "HDMI-A-1, ${./nixos-everforest.png}" ];
-    };   
+    };
+    easyeffects.enable = true;
   };
   
   home.packages = [
-    pkgs.telegram-desktop
+    pkgs-unstable.telegram-desktop
   ];
   
   programs = {
@@ -44,16 +45,18 @@
       userName = "retinotopic";
       userEmail = "retinotopic@proton.me";
     };
-    fish.enable = true;
     direnv = {
       enable = true;
-      enableBashIntegration = true; # see note on other shells below
       nix-direnv.enable = true;
+      enableBashIntegration = false;
+      enableNushellIntegration = false;
+      enableZshIntegration = false;
     };
-    bash.enable = true; # see note on other shells below    
+    fish.enable = true;
     btop.enable = true;
     foot.enable = true;
     yazi.enable = true;
+    chromium.enable = true;
     home-manager = {
       enable = true;       
     }; 
