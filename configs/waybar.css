@@ -161,7 +161,7 @@
 	color: @white;
 }
 
-#pulseaudio {
+#custom-pipewire {
 	background: @sound;
 	color: @black;
 }

@@ -7,17 +7,16 @@
         position = "top";
 
         modules-left = [
-          "sway/mode"
-          "sway/workspaces"
+          "hyprland/workspaces"
           "custom/arrow11"
-          "sway/window"
         ];
-
+        
+        modules-center = [ "hyprland/window" ];
+        
         modules-right = [
           "custom/arrow10"
-          "idle_inhibitor"
           "custom/arrow9"
-          "pulseaudio"
+          "custom/pipewire"
           "custom/arrow8"
           "network"
           "custom/arrow7"
@@ -29,7 +28,7 @@
           "custom/arrow4"
           "battery"
           "custom/arrow3"
-          "sway/language"
+          "hyprland/language"
           "custom/arrow2"
           "tray"
           "clock#date"
@@ -81,14 +80,13 @@
             critical = 90;
           };
         };
-
-        "sway/language" = {
-          format = " {}";
-          min-length = 5;
-          on-click = "${pkgs.sway}/bin/swaymsg 'input * xkb_switch_layout next'";
-          tooltip = false;
+        
+        "hyprland/language" = {
+            format = " {}";
+            format-en = "EN (US)";
+            format-ru = "RU";
         };
-
+        
         memory = {
           interval = 5;
           format = " {used:0.1f}G/{total:0.1f}G";
@@ -107,43 +105,25 @@
           format-alt = " {ipaddr}/{cidr}";
           tooltip = false;
         };
-
-        "sway/mode" = {
-          format = "{}";
-          tooltip = false;
+ 
+        "hyprland/workspaces" = {
+             format = "{icon}";
+             on-scroll-up = "hyprctl dispatch workspace e+1";
+             on-scroll-down = "hyprctl dispatch workspace e-1";
         };
 
-        "sway/window" = {
-          foramt = "{}";
-          max-length = 30;
-          tooltip = false;
-        };
-
-        "sway/workspaces" = {
-          disable-scroll-wraparound = true;
-          smooth-scrolling-threshold = 4;
-          enable-bar-scroll = true;
-          format = "{name}";
-        };
-
-        pulseaudio = {
-          format = "{icon} {volume}%";
-          format-bluetooth = "{icon} {volume}%";
-          format-muted = "";
+        "custom/pipewire" = {
+          exec = "pw-volume status";
+          return-type = "json";
+          interval = "once";
+          signal = 8;
+          format = "{icon} {percentage}";
           format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
+            mute = "";
             default = [ "" "" ];
           };
-          scroll-step = 1;
-          on-click = "${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
-          tooltip = false;
         };
-
+        
         temperature = {
           critical-threshold = 90;
           interval = 5;
@@ -155,15 +135,6 @@
             ""
             ""
           ];
-          tooltip = false;
-        };
-
-        idle_inhibitor = {
-          format = "{icon}";
-          format-icons = {
-            activated = "";
-            deactivated = "";
-          };
           tooltip = false;
         };
 
