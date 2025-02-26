@@ -80,6 +80,10 @@
   };
 
   programs = {
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
     firefox.enable = true;
     vim.enable = true;
     git.enable = true;
@@ -108,6 +112,7 @@
     mate.engrampa
     unrar
     unzip
+    distrobox
   ];
 
   environment.sessionVariables = {
@@ -135,7 +140,12 @@
     ];
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+    };
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

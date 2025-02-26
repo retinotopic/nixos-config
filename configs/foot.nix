@@ -28,6 +28,7 @@
       main = {
         font = "JetBrains Mono ExtraBold:size=13";
         dpi-aware = "yes";
+        shell = "fish";
       };
     };
   };
