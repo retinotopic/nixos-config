@@ -37,6 +37,7 @@
   
   home.packages = [
     pkgs-unstable.telegram-desktop
+    pkgs-unstable.brave
   ];
   
   programs = {
