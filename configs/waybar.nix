@@ -127,7 +127,8 @@
         "wireplumber" = {
             format = "{volume}% {icon}";
             format-muted = "";
-            on-click = "pwvucontrol";
+            on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+            on-click-right = "pwvucontrol";
             format-icons = [ "" "" "" ];
         };
               

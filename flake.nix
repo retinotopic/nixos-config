@@ -8,7 +8,7 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     
     home-manager = {
-      url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+      url = "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

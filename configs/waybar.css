@@ -6,7 +6,6 @@
 		background-color: @critical;
 	}
 }
-@define-color black	#282828;
 @define-color red	#e67e80;
 @define-color orange #e69875;
 @define-color green	#a7c080;
@@ -14,13 +13,14 @@
 @define-color blue #7fbbb3;
 @define-color purple #d699b6;
 @define-color aqua	#83c092;
+
+@define-color black	#282828;
 @define-color gray	#a89984;
 @define-color brgray	#928374;
 @define-color brred	#fb4934;
 @define-color brgreen	#b8bb26;
 @define-color bryellow	#fabd2f;
 @define-color brblue	#83a598;
-@define-color brpurple	#d3869b;
 @define-color braqua	#8ec07c;
 @define-color white	#ebdbb2;
 @define-color bg2	#504945;

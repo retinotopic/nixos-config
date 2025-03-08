@@ -26,8 +26,8 @@ general {
 
     border_size = 2
 
-    col.active_border = rgba(83c092ee) rgba(d699b6ee) 45deg
-    col.inactive_border = rgba(83c09280) rgba(d699b680) 45deg
+    col.active_border = rgba(83c092ee) rgba(7fbbb3ee) rgba(e67e80ee) rgba(a7c080ee) rgba(d699b6ee)
+    col.inactive_border = rgba(83c09280) rgba(7fbbb380) rgba(e67e8080) rgba(a7c08080) rgba(d699b680)
 
     resize_on_border = false
 
