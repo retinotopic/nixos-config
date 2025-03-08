@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       colors = {
-        alpha = "1.0";
+        alpha = "0.75";
         background = "323d43";
         foreground = "d3c6aa";
         

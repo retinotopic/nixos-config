@@ -22,14 +22,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1739757849,
-        "narHash": "sha256-Gs076ot1YuAAsYVcyidLKUMIc4ooOaRGO0PqTY7sBzA=",
+        "lastModified": 1741416850,
+        "narHash": "sha256-iqRxCsRxE/Q/3W1RHxQMthPKEda0hhY65uxEpE5TNk4=",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz"
+        "url": "https://github.com/nix-community/home-manager/archive/master.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz"
+        "url": "https://github.com/nix-community/home-manager/archive/master.tar.gz"
       }
     },
     "nixpkgs": {

@@ -12,48 +12,56 @@
           "hyprland/window"
         ];
      
-        modules-right = [
-          "custom/arrow1"
+        modules-right = [          
+          "custom/arrow2"
           "wireplumber"
           
-          "custom/arrow2"
+          "custom/arrow3"
           "memory"
           
-          "custom/arrow3"
+          "custom/arrow4"
           "cpu"
           
-          "custom/arrow4"
+          "custom/arrow5"
           "hyprland/language"
           
-          "custom/arrow5"
+          "custom/arrow6"
           "clock#date"
           
-          "custom/arrow6"
+          "custom/arrow7"
           "clock#time"
           "tray"
         ];
 
-        # battery = {
-        #   interval = 10;
-        #   states = {
-        #     warning = 30;
-        #     critical = 15;
-        #   };
-        #   format-time = "{H}:{M:02}";
-        #   format = "{icon} {capacity}% ({time})";
-        #   format-charging = " {capacity}% ({time})";
-        #   format-charging-full = " {capacity}%";
-        #   format-full = "{icon} {capacity}%";
-        #   format-alt = "{icon} {power}W";
-        #   format-icons = [
-        #     ""
-        #     ""
-        #     ""
-        #     ""
-        #     ""
-        #   ];
-        #   tooltip = false;
-        # };
+        user = {
+          format = "{user}";
+          avatar = "${../nixoslogo.png}";
+          height = 20;
+          width = 20;
+          icon = false;
+        };
+
+        battery = {
+          interval = 10;
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format-time = "{H}:{M:02}";
+          format = "{icon} {capacity}% ({time})";
+          format-charging = " {capacity}% ({time})";
+          format-charging-full = " {capacity}%";
+          format-full = "{icon} {capacity}%";
+          format-alt = "{icon} {power}W";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
+          tooltip = false;
+        };
 
         "clock#time" = {
           interval = 10;
@@ -80,7 +88,7 @@
 
         "hyprland/window" = {
           format = "{title}";
-          max-length = 50;
+          max-length = 100;
           icon = true;
           icon-size = 20;
         };
@@ -101,14 +109,14 @@
           tooltip = false;
         };
 
-        # network = {
-        #   interval = 5;
-        #   format-wifi = " {essid} ({signalStrength}%)";
-        #   format-ethernet = " {ifname}";
-        #   format-disconnected = "No connection";
-        #   format-alt = " {ipaddr}/{cidr}";
-        #   tooltip = false;
-        # };
+        network = {
+          interval = 5;
+          format-wifi = " {essid} ({signalStrength}%)";
+          format-ethernet = " {ifname}";
+          format-disconnected = "No connection";
+          format-alt = " {ipaddr}/{cidr}";
+          tooltip = false;
+        };
  
         "hyprland/workspaces" = {
              format = "{icon}";

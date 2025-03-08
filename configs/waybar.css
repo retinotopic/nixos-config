@@ -6,8 +6,6 @@
 		background-color: @critical;
 	}
 }
-
-/* Colors (gruvbox) */
 @define-color black	#282828;
 @define-color red	#e67e80;
 @define-color orange #e69875;
@@ -34,18 +32,19 @@
 @define-color battery	@aqua;
 @define-color warning 	@bryellow;
 @define-color critical	@red;
-@define-color mode	@black;
 @define-color unfocused	@bg2;
 @define-color focused	@braqua;
 @define-color inactive	@purple;
 @define-color idle	@blue;
 @define-color network	@purple;
+/* @define-color mode	@purple; */
+@define-color user @purple;
 
 @define-color sound	@green;
 @define-color memory	@blue;
 @define-color cpu	@red;
 @define-color layout	@aqua;
-@define-color date	@orange;
+@define-color date	@purple;
 @define-color time	@yellow;
 
 /* Reset all styles */
@@ -74,22 +73,23 @@
 #cpu,
 #language,
 #memory,
-#mode,
+/*#mode,*/
 #network,
-#pulseaudio,
+#wireplumber,
 #temperature,
 #tray,
 #backlight,
 #idle_inhibitor,
 #disk,
 #user,
+
 #mpris {
 	padding-left: 8pt;
 	padding-right: 8pt;
 }
 
 /* Each critical module */
-#mode,
+/*#mode,*/
 #memory.critical,
 #cpu.critical,
 #temperature.critical,
@@ -110,15 +110,6 @@
 	color: @warning;
 }
 
-/* And now modules themselves in their respective order */
-
-/* Current sway mode (resize etc) */
-#mode {
-	color: @white;
-	background: @mode;
-}
-
-/* Workspaces stuff */
 #workspaces button {
 	/*font-weight: bold;*/
 	padding-left: 2pt;
@@ -157,7 +148,7 @@
 }
 
 #tray {
-	background: @date;
+	background: @time;
 }
 
 #network {
@@ -180,7 +171,18 @@
 	color: @black;
 }
 
+/*#mode {
+	color: @white;
+	background: @mode;
+}*/
+
 ###############################################
+
+#user {
+	background: @user;
+	color: @black;
+}
+
 #wireplumber {
 	background: @sound;
 	color: @black;
@@ -213,41 +215,47 @@
 #####################################################
 #custom-arrow1 {
 	font-size: 16pt;
-	color: @sound;
-	background: @black;
+	color: @user;
+	background: transparent;
 }
 
 #custom-arrow2 {
+	font-size: 16pt;
+	color: @sound;
+	background: transparent;
+}
+
+#custom-arrow3 {
 	font-size: 16pt;
 	color: @memory;
 	background: @sound;
 }
 
-#custom-arrow3 {
+#custom-arrow4 {
 	font-size: 16pt;
 	color: @cpu;
 	background: @memory;
 }
 
-#custom-arrow4 {
+#custom-arrow5 {
 	font-size: 16pt;
 	color: @layout;
 	background: @cpu;
 }
 
-#custom-arrow5 {
+#custom-arrow6 {
 	font-size: 16pt;
 	color: @date;
 	background: @layout;
 }
 
-#custom-arrow6 {
+#custom-arrow7 {
 	font-size: 16pt;
 	color: @time;
 	background: @date;
 }
 ########################################################
-#custom-arrow7 {
+#custom-arrow8 {
 	font-size: 16pt;
 	color: @memory;
 	background: @network;

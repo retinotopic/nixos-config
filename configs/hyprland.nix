@@ -21,13 +21,13 @@ env = LIBVA_DRIVER_NAME,nvidia
 env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 
 general {
-    gaps_in = 5
-    gaps_out = 20
+    gaps_in = 4
+    gaps_out = 4
 
     border_size = 2
 
-    col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-    col.inactive_border = rgba(595959aa)
+    col.active_border = rgba(83c092ee) rgba(d699b6ee) 45deg
+    col.inactive_border = rgba(83c09280) rgba(d699b680) 45deg
 
     resize_on_border = false
 
@@ -37,19 +37,19 @@ general {
 }
 
 decoration {
-    rounding = 10
+    rounding = 7
     # rounding_power = 2
     active_opacity = 1.0
     inactive_opacity = 1.0
 
     shadow {
-        enabled = true
+        enabled = false
         range = 4
         render_power = 3
         color = rgba(1a1a1aee)
     }
     blur {
-        enabled = true
+        enabled = false
         size = 3
         passes = 1
 
@@ -166,6 +166,24 @@ bind = $mainMod SHIFT, S, togglespecialworkspace, magic
 
 bind = $mainMod, mouse_down, workspace, e+1
 bind = $mainMod, mouse_up, workspace, e-1
+
+# will switch to a submap called resize
+bind = ALT, R, submap, resize
+
+# will start a submap called "resize"
+submap = resize
+
+# sets repeatable binds for resizing the active window
+binde = , right, resizeactive, 10 0
+binde = , left, resizeactive, -10 0
+binde = , up, resizeactive, 0 -10
+binde = , down, resizeactive, 0 10
+
+# use reset to go back to the global submap
+bind = , escape, submap, reset
+
+# will reset the submap, which will return to the global submap
+submap = reset
 
 bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
