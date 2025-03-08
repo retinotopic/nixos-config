@@ -105,6 +105,7 @@
     kitty
     byedpi
     pwvucontrol
+    vlc
     docker-compose
     amneziawg-go
     pkgs-unstable.amneziawg-tools

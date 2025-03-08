@@ -9,54 +9,51 @@
         modules-left = [
           "hyprland/workspaces"
           "custom/arrow11"
+          "hyprland/window"
         ];
-        
-        modules-center = [ "hyprland/window" ];
-        
+     
         modules-right = [
-          "custom/arrow10"
-          "custom/arrow9"
-          "custom/pipewire"
-          "custom/arrow8"
-          "network"
-          "custom/arrow7"
-          "memory"
-          "custom/arrow6"
-          "cpu"
-          "custom/arrow5"
-          "temperature"
-          "custom/arrow4"
-          "battery"
-          "custom/arrow3"
-          "hyprland/language"
-          "custom/arrow2"
-          "tray"
-          "clock#date"
           "custom/arrow1"
+          "wireplumber"
+          
+          "custom/arrow2"
+          "memory"
+          
+          "custom/arrow3"
+          "cpu"
+          
+          "custom/arrow4"
+          "hyprland/language"
+          
+          "custom/arrow5"
+          "clock#date"
+          
+          "custom/arrow6"
           "clock#time"
+          "tray"
         ];
 
-        battery = {
-          interval = 10;
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format-time = "{H}:{M:02}";
-          format = "{icon} {capacity}% ({time})";
-          format-charging = " {capacity}% ({time})";
-          format-charging-full = " {capacity}%";
-          format-full = "{icon} {capacity}%";
-          format-alt = "{icon} {power}W";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-          tooltip = false;
-        };
+        # battery = {
+        #   interval = 10;
+        #   states = {
+        #     warning = 30;
+        #     critical = 15;
+        #   };
+        #   format-time = "{H}:{M:02}";
+        #   format = "{icon} {capacity}% ({time})";
+        #   format-charging = " {capacity}% ({time})";
+        #   format-charging-full = " {capacity}%";
+        #   format-full = "{icon} {capacity}%";
+        #   format-alt = "{icon} {power}W";
+        #   format-icons = [
+        #     ""
+        #     ""
+        #     ""
+        #     ""
+        #     ""
+        #   ];
+        #   tooltip = false;
+        # };
 
         "clock#time" = {
           interval = 10;
@@ -80,10 +77,17 @@
             critical = 90;
           };
         };
-        
+
+        "hyprland/window" = {
+          format = "{title}";
+          max-length = 50;
+          icon = true;
+          icon-size = 20;
+        };
+
         "hyprland/language" = {
             format = " {}";
-            format-en = "EN (US)";
+            format-en = "EN";
             format-ru = "RU";
         };
         
@@ -97,49 +101,44 @@
           tooltip = false;
         };
 
-        network = {
-          interval = 5;
-          format-wifi = " {essid} ({signalStrength}%)";
-          format-ethernet = " {ifname}";
-          format-disconnected = "No connection";
-          format-alt = " {ipaddr}/{cidr}";
-          tooltip = false;
-        };
+        # network = {
+        #   interval = 5;
+        #   format-wifi = " {essid} ({signalStrength}%)";
+        #   format-ethernet = " {ifname}";
+        #   format-disconnected = "No connection";
+        #   format-alt = " {ipaddr}/{cidr}";
+        #   tooltip = false;
+        # };
  
         "hyprland/workspaces" = {
              format = "{icon}";
              on-scroll-up = "hyprctl dispatch workspace e+1";
              on-scroll-down = "hyprctl dispatch workspace e-1";
         };
-
-        "custom/pipewire" = {
-          exec = "pw-volume status";
-          return-type = "json";
-          interval = "once";
-          signal = 8;
-          format = "{icon} {percentage}";
-          format-icons = {
-            mute = "";
-            default = [ "" "" ];
-          };
-        };
         
-        temperature = {
-          critical-threshold = 90;
-          interval = 5;
-          format = "{icon} {temperatureC}°";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-          tooltip = false;
+        "wireplumber" = {
+            format = "{volume}% {icon}";
+            format-muted = "";
+            on-click = "pwvucontrol";
+            format-icons = [ "" "" "" ];
         };
+              
+        # temperature = {
+        #   critical-threshold = 90;
+        #   interval = 5;
+        #   format = "{icon} {temperatureC}°";
+        #   format-icons = [
+        #     ""
+        #     ""
+        #     ""
+        #     ""
+        #     ""
+        #   ];
+        #   tooltip = false;
+        # };
 
         tray = {
-          icon-size = 18;
+          icon-size = 20;
         };
 
         "custom/arrow1" = {

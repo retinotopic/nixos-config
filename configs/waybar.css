@@ -7,17 +7,15 @@
 	}
 }
 
-
-/* Styles */
-
 /* Colors (gruvbox) */
 @define-color black	#282828;
-@define-color red	#cc241d;
-@define-color green	#98971a;
-@define-color yellow	#d79921;
-@define-color blue	#458588;
-@define-color purple	#b16286;
-@define-color aqua	#689d6a;
+@define-color red	#e67e80;
+@define-color orange #e69875;
+@define-color green	#a7c080;
+@define-color yellow #dbbc7f;
+@define-color blue #7fbbb3;
+@define-color purple #d699b6;
+@define-color aqua	#83c092;
 @define-color gray	#a89984;
 @define-color brgray	#928374;
 @define-color brred	#fb4934;
@@ -28,8 +26,12 @@
 @define-color braqua	#8ec07c;
 @define-color white	#ebdbb2;
 @define-color bg2	#504945;
+@define-color grey0 #7a8478;
+@define-color grey1 #859289;
+@define-color grey2 #9da9a0;
 
-
+@define-color temp	@brgreen;
+@define-color battery	@aqua;
 @define-color warning 	@bryellow;
 @define-color critical	@red;
 @define-color mode	@black;
@@ -37,15 +39,14 @@
 @define-color focused	@braqua;
 @define-color inactive	@purple;
 @define-color idle	@blue;
-@define-color sound	@brblue;
 @define-color network	@purple;
-@define-color memory	@braqua;
-@define-color cpu	@green;
-@define-color temp	@brgreen;
-@define-color layout	@bryellow;
-@define-color battery	@aqua;
-@define-color date	@black;
-@define-color time	@white;
+
+@define-color sound	@green;
+@define-color memory	@blue;
+@define-color cpu	@red;
+@define-color layout	@aqua;
+@define-color date	@orange;
+@define-color time	@yellow;
 
 /* Reset all styles */
 * {
@@ -56,7 +57,6 @@
 	padding: 0;
 	box-shadow: none;
 	text-shadow: none;
-	icon-shadow: none;
 }
 
 /* The whole bar */
@@ -156,19 +156,34 @@
 	margin-left: 35pt;
 }
 
-#idle_inhibitor {
-	background: @idle;
-	color: @white;
-}
-
-#custom-pipewire {
-	background: @sound;
-	color: @black;
+#tray {
+	background: @date;
 }
 
 #network {
 	background: @network;
-	color: @white;
+	color: @black;
+}
+
+#idle_inhibitor {
+	background: @idle;
+	color: @black;
+}
+
+#temperature {
+	background: @temp;
+	color: @black;
+}
+
+#battery {
+	background: @battery;
+	color: @black;
+}
+
+###############################################
+#wireplumber {
+	background: @sound;
+	color: @black;
 }
 
 #memory {
@@ -178,11 +193,6 @@
 
 #cpu {
 	background: @cpu;
-	color: @white;
-}
-
-#temperature {
-	background: @temp;
 	color: @black;
 }
 
@@ -191,61 +201,52 @@
 	color: @black;
 }
 
-#battery {
-	background: @battery;
-	color: @white;
-}
-
-#tray {
-	background: @date;
-}
-
 #clock.date {
 	background: @date;
-	color: @white;
+	color: @black;
 }
 
 #clock.time {
 	background: @time;
 	color: @black;
 }
-
+#####################################################
 #custom-arrow1 {
 	font-size: 16pt;
-	color: @time;
-	background: @date;
+	color: @sound;
+	background: @black;
 }
 
 #custom-arrow2 {
 	font-size: 16pt;
-	color: @date;
-	background: @layout;
+	color: @memory;
+	background: @sound;
 }
 
 #custom-arrow3 {
-	font-size: 16pt;
-	color: @layout;
-	background: @battery;
-}
-
-#custom-arrow4 {
-	font-size: 16pt;
-	color: @battery;
-	background: @temp;
-}
-
-#custom-arrow5 {
-	font-size: 16pt;
-	color: @temp;
-	background: @cpu;
-}
-
-#custom-arrow6 {
 	font-size: 16pt;
 	color: @cpu;
 	background: @memory;
 }
 
+#custom-arrow4 {
+	font-size: 16pt;
+	color: @layout;
+	background: @cpu;
+}
+
+#custom-arrow5 {
+	font-size: 16pt;
+	color: @date;
+	background: @layout;
+}
+
+#custom-arrow6 {
+	font-size: 16pt;
+	color: @time;
+	background: @date;
+}
+########################################################
 #custom-arrow7 {
 	font-size: 16pt;
 	color: @memory;
