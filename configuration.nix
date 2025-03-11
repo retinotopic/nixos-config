@@ -81,6 +81,8 @@
   };
 
   programs = {
+    nix-ld.enable = true;
+    steam.enable = true;
     appimage = {
       enable = true;
       binfmt = true;
@@ -115,6 +117,8 @@
     unzip
     distrobox
     boxbuddy
+    steam-run
+    qbittorrent
   ];
 
   environment.sessionVariables = {
