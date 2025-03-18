@@ -91,6 +91,8 @@
     git.enable = true;
     htop.enable = true;
     dconf.enable = true;
+    chromium.enable = true;
+    xwayland.enable = true;
     thunar = {
       enable = true;
       plugins = with pkgs.xfce; [
@@ -101,8 +103,10 @@
   }; 
 
   environment.systemPackages = with pkgs; [
+    nvidia-vaapi-driver
+    # vulkan-tools
     wget
-    helix
+    pkgs-unstable.helix
     fastfetch
     kitty
     byedpi
@@ -125,11 +129,12 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
   };
-  
   hardware = {
     graphics.enable = true;
-    nvidia.modesetting.enable = true;
-    nvidia.open = false;
+    nvidia = {
+      modesetting.enable = true;
+      open = false;
+    };
   };
   
   xdg.portal = {

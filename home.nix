@@ -39,6 +39,8 @@
     pkgs-unstable.telegram-desktop
     pkgs-unstable.brave
   ];
+# brave --proxy-server="socks5://127.0.0.1:1080" --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --disable-gpu-vsync --disable-frame-rate-limit
+
   
   programs = {
     git = {
@@ -57,7 +59,6 @@
     btop.enable = true;
     foot.enable = true;
     yazi.enable = true;
-    chromium.enable = true;
     home-manager = {
       enable = true;       
     }; 

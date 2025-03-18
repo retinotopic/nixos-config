@@ -15,6 +15,10 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: let 
     system = "x86_64-linux";
+    supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+    forEachSupportedSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f {
+      pkgs = import nixpkgs { inherit system; };
+    });
 
     specialArgs = {
       pkgs-unstable = import nixpkgs-unstable {
@@ -43,5 +47,18 @@
         }
       ];
     };
+    devShells = forEachSupportedSystem ({ pkgs }: {
+      default = pkgs.mkShell {
+        packages = with pkgs; [
+          cachix
+          lorri
+          niv
+          nixfmt-classic
+          statix
+          vulnix
+          haskellPackages.dhall-nix
+        ];
+      };
+    });
   };
 }
