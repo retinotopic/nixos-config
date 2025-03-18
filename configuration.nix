@@ -103,8 +103,6 @@
   }; 
 
   environment.systemPackages = with pkgs; [
-    nvidia-vaapi-driver
-    # vulkan-tools
     wget
     pkgs-unstable.helix
     fastfetch
@@ -130,7 +128,10 @@
     NIXOS_OZONE_WL = "1";
   };
   hardware = {
-    graphics.enable = true;
+    graphics = {
+      extraPackages = with pkgs; [ nvidia-vaapi-driver vulkan-tools wgpu-utils ];
+      enable = true;
+    };
     nvidia = {
       modesetting.enable = true;
       open = false;
