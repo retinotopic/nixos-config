@@ -37,9 +37,9 @@
   
   home.packages = [
     pkgs-unstable.telegram-desktop
-    pkgs-unstable.brave
+    pkgs.brave
   ];
-# brave --proxy-server="socks5://127.0.0.1:1080" --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --enable-unsafe-webgpu --disable-gpu-vsync --disable-frame-rate-limit
+# brave --proxy-server="socks5://127.0.0.1:1080" --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 
   
   programs = {

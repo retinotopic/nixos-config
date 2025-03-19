@@ -29,7 +29,7 @@ general {
     col.active_border = rgba(83c092ee) rgba(7fbbb3ee) rgba(e67e80ee) rgba(a7c080ee) rgba(d699b6ee)
     col.inactive_border = rgba(83c09280) rgba(7fbbb380) rgba(e67e8080) rgba(a7c08080) rgba(d699b680)
 
-    resize_on_border = false
+    resize_on_border = true
 
     allow_tearing = false
 
