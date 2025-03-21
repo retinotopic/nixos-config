@@ -63,6 +63,8 @@
   services = {
     xserver.videoDrivers = ["nvidia"];
     fstrim.enable = true;
+    gvfs.enable = true;
+    tumbler.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -157,6 +159,7 @@
       enable = true;
       dockerCompat = true;
     };
+    waydroid.enable = true;
   };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
