@@ -106,6 +106,7 @@
 
   environment.systemPackages = with pkgs; [
     wget
+    tree
     pkgs-unstable.helix
     fastfetch
     kitty

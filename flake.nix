@@ -3,7 +3,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.11";
     
-    disko.url = "https://github.com/nix-community/disko/archive/master.tar.gz";  
+    disko.url = "https://github.com/nix-community/disko/archive/v1.11.0.tar.gz";  
+    # disko.url = "https://github.com/nix-community/disko/archive/master.tar.gz";  
     
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     
