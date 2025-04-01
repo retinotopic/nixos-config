@@ -16,8 +16,18 @@
         "nix-command"
         "flakes"
       ];
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      extra-substituters = [
+        "https://hyprland.cachix.org"
+        "https://walker-git.cachix.org"
+        "https://walker.cachix.org"
+        "https://nix-gaming.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
+        "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+      ];
     };
     
     gc = {
@@ -113,6 +123,7 @@
     byedpi
     pwvucontrol
     vlc
+    streamlink
     docker-compose
     amneziawg-go
     pkgs-unstable.amneziawg-tools
@@ -160,7 +171,6 @@
       enable = true;
       dockerCompat = true;
     };
-    waydroid.enable = true;
   };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

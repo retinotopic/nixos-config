@@ -1,6 +1,4 @@
-{ config, pkgs, pkgs-unstable, ... }:
-
-
+{ config, pkgs, pkgs-unstable, inputs, ... }:
 {
   imports = [
     ./configs/waybar.nix
@@ -37,12 +35,22 @@
   
   home.packages = [
     pkgs-unstable.telegram-desktop
+    pkgs-unstable.walker
     pkgs.brave
   ];
 # brave --proxy-server="socks5://127.0.0.1:1080" --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 
   
   programs = {
+    fuzzel = {
+      enable = true;
+      settings = {
+        main = {
+          terminal = "${pkgs.foot}/bin/foot";
+          layer = "overlay";
+        };
+      };
+    };
     git = {
       enable = true;
       userName = "retinotopic";
