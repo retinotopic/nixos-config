@@ -57,7 +57,7 @@
 
   users.users.retinotopic = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
   };
   
 
@@ -93,6 +93,7 @@
   };
 
   programs = {
+    virt-manager.enable = true;
     nix-ld.enable = true;
     steam.enable = true;
     appimage = {
@@ -171,6 +172,7 @@
       enable = true;
       dockerCompat = true;
     };
+    libvirtd.enable = true;
   };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
