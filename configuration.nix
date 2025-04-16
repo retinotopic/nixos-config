@@ -132,6 +132,7 @@
     mate.engrampa
     unrar
     unzip
+    p7zip
     distrobox
     boxbuddy
     steam-run
@@ -170,9 +171,14 @@
   virtualisation = {
     podman = {
       enable = true;
-      dockerCompat = true;
+      # dockerCompat = true;
     };
+    docker.enable = true;
     libvirtd.enable = true;
+    docker.rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
   };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
