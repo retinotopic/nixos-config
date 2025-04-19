@@ -111,10 +111,10 @@ bind = $mainMod, R, exec, $menu
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, J, togglesplit, # dwindle
 
-bind = ALT, H, movefocus, l
-bind = ALT, L, movefocus, r
-bind = ALT, K, movefocus, u
-bind = ALT, J, movefocus, d
+bind = SHIFT, H, movefocus, l
+bind = SHIFT, L, movefocus, r
+bind = SHIFT, K, movefocus, u
+bind = SHIFT, J, movefocus, d
 
 bind = $mainMod, 1, workspace, 1
 bind = $mainMod, 2, workspace, 2
@@ -142,24 +142,6 @@ bind = $mainMod SHIFT, S, togglespecialworkspace, magic
 
 bind = $mainMod, mouse_down, workspace, e+1
 bind = $mainMod, mouse_up, workspace, e-1
-
-# will switch to a submap called resize
-bind = ALT, R, submap, resize
-
-# will start a submap called "resize"
-submap = resize
-
-# sets repeatable binds for resizing the active window
-binde = , right, resizeactive, 10 0
-binde = , left, resizeactive, -10 0
-binde = , up, resizeactive, 0 -10
-binde = , down, resizeactive, 0 10
-
-# use reset to go back to the global submap
-bind = , escape, submap, reset
-
-# will reset the submap, which will return to the global submap
-submap = reset
 
 bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
