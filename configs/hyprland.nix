@@ -111,10 +111,10 @@ bind = $mainMod, R, exec, $menu
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, J, togglesplit, # dwindle
 
-bind = SHIFT, H, movefocus, l
-bind = SHIFT, L, movefocus, r
-bind = SHIFT, K, movefocus, u
-bind = SHIFT, J, movefocus, d
+bind = $mainMod SHIFT, H, movefocus, l
+bind = $mainMod SHIFT, L, movefocus, r
+bind = $mainMod SHIFT, K, movefocus, u
+bind = $mainMod SHIFT, J, movefocus, d
 
 bind = $mainMod, 1, workspace, 1
 bind = $mainMod, 2, workspace, 2
