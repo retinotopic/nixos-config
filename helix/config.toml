@@ -28,13 +28,13 @@ nbsp = "⍽"
 tab = "→"
 newline = "⏎"
 # tabpad = "·" # Tabs will look like "→···" (depending on tab width)
-[editor.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-'"' = '"'
-'`' = '`'
-'<' = '>'
+# [editor.auto-pairs]
+# '(' = ')'
+# '{' = '}'
+# '[' = ']'
+# '"' = '"'
+# '`' = '`'
+# '<' = '>'
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"

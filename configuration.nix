@@ -57,7 +57,7 @@
 
   users.users.retinotopic = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ];
   };
   
 
