@@ -50,6 +50,7 @@
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     hostName = "nixos"; # Define your hostname.
     nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    # firewall.allowedTCPPorts = [ 22 ];
   };
 
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -65,6 +66,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
+    noto-fonts-extra
     dejavu_fonts
     jetbrains-mono
     font-awesome
@@ -89,7 +91,25 @@
       fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
       dnsovertls = "true";
     };
-
+    openssh = {
+      enable = true;
+      authorizedKeysInHomedir = true;
+      settings = {
+        PermitRootLogin = "without-password";
+        PasswordAuthentication = false;
+        X11Forwarding = true;
+      };
+      hostKeys = [
+        {
+          path = "/etc/ssh/ssh_host_ed25519_key";
+          rounds = 100;
+          type = "ed25519";         
+        }
+      ];
+      # extraConfig = ''
+      #   PubkeyAuthentication yes
+      # '';
+    };
   };
 
   programs = {
