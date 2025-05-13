@@ -42,6 +42,12 @@
 
   
   programs = {
+    tmux = {
+      enable = true;
+      shortcut = "a";
+      shell = "${pkgs.fish}/bin/fish";
+      keyMode = "vi";
+    };
     fuzzel = {
       enable = true;
       settings = {

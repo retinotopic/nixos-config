@@ -1,6 +1,7 @@
 {
   programs.foot = {
     enable = true;
+    server.enable = true;
     settings = {
       colors = {
         alpha = "0.80";
@@ -26,7 +27,7 @@
         bright7 = "d3c6aa"; # white
       };
       main = {
-        font = "JetBrains Mono ExtraBold:size=13";
+        font = "JetBrains Mono ExtraBold:size=16";
         dpi-aware = "yes";
         shell = "fish";
       };

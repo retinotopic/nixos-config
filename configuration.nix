@@ -82,8 +82,7 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-    };
-    
+    };   
     resolved = { 
       enable = true;
       dnssec = "true";
