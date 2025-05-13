@@ -36,6 +36,7 @@
   home.packages = [
     pkgs-unstable.telegram-desktop
     pkgs.brave
+    pkgs-unstable.zellij
   ];
 # brave --proxy-server="socks5://127.0.0.1:1080" --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 

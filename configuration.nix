@@ -106,13 +106,15 @@
           type = "ed25519";         
         }
       ];
-      # extraConfig = ''
-      #   PubkeyAuthentication yes
-      # '';
+      extraConfig = ''
+        MaxStartups 5:50:10
+        MaxSessions 1
+      '';
     };
   };
 
   programs = {
+    mosh.enable = true;
     virt-manager.enable = true;
     nix-ld.enable = true;
     steam.enable = true;
