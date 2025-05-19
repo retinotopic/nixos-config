@@ -1,12 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
     disko.url = "https://github.com/nix-community/disko/archive/v1.11.0.tar.gz";  
     
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     
     home-manager = {
-      url = "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
+      url = "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

@@ -63,13 +63,9 @@
   
 
   fonts.packages = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    noto-fonts-extra
-    dejavu_fonts
-    jetbrains-mono
-    font-awesome
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
+    noto-fonts-color-emoji
   ]; 
   
   services = {
@@ -135,7 +131,6 @@
       ];
     };
   }; 
-
   environment.systemPackages = with pkgs; [
     wget
     tree

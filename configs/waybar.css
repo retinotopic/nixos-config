@@ -62,7 +62,7 @@
 #waybar {
 	background: rgba(40, 40, 40, 0.8784313725); /* #282828e0 */
 	color: @white;
-  font-family: "JetBrains Mono", "Font Awesome 6 Free";
+  font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font";
   font-size: 16px;
   font-weight: 600;
 }

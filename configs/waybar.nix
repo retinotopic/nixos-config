@@ -78,8 +78,8 @@
         cpu = {
           interval = 5;
           tooltip = false;
-          format = " {usage}%";
-          format-alt = " {load}";
+          format = " {usage}%";
+          format-alt = "{load}";
           states = {
             warning = 70;
             critical = 90;
@@ -94,14 +94,14 @@
         };
 
         "hyprland/language" = {
-            format = " {}";
+            format = " {}";
             format-en = "EN";
             format-ru = "RU";
         };
         
         memory = {
           interval = 5;
-          format = " {used:0.1f}G/{total:0.1f}G";
+          format = " {used:0.1f}G/{total:0.1f}G";
           states = {
             warning = 70;
             critical = 90;
@@ -111,10 +111,10 @@
 
         network = {
           interval = 5;
-          format-wifi = " {essid} ({signalStrength}%)";
-          format-ethernet = " {ifname}";
+          format-wifi = " {essid} ({signalStrength}%)";
+          format-ethernet = " {ifname}";
           format-disconnected = "No connection";
-          format-alt = " {ipaddr}/{cidr}";
+          format-alt = " {ipaddr}/{cidr}";
           tooltip = false;
         };
  
@@ -126,7 +126,7 @@
         
         "wireplumber" = {
             format = "{volume}% {icon}";
-            format-muted = "";
+            format-muted = "";
             on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             on-click-right = "pwvucontrol";
             format-icons = [ "" "" "" ];
