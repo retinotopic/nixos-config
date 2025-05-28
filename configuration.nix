@@ -153,6 +153,7 @@
     boxbuddy
     steam-run
     qbittorrent
+    dysk
   ];
 
   environment.sessionVariables = {
