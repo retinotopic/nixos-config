@@ -1,6 +1,7 @@
-{ lib, pkgs-unstable, ... }: {
+{ lib, pkgs-unstable, pkgs, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
+    plugins = [ pkgs.hyprlandPlugins.hyprscrolling ];
     xwayland.enable = true;
     systemd.enable = true;
     extraConfig = lib.concatStrings [
@@ -13,7 +14,7 @@ $menu = fuzzel
 
 # exec-once = $terminal
 # exec-once = nm-applet &
-exec-once = waybar & hyprpaper & firefox
+exec-once = waybar & hyprpaper
 # exec-once = killall -q waybar;sleep .5 && waybar
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
@@ -55,6 +56,12 @@ decoration {
 
         vibrancy = 0.1696
     }
+}
+
+plugin:hyprscrolling {
+    column_width = 0.5
+    fullscreen_on_one_column = true
+    explicit_column_widths = 0.5, 1.0
 }
 
 animations {
@@ -111,10 +118,15 @@ bind = $mainMod, R, exec, $menu
 bind = $mainMod, P, pseudo, # dwindle
 bind = $mainMod, J, togglesplit, # dwindle
 
+
+
 bind = $mainMod SHIFT, H, movefocus, l
 bind = $mainMod SHIFT, L, movefocus, r
 bind = $mainMod SHIFT, K, movefocus, u
 bind = $mainMod SHIFT, J, movefocus, d
+
+bind = $mainMod, H, workspace, r-1
+bind = $mainMod, L, workspace, r+1
 
 bind = $mainMod, 1, workspace, 1
 bind = $mainMod, 2, workspace, 2
@@ -157,6 +169,14 @@ bindl = , XF86AudioNext, exec, playerctl next
 bindl = , XF86AudioPause, exec, playerctl play-pause
 bindl = , XF86AudioPlay, exec, playerctl play-pause
 bindl = , XF86AudioPrev, exec, playerctl previous
+
+# bind = $mainMod, H, layoutmsg, focus l
+# bind = $mainMod, L, layoutmsg, focus r
+
+binde = $mainMod CONTROL, minus, layoutmsg, move -col 
+binde = $mainMod CONTROL, equal, layoutmsg, move +col
+binde = $mainMod, minus, layoutmsg, colresize -0.1
+binde = $mainMod, equal, layoutmsg, colresize +0.1
 
 # Ignore maximize requests from apps. You'll probably like this.
 windowrulev2 = suppressevent maximize, class:.*

@@ -50,7 +50,7 @@
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     hostName = "nixos"; # Define your hostname.
     nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-    # firewall.allowedTCPPorts = [ 22 ];
+    firewall.allowedTCPPorts = [ 22 ];
   };
 
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -140,6 +140,7 @@
     byedpi
     pwvucontrol
     vlc
+    ffmpeg
     streamlink
     docker-compose
     amneziawg-go
