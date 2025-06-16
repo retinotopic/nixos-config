@@ -109,6 +109,7 @@
   };
 
   programs = {
+    niri.enable = true;
     mosh.enable = true;
     virt-manager.enable = true;
     nix-ld.enable = true;
@@ -155,6 +156,7 @@
     steam-run
     qbittorrent
     dysk
+    xwayland-satellite
   ];
 
   environment.sessionVariables = {

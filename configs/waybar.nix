@@ -7,9 +7,9 @@
         position = "top";
 
         modules-left = [
-          "hyprland/workspaces"
+          "niri/workspaces"
           "custom/arrow11"
-          "hyprland/window"
+          "niri/window"
         ];
      
         modules-right = [          
@@ -23,7 +23,7 @@
           "cpu"
           
           "custom/arrow5"
-          "hyprland/language"
+          "niri/language"
           
           "custom/arrow6"
           "clock#date"
@@ -85,20 +85,27 @@
             critical = 90;
           };
         };
-
-        "hyprland/window" = {
-          format = "{title}";
-          max-length = 100;
-          icon = true;
-          icon-size = 20;
+        "niri/window" = {
+        	format = "{title}";
         };
+        # "hyprland/window" = {
+        #   format = "{title}";
+        #   max-length = 100;
+        #   icon = true;
+        #   icon-size = 20;
+        # };
 
-        "hyprland/language" = {
-            format = " {}";
-            format-en = "EN";
-            format-ru = "RU";
-        };
+        # "hyprland/language" = {
+        #     format = " {}";
+        #     format-en = "EN";
+        #     format-ru = "RU";
+        # };
         
+        "niri/language" = {
+        	format = " {}";
+        	format-en = "EN";
+        	format-ru = "RU";
+        };
         memory = {
           interval = 5;
           format = " {used:0.1f}G/{total:0.1f}G";
@@ -118,11 +125,14 @@
           tooltip = false;
         };
  
-        "hyprland/workspaces" = {
-             format = "{icon}";
-             on-scroll-up = "hyprctl dispatch workspace e+1";
-             on-scroll-down = "hyprctl dispatch workspace e-1";
+        "niri/workspaces" = {
+        	format = "{icon}";
         };
+        # "hyprland/workspaces" = {
+        #      format = "{icon}";
+        #      on-scroll-up = "hyprctl dispatch workspace e+1";
+        #      on-scroll-down = "hyprctl dispatch workspace e-1";
+        # };
         
         "wireplumber" = {
             format = "{volume}% {icon}";

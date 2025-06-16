@@ -13,6 +13,10 @@
         source = ./helix;
         recursive = true;        
       };
+      ".config/niri" = {
+        source = ./niri;
+        recursive = true;        
+      };
       # ".config/helix".source = config.lib.file.mkOutOfStoreSymlink "/home/retinotopic/nixos-config/helix";
     };
       
@@ -37,6 +41,8 @@
     pkgs-unstable.telegram-desktop
     pkgs.brave
     pkgs-unstable.zellij
+    pkgs.waypaper
+    pkgs.waylock
   ];
 # brave --proxy-server="socks5://127.0.0.1:1080" --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 
