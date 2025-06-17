@@ -29,7 +29,7 @@
         ./configuration.nix
         inputs.disko.nixosModules.disko
         ./disk-config.nix
-        { pkgs.config.allowUnfree = true; }
+        { nixpkgs.config.allowUnfree = true; }
         
         home-manager.nixosModules.home-manager 
         {
@@ -37,6 +37,7 @@
             retinotopic = import ./home.nix;
           };
           home-manager.useUserPackages = true;
+          home-manager.useGlobalPkgs = true;
           home-manager.extraSpecialArgs = {
             inherit (specialArgs) pkgs-unstable;
             inherit inputs;

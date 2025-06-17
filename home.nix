@@ -51,6 +51,13 @@
 
   
   programs = {
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableBashIntegration = false;
+      enableNushellIntegration = false;
+      enableZshIntegration = false;
+    };
     tmux = {
       enable = true;
       shortcut = "a";
@@ -70,13 +77,6 @@
       enable = true;
       userName = "retinotopic";
       userEmail = "retinotopic@proton.me";
-    };
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-      enableBashIntegration = false;
-      enableNushellIntegration = false;
-      enableZshIntegration = false;
     };
     fish.enable = true;
     btop.enable = true;
