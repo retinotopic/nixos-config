@@ -17,6 +17,9 @@
         source = ./niri;
         recursive = true;        
       };
+      "nixos-everforest.png" = {
+        source = ./nixos-everforest-light.png;
+      };
       # ".config/helix".source = config.lib.file.mkOutOfStoreSymlink "/home/retinotopic/nixos-config/helix";
     };
       
@@ -24,9 +27,9 @@
     homeDirectory = "/home/retinotopic";
     stateVersion = "24.11";
   };
-  
   services = {
-    hyprpaper.enable = true;
+    swww.enable = true;
+    hyprpaper.enable = false;
     hyprpaper.settings = {
       ipc = "off";
       splash = false;
@@ -41,8 +44,8 @@
     pkgs-unstable.telegram-desktop
     pkgs.brave
     pkgs-unstable.zellij
+    pkgs.davinci-resolve-studio
     pkgs.waypaper
-    pkgs.waylock
   ];
 # brave --proxy-server="socks5://127.0.0.1:1080" --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 

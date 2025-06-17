@@ -6,59 +6,64 @@
 @define-color aqua	#83c092;
 @define-color black	#282828;
 @define-color white	#ebdbb2;
-
-@define-color unfocused	@bg2;
-@define-color focused	@braqua;
-@define-color inactive	@purple;
-@define-color user @purple;
+@define-color bryellow	#fabd2f;
 
 @define-color sound	@green;
-@define-color memory	@blue;
+@define-color memory @blue;
 @define-color cpu	@red;
-@define-color layout	@aqua;
-@define-color date	@purple;
-@define-color time	@yellow;
-
+@define-color layout @aqua;
+@define-color date @purple;
+@define-color time @yellow;
+@define-color warning @bryellow;
+/*505c58 bg*/
+/*2e393c legs*/
 #waybar {
-	background: rgba(40, 40, 40, 0.8784313725); /* #282828e0 */
-	color: @white;
-  font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font";
-  font-size: 16px;
+	background: rgba(40, 40, 40, 0.5); /* #282828e0 */
+  font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font Mono";
+  color: @purple;
+  font-size: 17px;
   font-weight: 600;
 }
 
+* {
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	box-shadow: none;
+	text-shadow: none;
+}
+
 #clock,
+#tray,
 #cpu,
 #language,
 #memory,
 #wireplumber,
-#user,
 
 #workspaces button {
 	padding-left: 2pt;
 	padding-right: 2pt;
-	color: @white;
-	background: @unfocused;
+	color: @black;
+	background: @date;
 }
-#workspaces button.visible {
-	color: @white;
-	background: @inactive;
+
+#window {
+	margin-right: 35pt;
+	margin-left: 35pt;
 }
+
 #workspaces button.focused {
 	color: @black;
-	background: @focused;
+	background: @layout;
 }
 #workspaces button.urgent {
 	color: @black;
 	background: @warning;
 }
 #workspaces button:hover {
-	background: @black;
-	color: @white;
-}
-
-#user {
-	background: @user;
+	background: @yellow;
 	color: @black;
 }
 
@@ -82,6 +87,10 @@
 	color: @black;
 }
 
+#tray {
+	background: @time;
+}
+
 #clock.date {
 	background: @date;
 	color: @black;
@@ -91,45 +100,45 @@
 	background: @time;
 	color: @black;
 }
-#####################################################
+
 #custom-arrow1 {
-	font-size: 16pt;
-	color: @user;
+	font-size: 17pt;
+	color: @date;
 	background: transparent;
 }
 
 #custom-arrow2 {
-	font-size: 16pt;
+	font-size: 17pt;
 	color: @sound;
 	background: transparent;
 }
 
 #custom-arrow3 {
-	font-size: 16pt;
+	font-size: 17pt;
 	color: @memory;
 	background: @sound;
 }
 
 #custom-arrow4 {
-	font-size: 16pt;
+	font-size: 17pt;
 	color: @cpu;
 	background: @memory;
 }
 
 #custom-arrow5 {
-	font-size: 16pt;
+	font-size: 17pt;
 	color: @layout;
 	background: @cpu;
 }
 
 #custom-arrow6 {
-	font-size: 16pt;
+	font-size: 17pt;
 	color: @date;
 	background: @layout;
 }
 
 #custom-arrow7 {
-	font-size: 16pt;
+	font-size: 17pt;
 	color: @time;
 	background: @date;
 }

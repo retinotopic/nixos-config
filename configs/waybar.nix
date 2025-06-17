@@ -8,10 +8,10 @@
 
         modules-left = [
           "niri/workspaces"
-          "custom/arrow11"
+          "custom/arrow1"
           "niri/window"
         ];
-     
+
         modules-right = [          
           "custom/arrow2"
           "wireplumber"
@@ -87,6 +87,8 @@
         };
         "niri/window" = {
         	format = "{title}";
+          icon = true;
+          icon-size = 20;
         };
         # "hyprland/window" = {
         #   format = "{title}";
@@ -135,7 +137,7 @@
         # };
         
         "wireplumber" = {
-            format = "{volume}% {icon}";
+            format = "{volume}% {icon} ";
             format-muted = "";
             on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             on-click-right = "pwvucontrol";
@@ -161,7 +163,7 @@
         };
 
         "custom/arrow1" = {
-          format = "";
+          format = "";
           tooltip = false;
         };
 
@@ -194,29 +196,8 @@
           format = "";
           tooltip = false;
         };
-
-        "custom/arrow8" = {
-          format = "";
-          tooltip = false;
-        };
-
-        "custom/arrow9" = {
-          format = "";
-          tooltip = false;
-        };
-
-        "custom/arrow10" = {
-          format = "";
-          tooltip = false;
-        };
-
-        "custom/arrow11" = {
-          format = "";
-          tooltip = false;
-        };
       };
     };
-
     style = ./waybar.css;
   };
 }

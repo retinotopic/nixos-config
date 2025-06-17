@@ -15,22 +15,34 @@ input {
 
 layout {
     gaps 3
+    center-focused-column "never"
     always-center-single-column
     empty-workspace-above-first
+    default-column-display "tabbed"
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
     }
     default-column-width { proportion 0.5; }
+    focus-ring {
+        off
+    }
+    tab-indicator {
+        off
+    }
     border {
     	width 3
-        active-gradient from="#e67e80ee" to="#a7c080ee" angle=45
-        inactive-gradient from="#e67e8000" to="#a7c08000" angle=45
+    	// rgba(219, 188, 127, 1)
+        // rgba(167, 192, 128, 1)
+        // rgba(131, 192, 146, 1)
+        active-gradient from="rgba(230, 126, 128, 1)" to="rgba(167, 192, 128, 1)" angle=45 in="oklch longer hue"
+        inactive-gradient from="rgba(230, 126, 128, 0.4)" to="rgba(167, 192, 128, 0.4)" angle=45 in="oklch longer hue"
     }
     insert-hint {
-        color "#7fbbb3ee"
+        gradient from="rgba(230, 126, 128, 0.4)" to="rgba(167, 192, 128, 0.4)" angle=45 in="oklch longer hue"
     }
+    struts {}
 }
 
 binds {
@@ -145,16 +157,14 @@ environment {
 }
 prefer-no-csd
 spawn-at-startup "waybar"
+spawn-at-startup "swww-daemon"
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "swww" "img" "~/nixos-everforest.png"
 spawn-at-startup "foot"
 output "HDMI-A-1" {
     mode "1920x1080"
 }
-window-rule {
-    opacity 0.0
-}
 cursor {
-    xcursor-theme "breeze_cursors"
-    xcursor-size 48
+    xcursor-size 8
 }
 screenshot-path "~/Pictures/Screenshots/pic%Y-%m-%d_%H-%M-%S.png"
