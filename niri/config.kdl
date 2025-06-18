@@ -14,7 +14,7 @@ input {
 }
 
 layout {
-    gaps 3
+    gaps 0
     center-focused-column "never"
     always-center-single-column
     empty-workspace-above-first
@@ -29,10 +29,17 @@ layout {
         off
     }
     tab-indicator {
-        off
+        width 3
+        gap 0
+        length total-proportion=1.0
+        position "bottom"
+        place-within-column
+        active-color "rgba(131, 192, 146, 1)"
+        inactive-color "rgba(131, 192, 146, 0.4)"
+        urgent-color "rgba(167, 192, 128, 1)"
     }
     border {
-    	width 3
+    	width 6
     	// rgba(219, 188, 127, 1)
         // rgba(167, 192, 128, 1)
         // rgba(131, 192, 146, 1)
@@ -74,7 +81,12 @@ binds {
 	Mod+C repeat=false { close-window; }
 	Mod+V { toggle-window-floating; }
 	Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-	
+
+	Mod+Comma { consume-window-into-column; }
+	Mod+Period { expel-window-from-column; }
+	Mod+BracketLeft { consume-or-expel-window-left; }
+	Mod+BracketRight { consume-or-expel-window-right; }
+
 	Mod+N { switch-preset-column-width; }
 	Mod+Shift+N { switch-preset-window-height; }
 	Mod+Ctrl+N { reset-window-height; }
