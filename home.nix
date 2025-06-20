@@ -17,8 +17,17 @@
         source = ./niri;
         recursive = true;        
       };
-      "nixos-everforest.png" = {
+      "nixos-everforest-light.png" = {
         source = ./nixos-everforest-light.png;
+      };
+      "nixos-everforest-dark.png" = {
+        source = ./nixos-everforest-dark.png;
+      };
+      "swwwitcher.sh" = {
+        source = ./swwwitcher.sh;
+      };
+      "startup.sh" = {
+        source = ./startup.sh;
       };
       # ".config/helix".source = config.lib.file.mkOutOfStoreSymlink "/home/retinotopic/nixos-config/helix";
     };

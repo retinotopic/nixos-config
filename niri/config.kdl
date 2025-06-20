@@ -73,6 +73,7 @@ binds {
     Mod+Shift+L     { move-column-right; }
 
 	Mod+Q { spawn "foot"; }
+	Mod+X { spawn "bash" "swwwitcher.sh"; }
 	Mod+E { spawn "thunar"; }
 	Mod+R { spawn "fuzzel"; }
 	Mod+M { quit skip-confirmation=true; }
@@ -169,9 +170,8 @@ environment {
 }
 prefer-no-csd
 spawn-at-startup "waybar"
-spawn-at-startup "swww-daemon"
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "swww" "img" "~/nixos-everforest.png"
+spawn-at-startup "bash" "startup.sh"
 spawn-at-startup "foot"
 output "HDMI-A-1" {
     mode "1920x1080"
