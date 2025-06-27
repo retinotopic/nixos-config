@@ -92,7 +92,7 @@
       settings = {
         PermitRootLogin = "without-password";
         PasswordAuthentication = false;
-        X11Forwarding = true;
+        # X11Forwarding = true;
       };
       hostKeys = [
         {
@@ -157,12 +157,22 @@
     qbittorrent
     dysk
     xwayland-satellite
+    nil
+    nixd
+    cachix
+    lorri
+    niv
+    nixfmt-classic
+    statix
+    vulnix
+    haskellPackages.dhall-nix
   ];
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
   };
+
   hardware = {
     graphics = {
       extraPackages = with pkgs; [ nvidia-vaapi-driver vulkan-tools wgpu-utils ];

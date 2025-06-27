@@ -56,10 +56,13 @@
     pkgs.davinci-resolve-studio
     pkgs.waypaper
   ];
-# brave --proxy-server="socks5://127.0.0.1:1080" --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
+# brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 
   
   programs = {
+    lutris = {
+      enable = true;
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;
