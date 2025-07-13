@@ -21,7 +21,7 @@
 	background: rgba(40, 40, 40, 0.5); /* #282828e0 */
   font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font Mono";
   color: @purple;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -102,43 +102,43 @@
 }
 
 #custom-arrow1 {
-	font-size: 17pt;
+	font-size: 20pt;
 	color: @date;
 	background: transparent;
 }
 
 #custom-arrow2 {
-	font-size: 17pt;
+	font-size: 20pt;
 	color: @sound;
 	background: transparent;
 }
 
 #custom-arrow3 {
-	font-size: 17pt;
+	font-size: 20pt;
 	color: @memory;
 	background: @sound;
 }
 
 #custom-arrow4 {
-	font-size: 17pt;
+	font-size: 20pt;
 	color: @cpu;
 	background: @memory;
 }
 
 #custom-arrow5 {
-	font-size: 17pt;
+	font-size: 20pt;
 	color: @layout;
 	background: @cpu;
 }
 
 #custom-arrow6 {
-	font-size: 17pt;
+	font-size: 20pt;
 	color: @date;
 	background: @layout;
 }
 
 #custom-arrow7 {
-	font-size: 17pt;
+	font-size: 20pt;
 	color: @time;
 	background: @date;
 }

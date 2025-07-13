@@ -55,6 +55,8 @@
     pkgs-unstable.zellij
     pkgs.davinci-resolve-studio
     pkgs.waypaper
+    pkgs-unstable.prismlauncher
+    pkgs.revanced-cli
   ];
 # brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 

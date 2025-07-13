@@ -138,10 +138,12 @@
     pkgs-unstable.helix
     fastfetch
     kitty
+    delta
     byedpi
     pwvucontrol
     vlc
     ffmpeg
+    scc
     streamlink
     docker-compose
     amneziawg-go
@@ -157,15 +159,6 @@
     qbittorrent
     dysk
     xwayland-satellite
-    nil
-    nixd
-    cachix
-    lorri
-    niv
-    nixfmt-classic
-    statix
-    vulnix
-    haskellPackages.dhall-nix
   ];
 
   environment.sessionVariables = {
@@ -190,6 +183,8 @@
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal
+      pkgs.xdg-desktop-portal-termfilechooser
+      pkgs.xdg-desktop-portal-hyprland
     ];
     configPackages = [
       pkgs.xdg-desktop-portal-gtk
@@ -200,15 +195,21 @@
 
   virtualisation = {
     podman = {
-      enable = true;
+      enable = false;
       # dockerCompat = true;
     };
-    docker.enable = true;
-    libvirtd.enable = true;
-    docker.rootless = {
+    docker = {
       enable = true;
-      setSocketVariable = true;
+      daemon.settings = {
+        dns = [ "1.1.1.1" "8.8.8.8" ];
+        registry-mirrors = [ "https://mirror.gcr.io" ];
+      };
+      rootless = {
+        enable = false;
+        setSocketVariable = false;
+      };
     };
+    libvirtd.enable = true;
   };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

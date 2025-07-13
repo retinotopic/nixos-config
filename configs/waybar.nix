@@ -90,18 +90,18 @@
           icon = true;
           icon-size = 20;
         };
-        # "hyprland/window" = {
-        #   format = "{title}";
-        #   max-length = 100;
-        #   icon = true;
-        #   icon-size = 20;
-        # };
+        "hyprland/window" = {
+          format = "{title}";
+          max-length = 100;
+          icon = true;
+          icon-size = 20;
+        };
 
-        # "hyprland/language" = {
-        #     format = " {}";
-        #     format-en = "EN";
-        #     format-ru = "RU";
-        # };
+        "hyprland/language" = {
+            format = " {}";
+            format-en = "EN";
+            format-ru = "RU";
+        };
         
         "niri/language" = {
         	format = " {}";
@@ -130,11 +130,12 @@
         "niri/workspaces" = {
         	format = "{icon}";
         };
-        # "hyprland/workspaces" = {
-        #      format = "{icon}";
-        #      on-scroll-up = "hyprctl dispatch workspace e+1";
-        #      on-scroll-down = "hyprctl dispatch workspace e-1";
-        # };
+
+        "hyprland/workspaces" = {
+             format = "{icon}";
+             on-scroll-up = "hyprctl dispatch workspace e+1";
+             on-scroll-down = "hyprctl dispatch workspace e-1";
+        };
         
         "wireplumber" = {
             format = "{volume}% {icon} ";
@@ -144,19 +145,19 @@
             format-icons = [ "" "" "" ];
         };
               
-        # temperature = {
-        #   critical-threshold = 90;
-        #   interval = 5;
-        #   format = "{icon} {temperatureC}°";
-        #   format-icons = [
-        #     ""
-        #     ""
-        #     ""
-        #     ""
-        #     ""
-        #   ];
-        #   tooltip = false;
-        # };
+        temperature = {
+          critical-threshold = 90;
+          interval = 5;
+          format = "{icon} {temperatureC}°";
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
+          tooltip = false;
+        };
 
         tray = {
           icon-size = 20;
