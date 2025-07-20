@@ -3,20 +3,19 @@
 @define-color yellow #dbbc7f;
 @define-color blue #7fbbb3;
 @define-color purple #d699b6;
-@define-color aqua	#83c092;
+@define-color aqua #83c092;
 @define-color black	#282828;
 @define-color white	#ebdbb2;
-@define-color bryellow	#fabd2f;
+@define-color bryellow #fabd2f;
 
-@define-color sound	@green;
+@define-color sound	@yellow;
 @define-color memory @blue;
 @define-color cpu	@red;
 @define-color layout @aqua;
 @define-color date @purple;
-@define-color time @yellow;
+@define-color time @green;
 @define-color warning @bryellow;
-/*505c58 bg*/
-/*2e393c legs*/
+
 #waybar {
 	background: rgba(40, 40, 40, 0.5); /* #282828e0 */
   font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font Mono";
@@ -46,7 +45,7 @@
 	padding-left: 2pt;
 	padding-right: 2pt;
 	color: @black;
-	background: @date;
+	background: @purple;
 }
 
 #window {
@@ -56,14 +55,14 @@
 
 #workspaces button.focused {
 	color: @black;
-	background: @layout;
+	background: @yellow;
 }
 #workspaces button.urgent {
 	color: @black;
 	background: @warning;
 }
 #workspaces button:hover {
-	background: @yellow;
+	background: @red;
 	color: @black;
 }
 
@@ -101,9 +100,9 @@
 	color: @black;
 }
 
-#custom-arrow1 {
+#custom-arrow0 {
 	font-size: 20pt;
-	color: @date;
+	color: @purple;
 	background: transparent;
 }
 

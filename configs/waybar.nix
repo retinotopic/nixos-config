@@ -8,7 +8,7 @@
 
         modules-left = [
           "niri/workspaces"
-          "custom/arrow1"
+          "custom/arrow0"
           "niri/window"
         ];
 
@@ -163,7 +163,7 @@
           icon-size = 20;
         };
 
-        "custom/arrow1" = {
+        "custom/arrow0" = {
           format = "";
           tooltip = false;
         };

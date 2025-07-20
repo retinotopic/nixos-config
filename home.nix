@@ -35,6 +35,10 @@
     username = "retinotopic";
     homeDirectory = "/home/retinotopic";
     stateVersion = "24.11";
+    
+    sessionVariables = {
+      QT_QPA_PLATFORM = "xcb";
+    };
   };
   services = {
     swww.enable = true;
@@ -50,13 +54,15 @@
   };
   
   home.packages = [
+    pkgs-unstable.oh-my-fish
     pkgs-unstable.telegram-desktop
     pkgs.brave
     pkgs-unstable.zellij
     pkgs.davinci-resolve-studio
     pkgs.waypaper
+    pkgs.davinci-resolve
     pkgs-unstable.prismlauncher
-    pkgs.revanced-cli
+    pkgs.discord
   ];
 # brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 

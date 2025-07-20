@@ -17,12 +17,15 @@
         "flakes"
       ];
       extra-substituters = [
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
         "https://hyprland.cachix.org"
         "https://walker-git.cachix.org"
         "https://walker.cachix.org"
         "https://nix-gaming.cachix.org"
       ];
       extra-trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
         "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
@@ -132,38 +135,39 @@
       ];
     };
   }; 
-  environment.systemPackages = with pkgs; [
-    wget
-    tree
+  environment.systemPackages = [
     pkgs-unstable.helix
-    fastfetch
-    kitty
-    delta
-    byedpi
-    pwvucontrol
-    vlc
-    ffmpeg
-    scc
-    streamlink
-    docker-compose
-    amneziawg-go
+    pkgs.wget
+    pkgs.tree
+    pkgs.fastfetch
+    pkgs.kitty
+    pkgs.delta
+    pkgs.byedpi
+    pkgs.pwvucontrol
+    pkgs.vlc
+    pkgs.ffmpeg
+    pkgs.scc
+    pkgs.streamlink
+    pkgs.docker-compose
+    pkgs.amneziawg-go
     pkgs-unstable.amneziawg-tools
-    linuxKernel.packages.linux_zen.amneziawg # for zen amd cpus only
-    mate.engrampa
-    unrar
-    unzip
-    p7zip
-    distrobox
-    boxbuddy
-    steam-run
-    qbittorrent
-    dysk
-    xwayland-satellite
+    pkgs.linuxKernel.packages.linux_zen.amneziawg # for zen amd cpus only
+    pkgs.mate.engrampa
+    pkgs.unrar
+    pkgs.unzip
+    pkgs.p7zip
+    pkgs.distrobox
+    pkgs.boxbuddy
+    pkgs.steam-run
+    pkgs.qbittorrent
+    pkgs.dysk
+    pkgs.xwayland-satellite
   ];
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "xcb";
   };
 
   hardware = {
@@ -176,7 +180,7 @@
       open = false;
     };
   };
-  
+  qt.enable = true;
   xdg.portal = {
     enable = true;
     wlr.enable = true;
@@ -185,6 +189,7 @@
       pkgs.xdg-desktop-portal
       pkgs.xdg-desktop-portal-termfilechooser
       pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-xapp
     ];
     configPackages = [
       pkgs.xdg-desktop-portal-gtk
