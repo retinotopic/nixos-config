@@ -54,7 +54,6 @@
   };
   
   home.packages = [
-    pkgs-unstable.oh-my-fish
     pkgs-unstable.telegram-desktop
     pkgs.brave
     pkgs-unstable.zellij
@@ -98,13 +97,41 @@
       userName = "retinotopic";
       userEmail = "retinotopic@proton.me";
     };
-    fish.enable = true;
     btop.enable = true;
     foot.enable = true;
     yazi.enable = true;
     home-manager = {
       enable = true;       
-    }; 
+    };
+    fish = {
+      enable = true;
+
+      plugins = [
+        { name = "bobthefish"; src = pkgs.fishPlugins.bobthefish; }
+      ];
+
+      interactiveShellInit = ''
+        set -g theme_nerd_fonts yes
+        set -g fish_prompt_prefix " "
+        
+        set -g theme_display_user yes
+        set -g theme_display_hostname yes
+        set -g theme_display_git_master_branch yes
+        set -g theme_show_exit_status yes
+        set -g theme_color_scheme terminal
+
+        set -g theme_color_path              7fbbb3 #blue
+        set -g theme_color_git               83c092 #aqua
+        set -g theme_color_cwd               e67e80 #red
+        set -g theme_color_git_worktree      dbbc7f #yellow
+        set -g theme_color_error             d699b6 #purple
+        set -g theme_color_command_duration  a7c080 #green
+        set -g theme_color_virtualenv        d699b6 #purple
+
+        set -g theme_powerline_fonts yes
+        set -g fish_prompt_pwd_dir_length 3
+      '';
+    };
   };
 
 }

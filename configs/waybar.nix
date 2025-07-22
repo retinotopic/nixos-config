@@ -65,7 +65,7 @@
 
         "clock#time" = {
           interval = 10;
-          format = "{:%H:%M}";
+          format = "{:%H:%M }";
           tooltip = false;
         };
 
@@ -78,7 +78,7 @@
         cpu = {
           interval = 5;
           tooltip = false;
-          format = " {usage}%";
+          format = " {usage}% {avg_frequency}GHz";
           format-alt = "{load}";
           states = {
             warning = 70;

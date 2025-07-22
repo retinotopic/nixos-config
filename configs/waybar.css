@@ -8,16 +8,16 @@
 @define-color white	#ebdbb2;
 @define-color bryellow #fabd2f;
 
-@define-color sound	@yellow;
+@define-color sound	@green;
 @define-color memory @blue;
 @define-color cpu	@red;
 @define-color layout @aqua;
 @define-color date @purple;
-@define-color time @green;
+@define-color time @yellow;
 @define-color warning @bryellow;
 
 #waybar {
-	background: rgba(40, 40, 40, 0.5); /* #282828e0 */
+	background: rgba(40, 40, 40, 0.4); /* #282828e0 */
   font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font Mono";
   color: @purple;
   font-size: 20px;
