@@ -6,15 +6,17 @@
 @define-color aqua #83c092;
 @define-color black	#282828;
 @define-color white	#ebdbb2;
-@define-color bryellow #fabd2f;
+@define-color orange #e69875;
 
-@define-color sound	@green;
-@define-color memory @blue;
-@define-color cpu	@red;
-@define-color layout @aqua;
-@define-color date @purple;
-@define-color time @yellow;
-@define-color warning @bryellow;
+@define-color sound @blue;
+@define-color disk @aqua;
+@define-color memory	@green;
+@define-color cpu	@yellow;
+@define-color layout @orange;
+@define-color date @red;
+@define-color time @purple;
+
+@define-color warning @orange;
 
 #waybar {
 	background: rgba(40, 40, 40, 0.4); /* #282828e0 */
@@ -36,6 +38,7 @@
 
 #clock,
 #tray,
+#disk,
 #cpu,
 #language,
 #memory,
@@ -68,6 +71,11 @@
 
 #wireplumber {
 	background: @sound;
+	color: @black;
+}
+
+#disk {
+	background: @disk;
 	color: @black;
 }
 
@@ -106,16 +114,21 @@
 	background: transparent;
 }
 
-#custom-arrow2 {
+#custom-arrow1 {
 	font-size: 20pt;
 	color: @sound;
 	background: transparent;
 }
 
+#custom-arrow2 {
+	font-size: 20pt;
+	color: @disk;
+	background: @sound;
+}
 #custom-arrow3 {
 	font-size: 20pt;
 	color: @memory;
-	background: @sound;
+	background: @disk;
 }
 
 #custom-arrow4 {

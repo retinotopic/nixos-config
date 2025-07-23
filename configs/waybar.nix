@@ -13,8 +13,11 @@
         ];
 
         modules-right = [          
-          "custom/arrow2"
+          "custom/arrow1"
           "wireplumber"
+          
+          "custom/arrow2"
+          "disk"
           
           "custom/arrow3"
           "memory"
@@ -39,6 +42,11 @@
           height = 20;
           width = 20;
           icon = false;
+        };
+
+        "disk" = {
+          interval = 30;
+          format = "free:{free}";
         };
 
         battery = {
@@ -168,6 +176,11 @@
           tooltip = false;
         };
 
+        "custom/arrow1" = {
+          format = "";
+          tooltip = false;
+        };
+        
         "custom/arrow2" = {
           format = "";
           tooltip = false;
