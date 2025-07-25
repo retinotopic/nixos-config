@@ -23,8 +23,10 @@
         ];
         
         modules-center = [
-          "custom/arrowcenter1"
+          "custom/arrowcenter1" 
+          "custom/dummy"
           "niri/window"
+          "custom/dummy"
           "custom/arrowcenter2"
         ];
 
@@ -151,9 +153,9 @@
         "niri/workspaces" = {
         	format = "{icon}";
         	format-icons = {
-        		focused = "███";
-        		hover = "███";
-        		urgent = "███";
+        		focused = "██";
+        		hover = "██";
+        		urgent = "██";
           };
         };
 
@@ -165,7 +167,7 @@
         
         "wireplumber" = {
             format = "{volume}% {icon} ";
-            format-muted = "  0%";
+            format-muted = "0%  ";
             on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             on-click-right = "pwvucontrol";
             format-icons = [ "" "" "" ];
@@ -216,7 +218,6 @@
           format = "";
           tooltip = false;
         };
-
         "custom/arrowleft2" = {
           format = "";
           tooltip = false;
@@ -238,32 +239,26 @@
           format = "";
           tooltip = false;
         };
-        
         "custom/arrowright2" = {
           format = "";
           tooltip = false;
         };
-
         "custom/arrowright3" = {
           format = "";
           tooltip = false;
         };
-
         "custom/arrowright4" = {
           format = "";
           tooltip = false;
         };
-
         "custom/arrowright5" = {
           format = "";
           tooltip = false;
         };
-
         "custom/arrowright6" = {
           format = "";
           tooltip = false;
         };
-
         "custom/arrowright7" = {
           format = "";
           tooltip = false;
@@ -275,6 +270,11 @@
         };
         "custom/arrowcenter2" = {
           format = "";
+          tooltip = false;
+        };
+
+        "custom/dummy" = {
+          format = " ";
           tooltip = false;
         };
 

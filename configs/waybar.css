@@ -59,10 +59,8 @@
 }
 
 #window {
-	/* margin-right: 35pt; */
-	/* margin-left: 35pt; */
-	color: @purple;
-	background: rgba(127, 187, 179, 0.2);
+	color: @dark;
+	background: rgba(127, 187, 179, 0.3);
 }
 
 #workspaces button label {
@@ -227,11 +225,16 @@
 
 #custom-arrowcenter1 {
 	font-size: 20pt;
-	color: rgba(127, 187, 179, 0.2);
+	color: rgba(127, 187, 179, 0.3);
 	background: transparent;
 }
 #custom-arrowcenter2 {
 	font-size: 20pt;
-	color: rgba(127, 187, 179, 0.2);
+	color: rgba(127, 187, 179, 0.3);
 	background: transparent;
+}
+#custom-dummy {
+	font-size: 20pt;
+	color: transparent;
+	background: rgba(127, 187, 179, 0.3);
 }
