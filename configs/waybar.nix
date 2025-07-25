@@ -7,46 +7,56 @@
         position = "top";
 
         modules-left = [
+          "custom/arrowleft0"
+          
           "niri/workspaces"
-          "custom/arrow0"
+          "custom/arrowleft1"
+          
+          "user"
+          "custom/arrowleft2"
+          
+          "network"
+          "custom/arrowleft3"
+          
+          "wireplumber"
+          "custom/arrowleft4"
+        ];
+        
+        modules-center = [
+          "custom/arrowcenter1"
           "niri/window"
+          "custom/arrowcenter2"
         ];
 
         modules-right = [          
-          "custom/arrow1"
-          "wireplumber"
-          
-          "custom/arrow2"
+          "custom/arrowright2"
           "disk"
           
-          "custom/arrow3"
+          "custom/arrowright3"
           "memory"
           
-          "custom/arrow4"
+          "custom/arrowright4"
           "cpu"
           
-          "custom/arrow5"
+          "custom/arrowright5"
           "niri/language"
           
-          "custom/arrow6"
+          "custom/arrowright6"
           "clock#date"
           
-          "custom/arrow7"
+          "custom/arrowright7"
           "clock#time"
           "tray"
         ];
 
         user = {
-          format = "{user}";
-          avatar = "${../nixoslogo.png}";
-          height = 20;
-          width = 20;
+          format = " {user}";
           icon = false;
         };
 
-        "disk" = {
+        disk = {
           interval = 30;
-          format = "free:{free}";
+          format = "{free}";
         };
 
         battery = {
@@ -86,16 +96,17 @@
         cpu = {
           interval = 5;
           tooltip = false;
-          format = " {usage}% {avg_frequency}GHz";
-          format-alt = "{load}";
+          format = " {usage}%";
+          format-alt = "{avg_frequency}GHz";
           states = {
             warning = 70;
             critical = 90;
           };
         };
         "niri/window" = {
-        	format = "{title}";
+        	format = "{app_id}";
           icon = true;
+          expand = false;
           icon-size = 20;
         };
         "hyprland/window" = {
@@ -118,7 +129,7 @@
         };
         memory = {
           interval = 5;
-          format = " {used:0.1f}G/{total:0.1f}G";
+          format = " {used:0.1f}";
           states = {
             warning = 70;
             critical = 90;
@@ -128,15 +139,22 @@
 
         network = {
           interval = 5;
-          format-wifi = " {essid} ({signalStrength}%)";
-          format-ethernet = " {ifname}";
-          format-disconnected = "No connection";
-          format-alt = " {ipaddr}/{cidr}";
+          format = "  {bandwidthDownBytes} {bandwidthUpBytes}";
+          format-wifi = "   {bandwidthDownBytes} {bandwidthUpBytes} ";
+          format-ethernet = "  {bandwidthDownBytes} {bandwidthUpBytes} ";
+          format-disconnected = " 󰈂 {bandwidthDownBytes} {bandwidthUpBytes} ";
+          format-linked = " 󰈀 {bandwidthDownBytes} {bandwidthUpBytes} ";
           tooltip = false;
+          on-click = "foot nmtui";
         };
  
         "niri/workspaces" = {
         	format = "{icon}";
+        	format-icons = {
+        		focused = "███";
+        		hover = "███";
+        		urgent = "███";
+          };
         };
 
         "hyprland/workspaces" = {
@@ -147,12 +165,31 @@
         
         "wireplumber" = {
             format = "{volume}% {icon} ";
-            format-muted = "";
+            format-muted = "  0%";
             on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             on-click-right = "pwvucontrol";
             format-icons = [ "" "" "" ];
         };
-              
+        cava = {
+            # cava_config=" ${../configs/cava/cava.conf}" ;
+            framerate = 30;
+            autosens = 1;
+            sensitivity = 2;
+            bars = 40;
+            lower_cutoff_freq = 50;
+            higher_cutoff_freq = 10000;
+            method = "pipewire";
+            source = "auto";
+            stereo = true;
+            reverse = false;
+            bar_delimiter = 0;
+            monstercat = false;
+            waves = false;
+            noise_reduction = 0.77;
+            input_delay = 0;
+            format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+        };
+
         temperature = {
           critical-threshold = 90;
           interval = 5;
@@ -171,45 +208,76 @@
           icon-size = 20;
         };
 
-        "custom/arrow0" = {
+        "custom/arrowleft0" = {
+          format = "";
+          tooltip = false;
+        };
+        "custom/arrowleft1" = {
           format = "";
           tooltip = false;
         };
 
-        "custom/arrow1" = {
+        "custom/arrowleft2" = {
+          format = "";
+          tooltip = false;
+        };
+        "custom/arrowleft3" = {
+          format = "";
+          tooltip = false;
+        };
+        "custom/arrowleft4" = {
+          format = "";
+          tooltip = false;
+        };
+        "custom/arrowleft5" = {
+          format = "";
+          tooltip = false;
+        };
+
+        "custom/arrowright1" = {
           format = "";
           tooltip = false;
         };
         
-        "custom/arrow2" = {
+        "custom/arrowright2" = {
           format = "";
           tooltip = false;
         };
 
-        "custom/arrow3" = {
+        "custom/arrowright3" = {
           format = "";
           tooltip = false;
         };
 
-        "custom/arrow4" = {
+        "custom/arrowright4" = {
           format = "";
           tooltip = false;
         };
 
-        "custom/arrow5" = {
+        "custom/arrowright5" = {
           format = "";
           tooltip = false;
         };
 
-        "custom/arrow6" = {
+        "custom/arrowright6" = {
           format = "";
           tooltip = false;
         };
 
-        "custom/arrow7" = {
+        "custom/arrowright7" = {
           format = "";
           tooltip = false;
         };
+
+        "custom/arrowcenter1" = {
+          format = "";
+          tooltip = false;
+        };
+        "custom/arrowcenter2" = {
+          format = "";
+          tooltip = false;
+        };
+
       };
     };
     style = ./waybar.css;

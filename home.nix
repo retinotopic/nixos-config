@@ -41,6 +41,7 @@
     };
   };
   services = {
+    mpd-mpris.enable = true;
     swww.enable = true;
     hyprpaper.enable = false;
     hyprpaper.settings = {

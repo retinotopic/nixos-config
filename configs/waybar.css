@@ -4,7 +4,11 @@
 @define-color blue #7fbbb3;
 @define-color purple #d699b6;
 @define-color aqua #83c092;
-@define-color black	#282828;
+
+@define-color black	#293136;
+@define-color dark	#333c43;
+
+
 @define-color white	#ebdbb2;
 @define-color orange #e69875;
 
@@ -19,9 +23,9 @@
 @define-color warning @orange;
 
 #waybar {
-	background: rgba(40, 40, 40, 0.4); /* #282828e0 */
+	background: transparent;
   font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font Mono";
-  color: @purple;
+  color: transparent;
   font-size: 20px;
   font-weight: 600;
 }
@@ -30,6 +34,7 @@
 	border: none;
 	border-radius: 0;
 	min-height: 0;
+  min-width:   0;
 	margin: 0;
 	padding: 0;
 	box-shadow: none;
@@ -37,61 +42,104 @@
 }
 
 #clock,
+#network,
 #tray,
 #disk,
 #cpu,
 #language,
 #memory,
 #wireplumber,
+#window,
 
 #workspaces button {
 	padding-left: 2pt;
 	padding-right: 2pt;
-	color: @black;
-	background: @purple;
+	color: @dark;
+	background: @orange;
 }
 
 #window {
-	margin-right: 35pt;
-	margin-left: 35pt;
+	/* margin-right: 35pt; */
+	/* margin-left: 35pt; */
+	color: @purple;
+	background: rgba(127, 187, 179, 0.2);
 }
 
+#workspaces button label {
+    margin:  0;
+    padding: 0;
+}
+
+#workspaces button,
+#workspaces button:hover,
+#workspaces button.urgent,
 #workspaces button.focused {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	border:  none;
+	padding: 0;
+	border-radius: 0;
+	min-height: 0;
+  min-width:   0;
+	margin: 0;
+	border-width:0;
+  border-top-width:    0;
+  border-bottom-width: 0;
+  box-shadow: none;
+	text-shadow: none;
+}
+
+
+#workspaces button.focused {
+	color: @dark;
+	background: @orange;
+}
+#workspaces button:hover {
 	color: @black;
-	background: @yellow;
+	background: @orange;
 }
 #workspaces button.urgent {
 	color: @black;
-	background: @warning;
+	background: @orange;
 }
-#workspaces button:hover {
-	background: @red;
-	color: @black;
+
+#user {
+	background: @yellow;
+	color: @dark;
+}
+
+#network {
+	background: @green;
+	color: @dark;
 }
 
 #wireplumber {
-	background: @sound;
-	color: @black;
+	background: @aqua;
+	color: @dark;
 }
+
+
 
 #disk {
 	background: @disk;
-	color: @black;
+	color: @dark;
 }
 
 #memory {
 	background: @memory;
-	color: @black;
+	color: @dark;
 }
 
 #cpu {
 	background: @cpu;
-	color: @black;
+	color: @dark;
 }
 
 #language {
 	background: @layout;
-	color: @black;
+	color: @dark;
 }
 
 #tray {
@@ -100,57 +148,90 @@
 
 #clock.date {
 	background: @date;
-	color: @black;
+	color: @dark;
 }
 
 #clock.time {
 	background: @time;
-	color: @black;
+	color: @dark;
 }
 
-#custom-arrow0 {
+#custom-arrowleft0 {
 	font-size: 20pt;
-	color: @purple;
+	color: @orange;
+	background: @orange;
+}
+#custom-arrowleft1 {
+	font-size: 20pt;
+	color: @orange;
+	background: @yellow;
+}
+#custom-arrowleft2 {
+	font-size: 20pt;
+	color: @yellow;
+	background: @green;
+}
+#custom-arrowleft3 {
+	font-size: 20pt;
+	color: @green;
+	background: @aqua;
+}
+#custom-arrowleft4 {
+	font-size: 20pt;
+	color: @aqua;
 	background: transparent;
 }
 
-#custom-arrow1 {
-	font-size: 20pt;
-	color: @sound;
-	background: transparent;
-}
 
-#custom-arrow2 {
+
+
+
+
+
+#custom-arrowright2 {
 	font-size: 20pt;
 	color: @disk;
-	background: @sound;
+	background: @transparent;
 }
-#custom-arrow3 {
+#custom-arrowright3 {
 	font-size: 20pt;
 	color: @memory;
 	background: @disk;
 }
 
-#custom-arrow4 {
+#custom-arrowright4 {
 	font-size: 20pt;
 	color: @cpu;
 	background: @memory;
 }
 
-#custom-arrow5 {
+#custom-arrowright5 {
 	font-size: 20pt;
 	color: @layout;
 	background: @cpu;
 }
 
-#custom-arrow6 {
+#custom-arrowright6 {
 	font-size: 20pt;
 	color: @date;
 	background: @layout;
 }
 
-#custom-arrow7 {
+#custom-arrowright7 {
 	font-size: 20pt;
 	color: @time;
 	background: @date;
+}
+
+
+
+#custom-arrowcenter1 {
+	font-size: 20pt;
+	color: rgba(127, 187, 179, 0.2);
+	background: transparent;
+}
+#custom-arrowcenter2 {
+	font-size: 20pt;
+	color: rgba(127, 187, 179, 0.2);
+	background: transparent;
 }
