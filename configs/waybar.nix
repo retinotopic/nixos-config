@@ -106,10 +106,11 @@
           };
         };
         "niri/window" = {
-        	format = "{app_id}";
+        	format = "{title}";
           icon = true;
           expand = false;
           icon-size = 20;
+          max-length = 30 ;
         };
         "hyprland/window" = {
           format = "{title}";

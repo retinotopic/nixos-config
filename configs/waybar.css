@@ -61,6 +61,8 @@
 #window {
 	color: @dark;
 	background: rgba(127, 187, 179, 0.3);
+  font-size: 12px;
+  font-weight: 300;
 }
 
 #workspaces button label {
@@ -93,6 +95,10 @@
 #workspaces button.focused {
 	color: @dark;
 	background: @orange;
+  font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font Mono";
+  font-size: 20px;
+  font-weight: 900;
+
 }
 #workspaces button:hover {
 	color: @black;
@@ -106,6 +112,8 @@
 #user {
 	background: @yellow;
 	color: @dark;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 #network {

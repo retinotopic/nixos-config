@@ -81,7 +81,7 @@
 ] }
 "ui.popup" = { fg = "grey2", bg = "bg2" }
 "ui.picker.header" = { modifiers = ["bold", "underlined"] }
-"ui.window" = { fg = "bg4", bg = "bg_dim" }
+"ui.window" = { fg = "bg4", bg = "bg4" }
 "ui.help" = { fg = "fg", bg = "bg2" }
 "ui.text" = "fg"
 "ui.text.directory" = { fg = "green" }
@@ -107,7 +107,6 @@
 "diagnostic.deprecated" = { modifiers = ["crossed_out"] }
 
 [palette]
-bg_dim = "#232a2e"
 bg0 = "#323d43"
 bg1 = "#3c474d"
 bg2 = "#465258"
