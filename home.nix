@@ -39,6 +39,12 @@
     sessionVariables = {
       QT_QPA_PLATFORM = "xcb";
     };
+    pointerCursor = {
+      enable = true;
+      package = pkgs.lyra-cursors;
+      name = "LyraB-cursors";
+      size = 20;
+    };
   };
   services = {
     mpd-mpris.enable = true;
@@ -92,13 +98,15 @@
           layer         = "overlay";
         };
         border = {
-          width = 5;
+          width = 10;
           radius = 0;
         };
         colors = {
           background      = "7fbbb3b3";# blue
-          border          = "e67e80ff";# red
-          selection       = "83c0927f";# aqua
+          # border          = "e67e80ff";# red
+          # selection       = "83c0927f";# aqua
+          border          = "83c092ff";# aqua
+          selection       = "e67e807f";# aqua
           
           text            = "293136ff";# black
           input           = "293136ff";# black
@@ -117,7 +125,6 @@
     };
     btop.enable = true;
     foot.enable = true;
-    yazi.enable = true;
     home-manager = {
       enable = true;       
     };
@@ -185,5 +192,5 @@
       '';
       };
   };
-
+  
 }

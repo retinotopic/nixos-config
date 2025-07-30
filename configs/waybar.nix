@@ -17,9 +17,15 @@
           
           "network"
           "custom/arrowleft3"
+
+          "niri/language"
+          "custom/arrowleft4"
           
           "wireplumber"
-          "custom/arrowleft4"
+          "custom/arrowleft5"
+          "custom/arrowleft6"
+
+          
         ];
         
         modules-center = [
@@ -31,6 +37,7 @@
         ];
 
         modules-right = [          
+          "custom/arrowright1"
           "custom/arrowright2"
           "disk"
           
@@ -41,14 +48,12 @@
           "cpu"
           
           "custom/arrowright5"
-          "niri/language"
-          
-          "custom/arrowright6"
           "clock#date"
           
-          "custom/arrowright7"
+          "custom/arrowright6"
           "clock#time"
           "tray"
+          "custom/arrowright7"
         ];
 
         user = {
@@ -232,6 +237,10 @@
           tooltip = false;
         };
         "custom/arrowleft5" = {
+          format = "";
+          tooltip = false;
+        };
+        "custom/arrowleft6" = {
           format = "";
           tooltip = false;
         };

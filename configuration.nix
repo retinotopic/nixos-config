@@ -189,6 +189,7 @@
       pkgs.xdg-desktop-portal
       pkgs.xdg-desktop-portal-termfilechooser
       pkgs.xdg-desktop-portal-hyprland
+      pkgs.kdePackages.xdg-desktop-portal-kde
       pkgs.xdg-desktop-portal-xapp
     ];
     configPackages = [

@@ -55,7 +55,7 @@
 	padding-left: 2pt;
 	padding-right: 2pt;
 	color: @dark;
-	background: @orange;
+	background: @red;
 }
 
 #window {
@@ -94,33 +94,33 @@
 
 #workspaces button.focused {
 	color: @dark;
-	background: @orange;
+	background: @red;
   font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font Mono";
   font-size: 20px;
   font-weight: 900;
-
 }
 #workspaces button:hover {
 	color: @black;
-	background: @orange;
+	background: @red;
 }
 #workspaces button.urgent {
 	color: @black;
-	background: @orange;
+	background: @red;
 }
-
 #user {
-	background: @yellow;
+	background: @orange;
 	color: @dark;
   font-size: 15px;
   font-weight: 600;
 }
-
 #network {
+	background: @yellow;
+	color: @dark;
+}
+#language {
 	background: @green;
 	color: @dark;
 }
-
 #wireplumber {
 	background: @aqua;
 	color: @dark;
@@ -129,62 +129,63 @@
 
 
 #disk {
-	background: @disk;
+	background: @aqua;
 	color: @dark;
 }
-
 #memory {
-	background: @memory;
+	background: @green;
 	color: @dark;
 }
-
 #cpu {
-	background: @cpu;
+	background: @yellow;
 	color: @dark;
 }
-
-#language {
-	background: @layout;
-	color: @dark;
-}
-
-#tray {
-	background: @time;
-}
-
 #clock.date {
-	background: @date;
+	background: @orange;
 	color: @dark;
+}
+#clock.time {
+	background: @red;
+	color: @dark;
+}
+#tray {
+	background: @red;
 }
 
-#clock.time {
-	background: @time;
-	color: @dark;
-}
 
 #custom-arrowleft0 {
 	font-size: 20pt;
-	color: @orange;
-	background: @orange;
+	color: @purple;
+	background: @red;
 }
 #custom-arrowleft1 {
+	font-size: 20pt;
+	color: @red;
+	background: @orange;
+}
+#custom-arrowleft2 {
 	font-size: 20pt;
 	color: @orange;
 	background: @yellow;
 }
-#custom-arrowleft2 {
+#custom-arrowleft3 {
 	font-size: 20pt;
 	color: @yellow;
 	background: @green;
 }
-#custom-arrowleft3 {
+#custom-arrowleft4 {
 	font-size: 20pt;
 	color: @green;
 	background: @aqua;
 }
-#custom-arrowleft4 {
+#custom-arrowleft5 {
 	font-size: 20pt;
 	color: @aqua;
+	background: @blue;
+}
+#custom-arrowleft6 {
+	font-size: 20pt;
+	color: @blue;
 	background: transparent;
 }
 
@@ -193,40 +194,45 @@
 
 
 
+#custom-arrowright1 {
+	font-size: 20pt;
+	color: @blue;
+	background: @transparent;
+}
 
 #custom-arrowright2 {
 	font-size: 20pt;
-	color: @disk;
-	background: @transparent;
+	color: @aqua;
+	background: @blue;
 }
 #custom-arrowright3 {
 	font-size: 20pt;
-	color: @memory;
-	background: @disk;
+	color: @green;
+	background: @aqua;
 }
 
 #custom-arrowright4 {
 	font-size: 20pt;
-	color: @cpu;
-	background: @memory;
+	color: @yellow;
+	background: @green;
 }
 
 #custom-arrowright5 {
 	font-size: 20pt;
-	color: @layout;
-	background: @cpu;
+	color: @orange;
+	background: @yellow;
 }
 
 #custom-arrowright6 {
 	font-size: 20pt;
-	color: @date;
-	background: @layout;
+	color: @red;
+	background: @orange;
 }
 
 #custom-arrowright7 {
 	font-size: 20pt;
-	color: @time;
-	background: @date;
+	color: @purple;
+	background: @red;
 }
 
 

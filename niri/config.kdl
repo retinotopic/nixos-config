@@ -188,6 +188,7 @@ output "HDMI-A-1" {
     mode "1920x1080"
 }
 cursor {
-    xcursor-size 8
+    xcursor-theme "LyraB-cursors"
+    xcursor-size 20
 }
 screenshot-path "~/Pictures/Screenshots/pic%Y-%m-%d_%H-%M-%S.png"
