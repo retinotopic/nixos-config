@@ -42,22 +42,22 @@
     pointerCursor = {
       enable = true;
       package = pkgs.lyra-cursors;
-      name = "LyraB-cursors";
+      name = "LyraF-cursors";
       size = 20;
     };
   };
   services = {
-    mpd-mpris.enable = true;
+    # mpd-mpris.enable = true;
     swww.enable = true;
-    hyprpaper.enable = false;
-    hyprpaper.settings = {
-      ipc = "off";
-      splash = false;
-      splash_offset = 2.0;
-      preload = [ "${./nixos-everforest.png}" ];
-      wallpaper = [ "HDMI-A-1, ${./nixos-everforest.png}" ];
-    };
-    easyeffects.enable = true;
+    # hyprpaper.enable = false;
+    # hyprpaper.settings = {
+    #   ipc = "off";
+    #   splash = false;
+    #   splash_offset = 2.0;
+    #   preload = [ "${./nixos-everforest.png}" ];
+    #   wallpaper = [ "HDMI-A-1, ${./nixos-everforest.png}" ];
+    # };
+    # easyeffects.enable = true;
   };
   
   home.packages = [
@@ -190,7 +190,38 @@
         set -g theme_powerline_fonts no
         set -g fish_prompt_pwd_dir_length 3
       '';
+    };
+    fastfetch = {
+      enable = true;
+      settings = {
+        logo = {
+          type = "file";
+          source = ./nixos.txt;
+          color = {
+              "1" = "cyan";
+              "2" = "blue";
+              "3" = "red";
+              "4" = "yellow";
+          };
+        };
+        modules = [
+          "title"
+          "separator"
+          "os"
+          "kernel"
+          "shell"
+          "wm"
+          "cursor"
+          "terminal"
+          "colors"
+        ];
       };
+    };
   };
   
 }
+# 7794a2
+# 677176
+# 819199
+# 85939a
+# 929da3

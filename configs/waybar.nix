@@ -12,20 +12,19 @@
           "niri/workspaces"
           "custom/arrowleft1"
           
-          "user"
+          "niri/language"
           "custom/arrowleft2"
           
-          "network"
+          "wireplumber"
           "custom/arrowleft3"
 
-          "niri/language"
+          "user"
           "custom/arrowleft4"
           
-          "wireplumber"
+          "network"
           "custom/arrowleft5"
           "custom/arrowleft6"
-
-          
+         
         ];
         
         modules-center = [
@@ -39,19 +38,19 @@
         modules-right = [          
           "custom/arrowright1"
           "custom/arrowright2"
-          "disk"
-          
-          "custom/arrowright3"
-          "memory"
-          
-          "custom/arrowright4"
-          "cpu"
-          
-          "custom/arrowright5"
           "clock#date"
           
-          "custom/arrowright6"
+          "custom/arrowright3"
           "clock#time"
+          
+          "custom/arrowright4"
+          "disk"
+          
+          "custom/arrowright5"
+          "memory"
+          
+          "custom/arrowright6"
+          "cpu"
           "tray"
           "custom/arrowright7"
         ];
@@ -90,7 +89,7 @@
 
         "clock#time" = {
           interval = 10;
-          format = "{:%H:%M }";
+          format = "{:%H:%M}";
           tooltip = false;
         };
 
@@ -103,7 +102,7 @@
         cpu = {
           interval = 5;
           tooltip = false;
-          format = " {usage}%";
+          format = " {usage}% ";
           format-alt = "{avg_frequency}GHz";
           states = {
             warning = 70;
@@ -244,7 +243,15 @@
           format = "";
           tooltip = false;
         };
-
+        "custom/arrowleft7" = {
+          format = "";
+          tooltip = false;
+        };
+        
+        "custom/arrowright0" = {
+          format = "";
+          tooltip = false;
+        };
         "custom/arrowright1" = {
           format = "";
           tooltip = false;

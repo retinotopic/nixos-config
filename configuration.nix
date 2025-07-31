@@ -139,7 +139,6 @@
     pkgs-unstable.helix
     pkgs.wget
     pkgs.tree
-    pkgs.fastfetch
     pkgs.kitty
     pkgs.delta
     pkgs.byedpi

@@ -27,7 +27,7 @@
         bright7 = "d3c6aa"; # white
       };
       main = {
-        font = "jetBrainsMono NF ExtraBold:size=14,Symbols Nerd Font,Noto Color Emoji";
+        font = "jetBrainsMono NF ExtraBold:size=11,Symbols Nerd Font,Noto Color Emoji";
         dpi-aware = "yes";
         shell = "fish";
       };

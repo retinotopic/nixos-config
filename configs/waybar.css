@@ -2,14 +2,14 @@
 @define-color green	#a7c080;
 @define-color yellow #dbbc7f;
 @define-color blue #7fbbb3;
-@define-color purple #d699b6;
+@define-color pink #d699b6;
 @define-color aqua #83c092;
 
 @define-color black	#293136;
 @define-color dark	#333c43;
 
 
-@define-color white	#ebdbb2;
+@define-color white	#d3c6aa;
 @define-color orange #e69875;
 
 @define-color sound @blue;
@@ -18,7 +18,7 @@
 @define-color cpu	@yellow;
 @define-color layout @orange;
 @define-color date @red;
-@define-color time @purple;
+@define-color time @pink;
 
 @define-color warning @orange;
 
@@ -59,7 +59,7 @@
 }
 
 #window {
-	color: @dark;
+	color: @white;
 	background: rgba(127, 187, 179, 0.3);
   font-size: 12px;
   font-weight: 300;
@@ -107,44 +107,46 @@
 	color: @black;
 	background: @red;
 }
-#user {
+#language {
 	background: @orange;
+	color: @dark;
+}
+#wireplumber {
+	background: @yellow;
+	color: @dark;
+}
+#user {
+	background: @green;
 	color: @dark;
   font-size: 15px;
   font-weight: 600;
 }
 #network {
-	background: @yellow;
-	color: @dark;
-}
-#language {
-	background: @green;
-	color: @dark;
-}
-#wireplumber {
 	background: @aqua;
 	color: @dark;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 
 
-#disk {
-	background: @aqua;
-	color: @dark;
-}
-#memory {
+#clock.time {
 	background: @green;
-	color: @dark;
-}
-#cpu {
-	background: @yellow;
 	color: @dark;
 }
 #clock.date {
+	background: @aqua;
+	color: @dark;
+}
+#disk {
+	background: @yellow;
+	color: @dark;
+}
+#memory {
 	background: @orange;
 	color: @dark;
 }
-#clock.time {
+#cpu {
 	background: @red;
 	color: @dark;
 }
@@ -155,7 +157,7 @@
 
 #custom-arrowleft0 {
 	font-size: 20pt;
-	color: @purple;
+	color: @pink;
 	background: @red;
 }
 #custom-arrowleft1 {
@@ -191,15 +193,11 @@
 
 
 
-
-
-
 #custom-arrowright1 {
 	font-size: 20pt;
 	color: @blue;
-	background: @transparent;
+	background: transparent;
 }
-
 #custom-arrowright2 {
 	font-size: 20pt;
 	color: @aqua;
@@ -210,28 +208,24 @@
 	color: @green;
 	background: @aqua;
 }
-
 #custom-arrowright4 {
 	font-size: 20pt;
 	color: @yellow;
 	background: @green;
 }
-
 #custom-arrowright5 {
 	font-size: 20pt;
 	color: @orange;
 	background: @yellow;
 }
-
 #custom-arrowright6 {
 	font-size: 20pt;
 	color: @red;
 	background: @orange;
 }
-
 #custom-arrowright7 {
 	font-size: 20pt;
-	color: @purple;
+	color: @pink;
 	background: @red;
 }
 

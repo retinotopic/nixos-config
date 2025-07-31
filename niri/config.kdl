@@ -36,7 +36,7 @@ layout {
         place-within-column
         active-color "rgba(131, 192, 146, 1)"
         inactive-color "rgba(131, 192, 146, 0.4)"
-        urgent-color "rgba(131, 192, 146, 1)"
+        urgent-color "rgba(230, 126, 128, 1)"
     }
     border {
     	width 6
@@ -188,7 +188,7 @@ output "HDMI-A-1" {
     mode "1920x1080"
 }
 cursor {
-    xcursor-theme "LyraB-cursors"
+    xcursor-theme "LyraF-cursors"
     xcursor-size 20
 }
 screenshot-path "~/Pictures/Screenshots/pic%Y-%m-%d_%H-%M-%S.png"
