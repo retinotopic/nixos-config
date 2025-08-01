@@ -28,11 +28,11 @@
         ];
         
         modules-center = [
-          "custom/arrowcenter1" 
-          "custom/dummy"
+          "custom/arrowcenterL1"
+          "custom/arrowcenterL2"
           "niri/window"
-          "custom/dummy"
-          "custom/arrowcenter2"
+          "custom/arrowcenterR1"
+          "custom/arrowcenterR2"
         ];
 
         modules-right = [          
@@ -114,7 +114,7 @@
           icon = true;
           expand = false;
           icon-size = 20;
-          max-length = 30 ;
+          max-length = 35 ;
         };
         "hyprland/window" = {
           format = "{title}";
@@ -239,23 +239,9 @@
           format = "";
           tooltip = false;
         };
-        "custom/arrowleft6" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/arrowleft7" = {
-          format = "";
-          tooltip = false;
-        };
+    
         
-        "custom/arrowright0" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/arrowright1" = {
-          format = "";
-          tooltip = false;
-        };
+        
         "custom/arrowright2" = {
           format = "";
           tooltip = false;
@@ -281,17 +267,12 @@
           tooltip = false;
         };
 
-        "custom/arrowcenter1" = {
+        "custom/arrowcenterL1" = {
           format = "";
           tooltip = false;
         };
-        "custom/arrowcenter2" = {
+        "custom/arrowcenterR1" = {
           format = "";
-          tooltip = false;
-        };
-
-        "custom/dummy" = {
-          format = " ";
           tooltip = false;
         };
 

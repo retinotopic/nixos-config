@@ -4,13 +4,14 @@
 @define-color blue #7fbbb3;
 @define-color pink #d699b6;
 @define-color aqua #83c092;
+@define-color orange #e69875;
 
 @define-color black	#293136;
 @define-color dark	#333c43;
-
-
 @define-color white	#d3c6aa;
-@define-color orange #e69875;
+@define-color gray	#677176;
+
+
 
 @define-color sound @blue;
 @define-color disk @aqua;
@@ -61,7 +62,7 @@
 #window {
 	color: @white;
 	background: rgba(127, 187, 179, 0.3);
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 300;
 }
 
@@ -93,14 +94,14 @@
 
 
 #workspaces button.focused {
-	color: @dark;
+	color: @white;
 	background: @red;
   font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font Mono";
   font-size: 20px;
   font-weight: 900;
 }
 #workspaces button:hover {
-	color: @black;
+	color: @white;
 	background: @red;
 }
 #workspaces button.urgent {
@@ -109,7 +110,7 @@
 }
 #language {
 	background: @orange;
-	color: @dark;
+	color: @gray;
 }
 #wireplumber {
 	background: @yellow;
@@ -144,13 +145,14 @@
 }
 #memory {
 	background: @orange;
-	color: @dark;
+	color: @gray;
 }
 #cpu {
 	background: @red;
-	color: @dark;
+	color: @white;
 }
 #tray {
+	color: @white;
 	background: @red;
 }
 
@@ -183,25 +185,16 @@
 #custom-arrowleft5 {
 	font-size: 20pt;
 	color: @aqua;
-	background: @blue;
-}
-#custom-arrowleft6 {
-	font-size: 20pt;
-	color: @blue;
 	background: transparent;
 }
 
 
 
-#custom-arrowright1 {
-	font-size: 20pt;
-	color: @blue;
-	background: transparent;
-}
+
 #custom-arrowright2 {
 	font-size: 20pt;
 	color: @aqua;
-	background: @blue;
+	background: transparent;
 }
 #custom-arrowright3 {
 	font-size: 20pt;
@@ -231,18 +224,24 @@
 
 
 
-#custom-arrowcenter1 {
+#custom-arrowcenterL1 {
 	font-size: 20pt;
 	color: rgba(127, 187, 179, 0.3);
 	background: transparent;
 }
-#custom-arrowcenter2 {
+/* #custom-arrowcenterL2 { */
+	/* font-size: 20pt; */
+	/* color: rgba(127, 187, 179, 0.3); */
+	/* background: transparent; */
+/* } */
+
+#custom-arrowcenterR1 {
 	font-size: 20pt;
 	color: rgba(127, 187, 179, 0.3);
 	background: transparent;
 }
-#custom-dummy {
-	font-size: 20pt;
-	color: transparent;
-	background: rgba(127, 187, 179, 0.3);
-}
+/* #custom-arrowcenterR2 { */
+	/* font-size: 20pt; */
+	/* color: rgba(127, 187, 179, 0.3); */
+	/* background: transparent; */
+/* } */
