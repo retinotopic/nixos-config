@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, inputs, ... }:
+{ lib,config, pkgs, pkgs-unstable, inputs, ... }:
 {
   imports = [
     ./configs/waybar.nix
@@ -63,7 +63,6 @@
   home.packages = [
     pkgs-unstable.telegram-desktop
     pkgs.brave
-    pkgs-unstable.zellij
     pkgs.waypaper
     pkgs-unstable.prismlauncher
     pkgs.discord
@@ -215,6 +214,113 @@
           "terminal"
           "colors"
         ];
+      };  
+    };
+    yazi = {
+      enable = true;
+      theme = {
+        manager = {
+          cwd = { fg = "#a7c080"; }; # Soft Green
+          # Hovered
+          hovered = { fg = "#2c313a"; bg = "#d3c6aa"; }; # Dark background, Soft beige foreground
+          preview_hovered = { underline = true; };
+          # Find
+          find_keyword = { fg = "#d3c6aa"; italic = true; };                # Soft beige
+          find_position = { fg = "#e8a2af"; bg = "reset"; italic = true; }; # Soft red
+          # Marker
+          marker_selected = { fg = "#a7c080"; bg = "#a7c080"; }; # Soft Green
+          marker_copied = { fg = "#d3c6aa"; bg = "#d3c6aa"; };   # Soft beige
+          marker_cut = { fg = "#e8a2af"; bg = "#e8a2af"; };      # Soft red
+          # Tab
+          tab_active = { fg = "#2c313a"; bg = "#d3c6aa"; };   # Dark background; Soft beige foreground
+          tab_inactive = { fg = "#a7c080"; bg = "#434c5e"; }; # Soft Green on muted dark
+          tab_width = 1;
+          # Border
+          border_symbol = "│";
+          border_style = { fg = "#687d68"; }; # Muted Green
+          # Highlighting
+          syntect_theme = "~/.config/bat/themes/Everforest-Soft.tmTheme";
+        };
+
+        status = {
+          separator_open = "";
+          separator_close = "";
+          separator_style = { fg = "#434c5e"; bg = "#434c5e"; }; # Muted dark
+          # Mode
+          mode_normal = { fg = "#2c313a"; bg = "#d3c6aa"; bold = true; }; # Dark background, Soft beige foreground
+          mode_select = { fg = "#2c313a"; bg = "#a7c080"; bold = true; }; # Dark background, Soft Green foreground
+          mode_unset = { fg = "#2c313a"; bg = "#e8a2af"; bold = true; };  # Dark background, Soft red foreground
+          # Progress
+          progress_label = { fg = "#ffffff"; bold = true; };
+          progress_normal = { fg = "#d3c6aa"; bg = "#434c5e"; }; # Soft beige on muted dark
+          progress_error = { fg = "#e8a2af"; bg = "#434c5e"; };  # Soft red on muted dark
+          # Permissions
+          permissions_t = { fg = "#d3c6aa"; }; # Soft beige
+          permissions_r = { fg = "#d3c6aa"; }; # Soft beige
+          permissions_w = { fg = "#e8a2af"; }; # Soft red
+          permissions_x = { fg = "#a7c080"; }; # Soft Green
+          permissions_s = { fg = "#687d68"; }; # Muted Green
+        };
+
+        input = {
+          border = { fg = "#d3c6aa"; };    # Soft beige
+          title = {};
+          value = {};
+          selected = { reversed = true; };
+        };
+
+        select = {
+          border = { fg = "#d3c6aa"; }; # Soft beige;
+          active = { fg = "#e8a2af"; }; # Soft red;
+          inactive = {};
+        };
+
+        tasks = {
+          border = { fg = "#d3c6aa"; };    # Soft beige
+          title = {};
+          hovered = { underline = true; };
+        };
+        which = {
+          mask = { bg = "#2c313a"; };            # Dark background
+          cand = { fg = "#a7c080"; };            # Soft Green
+          rest = { fg = "#d3c6aa"; };            # Soft beige
+          desc = { fg = "#e8a2af"; };            # Soft red
+          separator = "  ";
+          separator_style = { fg = "#434c5e"; }; # Muted dark
+        };
+        help = {
+          on = { fg = "#e8a2af"; };                     # Soft red
+          run = { fg = "#a7c080"; };                   # Soft Green
+          desc = { fg = "#d3c6aa"; };                   # Soft beige
+          hovered = { bg = "#434c5e"; bold = true; };   # Muted dark background
+          footer = { fg = "#2c313a"; bg = "#d3c6aa"; }; # Dark background, Soft beige foreground
+        };
+        filetype = {
+          rules = [
+            # Images
+            { mime = "image/*"; fg = "#a7c080"; } # Soft Green
+            # Videos
+            { mime = "video/*"; fg = "#d3c6aa"; } # Soft beige
+            { mime = "audio/*"; fg = "#d3c6aa"; } # Soft beige
+            # Archives
+            { mime = "application/zip"; fg = "#e8a2af"; }             # Soft red
+            { mime = "application/gzip"; fg = "#e8a2af"; }            # Soft red
+            { mime = "application/x-tar"; fg = "#e8a2af"; }           # Soft red
+            { mime = "application/x-bzip"; fg = "#e8a2af"; }          # Soft red
+            { mime = "application/x-bzip2"; fg = "#e8a2af"; }         # Soft red
+            { mime = "application/x-7z-compressed"; fg = "#e8a2af"; } # Soft red
+            { mime = "application/x-rar"; fg = "#e8a2af"; }           # Soft red
+            # Fallback
+            { name = "*"; fg = "#d3c6aa"; }  # Soft beige
+            { name = "*/"; fg = "#d3c6aa"; } # Soft beige
+          ];
+        };
+      };
+    };
+    zellij = {
+      enable = true;
+      themes = {
+        "everforest" = ./everforest-zellij.kdl;
       };
     };
   };

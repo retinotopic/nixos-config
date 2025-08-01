@@ -114,7 +114,7 @@
           icon = true;
           expand = false;
           icon-size = 20;
-          max-length = 35 ;
+          max-length = 30 ;
         };
         "hyprland/window" = {
           format = "{title}";

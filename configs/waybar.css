@@ -6,12 +6,8 @@
 @define-color aqua #83c092;
 @define-color orange #e69875;
 
-@define-color black	#293136;
-@define-color dark	#333c43;
+@define-color dark	#424b50;
 @define-color white	#d3c6aa;
-@define-color gray	#677176;
-
-
 
 @define-color sound @blue;
 @define-color disk @aqua;
@@ -105,12 +101,12 @@
 	background: @red;
 }
 #workspaces button.urgent {
-	color: @black;
+	color: @white;
 	background: @red;
 }
 #language {
 	background: @orange;
-	color: @gray;
+	color: @dark;
 }
 #wireplumber {
 	background: @yellow;
@@ -145,7 +141,7 @@
 }
 #memory {
 	background: @orange;
-	color: @gray;
+	color: @dark;
 }
 #cpu {
 	background: @red;
