@@ -19,13 +19,13 @@
           border          = "83c092ff";# aqua
           selection       = "e67e807f";# aqua
           
-          text            = "293136ff";# black
-          input           = "293136ff";# black
-          placeholder     = "293136ff";# black
-          match           = "293136ff";# black
+          text            = "424b50ff";# black
+          input           = "424b50ff";# black
+          placeholder     = "424b50ff";# black
+          match           = "424b50ff";# black
 
-          selection-match = "293136ff";# black
-          selection-text  = "293136ff";# black
+          selection-match = "424b50ff";# black
+          selection-text  = "424b50ff";# black
         };
       };
     };

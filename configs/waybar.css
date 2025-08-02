@@ -1,10 +1,10 @@
-@define-color red	#e67e80;
-@define-color green	#a7c080;
-@define-color yellow #dbbc7f;
 @define-color blue #7fbbb3;
 @define-color pink #d699b6;
-@define-color aqua #83c092;
+@define-color red	#e67e80;
 @define-color orange #e69875;
+@define-color yellow #dbbc7f;
+@define-color green	#a7c080;
+@define-color aqua #83c092;
 
 @define-color dark	#424b50;
 @define-color white	#d3c6aa;
@@ -225,19 +225,9 @@
 	color: rgba(127, 187, 179, 0.3);
 	background: transparent;
 }
-/* #custom-arrowcenterL2 { */
-	/* font-size: 20pt; */
-	/* color: rgba(127, 187, 179, 0.3); */
-	/* background: transparent; */
-/* } */
 
 #custom-arrowcenterR1 {
 	font-size: 20pt;
 	color: rgba(127, 187, 179, 0.3);
 	background: transparent;
 }
-/* #custom-arrowcenterR2 { */
-	/* font-size: 20pt; */
-	/* color: rgba(127, 187, 179, 0.3); */
-	/* background: transparent; */
-/* } */
