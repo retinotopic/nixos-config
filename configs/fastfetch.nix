@@ -6,8 +6,8 @@
           type = "file";
           source = ./nixos.txt;
           color = {
-              "1" = "white";
-              "2" = "blue";
+              "1" = "blue";
+              "2" = "cyan";
               "3" = "red";
               "4" = "yellow";
           };

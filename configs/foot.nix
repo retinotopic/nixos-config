@@ -4,7 +4,7 @@
     server.enable = true;
     settings = {
       colors = {
-        alpha = "0.6";
+        alpha = "0.55";
         background = "323d43";
         foreground = "d3c6aa";
         
