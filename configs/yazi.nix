@@ -17,6 +17,8 @@
         marker_selected = { fg = "#a7c080"; bg = "#a7c080"; }; # Soft Green
         marker_copied = { fg = "#83c092"; bg = "#83c092"; };   # Aqua
         marker_cut = { fg = "#e67e80"; bg = "#e67e80"; };      # Soft red
+        marker_marked   = { fg = "#dbbc7f"; bg = "#dbbc7f"; };
+
         # Tab
         tab_active = { fg = "#424b50"; bg = "#83c092"; };   # Dark background; Aqua foreground
         tab_inactive = { fg = "#a7c080"; bg = "#424b50"; }; # Soft Green on dark
@@ -24,11 +26,18 @@
         # Border
         border_symbol = "│";
         border_style = { fg = "#e67e80"; }; # Red
+
+        count_copied   = { fg = "#eff1f5"; bg = "#40a02b"; };
+        count_cut      = { fg = "#eff1f5"; bg = "#d20f39"; };
+        count_selected = { fg = "#eff1f5"; bg = "#df8e1d"; };
+
         # Highlighting
-        # syntect_theme = ./everforest.yazi/everforest.tmTheme;
+        syntect_theme = ./everforest.yazi/everforest.tmTheme;
         
       };
       status = {
+        sep_left = { open = ""; close = ""; };
+        sep_right = { open = ""; close = ""; };
         separator_open = "";
         separator_close = "";
         separator_style = { fg = "#424b50"; bg = "#424b50"; }; # dark

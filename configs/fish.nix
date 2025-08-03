@@ -6,6 +6,8 @@
         function fish_right_prompt; end
         function fish_prompt
             export EDITOR=hx
+            # alias zellij = "zellij options --theme everforest"
+            
             function y
             	set tmp (mktemp -t "yazi-cwd.XXXXXX")
             	yazi $argv --cwd-file="$tmp"

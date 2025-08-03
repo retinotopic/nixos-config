@@ -102,6 +102,9 @@
       themes = {
         "everforest" = ./everforest-zellij.kdl;
       };
+      settings = {
+        theme = "everforest";
+      };
     };
   };
 }
