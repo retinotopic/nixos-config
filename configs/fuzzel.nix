@@ -13,11 +13,11 @@
           radius = 0;
         };
         colors = {
-          background      = "7fbbb3b3";# blue
+          background      = "7fbbb3bf";# blue
           # border          = "e67e80ff";# red
           # selection       = "83c0927f";# aqua
-          border          = "83c092ff";# aqua
-          selection       = "e67e807f";# aqua
+          border          = "83c092bf";# aqua
+          selection       = "e67e807f";# red
           
           text            = "424b50ff";# black
           input           = "424b50ff";# black

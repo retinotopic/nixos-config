@@ -80,9 +80,6 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
-      enableBashIntegration = false;
-      enableNushellIntegration = false;
-      enableZshIntegration = false;
     };
     tmux = {
       enable = true;

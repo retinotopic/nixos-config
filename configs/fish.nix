@@ -5,6 +5,15 @@
       interactiveShellInit = ''
         function fish_right_prompt; end
         function fish_prompt
+            export EDITOR=hx
+            function y
+            	set tmp (mktemp -t "yazi-cwd.XXXXXX")
+            	yazi $argv --cwd-file="$tmp"
+            	if read -z cwd < "$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+            		builtin cd -- "$cwd"
+            	end
+            	rm -f -- "$tmp"
+            end
             set -l palette 83c092 a7c080 dbbc7f e69875 e67e80 d699b6 7fbbb3
             set -l len (count $palette)
             set -l i (random 1 $len)
