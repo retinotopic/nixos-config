@@ -8,6 +8,7 @@
     ./configs/fuzzel.nix
     ./configs/fish.nix
     ./configs/fastfetch.nix
+    ./configs/btop.nix
   ];
   
   home = {
@@ -92,7 +93,6 @@
       userName = "retinotopic";
       userEmail = "retinotopic@proton.me";
     };
-    btop.enable = true;
     foot.enable = true;
     home-manager = {
       enable = true;       
