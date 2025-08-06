@@ -88,6 +88,9 @@
       shell = "${pkgs.fish}/bin/fish";
       keyMode = "vi";
     };
+    obs-studio = {
+      enable = true;
+    };
     git = {
       enable = true;
       userName = "retinotopic";

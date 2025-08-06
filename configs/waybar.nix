@@ -34,7 +34,7 @@
           "custom/arrowcenterR1"
           "custom/arrowcenterR2"
         ];
-
+        
         modules-right = [          
           "custom/arrowright1"
           "custom/arrowright2"
@@ -51,9 +51,33 @@
           
           "custom/arrowright6"
           "cpu"
-          "tray"
           "custom/arrowright7"
+          "group/group-power"
         ];
+
+        "group/group-power" = {
+            orientation= "inherit";
+            drawer= {
+                "transition-duration"= 500;
+                "children-class"= "not-power";
+                "transition-left-to-right"= false;
+            };
+            "modules"= [
+                "custom/power"
+                "custom/reboot"
+                "tray"
+            ];
+        };
+        "custom/reboot" = {
+            "format"= "󰑓 ";
+            "tooltip"= false;
+            "on-click"= "reboot";
+        };
+        "custom/power"= {
+            "format"= " ";
+            "tooltip"= false;
+            "on-click"= "shutdown now";
+        };
 
         user = {
           format = " {user}";
@@ -216,6 +240,7 @@
 
         tray = {
           icon-size = 20;
+          spacing = 5;
         };
 
         "custom/arrowleft0" = {

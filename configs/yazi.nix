@@ -6,7 +6,7 @@
     # };
     theme = {
       mgr = {
-        cwd = { fg = "#d3c6aa"; };  
+        cwd = { fg = "#7fbbb3"; };  
         # Hovered
         hovered = { fg = "#424b50"; bg = "#7fbbb3"; };  
         preview_hovered = { fg = "#424b50"; bg = "#7fbbb3"; };  
@@ -32,8 +32,8 @@
         
       };
       tabs = {
-        active   = { fg = "#d3c6aa"; bg = "#e67e80"; bold = true; };
-        inactive = { fg = "#e67e80"; bg = "#d3c6aa"; };
+        active   = { fg = "#323d43"; bg = "#e67e80"; bold = true; };
+        inactive = { fg = "#e67e80"; bg = "#323d43"; };
         sep_inner = { open = ""; close = ""; };
         sep_outer = { open = ""; close = ""; };
       };

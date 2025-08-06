@@ -148,8 +148,20 @@
 	color: @white;
 }
 #tray {
-	color: @white;
-	background: @red;
+	color: @dark;
+	background: @pink;
+}
+#group-group-power {
+	color: @dark;
+	background: @pink;
+}
+#custom-reboot {
+	color: @dark;
+	background: @pink;
+}
+#custom-power {
+	color: @dark;
+	background: @pink;
 }
 
 
