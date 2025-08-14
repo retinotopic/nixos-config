@@ -51,6 +51,7 @@
 
   networking = {
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+    nftables.enable = true;
     hostName = "nixos"; # Define your hostname.
     nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
     firewall.allowedTCPPorts = [ 22 ];
@@ -112,6 +113,10 @@
   };
 
   programs = {
+    nekoray = {
+      enable = true;
+      tunMode.enable = true;
+    };
     niri.enable = true;
     mosh.enable = true;
     virt-manager.enable = true;

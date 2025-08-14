@@ -90,7 +90,7 @@
 
 
 #workspaces button.focused {
-	color: @white;
+	color: @aqua;
 	background: @red;
   font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font Mono";
   font-size: 20px;
@@ -156,6 +156,10 @@
 	background: @pink;
 }
 #custom-reboot {
+	color: @dark;
+	background: @pink;
+}
+#custom-darkmode{
 	color: @dark;
 	background: @pink;
 }

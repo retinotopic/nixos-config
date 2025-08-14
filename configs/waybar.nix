@@ -65,6 +65,7 @@
             "modules"= [
                 "custom/power"
                 "custom/reboot"
+                "custom/darkmode"
                 "tray"
             ];
         };
@@ -72,6 +73,11 @@
             "format"= "󰑓 ";
             "tooltip"= false;
             "on-click"= "reboot";
+        };
+        "custom/darkmode" = {
+            "format"= " ";
+            "tooltip"= false;
+            "on-click"= "bash swwwitcher.sh";
         };
         "custom/power"= {
             "format"= " ";
@@ -187,10 +193,8 @@
         		urgent = "██";
           };
         };
-#▌
 #█
-#┃
-#▐
+#
         "hyprland/workspaces" = {
              format = "{icon}";
              on-scroll-up = "hyprctl dispatch workspace e+1";
