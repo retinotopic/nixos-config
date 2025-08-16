@@ -47,6 +47,7 @@
 #memory,
 #wireplumber,
 #window,
+#cava,
 
 #workspaces button {
 	padding-left: 2pt;
@@ -58,6 +59,13 @@
 #window {
 	color: @white;
 	background: rgba(127, 187, 179, 0.3);
+  font-size: 15px;
+  font-weight: 300;
+}
+
+#cava {
+	background: rgba(127, 187, 179, 0.3);
+	color: @blue;
   font-size: 15px;
   font-weight: 300;
 }
@@ -90,7 +98,7 @@
 
 
 #workspaces button.focused {
-	color: @aqua;
+	color: @white;
 	background: @red;
   font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font Mono";
   font-size: 20px;
@@ -151,7 +159,11 @@
 	color: @dark;
 	background: @pink;
 }
-#group-group-power {
+#group-power {
+	color: @dark;
+	background: @pink;
+}
+#group-tweaks {
 	color: @dark;
 	background: @pink;
 }

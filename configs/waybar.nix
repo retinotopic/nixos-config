@@ -7,6 +7,7 @@
         position = "top";
 
         modules-left = [
+          "group/power"
           "custom/arrowleft0"
           
           "niri/workspaces"
@@ -31,6 +32,7 @@
           "custom/arrowcenterL1"
           "custom/arrowcenterL2"
           "niri/window"
+          "cava"
           "custom/arrowcenterR1"
           "custom/arrowcenterR2"
         ];
@@ -52,25 +54,35 @@
           "custom/arrowright6"
           "cpu"
           "custom/arrowright7"
-          "group/group-power"
+          "group/tweaks"
         ];
 
-        "group/group-power" = {
+        "group/tweaks" = {
             orientation= "inherit";
             drawer= {
                 "transition-duration"= 500;
                 "children-class"= "not-power";
-                "transition-left-to-right"= false;
+                "transition-left-to-right" = false;
             };
             "modules"= [
-                "custom/power"
-                "custom/reboot"
                 "custom/darkmode"
                 "tray"
             ];
         };
+        "group/power" = {
+            orientation= "inherit";
+            drawer= {
+                "transition-duration"= 500;
+                "children-class"= "not-power";
+                "transition-left-to-right" = true;
+            };
+            "modules"= [
+                "custom/power"
+                "custom/reboot"
+            ];
+        };
         "custom/reboot" = {
-            "format"= "󰑓 ";
+            "format"= " ";
             "tooltip"= false;
             "on-click"= "reboot";
         };
@@ -80,7 +92,7 @@
             "on-click"= "bash swwwitcher.sh";
         };
         "custom/power"= {
-            "format"= " ";
+            "format"= " ⏻ ";
             "tooltip"= false;
             "on-click"= "shutdown now";
         };
@@ -195,6 +207,7 @@
         };
 #█
 #
+#
         "hyprland/workspaces" = {
              format = "{icon}";
              on-scroll-up = "hyprctl dispatch workspace e+1";
@@ -206,26 +219,28 @@
             format-muted = "0%  ";
             on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             on-click-right = "pwvucontrol";
+            on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+            on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
             format-icons = [ "" "" "" ];
         };
         cava = {
-            # cava_config=" ${../configs/cava/cava.conf}" ;
-            framerate = 30;
-            autosens = 1;
-            sensitivity = 2;
-            bars = 40;
-            lower_cutoff_freq = 50;
-            higher_cutoff_freq = 10000;
-            method = "pipewire";
-            source = "auto";
-            stereo = true;
-            reverse = false;
-            bar_delimiter = 0;
-            monstercat = false;
-            waves = false;
-            noise_reduction = 0.77;
-            input_delay = 0;
-            format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
+          # cava_config="${../configs/cava/config}" ;
+          framerate = 30;
+          autosens = 1;
+          sensitivity = 2;
+          bars = 8;
+          lower_cutoff_freq = 50;
+          higher_cutoff_freq = 10000;
+          method = "pipewire";
+          source = "auto";
+          stereo = true;
+          reverse = false;
+          bar_delimiter = 0;
+          monstercat = false;
+          waves = false;
+          noise_reduction = 0.77;
+          input_delay = 0;
+          format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
         };
 
         temperature = {

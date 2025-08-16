@@ -53,7 +53,7 @@
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     nftables.enable = true;
     hostName = "nixos"; # Define your hostname.
-    nameservers = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+    nameservers = [ "1.1.1.1" "8.8.8.8" ];
     firewall.allowedTCPPorts = [ 22 ];
   };
 

@@ -15,6 +15,7 @@ input {
 
 layout {
     gaps 0
+    background-color "transparent"
     center-focused-column "never"
     always-center-single-column
     empty-workspace-above-first
@@ -192,3 +193,15 @@ cursor {
     xcursor-size 20
 }
 screenshot-path "~/Pictures/Screenshots/pic%Y-%m-%d_%H-%M-%S.png"
+
+layer-rule {
+    match namespace="swww-daemon"
+    place-within-backdrop true
+}
+
+overview {
+    zoom 0.65
+    workspace-shadow {
+        off
+    }
+}

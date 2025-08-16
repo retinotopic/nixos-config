@@ -21,6 +21,10 @@
         source = ./niri;
         recursive = true;        
       };
+      ".config/cava" = {
+        source = ./configs/cava;
+        recursive = true;        
+      };
       "nixos-everforest-light.png" = {
         source = ./nixos-everforest-light-outline.png;
       };
@@ -82,6 +86,9 @@
       enable = true;
       nix-direnv.enable = true;
     };
+    cava = {
+      enable = true;
+    };
     tmux = {
       enable = true;
       shortcut = "a";
@@ -96,7 +103,6 @@
       userName = "retinotopic";
       userEmail = "retinotopic@proton.me";
     };
-    foot.enable = true;
     home-manager = {
       enable = true;       
     };
