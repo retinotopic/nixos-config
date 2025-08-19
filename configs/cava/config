@@ -257,7 +257,6 @@ frame_delimiter = 10
 # gradient_color_7 = '#a7c080'
 # gradient_color_8 = '#83c092'
 
-
 # Horizontal is only supported on noncurses output.
 # Only one color will be calculated per bar.
 horizontal_gradient = 1

@@ -32,7 +32,7 @@
           "custom/arrowcenterL1"
           "custom/arrowcenterL2"
           "niri/window"
-          "cava"
+          "custom/cavacolors"
           "custom/arrowcenterR1"
           "custom/arrowcenterR2"
         ];
@@ -77,6 +77,7 @@
                 "transition-left-to-right" = true;
             };
             "modules"= [
+                "custom/menupower"
                 "custom/power"
                 "custom/reboot"
             ];
@@ -92,9 +93,22 @@
             "on-click"= "bash swwwitcher.sh";
         };
         "custom/power"= {
-            "format"= " ⏻ ";
+            "format"= "⏻ ";
             "tooltip"= false;
             "on-click"= "shutdown now";
+        };
+        "custom/menupower"= {
+            "format"= " ⏼ ";
+            "tooltip"= false;
+        };
+        "custom/cavacolors"= {
+          "format" = "{text}";
+          "tooltip" = false;
+          "exec" = "${pkgs.go}/bin/go run ${../go-cli-tools/cavacolors/main.go}";
+          "return-type" = "json";
+          "exec-on-event" = true;
+          "on-click" = " ";
+          "tail" = true;
         };
 
         user = {
@@ -156,7 +170,7 @@
           icon = true;
           expand = false;
           icon-size = 20;
-          max-length = 30 ;
+          max-length = 15 ;
         };
         "hyprland/window" = {
           format = "{title}";
@@ -228,7 +242,7 @@
           framerate = 30;
           autosens = 1;
           sensitivity = 2;
-          bars = 8;
+          bars = 10;
           lower_cutoff_freq = 50;
           higher_cutoff_freq = 10000;
           method = "pipewire";

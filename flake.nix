@@ -61,9 +61,14 @@
           statix
           vulnix
           haskellPackages.dhall-nix
+          luajit
+          lua-language-server
+          go
+          gopls
+          golangci-lint
+          gotools
         ];
       };
     });
-
   };
 }

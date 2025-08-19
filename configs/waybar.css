@@ -19,6 +19,8 @@
 
 @define-color warning @orange;
 
+/* d3c6aa 7fbbb3 d699b6 e67e80 e69875 dbbc7f a7c080 83c092 */
+
 #waybar {
 	background: transparent;
   font-family: "jetBrainsMono NF ExtraBold","Symbols Nerd Font Mono";
@@ -47,7 +49,6 @@
 #memory,
 #wireplumber,
 #window,
-#cava,
 
 #workspaces button {
 	padding-left: 2pt;
@@ -70,6 +71,11 @@
   font-weight: 300;
 }
 
+#custom-cavacolors {
+  font-size: 15px;
+  font-weight: 300;
+	background: rgba(127, 187, 179, 0.3);
+}
 #workspaces button label {
     margin:  0;
     padding: 0;
@@ -179,6 +185,10 @@
 	color: @dark;
 	background: @pink;
 }
+#custom-menupower {
+	color: @dark;
+	background: @pink;
+}
 
 
 #custom-arrowleft0 {
@@ -259,3 +269,4 @@
 	color: rgba(127, 187, 179, 0.3);
 	background: transparent;
 }
+
