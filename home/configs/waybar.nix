@@ -105,6 +105,7 @@
           "format" = "{text}";
           "tooltip" = false;
           "exec" = "${pkgs.go}/bin/go run ${../go-cli-tools/cavacolors/main.go}";
+          # "exec" = "${pkgs.luajit}/bin/luajit -O3 ${../cavacolors.lua}";
           "return-type" = "json";
           "exec-on-event" = true;
           "on-click" = " ";
@@ -219,9 +220,11 @@
         		urgent = "██";
           };
         };
+ 
 #█
 #
-#
+#░░░░░░
+
         "hyprland/workspaces" = {
              format = "{icon}";
              on-scroll-up = "hyprctl dispatch workspace e+1";

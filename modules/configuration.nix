@@ -2,12 +2,9 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, pkgs-unstable, ... }:
+{ config, lib, pkgs, pkgs-unstable, inputs,... }:
 
 {
-  imports = [ 
-        ./hardware-configuration.nix
-  ];
 
   nix = {
     settings = {
@@ -52,7 +49,6 @@
   networking = {
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     nftables.enable = true;
-    hostName = "nixos"; # Define your hostname.
     nameservers = [ "1.1.1.1" "8.8.8.8" ];
     firewall.allowedTCPPorts = [ 22 ];
   };
@@ -91,7 +87,7 @@
       dnsovertls = "true";
     };
     openssh = {
-      enable = true;
+      enable =false;
       authorizedKeysInHomedir = true;
       settings = {
         PermitRootLogin = "without-password";
@@ -112,6 +108,9 @@
     };
   };
 
+  qt = {
+    enable = true;
+  };
   programs = {
     nekoray = {
       enable = true;
@@ -166,26 +165,30 @@
     pkgs.qbittorrent
     pkgs.dysk
     pkgs.xwayland-satellite
+    pkgs.kdePackages.qtdeclarative
+    (inputs.quickshell.packages.${pkgs.system}.default.override {
+      withJemalloc = true;
+      withQtSvg = true;
+      withWayland = true;
+      withX11 = false;
+      withPipewire = true;
+      withPam = false;
+      withHyprland = false;
+      withI3 = false;
+    })
   ];
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
-    QT_QPA_PLATFORM = "xcb";
-    CAVA_STATE = "false";
+    QT_QPA_PLATFORM = "wayland";
   };
 
   hardware = {
     graphics = {
-      extraPackages = with pkgs; [ nvidia-vaapi-driver vulkan-tools wgpu-utils ];
       enable = true;
     };
-    nvidia = {
-      modesetting.enable = true;
-      open = false;
-    };
   };
-  qt.enable = true;
   xdg.portal = {
     enable = true;
     wlr.enable = true;

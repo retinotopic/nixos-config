@@ -1,8 +1,7 @@
 #!/usr/bin/env luajit
 
--- env: BARS_NUMBER, SENSITIVITY
 local BARS_NUMBER = tonumber(os.getenv("BARS_NUMBER") or "12") or 12
-local OUTPUT_BIT_FORMAT = "16bit"         -- "16bit" или "8bit"
+local OUTPUT_BIT_FORMAT = "16bit"
 local RAW_TARGET = "/dev/stdout"
 local SENSITIVITY = tonumber(os.getenv("SENSITIVITY") or "150") or 150
 
@@ -56,7 +55,6 @@ local function main()
 
   local denom = bytenorm + 1
 
-  -- читаем строго фиксированными чанками
   while true do
     local data = src:read(chunk_size)
     if not data or #data < chunk_size then
@@ -88,8 +86,6 @@ local function main()
 
     local text = table.concat(parts)
     -- io.write(text, "\n")
-    -- io.flush()
-    -- для JSON-вывода:
     io.write(string.format('{"text":"%s"}\n', text)); io.flush()
   end
 
@@ -98,4 +94,3 @@ local function main()
 end
 
 main()
-

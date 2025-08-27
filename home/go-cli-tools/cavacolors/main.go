@@ -18,7 +18,7 @@ import (
 type Chunk[T uint8 | uint16] struct {
 	src       io.ReadCloser
 	chunktype T
-	buf       *bytes.Buffer
+	buf       bytes.Buffer
 }
 
 func (c *Chunk[T]) ProcessChunks(lngth int) error {
@@ -34,10 +34,11 @@ func (c *Chunk[T]) ProcessChunks(lngth int) error {
 		denom = 256
 	}
 	for {
-		err := binary.Read(c.src, binary.BigEndian, chunk)
+		err := binary.Read(c.src, binary.LittleEndian, chunk)
 		if err != nil {
 			return err
 		}
+
 		c.buf.Reset()
 		c.buf.WriteString(strbuf[0])
 		for i := range len(chunk) {
@@ -64,15 +65,7 @@ func (c *Chunk[T]) ProcessChunks(lngth int) error {
 var strbuf = []string{`{"text":"`, "<span foreground='#", "DUMMY_COLOR",
 	"'>", "DUMMY_SYMBOL", "</span>", `"}`}
 
-// string.format('{"text":"%s"}\n', text))
 func main() {
-	buf := bytes.NewBuffer([]byte{})
-	// ok := ConsiderExec()
-	// if !ok {
-	// 	buf.WriteString("🌱")
-	// 	buf.WriteTo(os.Stdout)
-	// 	return
-	// }
 	var err error
 	var cmd *exec.Cmd
 	var f *os.File
@@ -81,7 +74,6 @@ func main() {
 
 	var wg sync.WaitGroup
 	wg.Add(1)
-
 	defer func() {
 		if err != nil {
 			log.Println(err)
@@ -132,27 +124,15 @@ func main() {
 
 	switch OUTPUT_BIT_FORMAT {
 	case "16bit":
-		chnk := Chunk[uint16]{src: src, buf: buf}
+		chnk := Chunk[uint16]{src: src}
 		err = chnk.ProcessChunks(BARS_NUMBER)
 	case "8bit":
-		chnk := Chunk[uint8]{src: src, buf: buf}
+		chnk := Chunk[uint8]{src: src}
 		err = chnk.ProcessChunks(BARS_NUMBER)
 	}
 	if err != nil {
 		return
 	}
-}
-func ConsiderExec() bool {
-	flip, ok, state := "", false, os.Getenv("CAVA_STATE")
-	switch state {
-	case "true":
-		flip = "false"
-	case "false", "":
-		flip = "true"
-		ok = true
-	}
-	os.Setenv("CAVA_STATE", flip)
-	return ok
 }
 
 const SENSITIVITY = "150"

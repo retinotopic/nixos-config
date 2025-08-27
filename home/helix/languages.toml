@@ -1,0 +1,3 @@
+[language-server.qmlls]
+args = ["-E"]
+command = "qmlls"

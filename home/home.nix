@@ -45,7 +45,8 @@
     stateVersion = "24.11";
     
     sessionVariables = {
-      QT_QPA_PLATFORM = "xcb";
+      QT_QPA_PLATFORM = "wayland";
+      QT_QML_GENERATE_QMLLS_INI = "ON";
     };
     pointerCursor = {
       enable = true;
@@ -70,10 +71,12 @@
   
   home.packages = [
     pkgs-unstable.telegram-desktop
-    pkgs.brave
+    pkgs-unstable.brave
     pkgs.waypaper
     pkgs-unstable.prismlauncher
     pkgs.discord
+    pkgs.qtcreator
+    pkgs.usbimager
   ];
 # brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 
@@ -89,6 +92,7 @@
     cava = {
       enable = true;
     };
+    
     tmux = {
       enable = true;
       shortcut = "a";

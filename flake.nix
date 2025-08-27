@@ -9,9 +9,15 @@
       url = "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: let 
+  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs: let 
     system = "x86_64-linux";
 
     specialArgs = {
@@ -19,35 +25,35 @@
         inherit system;
         config.allowUnfree = true;
       };
+      inherit inputs;
     };
     supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     forEachSupportedSystem = f: inputs.nixpkgs.lib.genAttrs supportedSystems (system: f {
-      pkgs = import inputs.nixpkgs { inherit system; };
+      pkgs = import nixpkgs { inherit system; };
     });
-
+    lib = nixpkgs.lib;
   in {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      inherit specialArgs;
-      modules = [
-      
-        ./configuration.nix
-        inputs.disko.nixosModules.disko
-        ./disk-config.nix
-        { nixpkgs.config.allowUnfree = true; }
-        
-        home-manager.nixosModules.home-manager 
-        {
-          home-manager.users = {
-            retinotopic = import ./home.nix;
-          };
-          home-manager.useUserPackages = true;
-          home-manager.useGlobalPkgs = true;
-          home-manager.extraSpecialArgs = {
-            inherit (specialArgs) pkgs-unstable;
-            inherit inputs;
-          };
-        }
-      ];
+    nixosConfigurations = {
+      pc = lib.nixosSystem {
+        inherit specialArgs;
+        modules = [
+          ./hosts/pc/default.nix
+          ./hosts/pc/disk-config.nix
+          inputs.disko.nixosModules.disko
+          { nixpkgs.config.allowUnfree = true; }
+          ./modules/home-manager.nix
+        ];
+      };
+      laptop = lib.nixosSystem {
+        inherit specialArgs;
+        modules = [
+          ./hosts/laptop/default.nix
+          ./hosts/laptop/disk-config.nix
+          inputs.disko.nixosModules.disko
+          { nixpkgs.config.allowUnfree = true; }
+          ./modules/home-manager.nix
+        ];
+      };
     };
     devShells = forEachSupportedSystem ({ pkgs }: {
       default = pkgs.mkShell {

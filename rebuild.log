@@ -1,0 +1,19 @@
+warning: Git tree '/home/retinotopic/nixconfig' is dirty
+building the system configuration...
+warning: Git tree '/home/retinotopic/nixconfig' is dirty
+these 13 derivations will be built:
+  /nix/store/rrhmn23xmijphwlls8d5gcjm7ni8kwf7-quickshell-0.2.0.drv
+  /nix/store/gxy9s1vibi23kwy0jlnn28yzcgbcjjjg-quickshell-wrapped-0.2.0.drv
+  /nix/store/dv7w6kiifzl0dwahwx3am6fq3hc4mfds-system-path.drv
+  /nix/store/zn3hqc8is9rssybbfch39v0h2n737w8x-dbus-1.drv
+  /nix/store/9shshs7mlrmszn6cn838miwg5ym4wc6p-X-Restart-Triggers-dbus.drv
+  /nix/store/9x3nwl9rs3y0d6i1101k57nxww79f23h-unit-dbus.service.drv
+  /nix/store/lfi71nmspf36vsbh3rn93vyixmqw56qm-user-units.drv
+  /nix/store/sb1wjyjy4ib3mr30fdsmpqzbm67ia8vi-unit-dbus.service.drv
+  /nix/store/7m0dmvl6iy34q7j4p8dz7x43ibvhz9fd-X-Restart-Triggers-polkit.drv
+  /nix/store/xwjl0gdqv5czhmhsfaqpnn5616ma3a8v-unit-polkit.service.drv
+  /nix/store/pa3xzzi43g9s2p07wvrzhavc5f4h9piv-system-units.drv
+  /nix/store/22q0855im20qfv35lrsj8ijxidh4yxrm-etc.drv
+  /nix/store/pfn0hgpiygw3k8kqzw8p9ix1shgr2wx1-nixos-system-nixos-25.05.20250724.3ff0e34.drv
+building '/nix/store/rrhmn23xmijphwlls8d5gcjm7ni8kwf7-quickshell-0.2.0.drv'...
+error: interrupted by the user
