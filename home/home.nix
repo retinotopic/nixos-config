@@ -31,6 +31,9 @@
       "nixos-everforest-dark.png" = {
         source = ./nixos-everforest-dark-outline.png;
       };
+      "nixos-everforest-color.png" = {
+        source = ./nixos-everforest-color-outline.png;
+      };
       "swwwitcher.sh" = {
         source = ./swwwitcher.sh;
       };

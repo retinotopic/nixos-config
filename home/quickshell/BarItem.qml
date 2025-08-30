@@ -87,59 +87,66 @@ Item {
                 }
             }
         }
-        
-        RowLayout {/////////////////////////////////////////////// UPPER BUTTONS
-            id :itemsrow
-            visible:true
-            spacing:0
-            // implicitWidth: root.width
-            // implicitHeight: root.height
-            Layout.alignment:Qt.AlignCenter
-            // Layout.fillHeight: true
-            // Layout.fillWidth: true
-            Button {
-                // width: root.scalewidthmin
-                // height: root.height
-                Layout.preferredWidth: root.scalewidthmin
-                Layout.preferredHeight: root.height
-
-                opacity:0.4
+        ScrollView {
+            width: root.maxWidth
+            height: scaleheightmin
+                anchors.fill:parent
+            clip: true
+            RowLayout {/////////////////////////////////////////////// UPPER BUTTONS
+                id :itemsrow
+                visible:true
+                spacing:0
+                // implicitWidth: root.width
+                // implicitHeight: root.height
                 Layout.alignment:Qt.AlignCenter
-                // anchors.fill: parent
-                onClicked: {
-                   PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
-                }
-            }
-            Button {
-                // width: root.scalewidthmin
-                // height: root.height
-                Layout.preferredWidth: root.scalewidthmin
-                Layout.preferredHeight: root.height
+                ScrollBar.horizontal: ScrollBar { id: hbar; active: true }
 
-                opacity:0.4
-                Layout.alignment:Qt.AlignCenter
-                // anchors.fill: parent
-                onClicked: {
-                   PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index;
-                   iteminput.visible = true;
-                   itemsrow.visible = false
-                }
-            }
-            TextInput {
-                id: inp
-                // text: inp.text
-                text:"Input here"
-                focus:true
-                echoMode: TextInput.Normal
-                Layout.preferredWidth: root.scalewidthmin
-                Layout.preferredHeight: root.height
-                onAccepted: {
-                    AppLauncher.matchstr = text
-                }
-                opacity:0.4
-                Layout.alignment:Qt.AlignCenter
-                // anchors.fill: parent
+                // Layout.fillHeight: true
+                // Layout.fillWidth: true
+                Button {
+                    // width: root.scalewidthmin
+                    // height: root.height
+                    Layout.preferredWidth: root.scalewidthmin
+                    Layout.preferredHeight: root.height
 
+                    opacity:0.4
+                    Layout.alignment:Qt.AlignCenter
+                    // anchors.fill: parent
+                    onClicked: {
+                       PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
+                    }
+                }
+                Button {
+                    // width: root.scalewidthmin
+                    // height: root.height
+                    Layout.preferredWidth: root.scalewidthmin
+                    Layout.preferredHeight: root.height
+
+                    opacity:0.4
+                    Layout.alignment:Qt.AlignCenter
+                    // anchors.fill: parent
+                    onClicked: {
+                       PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index;
+                       iteminput.visible = true;
+                       itemsrow.visible = false
+                    }
+                }
+                TextInput {
+                    id: inp
+                    // text: inp.text
+                    text:"Input here"
+                    focus:true
+                    echoMode: TextInput.Normal
+                    Layout.preferredWidth: root.scalewidthmin
+                    Layout.preferredHeight: root.height
+                    onAccepted: {
+                        AppLauncher.matchstr = text
+                    }
+                    opacity:0.4
+                    Layout.alignment:Qt.AlignCenter
+                    // anchors.fill: parent
+
+                }
             }
         }
     }
