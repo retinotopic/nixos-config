@@ -118,7 +118,7 @@
         };
 
         disk = {
-          interval = 30;
+          interval = 45;
           format = "{free}";
         };
 
@@ -145,13 +145,13 @@
         };
 
         "clock#time" = {
-          interval = 10;
+          interval = 30;
           format = "{:%H:%M}";
           tooltip = false;
         };
 
         "clock#date" = {
-          interval = 20;
+          interval = 30;
           format = "{:%e %b %Y}";
           tooltip = false;
         };

@@ -82,6 +82,9 @@
 
   
   programs = {
+    fzf = {
+      enable = true;
+    };
     lutris = {
       enable = true;
     };

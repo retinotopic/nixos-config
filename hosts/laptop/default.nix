@@ -10,7 +10,6 @@
     system76-scheduler.settings.cfsProfiles.enable = true;
     power-profiles-daemon.enable = true;
   };
-  hardware.cpu.amd.updateMicrocode = true;
   environment.systemPackages = [
     pkgs.ryzenadj
   ];

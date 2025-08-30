@@ -69,7 +69,6 @@
   ];
   
   services = {
-    xserver.videoDrivers = ["nvidia"];
     fstrim.enable = true;
     gvfs.enable = true;
     tumbler.enable = true;
