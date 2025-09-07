@@ -12,7 +12,7 @@ BarItem {
     clr: "blue";
     index: 1;
     itemcount: 2;
-    listmodel: AppLauncher.listm;
+    listmodel: Network.listm;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: true
@@ -21,15 +21,28 @@ BarItem {
         implicitHeight: scaleheightmin
         Layout.alignment:Qt.AlignCenter
         id: execbutton
-        Text { id:maintext; text: maintxt }
-        Text { id:sectext; text: sectxt; visible:false }
+        RowLayout {
+            
+            // Text {id: maintxt1; text: active}
+            // Text {id: maintxt2; text: strength}
+            // Text {id: maintxt3; text: frequency}
+            Text {id: maintxt4; text: ssid}
+            Text {id: maintxt5; text: bssid}
+            Text {id: maintxt6; text: security}
+        }
         onClicked: {
-            AppLauncher.pathname = sectext.text
-            console.log(AppLauncher.pathname)
-            AppLauncher.isexec = true;
+            // AppLauncher.pathname = sectext.text
+            // console.log(AppLauncher.pathname)
+            // AppLauncher.isexec = true;
         }
     }
 
+
+    // Triangle {
+    //     inverted:true
+    //     hght:root.height
+    //     clr:"red"
+    // }
     Button {
         Layout.preferredWidth: root.scalewidthmin
         Layout.preferredHeight: root.height
@@ -45,7 +58,7 @@ BarItem {
         wdth: root.scalewidthmin
         hght: root.height/1.5
         onTextedited: {
-            AppLauncher.matchstr = gettext()
+            // AppLauncher.matchstr = text
         }
     }
 }

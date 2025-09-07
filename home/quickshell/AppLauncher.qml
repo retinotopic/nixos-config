@@ -14,8 +14,6 @@ Singleton {
     property string matchstr: "btop"
     property bool isrunning:false
 
-
-    
     property string pathname
     property bool isexec:false
 

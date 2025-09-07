@@ -18,7 +18,7 @@ Item {
     required property int itemcount;
     required property real windowwidth;
     required property ListModel listmodel;
-    required property var onbtnclick;
+    required property Component delegatecmpnnt;
     required property bool popupvisible;
     required property bool isscrollable;
     
@@ -62,15 +62,7 @@ Item {
                     model: root.listmodel
                     contentWidth: root.scalewidthmin
                     contentHeight: root.height
-                    delegate: Button {
-                        implicitWidth: root.width
-                        implicitHeight: scaleheightmin
-                        Layout.alignment:Qt.AlignCenter
-                        id: execbutton
-                        Text { id:maintext; text: maintxt }
-                        Text { id:sectext; text: sectxt; visible:false }
-                        onClicked: onbtnclick
-                    } 
+                    delegate: root.delegatecmpnnt
                 }
             }
         }

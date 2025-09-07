@@ -49,6 +49,7 @@ Variants {
             AppLauncherItem{}
             AppLauncherItem{}
             AppLauncherItem{}
+            NetworkItem{}
         }
     }
 }
