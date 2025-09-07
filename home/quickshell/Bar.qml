@@ -33,27 +33,22 @@ Variants {
     
         BarItems {
             align:0 // Left
-            BarItem {clr:"red";index:0}
-            BarItem {clr:"green";index:1}
-            BarItem {clr:"red";index:2}
-            BarItem {clr:"yellow";index:3}
-            BarItem {clr:"red";index:4}
+            // Triangle { inverted:true; hght:root.height;clr:"red"; }
+            AppLauncherItem{}
+            AppLauncherItem{}
+            AppLauncherItem{}
         }
         BarItems {
             align:1 // Center
-            BarItem {clr:"green";index:5}
-            BarItem {clr:"blue";index:6}
-            BarItem {clr:"red";index:7}
-            BarItem {clr:"purple";index:8}
-            BarItem {clr:"red";index:9}
+            AppLauncherItem{}
+            AppLauncherItem{}
+            AppLauncherItem{}
         }
         BarItems {
             align:2 // Right
-            BarItem {clr:"red";index:10}
-            BarItem {clr:"black";index:11}
-            BarItem {clr:"red";index:12}
-            BarItem {clr:"red";index:13}
-            BarItem {clr:"blue";index:14}
+            AppLauncherItem{}
+            AppLauncherItem{}
+            AppLauncherItem{}
         }
     }
 }

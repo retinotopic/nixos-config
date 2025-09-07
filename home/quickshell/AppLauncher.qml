@@ -44,8 +44,8 @@ Singleton {
                     const appName = parts[parts.length - 1];
                     const desktopFile = line;
                     myModel.append({ 
-                        name: appName, 
-                        path: desktopFile 
+                        maintxt: appName, 
+                        sectxt: desktopFile 
                     });
                 }
             }

@@ -15,20 +15,14 @@ Item {
     // required property int itemHeight;
     required property color clr;
     required property int index;
-    property int itemcount:6;
-    property real scaleFactor: parent.parent.width / 1920
-
-    property ListModel listmodel: AppLauncher.listm 
-    // Layout.fillWidth: true
-    // Layout.fillHeight: true
-    // Layout.maximumWidth: itemWidth/5
-    // Layout.minimumWidth: itemHeight/16
-    // Layout.preferredWidth: 50
-    // property real wScale: parent.parent.width / 1920
-    // property real hScale: parent.parent.height / 1080
-    // property real scaleFactor: Math.min(wScale, hScale)
-
-    property int modelcnt:0;
+    required property int itemcount;
+    required property real windowwidth;
+    required property ListModel listmodel;
+    required property var onbtnclick;
+    required property bool popupvisible;
+    required property bool isscrollable;
+    
+    property real scaleFactor: windowwidth / 1920
     Behavior on implicitWidth { ElasticBehavior {} }
     Behavior on implicitHeight { ElasticBehavior {} }
     property real maxWidth: itemcount * 60
@@ -37,18 +31,14 @@ Item {
     implicitWidth:  PopupState.curridx == root.index ? scaleFactor*maxWidth : scalewidthmin
     implicitHeight: scaleheightmin
 
-    
-    // ListModel { id: myModel }
-    // Component.onCompleted: {
-    //     // AppLauncher.matchstr = "sd"
-    //     AppLauncher.listmodel = myModel
-    // }
-
-    Rectangle {///////////////////////////// POPUP LIST
+    default property alias content: itemsrow.data
+    Rectangle {
         id: rect
         clip: true
         // onClipChanged
-        anchors.fill: parent
+        anchors.fill: root
+        Layout.fillHeight:true
+        Layout.fillWidth:true
         color: root.clr
         Popup {
             id: popup
@@ -57,189 +47,82 @@ Item {
             implicitWidth: root.width
             implicitHeight: scaleheightmin*3
             focus: true
-            visible: PopupState.curridx == root.index
+            visible: PopupState.curridx == root.index && root.popupvisible
             modal: false
             closePolicy: Popup.NoAutoClose
-            // background:null
+            margins:0
+            padding:0
             Rectangle {
-                // implicitWidth: popup.width
-                // implicitHeight: popup.height
                 id: rectpop
                 anchors.fill:parent
                 color: root.clr
+                clip:true
                 ListView {
                     anchors.fill: parent
                     model: root.listmodel
+                    contentWidth: root.scalewidthmin
+                    contentHeight: root.height
                     delegate: Button {
                         implicitWidth: root.width
                         implicitHeight: scaleheightmin
                         Layout.alignment:Qt.AlignCenter
                         id: execbutton
-                        Text { id:nameid; text: name }
-                        Text { id:pathid; text: path; visible:false}
-                        onClicked: {
-                            AppLauncher.pathname = pathid.text
-                            console.log(AppLauncher.pathname)
-
-                            AppLauncher.isexec = true;
-                        }
+                        Text { id:maintext; text: maintxt }
+                        Text { id:sectext; text: sectxt; visible:false }
+                        onClicked: onbtnclick
                     } 
                 }
             }
         }
-        ScrollView {
+        Flickable {
             width: rect.width
             height: rect.height
-            anchors.fill:parent
-            clip: true
-            RowLayout {/////////////////////////////////////////////// UPPER BUTTONS
+            interactive:root.isscrollable
+            contentWidth: itemsrow.implicitWidth
+            contentHeight: itemsrow.implicitHeight
+            RowLayout {
                 id :itemsrow
                 visible:true
                 spacing:0
-                // implicitWidth: root.width
-                // implicitHeight: root.height
                 Layout.alignment:Qt.AlignCenter
-                ScrollBar.horizontal: ScrollBar { id: hbar; active: true }
-
-                // Layout.fillHeight: true
-                // Layout.fillWidth: true
-                Button {
-                    // width: root.scalewidthmin
-                    // height: root.height
-                    Layout.preferredWidth: root.scalewidthmin
-                    Layout.preferredHeight: root.height
-
-                    opacity:0.4
-                    Layout.alignment:Qt.AlignCenter
-                    // anchors.fill: parent
-                    onClicked: {
-                       PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
-                    }
-                }
-                Button {
-                    // width: root.scalewidthmin
-                    // height: root.height
-                    Layout.preferredWidth: root.scalewidthmin
-                    Layout.preferredHeight: root.height
-
-                    opacity:0.4
-                    Layout.alignment:Qt.AlignCenter
-                    // anchors.fill: parent
-                    onClicked: {
-                       PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
-                    }
-                }
-                Button {
-                    // width: root.scalewidthmin
-                    // height: root.height
-                    Layout.preferredWidth: root.scalewidthmin
-                    Layout.preferredHeight: root.height
-
-                    opacity:0.4
-                    Layout.alignment:Qt.AlignCenter
-                    // anchors.fill: parent
-                    onClicked: {
-                       PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
-                    }
-                }
-                Button {
-                    // width: root.scalewidthmin
-                    // height: root.height
-                    Layout.preferredWidth: root.scalewidthmin
-                    Layout.preferredHeight: root.height
-
-                    opacity:0.4
-                    Layout.alignment:Qt.AlignCenter
-                    // anchors.fill: parent
-                    onClicked: {
-                       PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
-                    }
-                }
-                Button {
-                    // width: root.scalewidthmin
-                    // height: root.height
-                    Layout.preferredWidth: root.scalewidthmin
-                    Layout.preferredHeight: root.height
-
-                    opacity:0.4
-                    Layout.alignment:Qt.AlignCenter
-                    // anchors.fill: parent
-                    onClicked: {
-                       PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
-                    }
-                }
-                Button {
-                    // width: root.scalewidthmin
-                    // height: root.height
-                    Layout.preferredWidth: root.scalewidthmin
-                    Layout.preferredHeight: root.height
-
-                    opacity:0.4
-                    Layout.alignment:Qt.AlignCenter
-                    // anchors.fill: parent
-                    onClicked: {
-                       PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
-                    }
-                }
-                Button {
-                    // width: root.scalewidthmin
-                    // height: root.height
-                    Layout.preferredWidth: root.scalewidthmin
-                    Layout.preferredHeight: root.height
-
-                    opacity:0.4
-                    Layout.alignment:Qt.AlignCenter
-                    // anchors.fill: parent
-                    onClicked: {
-                       PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
-                    }
-                }
-                Button {
-                    // width: root.scalewidthmin
-                    // height: root.height
-                    Layout.preferredWidth: root.scalewidthmin
-                    Layout.preferredHeight: root.height
-
-                    opacity:0.4
-                    Layout.alignment:Qt.AlignCenter
-                    // anchors.fill: parent
-                    onClicked: {
-                       PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
-                    }
-                }
-                Button {
-                    // width: root.scalewidthmin
-                    // height: root.height
-                    Layout.preferredWidth: root.scalewidthmin
-                    Layout.preferredHeight: root.height
-
-                    opacity:0.4
-                    Layout.alignment:Qt.AlignCenter
-                    // anchors.fill: parent
-                    onClicked: {
-                       PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index;
-                       iteminput.visible = true;
-                       itemsrow.visible = false
-                    }
-                }
-                TextInput {
-                    id: inp
-                    // text: inp.text
-                    text:"Input here"
-                    focus:true
-                    echoMode: TextInput.Normal
-                    Layout.preferredWidth: root.scalewidthmin
-                    Layout.preferredHeight: root.height
-                    onAccepted: {
-                        AppLauncher.matchstr = text
-                    }
-                    opacity:0.4
-                    Layout.alignment:Qt.AlignCenter
-                    // anchors.fill: parent
-
-                }
             }
+        }
+        Triangle {
+            inverted:true;
+            hght:root.height;
+            clr:"red";
+            width: rect.height/2
+            height: rect.height
         }
     }
 }
 
+// Button {
+//     Layout.preferredWidth: root.scalewidthmin
+//     Layout.preferredHeight: root.height
+
+//     opacity:0.4
+//     Layout.alignment:Qt.AlignCenter
+//     // anchors.fill: parent
+//     onClicked: {
+//        PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
+//     }
+// }
+
+
+// TextInput {
+//     id: inp
+//     // text: inp.text
+//     text:"Input here"
+//     focus:true
+//     echoMode: TextInput.Normal
+//     Layout.preferredWidth: root.scalewidthmin
+//     Layout.preferredHeight: root.height
+//     onAccepted: {
+//         AppLauncher.matchstr = text
+//     }
+//     opacity:0.4
+//     Layout.alignment:Qt.AlignCenter
+//     // anchors.fill: parent
+
+// }
