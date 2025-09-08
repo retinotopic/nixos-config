@@ -35,6 +35,7 @@ Variants {
             align:0 // Left
             // Triangle { inverted:true; hght:root.height;clr:"red"; }
             AppLauncherItem{}
+            NiriItem{}
             AppLauncherItem{}
             AppLauncherItem{}
         }

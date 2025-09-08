@@ -10,7 +10,7 @@ import QtQml
 BarItem {
     id:root
     clr: "blue";
-    index: 1;
+    index: 0;
     itemcount: 2;
     listmodel: AppLauncher.listm;
     windowwidth: parent.parent.width;
