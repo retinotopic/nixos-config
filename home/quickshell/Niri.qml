@@ -7,13 +7,12 @@ import Quickshell.Io
 
 Singleton {
     id: root
-    property ListModel listm1: ListModel {id: workspaceslistmodel}
-    property ListModel listm2: ListModel {id: windowslistmodel}
-
-    property var workspaces: []
+    property ListModel listm: ListModel {id: workspaceslistmodel}
     property var windows: []
     property int focusedWindowIndex: -1
+    property int focusedWorkspaceIndex: -1
     property bool inOverview: false
+    property bool workspacefocus: false
     property string focusedWindowTitle: "(No active window)"
 
     function updateFocusedWindowTitle() {
@@ -32,6 +31,14 @@ Singleton {
     }
 
     Process {
+        id: workspaceFocus
+        running: root.workspacefocus
+        command: ["niri", "msg", "action", "focus-workspace", root.focusedWorkspaceIndex]
+        onExited: {
+            root.workspacefocus = false;
+        }
+    }
+    Process {
         id: workspaceProcess
         running: false
         command: ["niri", "msg", "--json", "workspaces"]
@@ -41,11 +48,10 @@ Singleton {
                 try {
                     const workspacesData = JSON.parse(line);
                     const workspacesList = [];
-                    
                     // workspaceslistmodel.clear()
                     for (const ws of workspacesData) {
-                        workspaceslistmodel.append({
-                            id: ws.id.toString(),
+                        workspacesList.push({
+                            id: ws.id,
                             idx: ws.idx,
                             name: ws.name || "",
                             output: ws.output || "",
@@ -56,20 +62,16 @@ Singleton {
                         });
                     }
                     
-                    // workspacesList.sort((a, b) => {
-                    //     if (a.output !== b.output) {
-                    //         return a.output.localeCompare(b.output);
-                    //     }
-                    //     return a.id - b.id;
-                    // });
-                    // workspaceslistmodel.clear()
-                    // for (const [key, value] of workspaceslistmodel) {
-                    //     console.log(value);
-                    // }
-                    // root.workspaces = workspacesList;
-                    // console.log(workspaceslistmodel);
-                    // for (ws of wor)
-                    // workspaceslistmodel.append(root.workspaces)
+                    workspacesList.sort((a, b) => {
+                        if (a.output !== b.output) {
+                            return a.output.localeCompare(b.output);
+                        }
+                        return a.idx - b.idx;
+                    });
+                    workspaceslistmodel.clear()
+                    for (let i=0; i<workspacesList.length; i++) {
+                        workspaceslistmodel.append(workspacesList[i])
+                    }
                 } catch (e) {
                     console.error("Failed to parse workspaces:", e, line);
                 }
@@ -102,14 +104,13 @@ Singleton {
                                     isFocused: win.is_focused === true
                                 });
                             }
-                            
+                        
                             windowsList.sort((a, b) => a.id - b.id);
-                            windowslistmodel.clear()
                             root.windows = windowsList;
-                            windowslistmodel.append(root.windows)
                             for (let i = 0; i < windowsList.length; i++) {
                                 if (windowsList[i].isFocused) {
                                     root.focusedWindowIndex = i;
+                                    console.log("FOCUS");
                                     break;
                                 }
                             }

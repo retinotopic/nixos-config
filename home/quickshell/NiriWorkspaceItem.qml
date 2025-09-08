@@ -12,17 +12,16 @@ BarItem {
     clr: "blue";
     index: 2;
     itemcount: 2;
-    listmodel: Niri.listm1;
+    listmodel: Niri.listm;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false;
-    property int curridx:0;
     ListView {
         id: listv
         layoutDirection:Qt.LeftToRight
         orientation:Qt.Horizontal
-        anchors.fill: root
-        model: Niri.listm1
+        // anchors.fill: root
+        model: Niri.listm
         highlightFollowsCurrentItem :true
         implicitWidth: root.width
         implicitHeight: root.height
@@ -35,11 +34,15 @@ BarItem {
             // Layout.alignment:Qt.AlignCenter
             id: execbutton
             // Text {id: maintxt1; text: id}
-            Text {id: maintxt2; text: idx}
-            Text {id: maintxt3; text: isActive}
+            Row {
+                Text {id: maintxt1; text: idx}
+                Text {id: maintxt2; text: isActive}
+            }
             onClicked: {
                PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
                listv.positionViewAtBeginning()
+               Niri.focusedWorkspaceIndex = maintxt1.text
+               Niri.workspacefocus = true;
             }
         }
     }

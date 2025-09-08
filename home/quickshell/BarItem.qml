@@ -17,8 +17,10 @@ Item {
     required property int index;
     required property int itemcount;
     required property real windowwidth;
-    required property ListModel listmodel;
+    
+    property ListModel listmodel;
     property Component delegatecmpnnt;
+    
     required property bool popupvisible;
     required property bool isscrollable;
     

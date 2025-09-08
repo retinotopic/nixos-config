@@ -35,13 +35,13 @@ Variants {
             align:0 // Left
             // Triangle { inverted:true; hght:root.height;clr:"red"; }
             AppLauncherItem{}
-            NiriItem{}
+            NiriWorkspaceItem{}
             AppLauncherItem{}
             AppLauncherItem{}
         }
         BarItems {
             align:1 // Center
-            AppLauncherItem{}
+            NiriWindowItem{}
             AppLauncherItem{}
             AppLauncherItem{}
         }
