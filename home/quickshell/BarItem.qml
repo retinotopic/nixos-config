@@ -20,6 +20,7 @@ Item {
     
     property ListModel listmodel;
     property Component delegatecmpnnt;
+    property real widthmin: 60
     
     required property bool popupvisible;
     required property bool isscrollable;
@@ -27,8 +28,8 @@ Item {
     property real scaleFactor: windowwidth / 1920
     Behavior on implicitWidth { ElasticBehavior {} }
     Behavior on implicitHeight { ElasticBehavior {} }
-    property real maxWidth: itemcount * 60
-    property real scalewidthmin: scaleFactor*60
+    property real maxWidth: itemcount * widthmin
+    property real scalewidthmin: scaleFactor*widthmin
     property real scaleheightmin: scaleFactor*40
     implicitWidth:  PopupState.curridx == root.index ? scaleFactor*maxWidth : scalewidthmin
     implicitHeight: scaleheightmin

@@ -111,7 +111,7 @@ func main() {
 		return
 	}
 	f.WriteString(config)
-
+	log.Println(config)
 	cmd = exec.Command("cava", "-p", f.Name())
 	src, err = cmd.StdoutPipe()
 	if err != nil {

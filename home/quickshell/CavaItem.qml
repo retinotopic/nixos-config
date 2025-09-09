@@ -16,20 +16,24 @@ BarItem {
     windowwidth: parent.parent.width;
     isscrollable: false;
     popupvisible: false;
+    widthmin: 180
     // listmodel: {}
     // delegatecmpnnt:{}
     Text {
         Layout.preferredWidth: root.scalewidthmin
         Layout.preferredHeight: root.height
+        horizontalAlignment: TextInput.AlignHCenter
+        verticalAlignment: TextInput.AlignVCenter
         id: inp
+        font.pointSize:12
         // clip:true
         text: Cava.output
-        textFormat: Text.StyledText
+        textFormat: Text.RichText
         // focus:true
         // color: "black"
         // Layout.fillHeight: true
         // Layout.fillWidth: true
-        // opacity:0.4
+        // opacity:1
         Layout.alignment:Qt.AlignCenter
     }
 
