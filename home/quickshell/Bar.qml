@@ -42,8 +42,7 @@ Variants {
         BarItems {
             align:1 // Center
             NiriWindowItem{}
-            AppLauncherItem{}
-            AppLauncherItem{}
+            CavaItem{}
         }
         BarItems {
             align:2 // Right
