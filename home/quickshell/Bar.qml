@@ -36,8 +36,6 @@ Variants {
             // Triangle { inverted:true; hght:root.height;clr:"red"; }
             AppLauncherItem{}
             NiriWorkspaceItem{}
-            AppLauncherItem{}
-            AppLauncherItem{}
         }
         BarItems {
             align:1 // Center
@@ -46,9 +44,8 @@ Variants {
         }
         BarItems {
             align:2 // Right
-            AppLauncherItem{}
-            AppLauncherItem{}
-            AppLauncherItem{}
+            BatteryItem{}
+            NotificationsItem{}
             NetworkItem{}
         }
     }

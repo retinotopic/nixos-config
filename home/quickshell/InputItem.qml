@@ -41,12 +41,15 @@ RowLayout {
             focus:true
             color: "#d3c6aa"
             echoMode: TextInput.Normal
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            horizontalAlignment: TextInput.AlignHCenter
-            verticalAlignment: TextInput.AlignVCenter
+            anchors.centerIn: parent
+            // Layout.preferredWidth: root.wdth
+            // Layout.preferredHeight: root.hght
+            // Layout.fillHeight: true
+            // Layout.fillWidth: true
+            // horizontalAlignment: TextInput.AlignHCenter
+            // verticalAlignment: TextInput.AlignVCenter
             opacity:0.4
-            Layout.alignment:Qt.AlignCenter
+            // Layout.alignment:Qt.AlignCenter
             onAccepted: root.accepted()
             onEditingFinished: root.editingfinished()
             onTextEdited: root.textedited()

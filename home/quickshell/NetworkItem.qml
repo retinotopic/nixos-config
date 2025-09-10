@@ -9,13 +9,15 @@ import QtQml
 
 BarItem {
     id:root
-    clr: "blue";
-    index: 1;
+    clr: "#e67e80";
+    clrtrngl: "#d699b6";
+    index: 5;
     itemcount: 2;
     listmodel: Network.listm;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: true
+    invtrngl:false
     delegatecmpnnt: Button {
         implicitWidth: root.width
         implicitHeight: scaleheightmin
@@ -47,7 +49,7 @@ BarItem {
         Layout.preferredWidth: root.scalewidthmin
         Layout.preferredHeight: root.height
 
-        opacity:0.4
+        opacity:0
         Layout.alignment:Qt.AlignCenter
         // anchors.fill: parent
         onClicked: {

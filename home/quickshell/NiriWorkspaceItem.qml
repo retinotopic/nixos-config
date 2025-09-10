@@ -9,13 +9,15 @@ import QtQml
 
 BarItem {
     id:root
-    clr: "blue";
-    index: 2;
+    clr: "#e69875";
+    clrtrngl: "#e67e80";
+    index: 1;
     itemcount: 2;
     listmodel: Niri.listm;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false;
+    invtrngl:true
     ListView {
         id: listv
         layoutDirection:Qt.LeftToRight
@@ -32,6 +34,8 @@ BarItem {
             implicitWidth: root.scalewidthmin
             implicitHeight: root.scaleheightmin
             // Layout.alignment:Qt.AlignCenter
+            background:null
+            opacity:1
             id: execbutton
             // Text {id: maintxt1; text: id}
             Row {

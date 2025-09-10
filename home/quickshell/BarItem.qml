@@ -14,9 +14,11 @@ Item {
     // required property int itemWidth;
     // required property int itemHeight;
     required property color clr;
+    required property color clrtrngl;
     required property int index;
     required property int itemcount;
     required property real windowwidth;
+    required property bool invtrngl;
     
     property ListModel listmodel;
     property Component delegatecmpnnt;
@@ -43,6 +45,8 @@ Item {
         Layout.fillHeight:true
         Layout.fillWidth:true
         color: root.clr
+        // LayoutMirroring.enabled: !root.invtrngl
+        // LayoutMirroring.childrenInherit: !root.invtrngl
         Popup {
             id: popup
             x: root.mapToItem(null, 0, 0).x
@@ -83,9 +87,10 @@ Item {
             }
         }
         Triangle {
-            inverted:true;
+            inverted:root.invtrngl;
+            isanchor:true;
             hght:root.height;
-            clr:"red";
+            clr:root.clrtrngl;
             width: rect.height/2
             height: rect.height
         }

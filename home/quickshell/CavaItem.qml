@@ -10,13 +10,15 @@ import QtQml
 
 BarItem {
     id:root
-    clr: "blue";
-    index: 4;
+    clr: "#4c7fbbb3";
+    clrtrngl: "#4c7fbbb3";
+    index: 3;
     itemcount: 1;
     windowwidth: parent.parent.width;
     isscrollable: false;
     popupvisible: false;
     widthmin: 180
+    invtrngl:true
     // listmodel: {}
     // delegatecmpnnt:{}
     Text {

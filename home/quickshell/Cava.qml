@@ -54,7 +54,7 @@ Singleton {
                     const raw = data.split(";");
                     var full = ""
                     for (let i=0; i<raw.length; i++) {
-                        console.log(Number(raw[i]))
+                        // console.log(Number(raw[i]))
                         let symidx = Math.trunc(Number(raw[i]) * bars.length / 1000)
                         if (symidx >= bars.length) {
                             symidx = bars.length - 1

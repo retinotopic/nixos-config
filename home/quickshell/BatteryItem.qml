@@ -9,34 +9,20 @@ import QtQml
 
 BarItem {
     id:root
-    clr: "#e67e80";
-    clrtrngl: "#d699b6";
-    index: 0;
+    clr: "#dbbc7f";
+    clrtrngl: "#e69875";
+    invtrngl:false
+    index: 6;
     itemcount: 2;
-    listmodel: AppLauncher.listm;
     windowwidth: parent.parent.width;
-    isscrollable: true;
-    popupvisible: true
-    invtrngl:true
-    delegatecmpnnt: Button {
-        implicitWidth: root.width
-        implicitHeight: scaleheightmin
-        Layout.alignment:Qt.AlignCenter
-        id: execbutton
-        Text { id:maintext; text: maintxt }
-        Text { id:sectext; text: sectxt; visible:false }
-        onClicked: {
-            AppLauncher.pathname = sectext.text
-            console.log(AppLauncher.pathname)
-            AppLauncher.isexec = true;
-        }
-    }
+    isscrollable: false;
+    popupvisible: false
 
     BarElem {
         wdth: root.scalewidthmin
         hght: root.height
         pointsize: 12
-        txt: "󰀻"
+        txt: Battery.batteryLevel
         onBtnclick: {
            PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
         }
