@@ -34,19 +34,20 @@ Variants {
         BarItems {
             align:0 // Left
             // Triangle { inverted:true; hght:root.height;clr:"red"; }
-            AppLauncherItem{}
-            NiriWorkspaceItem{}
+            AppLauncherItem{ clr: Settings.colors[0][0]; clrtrngl: Settings.colors[0][1];}
+            NiriWorkspaceItem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1];}
         }
         BarItems {
             align:1 // Center
-            NiriWindowItem{}
-            CavaItem{}
+            NiriWindowItem{ clr: Settings.colors[6][1]; clrtrngl: Settings.colors[6][0];}
+            CavaItem{ clr: Settings.colors[6][1]; clrtrngl: Settings.colors[6][0];}
         }
         BarItems {
             align:2 // Right
-            BatteryItem{}
-            NotificationsItem{}
-            NetworkItem{}
+            BatteryItem{ clr: Settings.colors[2][0]; clrtrngl: Settings.colors[2][1]; }
+            NetworkItem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1]; }
+            NotificationsItem{ clr: Settings.colors[0][0]; clrtrngl: Settings.colors[0][1];}
+            // tools: shutdown,restart,screenshot,lupa list: notif
         }
     }
 }

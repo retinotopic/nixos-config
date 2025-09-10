@@ -9,8 +9,6 @@ import QtQml
 
 BarItem {
     id:root
-    clr: "#e67e80";
-    clrtrngl: "#d699b6";
     index: 0;
     itemcount: 2;
     listmodel: AppLauncher.listm;

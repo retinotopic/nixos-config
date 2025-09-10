@@ -10,8 +10,6 @@ import QtQml
 
 BarItem {
     id:root
-    clr: "#4c7fbbb3";
-    clrtrngl: "#4c7fbbb3";
     index: 3;
     itemcount: 1;
     windowwidth: parent.parent.width;

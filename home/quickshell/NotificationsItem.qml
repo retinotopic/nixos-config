@@ -9,10 +9,10 @@ import QtQml
 
 BarItem {
     id:root
-    clr: "#e69875";
-    clrtrngl: "#e67e80";
     index: 4;
     itemcount: 2;
+    // clr: "#e67e80"
+    // clrtrngl: "#d699b6"
     listmodel: Notifications.listm;
     windowwidth: parent.parent.width;
     isscrollable: false;
@@ -30,14 +30,12 @@ BarItem {
         Text { id:text2; text: summary }
     }
 
-    Button {
-        Layout.preferredWidth: root.scalewidthmin
-        Layout.preferredHeight: root.height
-
-        opacity:0
-        Layout.alignment:Qt.AlignCenter
-        // anchors.fill: parent
-        onClicked: {
+    BarElem {
+        wdth: root.scalewidthmin
+        hght: root.height
+        pointsize: 12
+        txt: "󰎔"
+        onBtnclick: {
            PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
         }
     }

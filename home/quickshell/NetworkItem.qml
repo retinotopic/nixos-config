@@ -9,10 +9,8 @@ import QtQml
 
 BarItem {
     id:root
-    clr: "#e67e80";
-    clrtrngl: "#d699b6";
     index: 5;
-    itemcount: 2;
+    itemcount: 3;
     listmodel: Network.listm;
     windowwidth: parent.parent.width;
     isscrollable: true;

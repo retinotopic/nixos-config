@@ -9,8 +9,6 @@ import QtQml
 
 BarItem {
     id:root
-    clr: "#dbbc7f";
-    clrtrngl: "#e69875";
     invtrngl:false
     index: 6;
     itemcount: 2;

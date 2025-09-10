@@ -9,8 +9,6 @@ import QtQml
 
 BarItem {
     id:root
-    clr: "#e69875";
-    clrtrngl: "#e67e80";
     index: 1;
     itemcount: 2;
     listmodel: Niri.listm;
