@@ -20,7 +20,7 @@ Singleton {
     Process {
         id:pid
         running:root.isrunning
-        command:["bash" ,"fzfmenu.sh", root.matchstr]
+        command:["bash" ,"apps.sh", root.matchstr]
         onExited: {
             root.isrunning = false;
         }
@@ -34,28 +34,25 @@ Singleton {
             onRead: data => {
                 const lines = data.toString().trim().split("\n");
                 console.log("entry")
-                // myModel.clear()
                 for (const line of lines) {
                     if (line.trim() === "") continue;
-                    console.log("ABOBA")
-                    const parts = line.split("/");
-                    const appName = parts[parts.length - 1];
-                    const desktopFile = line;
+                    const parts = line.split("|||");
                     myModel.append({ 
-                        maintxt: appName, 
-                        sectxt: desktopFile 
+                        maintxt: parts[0], 
+                        sectxt: parts[1] 
                     });
+                    console.log(parts[0],parts[1])
                 }
             }
-
         }
     }
     Process {
         id:listpid
         running: root.isexec
-        command: [ "foot", root.pathname ]
-        onExited: {
-            root.isexec = false;
+        command: [ "dex", "-w", "--term", "foot", root.pathname ]
+        onStarted: {
+            startDetached()
+            root.isexec = false
         }
     }
 }

@@ -80,6 +80,8 @@
     pkgs.discord
     pkgs.qtcreator
     pkgs.usbimager
+    pkgs.dmenu
+    pkgs.dex
   ];
 # brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 

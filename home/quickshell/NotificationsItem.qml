@@ -6,6 +6,7 @@ import Quickshell.Widgets
 import QtQuick.Layouts
 import QtQuick.Shapes
 import QtQml
+import "./services"
 
 BarItem {
     id:root

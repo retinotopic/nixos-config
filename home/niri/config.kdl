@@ -144,7 +144,7 @@ animations {
     }
     window-open {
         duration-ms 150
-        curve "ease-out-expo"
+        curve "ease-out-quad"
     }
     window-close {
         duration-ms 150

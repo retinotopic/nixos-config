@@ -19,6 +19,10 @@ RowLayout {
         return inp.text
     }
     spacing:-0.8
+    scale: visible ? 1.0 : 0.1
+    Behavior on scale { 
+        ElasticBehavior  {   } 
+    }
     Triangle {
         inverted:false
         hght:inprect.height

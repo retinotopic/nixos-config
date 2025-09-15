@@ -6,16 +6,19 @@ import Quickshell.Widgets
 import QtQuick.Layouts
 import QtQuick.Shapes
 import QtQml
+import "./services"
 
 BarItem {
     id:root
     index: 0;
-    itemcount: 2;
+    itemcount: 3;
     listmodel: AppLauncher.listm;
     windowwidth: parent.parent.width;
     isscrollable: true;
-    popupvisible: true
+    popupvisible: false
+    // widthmin:40
     invtrngl:true
+    property bool inputactive: false
     delegatecmpnnt: Button {
         implicitWidth: root.width
         implicitHeight: scaleheightmin
@@ -36,10 +39,24 @@ BarItem {
         pointsize: 12
         txt: "󰀻"
         onBtnclick: {
-           PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
+            PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
+            root.inputactive = false
+            root.popupvisible = false
+        }
+    }
+    BarElem {
+        visible: !root.inputactive
+        wdth: root.scalewidthmin
+        hght: root.height
+        pointsize: 12
+        txt: ""
+        onBtnclick: {
+            root.popupvisible = true
+            root.inputactive = true
         }
     }
     InputItem {
+        visible: root.inputactive
         wdth: root.scalewidthmin
         hght: root.height/1.5
         onTextedited: {
