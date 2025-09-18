@@ -141,6 +141,8 @@
   environment.systemPackages = [
     pkgs-unstable.helix
     pkgs.wget
+    pkgs.bc
+    pkgs.lm_sensors
     pkgs.tree
     pkgs.kitty
     pkgs.delta

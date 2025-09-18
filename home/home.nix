@@ -82,6 +82,9 @@
     pkgs.usbimager
     pkgs.dmenu
     pkgs.dex
+    pkgs.sysstat
+    pkgs.xkb-switch
+    pkgs.xkblayout-state
   ];
 # brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 

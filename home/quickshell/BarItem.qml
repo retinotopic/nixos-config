@@ -64,6 +64,9 @@ Item {
                 anchors.fill:parent
                 color: root.clr
                 clip:true
+                Behavior on height { 
+                    ElasticBehavior  {   } 
+                }
                 ListView {
                     anchors.fill: parent
                     model: root.listmodel
@@ -96,33 +99,3 @@ Item {
         }
     }
 }
-
-// Button {
-//     Layout.preferredWidth: root.scalewidthmin
-//     Layout.preferredHeight: root.height
-
-//     opacity:0.4
-//     Layout.alignment:Qt.AlignCenter
-//     // anchors.fill: parent
-//     onClicked: {
-//        PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
-//     }
-// }
-
-
-// TextInput {
-//     id: inp
-//     // text: inp.text
-//     text:"Input here"
-//     focus:true
-//     echoMode: TextInput.Normal
-//     Layout.preferredWidth: root.scalewidthmin
-//     Layout.preferredHeight: root.height
-//     onAccepted: {
-//         AppLauncher.matchstr = text
-//     }
-//     opacity:0.4
-//     Layout.alignment:Qt.AlignCenter
-//     // anchors.fill: parent
-
-// }

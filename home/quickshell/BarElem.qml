@@ -11,20 +11,20 @@ Button {
     id: root
     required property real wdth
     required property real hght
-    required property double pointsize
-    required property string txt
+    required property Item item;
+    property color clr
+    property int opac
     signal btnclick
+    Layout.alignment:Qt.AlignCenter
     Layout.preferredWidth: wdth
     Layout.preferredHeight: hght
-    background:null
-    opacity:1
-    contentItem: Text {
-        text: root.txt
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        font.pointSize:root.pointsize
+    background: Rectangle {
+        implicitWidth: wdth
+        implicitHeight: hght
+        opacity: opac
+        color: root.clr
     }
-    Layout.alignment:Qt.AlignCenter
+    contentItem: item
     // anchors.fill: parent
     onClicked: btnclick()
 }

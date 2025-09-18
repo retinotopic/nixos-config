@@ -36,6 +36,9 @@ Variants {
             // Triangle { inverted:true; hght:root.height;clr:"red"; }
             AppLauncherItem{ clr: Settings.colors[0][0]; clrtrngl: Settings.colors[0][1];}
             NiriWorkspaceItem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1];}
+            CpuItem{ clr: Settings.colors[2][0]; clrtrngl: Settings.colors[2][1];}
+            DiskItem{ clr: Settings.colors[3][0]; clrtrngl: Settings.colors[3][1];}
+            MemoryItem{ clr: Settings.colors[4][0]; clrtrngl: Settings.colors[4][1];}
         }
         BarItems {
             align:1 // Center

@@ -12,6 +12,7 @@ RowLayout {
     id:root
     required property real wdth;
     required property real hght;
+
     signal textedited
     signal accepted
     signal editingfinished

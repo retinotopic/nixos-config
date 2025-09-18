@@ -33,13 +33,13 @@ Singleton {
 
         running: root.cavaAvailable && root.refCount > 0
         command: ["sh", "-c", `printf '[general]\\n
-        sensitivity=150\\n
-        bars=13\\n
-        [output]\\n
-        method=raw\\n
-        raw_target=/dev/stdout\\n
-        bit_format=16bit\\n
-        data_format=ascii' | cava -p /dev/stdin`]
+            sensitivity=150\\n
+            bars=13\\n
+            [output]\\n
+            method=raw\\n
+            raw_target=/dev/stdout\\n
+            bit_format=16bit\\n
+            data_format=ascii' | cava -p /dev/stdin`]
 
         onRunningChanged: {
             if (!running) {

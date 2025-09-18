@@ -20,13 +20,26 @@ Singleton {
     Process {
         id:pid
         running:root.isrunning
-        command:["bash" ,"apps.sh", root.matchstr]
+        command: ["bash" ,"-c",`query="$1"
+        appdirs=$(echo "$XDG_DATA_DIRS:-/usr/local/share:/usr/share" \
+          | tr ':' '\n' \
+          | sed 's|$|/applications|')
+        
+        for d in $appdirs; do
+          for file in "$d"/*.desktop; do
+            [ -f "$file" ] || continue
+            filename=$(grep -m1 '^Name=' "$file" | cut -d= -f2-)
+            if [ -z "$query" ] || echo "$filename" | grep -iq "$query"; then
+              echo "$filename|||$file"
+            fi
+          done
+        done
+        ` ,"--",root.matchstr]
         onExited: {
             root.isrunning = false;
         }
         onCommandChanged: {
             myModel.clear()
-            // AppLauncher.matchstr = "sd"
             console.log(AppLauncher.matchstr)
             root.isrunning = true;
         }

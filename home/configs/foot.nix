@@ -25,6 +25,8 @@
         bright5 = "d699b6"; # magenta
         bright6 = "83c092"; # cyan
         bright7 = "d3c6aa"; # white
+        selection-foreground = "83c092";
+        selection-background = "505a60";
       };
       main = {
         term = "xterm-256color";

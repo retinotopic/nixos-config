@@ -34,8 +34,12 @@ BarItem {
     BarElem {
         wdth: root.scalewidthmin
         hght: root.height
-        pointsize: 12
-        txt: "󰎔"
+        item: Text {
+            text: "󰎔"
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            font.pointSize:12
+        }
         onBtnclick: {
            PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
         }
