@@ -6,28 +6,29 @@ import Quickshell.Widgets
 import QtQuick.Layouts
 import QtQuick.Shapes
 import QtQml
-import "./services"
+import "../services"
+import "../"
 
 BarItem {
     id:root
     invtrngl:true
-    index: 4;
+    index: 3;
     itemcount: 2;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false
 
-    BarElem {
+    BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height
         item: Text {
-            text: SysInfo.memoryUsage
+            text: SysInfo.diskUsage
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pointSize:12
         }
         onBtnclick: {
-           PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
+           Settings.curridx = root.index == Settings.curridx ? -1 : root.index
         }
     }
 }

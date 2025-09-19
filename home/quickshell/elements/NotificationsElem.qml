@@ -6,7 +6,8 @@ import Quickshell.Widgets
 import QtQuick.Layouts
 import QtQuick.Shapes
 import QtQml
-import "./services"
+import "../services"
+import "../"
 
 BarItem {
     id:root
@@ -31,7 +32,7 @@ BarItem {
         Text { id:text2; text: summary }
     }
 
-    BarElem {
+    BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height
         item: Text {
@@ -41,7 +42,7 @@ BarItem {
             font.pointSize:12
         }
         onBtnclick: {
-           PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
+           Settings.curridx = root.index == Settings.curridx ? -1 : root.index
         }
     }
 }

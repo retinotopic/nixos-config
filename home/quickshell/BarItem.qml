@@ -33,7 +33,7 @@ Item {
     property real maxWidth: itemcount * widthmin
     property real scalewidthmin: scaleFactor*widthmin
     property real scaleheightmin: scaleFactor*40
-    implicitWidth:  PopupState.curridx == root.index ? scaleFactor*maxWidth : scalewidthmin
+    implicitWidth:  Settings.curridx == root.index ? scaleFactor*maxWidth : scalewidthmin
     implicitHeight: scaleheightmin
 
     default property alias content: itemsrow.data
@@ -54,7 +54,7 @@ Item {
             implicitWidth: root.width
             implicitHeight: scaleheightmin*3
             focus: true
-            visible: PopupState.curridx == root.index && root.popupvisible
+            visible: Settings.curridx == root.index && root.popupvisible
             modal: false
             closePolicy: Popup.NoAutoClose
             margins:0
@@ -89,7 +89,7 @@ Item {
                 Layout.alignment:Qt.AlignCenter
             }
         }
-        Triangle {
+        TriangleItem {
             inverted:root.invtrngl;
             isanchor:true;
             hght:root.height;

@@ -6,7 +6,8 @@ import Quickshell.Widgets
 import QtQuick.Layouts
 import QtQuick.Shapes
 import QtQml
-import "./services"
+import "../services"
+import "../"
 
 BarItem {
     id:root
@@ -52,7 +53,7 @@ BarItem {
         Layout.alignment:Qt.AlignCenter
         // anchors.fill: parent
         onClicked: {
-           PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
+           Settings.curridx = root.index == Settings.curridx ? -1 : root.index
         }
     }
     InputItem {

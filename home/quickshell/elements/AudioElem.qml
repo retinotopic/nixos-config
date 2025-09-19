@@ -1,3 +1,4 @@
+
 import Quickshell // for PanelWindow
 import Quickshell.Io
 import QtQuick // for Text
@@ -6,29 +7,31 @@ import Quickshell.Widgets
 import QtQuick.Layouts
 import QtQuick.Shapes
 import QtQml
-import "./services"
+import "../services"
+import "../"
 
 BarItem {
     id:root
-    invtrngl:true
-    index: 2;
+    invtrngl:false
+    index: 4;
     itemcount: 2;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false
 
-    BarElem {
+    BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height
         item: Text {
-            text: SysInfo.cpuUsageUserspace
+            text: Audio.volume
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pointSize:12
         }
         onBtnclick: {
-           PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
+           Settings.curridx = root.index == Settings.curridx ? -1 : root.index
         }
     }
 }
+
 

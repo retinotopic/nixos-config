@@ -24,7 +24,7 @@ RowLayout {
     Behavior on scale { 
         ElasticBehavior  {   } 
     }
-    Triangle {
+    TriangleItem {
         inverted:false
         hght:inprect.height
         clr:"#424b50"
@@ -60,7 +60,7 @@ RowLayout {
             onTextEdited: root.textedited()
         }
     }
-    Triangle {
+    TriangleItem {
         inverted:true
         hght:inprect.height
         clr:"#424b50"

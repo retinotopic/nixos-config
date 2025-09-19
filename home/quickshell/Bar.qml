@@ -4,6 +4,7 @@ import QtQuick // for Text
 import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell.Widgets
+import "./elements"
 
 Variants {
   model: Quickshell.screens
@@ -22,7 +23,7 @@ Variants {
         // }
         // margins {
         //     top:0
-        //     right:0
+        //     right:0dowElem{ clr:
         //     left:0
         //     bottom:0
         // }
@@ -34,22 +35,23 @@ Variants {
         BarItems {
             align:0 // Left
             // Triangle { inverted:true; hght:root.height;clr:"red"; }
-            AppLauncherItem{ clr: Settings.colors[0][0]; clrtrngl: Settings.colors[0][1];}
-            NiriWorkspaceItem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1];}
-            CpuItem{ clr: Settings.colors[2][0]; clrtrngl: Settings.colors[2][1];}
-            DiskItem{ clr: Settings.colors[3][0]; clrtrngl: Settings.colors[3][1];}
-            MemoryItem{ clr: Settings.colors[4][0]; clrtrngl: Settings.colors[4][1];}
+            AppLauncherElem{ clr: Settings.colors[0][0]; clrtrngl: Settings.colors[0][1];}
+            NiriWorkspaceElem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1];}
+            CpuElem{ clr: Settings.colors[2][0]; clrtrngl: Settings.colors[2][1];}
+            DiskElem{ clr: Settings.colors[3][0]; clrtrngl: Settings.colors[3][1];}
+            MemoryElem{ clr: Settings.colors[4][0]; clrtrngl: Settings.colors[4][1];}
         }
         BarItems {
             align:1 // Center
-            NiriWindowItem{ clr: Settings.colors[6][1]; clrtrngl: Settings.colors[6][0];}
-            CavaItem{ clr: Settings.colors[6][1]; clrtrngl: Settings.colors[6][0];}
+            NiriWindowElem{ clr: Settings.colors[6][1]; clrtrngl: Settings.colors[6][0];}
+            CavaElem{ clr: Settings.colors[6][1]; clrtrngl: Settings.colors[6][0];}
         }
         BarItems {
             align:2 // Right
-            BatteryItem{ clr: Settings.colors[2][0]; clrtrngl: Settings.colors[2][1]; }
-            NetworkItem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1]; }
-            NotificationsItem{ clr: Settings.colors[0][0]; clrtrngl: Settings.colors[0][1];}
+            AudioElem{ clr: Settings.colors[3][0]; clrtrngl: Settings.colors[3][1]; }
+            BatteryElem{ clr: Settings.colors[2][0]; clrtrngl: Settings.colors[2][1]; }
+            NetworkElem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1]; }
+            NotificationsElem{ clr: Settings.colors[0][0]; clrtrngl: Settings.colors[0][1];}
             // tools: shutdown,restart,screenshot,lupa list: notif
         }
     }

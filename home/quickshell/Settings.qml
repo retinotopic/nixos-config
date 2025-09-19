@@ -16,4 +16,5 @@ Singleton {
     ["#83c092","#a7c080"],
     ["#7fbbb3","#83c092"],
     ["#7fbbb3","#4c7fbbb3"]]
+    property int curridx:-1
 }
