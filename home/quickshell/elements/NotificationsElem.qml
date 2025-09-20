@@ -11,7 +11,7 @@ import "../"
 
 BarItem {
     id:root
-    index: 4;
+    index: 11;
     itemcount: 2;
     // clr: "#e67e80"
     // clrtrngl: "#d699b6"

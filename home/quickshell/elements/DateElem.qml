@@ -11,9 +11,9 @@ import "../"
 
 BarItem {
     id:root
-    invtrngl:true
-    index: 2;
-    itemcount: 2;
+    invtrngl:false
+    index: 7;
+    itemcount: 10;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false
@@ -22,7 +22,7 @@ BarItem {
         wdth: root.scalewidthmin
         hght: root.height
         item: Text {
-            text: SysInfo.cpuUsageUserspace
+            text: SysInfo.clockdate
             verticalAlignment: Text.AlignVCenter
             font.pointSize:12
         }

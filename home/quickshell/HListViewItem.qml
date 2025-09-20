@@ -15,11 +15,11 @@ ListView {
     implicitWidth: wdth
     implicitHeight: hght
     Layout.alignment:Qt.AlignCenter
-    required property ListModel listmodel;
+    required property var datamodel;
     required property Component delegatecmpnnt;
     required property real wdth;
     required property real hght;
     delegate: delegatecmpnnt
-    model: listmodel
+    model: datamodel
 }
 

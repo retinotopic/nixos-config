@@ -13,14 +13,12 @@ Singleton {
     property ListModel listm: ListModel {id: myModel}
     property string matchstr: "btop"
     property bool isrunning:false
-
     property string pathname
     property bool isexec:false
-
     Process {
         id:pid
         running:root.isrunning
-        command: ["bash" ,"-c",`query="$1"
+        command: ["sh" ,"-c",`query="$1"
         appdirs=$(echo "$XDG_DATA_DIRS:-/usr/local/share:/usr/share" \
           | tr ':' '\n' \
           | sed 's|$|/applications|')

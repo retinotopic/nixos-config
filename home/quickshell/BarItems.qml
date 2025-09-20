@@ -28,8 +28,6 @@ Item {
 
     RowLayout {
         spacing:0
-        // LayoutMirroring.enabled: true
-        // LayoutMirroring.childrenInherit: true
         id: contentRow
         // width:baritems.width
         // height:parent.height

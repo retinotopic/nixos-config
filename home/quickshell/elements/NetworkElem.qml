@@ -11,7 +11,7 @@ import "../"
 
 BarItem {
     id:root
-    index: 5;
+    index: 10;
     itemcount: 3;
     listmodel: Network.listm;
     windowwidth: parent.parent.width;

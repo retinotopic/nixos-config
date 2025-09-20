@@ -13,13 +13,21 @@ Singleton {
     property string gpuTemp: ""
     property string memoryUsage: ""
     property string diskUsage: ""
+
+    property string clockdate: Qt.formatDateTime(clock.date, "yyyy-MM-dd")
+    property string clocktime: Qt.formatDateTime(clock.date, "hh:mm:ss")
     
     property var polls: [1,2,8,32,64] // intervals in seconds (must be power of 2)
     property var pollids: [0,1,1,1,3] // indices in polls
-    property var metrics: [cpuusage,cputemp,gputemp,memusage,diskusage]
+    property list<Process> metrics: [cpuusage,cputemp,gputemp,memusage,diskusage]
     
 // niri msg action switch-layout 0
 // niri msg keyboard-layouts
+
+    SystemClock {
+      id: clock
+      precision: SystemClock.Seconds
+    }
 
     Process {
         id: gputemp
@@ -67,18 +75,18 @@ Singleton {
         }}
     }
     Timer {
-        interval: root.polls[intrvl]*1000
+        interval: root.polls[minInterval]*1000
         repeat: true
         running: true
 
         property int counter: 0
-        property int intrvl: 0
+        property int minInterval: 0
 
         onTriggered: {
-            counter += root.polls[intrvl]
+            counter += root.polls[minInterval]
             for (let i=0; i<root.metrics.length; i++) {
-                if (root.polls[intrvl] > root.polls[i]) {
-                    intrvl = i
+                if (root.polls[minInterval] > root.polls[i]) {
+                    minInterval = i
                     counter = 0
                     return
                 }

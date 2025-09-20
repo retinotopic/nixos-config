@@ -12,12 +12,25 @@ import "../"
 BarItem {
     id:root
     invtrngl:false
-    index: 6;
-    itemcount: 2;
+    index: 9;
+    itemcount: 3;
     windowwidth: parent.parent.width;
-    isscrollable: false;
+    isscrollable: true;
     popupvisible: false
 
+    BarContentItem {
+        wdth: implicitContentWidth
+        hght: root.height
+        item: Text {
+            id: txt
+            text: "ABOBANVSNVJLSFNLVKNSKF"
+            verticalAlignment: Text.AlignVCenter
+            font.pointSize:12
+        }
+        onBtnclick: {
+           Settings.curridx = root.index == Settings.curridx ? -1 : root.index
+        }
+    }
     BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height
@@ -29,13 +42,6 @@ BarItem {
         }
         onBtnclick: {
            Settings.curridx = root.index == Settings.curridx ? -1 : root.index
-        }
-    }
-    InputItem {
-        wdth: root.scalewidthmin
-        hght: root.height/1.5
-        onTextedited: {
-            AppLauncher.matchstr = gettext()
         }
     }
 }

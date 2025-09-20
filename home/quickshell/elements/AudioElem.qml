@@ -13,7 +13,7 @@ import "../"
 BarItem {
     id:root
     invtrngl:false
-    index: 4;
+    index: 8;
     itemcount: 2;
     windowwidth: parent.parent.width;
     isscrollable: true;
@@ -24,7 +24,6 @@ BarItem {
         hght: root.height
         item: Text {
             text: Audio.volume
-            horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pointSize:12
         }

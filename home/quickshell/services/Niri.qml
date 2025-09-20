@@ -6,8 +6,8 @@ import Quickshell.Io
 
 Singleton {
     id: root
-    property ListModel listm: ListModel {id: workspaceslistmodel}
-    property var windows: []
+    property list<var> windows: []
+    property list<var> workspaces: []
     property int focusedWindowIndex: -1
     property int focusedWorkspaceIndex: -1
     property bool inOverview: false
@@ -46,10 +46,9 @@ Singleton {
             onRead: function(line) {
                 try {
                     const workspacesData = JSON.parse(line);
-                    const workspacesList = [];
-                    // workspaceslistmodel.clear()
+                    root.workspaces = []
                     for (const ws of workspacesData) {
-                        workspacesList.push({
+                        root.workspaces.push({
                             id: ws.id,
                             idx: ws.idx,
                             name: ws.name || "",
@@ -61,16 +60,12 @@ Singleton {
                         });
                     }
                     
-                    workspacesList.sort((a, b) => {
+                    root.workspaces.sort((a, b) => {
                         if (a.output !== b.output) {
                             return a.output.localeCompare(b.output);
                         }
                         return a.idx - b.idx;
                     });
-                    workspaceslistmodel.clear()
-                    for (let i=0; i<workspacesList.length; i++) {
-                        workspaceslistmodel.append(workspacesList[i])
-                    }
                 } catch (e) {
                     console.error("Failed to parse workspaces:", e, line);
                 }
@@ -93,9 +88,9 @@ Singleton {
                     } else if (event.WindowsChanged) {
                         try {
                             const windowsData = event.WindowsChanged.windows;
-                            const windowsList = [];
+                            root.windows = [];
                             for (const win of windowsData) {
-                                windowsList.push({
+                                root.windows.push({
                                     id: win.id,
                                     title: win.title || "",
                                     appId: win.app_id || "",
@@ -104,11 +99,12 @@ Singleton {
                                 });
                             }
                         
-                            windowsList.sort((a, b) => a.id - b.id);
-                            root.windows = windowsList;
-                            for (let i = 0; i < windowsList.length; i++) {
-                                if (windowsList[i].isFocused) {
+                            root.windows.sort((a, b) => a.id - b.id);
+                            // root.root.windows = root.windows;
+                            for (let i = 0; i < root.windows.length; i++) {
+                                if (root.windows[i].isFocused) {
                                     root.focusedWindowIndex = i;
+                                    root.focusedWindowTitle = root.windows[i].title
                                     console.log("FOCUS");
                                     break;
                                 }

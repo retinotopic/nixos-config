@@ -13,6 +13,7 @@ Singleton {
     property list<string> colors: ['#d3c6aa','#7fbbb3','#83c092','#a7c080','#dbbc7f','#e69875','#e67e80','#d699b6']
     property int refCount: 13
     property bool cavaAvailable: false
+    
 
     Process {
         id: cavaCheck

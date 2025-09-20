@@ -11,7 +11,7 @@ import "../"
 
 BarItem {
     id:root
-    index: 2;
+    index: 5;
     itemcount: 1;
     windowwidth: parent.parent.width;
     isscrollable: false;
@@ -24,7 +24,7 @@ BarItem {
         Layout.preferredHeight: root.height
         id: inp
         // clip:true
-        text: Niri.windows[Niri.focusedWindowIndex].title
+        text: Niri.focusedWindowTitle
         // focus:true
         color: "black"
         // Layout.fillHeight: true

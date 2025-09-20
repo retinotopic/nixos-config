@@ -19,20 +19,19 @@ Item {
     required property int itemcount;
     required property real windowwidth;
     required property bool invtrngl;
-    
-    property ListModel listmodel;
-    property Component delegatecmpnnt;
-    property real widthmin: 60
-    
     required property bool popupvisible;
     required property bool isscrollable;
     
+    property ListModel listmodel;
+    property Component delegatecmpnnt;
+    property real widthmin: 70
     property real scaleFactor: windowwidth / 1920
-    Behavior on implicitWidth { ElasticBehavior {} }
-    Behavior on implicitHeight { ElasticBehavior {} }
     property real maxWidth: itemcount * widthmin
     property real scalewidthmin: scaleFactor*widthmin
     property real scaleheightmin: scaleFactor*40
+    Behavior on implicitWidth { ElasticBehavior {} }
+    Behavior on implicitHeight { ElasticBehavior {} }
+    
     implicitWidth:  Settings.curridx == root.index ? scaleFactor*maxWidth : scalewidthmin
     implicitHeight: scaleheightmin
 
@@ -44,9 +43,11 @@ Item {
         anchors.fill: root
         Layout.fillHeight:true
         Layout.fillWidth:true
-        color: root.clr
+
         // LayoutMirroring.enabled: !root.invtrngl
-        // LayoutMirroring.childrenInherit: !root.invtrngl
+        // LayoutMirroring.childrenInherit: true
+
+        color: root.clr
         Popup {
             id: popup
             x: root.mapToItem(null, 0, 0).x
@@ -82,11 +83,23 @@ Item {
             interactive:root.isscrollable
             contentWidth: itemsrow.implicitWidth
             contentHeight: itemsrow.implicitHeight
+            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
             RowLayout {
-                id :itemsrow
-                visible:true
-                spacing:0
-                Layout.alignment:Qt.AlignCenter
+                Item {
+                    visible: root.invtrngl
+                    implicitWidth: rect.height/2
+                }
+                RowLayout {
+                    id :itemsrow
+                    visible:true
+                    spacing:0
+                }
+                // layoutDirection: root.invtrngl ? Qt.RightToLeft : Qt.LeftToRight
+                // layoutDirection: root.invtrngl ? Qt.LeftToRight : Qt.RightToLeft
+                Item {
+                    visible: !root.invtrngl
+                    implicitWidth: rect.height/2
+                }
             }
         }
         TriangleItem {

@@ -23,7 +23,6 @@ BarItem {
         hght: root.height
         item: Text {
             text: SysInfo.diskUsage
-            horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pointSize:12
         }

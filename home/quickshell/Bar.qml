@@ -48,6 +48,7 @@ Variants {
         }
         BarItems {
             align:2 // Right
+            DateElem{ clr: Settings.colors[4][0]; clrtrngl: Settings.colors[4][1]; }
             AudioElem{ clr: Settings.colors[3][0]; clrtrngl: Settings.colors[3][1]; }
             BatteryElem{ clr: Settings.colors[2][0]; clrtrngl: Settings.colors[2][1]; }
             NetworkElem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1]; }

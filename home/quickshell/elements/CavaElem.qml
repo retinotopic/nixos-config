@@ -12,36 +12,13 @@ import "../"
 
 BarItem {
     id:root
-    index: 3;
+    index: 6;
     itemcount: 3;
     windowwidth: parent.parent.width;
     isscrollable: false;
     popupvisible: false;
     widthmin: 180
     invtrngl:true
-    delegatecmpnnt: ListDelegateItem {
-        id: del
-        required property string maintxt;
-        required property string sectxt;
-        wdth:root.width
-        hght:root.height
-        BarContentItem {
-            wdth: root.width
-            hght: root.height
-            clr: "#424b50"; opac: 1
-            item: Text {
-                text: del.maintxt
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.pointSize:12
-            }
-            onBtnclick: {
-                AppLauncher.pathname = del.sectxt
-                console.log(AppLauncher.pathname)
-                AppLauncher.isexec = true;
-            }
-        }
-    }
     BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height
@@ -60,28 +37,28 @@ BarItem {
         wdth: root.scalewidthmin
         hght: root.height
         item: Text {
-            text: "󰐊"
+            text: Mpris.activePlayer && Mpris.activePlayer.canTogglePlaying ? "󰐊" : "󰏤"
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pointSize:12
             textFormat: Text.StyledText
         }
         onBtnclick: {
-            Mpris.play();
+            Mpris.playPause();
         }
     }
     BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height
         item: Text {
-            text: "󰏤"
+            text: SysInfo.clocktime
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.pointSize:12
             textFormat: Text.StyledText
         }
         onBtnclick: {
-            Mpris.pause();
+            Mpris.playPause();
         }
     }
 }
