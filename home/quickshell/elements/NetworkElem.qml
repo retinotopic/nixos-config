@@ -13,12 +13,16 @@ BarItem {
     id:root
     index: 10;
     itemcount: 3;
-    listmodel: Network.listm;
+    datamodel: Network.allNetworks;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: true
     invtrngl:false
     delegatecmpnnt: Button {
+        required property string ssid;
+        required property bool active;
+        required property string bars;
+        required property string security;
         implicitWidth: root.width
         implicitHeight: scaleheightmin
         Layout.alignment:Qt.AlignCenter
@@ -28,8 +32,9 @@ BarItem {
             // Text {id: maintxt1; text: active}
             // Text {id: maintxt2; text: strength}
             // Text {id: maintxt3; text: frequency}
+            Text {id: maintxt7; text: active}
             Text {id: maintxt4; text: ssid}
-            Text {id: maintxt5; text: bssid}
+            Text {id: maintxt5; text: bars}
             Text {id: maintxt6; text: security}
         }
         onClicked: {

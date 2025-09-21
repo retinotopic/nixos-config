@@ -15,7 +15,7 @@ BarItem {
     id:root
     index: 0;
     itemcount: 3;
-    listmodel: AppLauncher.listm;
+    datamodel: AppLauncher.desktopapps;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false
@@ -24,8 +24,7 @@ BarItem {
     property bool inputactive: false
     delegatecmpnnt: ListDelegateItem {
         id: del
-        required property string maintxt;
-        required property string sectxt;
+        required property string appname;
         wdth:root.width
         hght:root.height
         BarContentItem {
@@ -33,7 +32,7 @@ BarItem {
             hght: root.height
             clr: "#424b50"; opac: 1
             item: Text {
-                text: del.maintxt
+                text: del.appname
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.pointSize:12

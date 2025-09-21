@@ -22,7 +22,7 @@ BarItem {
         wdth: root.scalewidthmin
         hght: root.height
         item: Text {
-            text: SysInfo.memoryUsage
+            text: SysInfo2.memPercent
             verticalAlignment: Text.AlignVCenter
             font.pointSize:12
         }

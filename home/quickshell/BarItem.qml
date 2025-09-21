@@ -22,7 +22,7 @@ Item {
     required property bool popupvisible;
     required property bool isscrollable;
     
-    property ListModel listmodel;
+    property var datamodel;
     property Component delegatecmpnnt;
     property real widthmin: 70
     property real scaleFactor: windowwidth / 1920
@@ -70,7 +70,7 @@ Item {
                 }
                 ListView {
                     anchors.fill: parent
-                    model: root.listmodel
+                    model: root.datamodel
                     contentWidth: root.scalewidthmin
                     contentHeight: root.height
                     delegate: root.delegatecmpnnt
@@ -94,8 +94,6 @@ Item {
                     visible:true
                     spacing:0
                 }
-                // layoutDirection: root.invtrngl ? Qt.RightToLeft : Qt.LeftToRight
-                // layoutDirection: root.invtrngl ? Qt.LeftToRight : Qt.RightToLeft
                 Item {
                     visible: !root.invtrngl
                     implicitWidth: rect.height/2

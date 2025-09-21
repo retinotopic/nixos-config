@@ -22,7 +22,7 @@ BarItem {
         wdth: root.scalewidthmin
         hght: root.height
         item: Text {
-            text: SysInfo.clockdate
+            text: SysInfo2.clockdate
             verticalAlignment: Text.AlignVCenter
             font.pointSize:12
         }

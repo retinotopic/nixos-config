@@ -15,7 +15,7 @@ BarItem {
     itemcount: 2;
     // clr: "#e67e80"
     // clrtrngl: "#d699b6"
-    listmodel: Notifications.listm;
+    datamodel: Notifications.listm;
     windowwidth: parent.parent.width;
     isscrollable: false;
     popupvisible: true

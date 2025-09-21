@@ -66,6 +66,7 @@ Singleton {
                         }
                         return a.idx - b.idx;
                     });
+                    console.log(root.workspaces)
                 } catch (e) {
                     console.error("Failed to parse workspaces:", e, line);
                 }

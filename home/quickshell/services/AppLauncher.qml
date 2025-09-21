@@ -10,11 +10,50 @@ import QtQml.Models
 
 Singleton {
     id:root
+    // property ObjectModel<var> desktopapps: []
+    property list<var> desktopapps: []
     property ListModel listm: ListModel {id: myModel}
     property string matchstr: "btop"
     property bool isrunning:false
     property string pathname
     property bool isexec:false
+
+    readonly property var applications: DesktopEntries.applications.values
+
+
+    function searchApplications(query) {
+        desktopapps = [];
+        console.log("CLEAREd")
+        // if (!query || query.length === 0)
+        //     return applications
+        // if (applications.length === 0)
+        //     return []
+
+        // const queryLower = query.toLowerCase().trim()
+
+        for (const app of applications) {
+            // const name = (app.name || "").toLowerCase()
+            // const genericName = (app.genericName || "").toLowerCase()
+            // const comment = (app.comment || "").toLowerCase()
+            // const keywords = app.keywords ? app.keywords.map(k => k.toLowerCase()) : []
+
+            console.log(app.name)
+            try {
+                desktopapps.push({
+                    appname:  app.name
+                });
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        console.log("AFTER:", Object.getOwnPropertyNames(root.desktopapps));
+
+        console.log(desktopapps)
+
+        // root.desktopapps.sort((a, b) => b.score - a.score)
+        // root.desktopapps.slice(0, 50).map(item => item.app)
+    }
+
     Process {
         id:pid
         running:root.isrunning
@@ -37,23 +76,11 @@ Singleton {
             root.isrunning = false;
         }
         onCommandChanged: {
-            myModel.clear()
-            console.log(AppLauncher.matchstr)
-            root.isrunning = true;
+            root.searchApplications(root.matchstr)
         }
+
         stdout: SplitParser {
             onRead: data => {
-                const lines = data.toString().trim().split("\n");
-                console.log("entry")
-                for (const line of lines) {
-                    if (line.trim() === "") continue;
-                    const parts = line.split("|||");
-                    myModel.append({ 
-                        maintxt: parts[0], 
-                        sectxt: parts[1] 
-                    });
-                    console.log(parts[0],parts[1])
-                }
             }
         }
     }

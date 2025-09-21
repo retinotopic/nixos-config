@@ -22,7 +22,7 @@ BarItem {
         wdth: root.scalewidthmin
         hght: root.height
         item: Text {
-            text: SysInfo.cpuUsageUserspace
+            text: SysInfo2.cpuUsage + " " + SysInfo2.cpuTemp
             verticalAlignment: Text.AlignVCenter
             font.pointSize:12
         }
