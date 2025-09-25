@@ -19,8 +19,10 @@ Button {
     Layout.preferredWidth: wdth
     Layout.preferredHeight: hght
     background: Rectangle {
-        implicitWidth: wdth
-        implicitHeight: hght
+        // implicitWidth: wdth
+        // implicitHeight: hght
+        Layout.preferredWidth: wdth
+        Layout.preferredHeight: hght
         opacity: opac
         color: root.clr
     }

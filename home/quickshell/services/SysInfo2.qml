@@ -1,10 +1,8 @@
 pragma Singleton
 
 import QtQuick
-// import Qt.labs.folderlistmodel
 import Quickshell
 import Quickshell.Io
-// import qs.Commons
   
 Singleton {
     id: root
@@ -18,7 +16,6 @@ Singleton {
     property real rxSpeed: 0
     property real txSpeed: 0
     // Configuration
-    property int sleepDuration: 3000
 
     property var polls: [1,2,8,32,64] // intervals in seconds (must be power of 2)
     property var pollids: [1,1,1,1,3] // indices in polls
@@ -52,8 +49,6 @@ Singleton {
     property int intelTempMaxFiles: 20 // Will test up to temp20_input
   
     Component.onCompleted: {
-        console.log("SystemStat", "Service started with interval:", root.sleepDuration, "ms")
-
         // Kickoff the cpu name detection for temperature
         cpuTempNameReader.checkNext()
     }
@@ -62,17 +57,6 @@ Singleton {
     Timer {
         id: updateTimer
         triggeredOnStart: true
-        // onTriggered: {
-        //     // Trigger all direct system files reads
-        //     memInfoFile.reload()
-        //     cpuStatFile.reload()
-        //     netDevFile.reload()
-
-        //     // Run df (disk free) one time
-        //     dfProcess.running = true
-
-        //     updateCpuTemperature()
-        // }
         interval: root.polls[minInterval]*1000
         repeat: true
         running: true

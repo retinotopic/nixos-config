@@ -13,7 +13,6 @@ pragma ComponentBehavior: Bound
 
 BarItem {
     id:root
-    index: 0;
     itemcount: 3;
     datamodel: AppLauncher.desktopapps;
     windowwidth: parent.parent.width;
@@ -54,7 +53,7 @@ BarItem {
             font.pointSize:12
         }
         onBtnclick: {
-            Settings.curridx = root.index == Settings.curridx ? -1 : root.index
+            Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
             root.inputactive = false
             root.popupvisible = false
         }

@@ -16,7 +16,7 @@ Rectangle {
     property color clr: "transparent";
     implicitWidth: wdth
     implicitHeight: hght
-    color: clr
+    color: "transparent"
     default property alias content: middleContent.data
 
     RowLayout {
@@ -24,11 +24,11 @@ Rectangle {
         spacing: -0.8
         anchors.centerIn:root
         scale:0.75
-        TriangleItem { inverted:false; hght:root.height; clr:"#424b50"}
+        TriangleItem { inverted:false; hght:root.height; clr:root.clr}
         RowLayout {
             id: middleContent
             Layout.alignment: Qt.AlignVCenter
         }
-        TriangleItem { inverted:true; hght:root.height; clr:"#424b50" }
+        TriangleItem { inverted:true; hght:root.height; clr:root.clr }
     }
 }

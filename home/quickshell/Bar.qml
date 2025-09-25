@@ -35,24 +35,24 @@ Variants {
         BarItems {
             align:0 // Left
             // Triangle { inverted:true; hght:root.height;clr:"red"; }
-            AppLauncherElem{ clr: Settings.colors[0][0]; clrtrngl: Settings.colors[0][1];}
-            NiriWorkspaceElem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1];}
-            CpuElem{ clr: Settings.colors[2][0]; clrtrngl: Settings.colors[2][1];}
-            DiskElem{ clr: Settings.colors[3][0]; clrtrngl: Settings.colors[3][1];}
-            MemoryElem{ clr: Settings.colors[4][0]; clrtrngl: Settings.colors[4][1];}
+            AppLauncherElem{ clr: Settings.colors[0][0]; clrtrngl: Settings.colors[0][1]; indx: 0}
+            NiriWorkspaceElem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1]; indx: 1}
+            CpuElem{ clr: Settings.colors[2][0]; clrtrngl: Settings.colors[2][1]; indx: 2}
+            DiskElem{ clr: Settings.colors[3][0]; clrtrngl: Settings.colors[3][1]; indx: 3}
+            MemoryElem{ clr: Settings.colors[4][0]; clrtrngl: Settings.colors[4][1]; indx: 4}
         }
         BarItems {
             align:1 // Center
-            NiriWindowElem{ clr: Settings.colors[6][1]; clrtrngl: Settings.colors[6][0];}
-            CavaElem{ clr: Settings.colors[6][1]; clrtrngl: Settings.colors[6][0];}
+            NiriWindowElem{ clr: Settings.windowcolors[0]; clrtrngl: Settings.windowcolors[1]; indx: 5}
+            CavaElem{ clr: Settings.windowcolors[0]; clrtrngl: Settings.windowcolors[1]; indx: 6}
         }
         BarItems {
             align:2 // Right
-            DateElem{ clr: Settings.colors[4][0]; clrtrngl: Settings.colors[4][1]; }
-            AudioElem{ clr: Settings.colors[3][0]; clrtrngl: Settings.colors[3][1]; }
-            BatteryElem{ clr: Settings.colors[2][0]; clrtrngl: Settings.colors[2][1]; }
-            NetworkElem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1]; }
-            NotificationsElem{ clr: Settings.colors[0][0]; clrtrngl: Settings.colors[0][1];}
+            DateElem{ clr: Settings.colors[4][0]; clrtrngl: Settings.colors[4][1]; indx: 7}
+            AudioElem{ clr: Settings.colors[3][0]; clrtrngl: Settings.colors[3][1]; indx: 8}
+            BatteryElem{ clr: Settings.colors[2][0]; clrtrngl: Settings.colors[2][1]; indx: 9}
+            NetworkElem{ clr: Settings.colors[1][0]; clrtrngl: Settings.colors[1][1]; indx: 10}
+            NotificationsElem{ clr: Settings.colors[0][0]; clrtrngl: Settings.colors[0][1]; indx: 11}
             // tools: shutdown,restart,screenshot,lupa list: notif
         }
     }

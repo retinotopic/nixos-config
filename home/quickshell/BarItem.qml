@@ -15,7 +15,7 @@ Item {
     // required property int itemHeight;
     required property color clr;
     required property color clrtrngl;
-    required property int index;
+    required property int indx;
     required property int itemcount;
     required property real windowwidth;
     required property bool invtrngl;
@@ -32,7 +32,7 @@ Item {
     Behavior on implicitWidth { ElasticBehavior {} }
     Behavior on implicitHeight { ElasticBehavior {} }
     
-    implicitWidth:  Settings.curridx == root.index ? scaleFactor*maxWidth : scalewidthmin
+    implicitWidth:  Settings.curridx == root.indx ? scaleFactor*maxWidth : scalewidthmin
     implicitHeight: scaleheightmin
 
     default property alias content: itemsrow.data
@@ -55,7 +55,7 @@ Item {
             implicitWidth: root.width
             implicitHeight: scaleheightmin*3
             focus: true
-            visible: Settings.curridx == root.index && root.popupvisible
+            visible: Settings.curridx == root.indx && root.popupvisible
             modal: false
             closePolicy: Popup.NoAutoClose
             margins:0
@@ -69,6 +69,8 @@ Item {
                     ElasticBehavior  {   } 
                 }
                 ListView {
+                    // highlightRangeMode: ListView.StrictlyEnforceRange
+                    highlightRangeMode: ListView.StrictlyEnforceRange
                     anchors.fill: parent
                     model: root.datamodel
                     contentWidth: root.scalewidthmin

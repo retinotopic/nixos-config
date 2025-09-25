@@ -11,61 +11,129 @@ import "../"
 
 BarItem {
     id:root
-    index: 10;
     itemcount: 3;
-    datamodel: Network.allNetworks;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: true
     invtrngl:false
-    delegatecmpnnt: Button {
-        required property string ssid;
-        required property bool active;
-        required property string bars;
-        required property string security;
-        implicitWidth: root.width
-        implicitHeight: scaleheightmin
-        Layout.alignment:Qt.AlignCenter
-        id: execbutton
-        RowLayout {
-            
-            // Text {id: maintxt1; text: active}
-            // Text {id: maintxt2; text: strength}
-            // Text {id: maintxt3; text: frequency}
-            Text {id: maintxt7; text: active}
-            Text {id: maintxt4; text: ssid}
-            Text {id: maintxt5; text: bars}
-            Text {id: maintxt6; text: security}
-        }
-        onClicked: {
-            // AppLauncher.pathname = sectext.text
-            // console.log(AppLauncher.pathname)
-            // AppLauncher.isexec = true;
+    datamodel: Network.wifinetworks;
+    property bool inputEnabled: false
+    // property int selectedConn: -1
+    function selectstatus(idx: string): string {
+        return Network.selected[0] != idx ? "" :
+        Network.selected[1] == Network.state.SELECTED ? "X ": 
+        Network.selected[1] == Network.state.PENDING ? " ": " "
+    }
+    delegatecmpnnt: ListDelegateItem {
+        id:del
+        required property string ssid; required property bool profileExist;
+        required property string bars; required property string security;
+        required property int index
+        property bool inputEnabled: false
+        property color pickclr: Settings.colorpick(root.clr,index)
+        clr: pickclr
+        wdth: root.width
+        hght: scaleheightmin
+        BarContentItem {
+            wdth: root.width
+            hght: scaleheightmin
+            clr: del.pickclr; opac: 1
+            item: RowLayout {
+                anchors.fill: del
+                anchors.centerIn: del
+                Text {
+                    Layout.fillHeight: true; Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignCenter
+
+                    visible: !root.inputEnabled
+                    fontSizeMode :Text.Fit
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    font.pointSize: 72
+                    minimumPointSize: 1
+                    
+                    text: root.selectstatus(index) + ssid + bars + security.trim().split(/\s+/).pop()
+                    clip:true
+                    color: Settings.dark
+                }
+                BarContentItem {
+                    Layout.fillHeight: true; Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignCenter
+                    
+                    wdth: root.scalewidthmin
+                    hght: root.height
+                    visible: root.inputEnabled
+                    item: Text {
+                        text: "Back"
+                        fontSizeMode :Text.Fit
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 72
+                        minimumPointSize: 1
+                    }
+                    onBtnclick: {
+                        root.inputEnabled = !root.inputEnabled
+                    }
+                }
+                InputItem {
+                    id: inp
+                    Layout.fillHeight: true; Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignCenter
+                    
+                    visible: root.inputEnabled
+                    wdth: root.scalewidthmin
+                    hght: root.height/1.5
+                }
+                BarContentItem {
+                    Layout.fillHeight: true; Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignCenter
+                    
+                    wdth: root.scalewidthmin
+                    hght: root.height
+                    visible: root.inputEnabled
+                    item: Text {
+                        text: "Connect"
+                        fontSizeMode :Text.Fit
+                        horizontalAlignment: Text.AlignHCenter
+                        verticalAlignment: Text.AlignVCenter
+                        font.pointSize: 72
+                        minimumPointSize: 1
+                    }
+                    onBtnclick: {
+                        const inptext = inp.gettext()
+                        Network.selected[1] = Network.state.PENDING;
+                        if (inptext.length === 0) {
+                            Network.connectToNetwork(Network.wifinetworks[Network.selected[0]].ssid,
+                                "",Network.wifinetworks[Network.selected[0]].profileExist)
+                            Network.selected[1] = Network.state.PENDING;
+                            return
+                        }
+                        Network.connectToNetwork(
+                            Network.wifinetworks[Network.selected[0]].ssid,inptext,false)
+                    }
+                }
+            }
+
+            onBtnclick: {
+                root.inputEnabled = !root.inputEnabled
+                Network.selected[0] = index;
+                Network.selected[1] = 0;
+            }
         }
     }
 
-
-    // Triangle {
-    //     inverted:true
-    //     hght:root.height
-    //     clr:"red"
-    // }
-    Button {
-        Layout.preferredWidth: root.scalewidthmin
-        Layout.preferredHeight: root.height
-
-        opacity:0
-        Layout.alignment:Qt.AlignCenter
-        // anchors.fill: parent
-        onClicked: {
-           Settings.curridx = root.index == Settings.curridx ? -1 : root.index
-        }
-    }
-    InputItem {
+    BarContentItem {
         wdth: root.scalewidthmin
-        hght: root.height/1.5
-        onTextedited: {
-            // AppLauncher.matchstr = text
+        hght: root.height
+        item: Text {
+            text: Network.status
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            font.pointSize:12
+        }
+        onBtnclick: {
+           Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
+            Network.getNetworks = true
         }
     }
 }

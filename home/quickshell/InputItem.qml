@@ -12,7 +12,8 @@ RowLayout {
     id:root
     required property real wdth;
     required property real hght;
-
+    property color bgclr: Settings.dark
+    property color fgclr: Settings.white
     signal textedited
     signal accepted
     signal editingfinished
@@ -27,34 +28,50 @@ RowLayout {
     TriangleItem {
         inverted:false
         hght:inprect.height
-        clr:"#424b50"
+        clr: root.bgclr
     }
     Rectangle {
         id: inprect
         // Layout.alignment:Qt.AlignCenter
         Layout.preferredWidth: root.wdth
         Layout.preferredHeight: root.hght
-        color:"#424b50"
+        color:root.bgclr
         clip:true
         // antialiasing:true
         // border.color: "#424b50"
         // border.width: 1
+        FontMetrics  {
+            id: textMetrics
+            font.pixelSize:15
+        }
         TextInput {
             id: inp
-            clip:true
-            text:"type text"
-            focus:true
-            color: "#d3c6aa"
-            echoMode: TextInput.Normal
             anchors.centerIn: parent
-            // Layout.preferredWidth: root.wdth
-            // Layout.preferredHeight: root.hght
-            // Layout.fillHeight: true
-            // Layout.fillWidth: true
-            // horizontalAlignment: TextInput.AlignHCenter
-            // verticalAlignment: TextInput.AlignVCenter
-            opacity:0.4
-            // Layout.alignment:Qt.AlignCenter
+            focus: true
+            activeFocusOnPress: true
+            activeFocusOnTab: true
+            padding : 5
+            rightPadding: 5
+            color: root.fgclr
+            leftPadding: 5
+            selectByMouse: true
+            text: "S"
+            font.pixelSize:20
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            onTextChanged: { font.pixelSize=15*Math.min(1,width/(textMetrics.advanceWidth(text)*1.4));textMetrics.font.pixelSize=font.pixelSize}
+
+            // id: inpx
+            // clip:true
+            // text:"type text"
+            // focus:true
+            // color: "#d3c6aa"
+            // echoMode: TextInput.Normal
+            // anchors.centerIn: parent
+            // fontSizeMode :Text.HorizontalFit
+            // minimumPointSize: 10
+            // opacity:0.4
+            // // Layout.alignment:Qt.AlignCenter
             onAccepted: root.accepted()
             onEditingFinished: root.editingfinished()
             onTextEdited: root.textedited()
@@ -63,6 +80,6 @@ RowLayout {
     TriangleItem {
         inverted:true
         hght:inprect.height
-        clr:"#424b50"
+        clr: root.bgclr
     }
 }

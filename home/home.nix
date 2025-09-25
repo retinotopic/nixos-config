@@ -59,6 +59,7 @@
     };
   };
   services = {
+    mako.enable = true;
     # mpd-mpris.enable = true;
     swww.enable = true;
     # hyprpaper.enable = false;

@@ -1,8 +1,8 @@
-nmcli -t -f SSID,ACTIVE,BSSID,SIGNAL,BARS,SECURITY device wifi list | while IFS=: read -r ssid bssid active signal bars sec; do
+nmcli -t -f SSID,ACTIVE,BARS,SECURITY device wifi list \
+--rescan yes | while IFS=: read -r ssid active bars sec; do
     if nmcli -t -f NAME connection show | grep -Fxq "$ssid"; then
-        echo "$bssid:$ssid:$active:$signal:$bars:$sec:true"
+        echo "$ssid:$active:$bars:$sec:true"
     else
-        echo "$bssid:$ssid:$active:$signal:$bars:$sec:false"
+        echo "$ssid:$active:$bars:$sec:false"
     fi
 done
-nmcli connection show "TP-Link_776C_5G"

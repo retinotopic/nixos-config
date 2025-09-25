@@ -12,7 +12,6 @@ import "../"
 BarItem {
     id:root
     invtrngl:false
-    index: 9;
     itemcount: 3;
     windowwidth: parent.parent.width;
     isscrollable: true;
@@ -28,7 +27,7 @@ BarItem {
             font.pointSize:12
         }
         onBtnclick: {
-           Settings.curridx = root.index == Settings.curridx ? -1 : root.index
+           Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
         }
     }
     BarContentItem {
@@ -41,7 +40,7 @@ BarItem {
             font.pointSize:12
         }
         onBtnclick: {
-           Settings.curridx = root.index == Settings.curridx ? -1 : root.index
+           Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
         }
     }
 }

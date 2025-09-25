@@ -11,7 +11,6 @@ import "../"
 
 BarItem {
     id:root
-    index: 5;
     itemcount: 1;
     windowwidth: parent.parent.width;
     isscrollable: false;
@@ -47,7 +46,7 @@ BarItem {
     //     Layout.alignment:Qt.AlignCenter
     //     // anchors.fill: parent
     //     onClicked: {
-    //        PopupState.curridx = root.index == PopupState.curridx ? -1 : root.index
+    //        PopupState.curridx = root.indx == PopupState.curridx ? -1 : root.indx
     //     }
     // }
     // InputItem {

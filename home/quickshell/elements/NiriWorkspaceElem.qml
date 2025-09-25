@@ -13,7 +13,6 @@ pragma ComponentBehavior: Bound
 
 BarItem {
     id:root
-    index: 1;
     itemcount: 2;
     windowwidth: parent.parent.width;
     isscrollable: true;
@@ -35,7 +34,7 @@ BarItem {
             }
 
             onBtnclick: {
-               Settings.curridx = root.index == Settings.curridx ? -1 : root.index
+               Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
                listv.positionViewAtBeginning()
                Niri.focusedWorkspaceIndex = maintxt1.text
                Niri.workspacefocus = true;

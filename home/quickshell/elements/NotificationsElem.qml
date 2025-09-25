@@ -11,7 +11,6 @@ import "../"
 
 BarItem {
     id:root
-    index: 11;
     itemcount: 2;
     // clr: "#e67e80"
     // clrtrngl: "#d699b6"
@@ -42,7 +41,7 @@ BarItem {
             font.pointSize:12
         }
         onBtnclick: {
-           Settings.curridx = root.index == Settings.curridx ? -1 : root.index
+           Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
         }
     }
 }

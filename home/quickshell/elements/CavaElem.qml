@@ -12,7 +12,6 @@ import "../"
 
 BarItem {
     id:root
-    index: 6;
     itemcount: 3;
     windowwidth: parent.parent.width;
     isscrollable: false;
@@ -30,7 +29,7 @@ BarItem {
             textFormat: Text.StyledText
         }
         onBtnclick: {
-           Settings.curridx = root.index == Settings.curridx ? -1 : root.index
+           Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
         }
     }
     BarContentItem {
