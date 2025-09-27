@@ -11,8 +11,8 @@ ListView {
     id: root
     layoutDirection:Qt.LeftToRight
     orientation:Qt.Horizontal
-    highlightFollowsCurrentItem :true
-    highlightRangeMode: ListView.StrictlyEnforceRange
+    // highlightFollowsCurrentItem :true
+    // highlightRangeMode: ListView.StrictlyEnforceRange
     implicitWidth: wdth
     implicitHeight: hght
     Layout.alignment:Qt.AlignCenter

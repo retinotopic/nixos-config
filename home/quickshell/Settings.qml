@@ -19,6 +19,7 @@ Singleton {
     property string dark: "#424b50"
     property string white: "#d3c6aa"
     
+    
     property int curridx:-1
     
     function colorpick(excludeColor: string,idx: int): string {

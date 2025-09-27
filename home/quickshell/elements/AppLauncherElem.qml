@@ -32,11 +32,9 @@ BarItem {
         BarContentItem {
             wdth: root.width
             hght: root.height
-            item: Text {
+            item: TextItem {
                 text: del.appname
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.pointSize:12
+
             }
             onBtnclick: {
                 AppLauncher.pathname = del.sectxt

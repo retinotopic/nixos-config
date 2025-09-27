@@ -17,6 +17,14 @@ BarItem {
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false;
+    Connections {
+        target: Niri
+        function onWorkspaceChanged() {
+            console.log("wripscake change")
+            listv.positionViewAtIndex(Niri.focusedWorkspaceIndex, ListView.Center)
+        }
+    }
+
     invtrngl:true
     HListViewItem {
         id:listv
@@ -24,20 +32,24 @@ BarItem {
         hght: root.height
         datamodel: Niri.workspaces
         delegatecmpnnt: BarContentItem {
+            id: del
             required property string idx;
             required property string isActive;
-            wdth: root.width
+            wdth: root.scalewidthmin
             hght: root.height
-            item: Row {
-                Text {id: maintxt1; text: idx}
-                Text {id: maintxt2; text: isActive}
+            
+            item: TextItem {
+                // Layout.fillHeight: true; Layout.fillWidth: true
+                // width: root.scalewidthmin
+                // height: root.height
+                
+                text: idx
+                color: Settings.dark
             }
 
             onBtnclick: {
-               Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
-               listv.positionViewAtBeginning()
-               Niri.focusedWorkspaceIndex = maintxt1.text
-               Niri.workspacefocus = true;
+                Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
+                Niri.switchToWorkspace(del.idx)
             }
         }
     }

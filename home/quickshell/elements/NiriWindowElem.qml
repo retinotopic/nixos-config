@@ -23,7 +23,8 @@ BarItem {
         Layout.preferredHeight: root.height
         id: inp
         // clip:true
-        text: Niri.focusedWindowTitle
+        text: "ABOBA"
+        // text: Niri2.focusedWindowTitle
         // focus:true
         color: "black"
         // Layout.fillHeight: true

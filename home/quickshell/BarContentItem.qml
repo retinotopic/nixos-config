@@ -18,11 +18,15 @@ Button {
     Layout.alignment:Qt.AlignCenter
     Layout.preferredWidth: wdth
     Layout.preferredHeight: hght
+    implicitWidth: wdth
+    implicitHeight: hght
     background: Rectangle {
         // implicitWidth: wdth
         // implicitHeight: hght
         Layout.preferredWidth: wdth
         Layout.preferredHeight: hght
+        implicitWidth: wdth
+        implicitHeight: hght
         opacity: opac
         color: root.clr
     }
