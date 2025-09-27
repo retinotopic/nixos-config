@@ -14,7 +14,7 @@ pragma ComponentBehavior: Bound
 BarItem {
     id:root
     itemcount: 3;
-    datamodel: AppLauncher.desktopapps;
+    datamodel: AppLauncher.apps;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false
@@ -24,12 +24,14 @@ BarItem {
     delegatecmpnnt: ListDelegateItem {
         id: del
         required property string appname;
+        required property int index
         wdth:root.width
         hght:root.height
+        idx: index
+        excludedColor:root.clr
         BarContentItem {
             wdth: root.width
             hght: root.height
-            clr: "#424b50"; opac: 1
             item: Text {
                 text: del.appname
                 horizontalAlignment: Text.AlignHCenter
@@ -78,7 +80,7 @@ BarItem {
         wdth: root.scalewidthmin
         hght: root.height/1.5
         onTextedited: {
-            AppLauncher.matchstr = gettext()
+            AppLauncher.searchApplications(gettext())
         }
     }
 }

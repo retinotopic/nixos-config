@@ -12,31 +12,32 @@ import "../"
 BarItem {
     id:root
     invtrngl:false
-    itemcount: 3;
+    itemcount: 2;
     windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false
 
-    BarContentItem {
-        wdth: implicitContentWidth
+    SliderItem {
+        wdth:root.scalewidthmin
         hght: root.height
-        item: Text {
-            id: txt
-            text: "ABOBANVSNVJLSFNLVKNSKF"
-            verticalAlignment: Text.AlignVCenter
-            font.pointSize:12
-        }
-        onBtnclick: {
-           Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
+        id: sld
+        start: 1
+        initvalue: 50
+        end: 255
+        onSlidermoved: {
+            // console.log("HAH",sld,val)
+            Battery.brightness = sld.val
+            Battery.changeBrightness = true
         }
     }
     BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height
-        item: Text {
+        item: TextItem {
             text: Battery.batteryLevel
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignRight
+            // Layout.alignment: Qt.AlignRight
+            // verticalAlignment: Text.AlignVCenter
             font.pointSize:12
         }
         onBtnclick: {

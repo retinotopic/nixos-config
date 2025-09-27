@@ -18,13 +18,27 @@ BarItem {
     isscrollable: true;
     popupvisible: false
 
+    Slider {
+        implicitWidth:root.scalewidthmin
+        id: sld
+        from: 0
+        value: 0.3
+        to: 1
+        onMoved: {
+            Audio.setVolume(value)
+        }
+    }
     BarContentItem {
+        id: barContent1
         wdth: root.scalewidthmin
         hght: root.height
         item: Text {
-            text: Audio.volume
+            text: Math.round(Audio.volume*100)
             verticalAlignment: Text.AlignVCenter
+
+            horizontalAlignment: Text.AlignHCenter
             font.pointSize:12
+            clip:true
         }
         onBtnclick: {
            Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx

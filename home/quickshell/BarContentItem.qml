@@ -12,7 +12,7 @@ Button {
     required property real wdth
     required property real hght
     required property Item item;
-    property color clr
+    property color clr: "transparent"
     property real opac
     signal btnclick
     Layout.alignment:Qt.AlignCenter

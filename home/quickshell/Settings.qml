@@ -21,9 +21,9 @@ Singleton {
     
     property int curridx:-1
     
-    function colorpick(excColor: string,idx: int): string {
+    function colorpick(excludeColor: string,idx: int): string {
         const rm = idx % colors.length
-        if (colors[rm][0] === excColor) {
+        if (colors[rm][0] === excludeColor) {
             return "#d699b6"
         }
         return colors[rm][0]

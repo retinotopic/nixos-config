@@ -10,42 +10,30 @@ import QtQml.Models
 
 Singleton {
     id:root
-    // property ObjectModel<var> desktopapps: []
-    property list<var> desktopapps: []
+    // property ObjectModel<var> apps: []
+    property list<var> apps: []
     property string matchstr: "btop"
 
     readonly property var applications: DesktopEntries.applications.values
 
     function searchApplications(query) {
-        desktopapps = [];
-        console.log("CLEAREd")
-        // if (!query || query.length === 0)
-        //     return applications
-        // if (applications.length === 0)
-        //     return []
-
+        apps = []
+        const matches = applications.filter(word => word.name.includes(query));
         // const queryLower = query.toLowerCase().trim()
-        for (const app of applications) {
-            // const name = (app.name || "").toLowerCase()
-            // const genericName = (app.genericName || "").toLowerCase()
-            // const comment = (app.comment || "").toLowerCase()
-            // const keywords = app.keywords ? app.keywords.map(k => k.toLowerCase()) : []
+        for (const app of matches) {
+            const name = (app.name || "").toLowerCase()
+            const genericName = (app.genericName || "").toLowerCase()
+            const comment = (app.comment || "").toLowerCase()
+            const keywords = app.keywords ? app.keywords.map(k => k.toLowerCase()) : []
 
-            console.log(app.name)
+            // console.log(app.name)
             try {
-                desktopapps.push({
+                apps.push({
                     appname:  app.name
                 });
             } catch (err) {
                 console.log(err)
             }
         }
-        console.log("AFTER:", Object.getOwnPropertyNames(root.desktopapps));
-
-        console.log(desktopapps)
-
-        // root.desktopapps.sort((a, b) => b.score - a.score)
-        // root.desktopapps.slice(0, 50).map(item => item.app)
     }
-
 }

@@ -4,6 +4,7 @@ pragma Singleton
 import QtQuick
 import Quickshell
 import Quickshell.Services.UPower
+import Quickshell.Io
 
 Singleton {
     id: root
@@ -14,23 +15,11 @@ Singleton {
     readonly property bool isCharging: batteryAvailable && device.state === UPowerDeviceState.Charging && device.changeRate > 0
     readonly property bool isPluggedIn: batteryAvailable && (device.state !== UPowerDeviceState.Discharging && device.state !== UPowerDeviceState.Empty)
     readonly property bool isLowBattery: batteryAvailable && batteryLevel <= 20
-    readonly property string batteryHealth: {
-        if (!batteryAvailable) {
-            return "N/A"
-        }
+    property int brightness: 50
+    property bool changeBrightness: false
 
-        if (device.healthSupported && device.healthPercentage > 0) {
-            return `${Math.round(device.healthPercentage)}%`
-        }
-
-        if (device.energyCapacity > 0 && device.energy > 0) {
-            const healthPercent = (device.energyCapacity / 90.0045) * 100
-            return `${Math.round(healthPercent)}%`
-        }
-
-        return "N/A"
-    }
     readonly property real batteryCapacity: batteryAvailable && device.energyCapacity > 0 ? device.energyCapacity : 0
+
     readonly property string batteryStatus: {
         if (!batteryAvailable) {
             return "No Battery"
@@ -42,26 +31,14 @@ Singleton {
 
         return UPowerDeviceState.toString(device.state)
     }
-    readonly property bool suggestPowerSaver: batteryAvailable && isLowBattery && UPower.onBattery && (typeof PowerProfiles !== "undefined" && PowerProfiles.profile !== PowerProfile.PowerSaver)
 
-    function formatTimeRemaining() {
-        if (!batteryAvailable) {
-            return "Unknown"
+    Process {
+        id: brightnessctl
+        running: root.changeBrightness
+        command: [ "brightnessctl" , "set", root.brightness]
+        
+        onExited: {
+            root.changeBrightness = false
         }
-
-        const timeSeconds = isCharging ? device.timeToFull : device.timeToEmpty
-
-        if (!timeSeconds || timeSeconds <= 0 || timeSeconds > 86400) {
-            return "Unknown"
-        }
-
-        const hours = Math.floor(timeSeconds / 3600)
-        const minutes = Math.floor((timeSeconds % 3600) / 60)
-
-        if (hours > 0) {
-            return `${hours}h ${minutes}m`
-        }
-
-        return `${minutes}m`
     }
 }

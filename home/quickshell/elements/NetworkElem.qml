@@ -18,7 +18,7 @@ BarItem {
     invtrngl:false
     datamodel: Network.wifinetworks;
     property bool inputEnabled: false
-    // property int selectedConn: -1
+    property int selectedConn: -1
     function selectstatus(idx: string): string {
         return Network.selected[0] != idx ? "" :
         Network.selected[1] == Network.state.SELECTED ? "X ": 
@@ -30,46 +30,35 @@ BarItem {
         required property string bars; required property string security;
         required property int index
         property bool inputEnabled: false
-        property color pickclr: Settings.colorpick(root.clr,index)
-        clr: pickclr
+        idx: index
+        excludedColor:root.clr
         wdth: root.width
         hght: scaleheightmin
         BarContentItem {
             wdth: root.width
             hght: scaleheightmin
-            clr: del.pickclr; opac: 1
             item: RowLayout {
-                anchors.fill: del
-                anchors.centerIn: del
-                Text {
+                // anchors.fill: del
+                // anchors.centerIn: del
+                TextItem {
                     Layout.fillHeight: true; Layout.fillWidth: true
                     Layout.alignment: Qt.AlignCenter
 
-                    visible: !root.inputEnabled
-                    fontSizeMode :Text.Fit
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    font.pointSize: 72
-                    minimumPointSize: 1
+                    visible: !root.inputEnabled || root.selectedConn != index
                     
                     text: root.selectstatus(index) + ssid + bars + security.trim().split(/\s+/).pop()
-                    clip:true
                     color: Settings.dark
                 }
+                //------- VISIBILITY TRICK, THIS PART WILL SHOW UP ONLY ON CLICKING THE WIFI NETWORK
                 BarContentItem {
                     Layout.fillHeight: true; Layout.fillWidth: true
                     Layout.alignment: Qt.AlignCenter
                     
                     wdth: root.scalewidthmin
                     hght: root.height
-                    visible: root.inputEnabled
-                    item: Text {
+                    visible: root.inputEnabled && root.selectedConn === index
+                    item: TextItem {
                         text: "Back"
-                        fontSizeMode :Text.Fit
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        font.pointSize: 72
-                        minimumPointSize: 1
                     }
                     onBtnclick: {
                         root.inputEnabled = !root.inputEnabled
@@ -80,7 +69,7 @@ BarItem {
                     Layout.fillHeight: true; Layout.fillWidth: true
                     Layout.alignment: Qt.AlignCenter
                     
-                    visible: root.inputEnabled
+                    visible: root.inputEnabled && root.selectedConn === index
                     wdth: root.scalewidthmin
                     hght: root.height/1.5
                 }
@@ -90,14 +79,9 @@ BarItem {
                     
                     wdth: root.scalewidthmin
                     hght: root.height
-                    visible: root.inputEnabled
-                    item: Text {
+                    visible: root.inputEnabled && root.selectedConn === index
+                    item: TextItem {
                         text: "Connect"
-                        fontSizeMode :Text.Fit
-                        horizontalAlignment: Text.AlignHCenter
-                        verticalAlignment: Text.AlignVCenter
-                        font.pointSize: 72
-                        minimumPointSize: 1
                     }
                     onBtnclick: {
                         const inptext = inp.gettext()
@@ -115,6 +99,7 @@ BarItem {
             }
 
             onBtnclick: {
+                root.selectedConn = index
                 root.inputEnabled = !root.inputEnabled
                 Network.selected[0] = index;
                 Network.selected[1] = 0;
@@ -122,6 +107,14 @@ BarItem {
         }
     }
 
+    InputItem {
+        id: inpt
+        Layout.fillHeight: true; Layout.fillWidth: true
+        Layout.alignment: Qt.AlignCenter
+        
+        wdth: root.scalewidthmin
+        hght: root.height/1.5
+    }
     BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height

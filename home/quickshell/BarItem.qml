@@ -10,9 +10,6 @@ import QtQml
 Item {
     id:root
 
-    // anchors.fill: parent
-    // required property int itemWidth;
-    // required property int itemHeight;
     required property color clr;
     required property color clrtrngl;
     required property int indx;
@@ -43,9 +40,6 @@ Item {
         anchors.fill: root
         Layout.fillHeight:true
         Layout.fillWidth:true
-
-        // LayoutMirroring.enabled: !root.invtrngl
-        // LayoutMirroring.childrenInherit: true
 
         color: root.clr
         Popup {
@@ -85,21 +79,18 @@ Item {
             interactive:root.isscrollable
             contentWidth: itemsrow.implicitWidth
             contentHeight: itemsrow.implicitHeight
-            LayoutMirroring.enabled: Qt.application.layoutDirection === Qt.RightToLeft
+            
             RowLayout {
-                Item {
-                    visible: root.invtrngl
+                id: itemsrow
+                Rectangle {
+                    Layout.fillWidth:true
                     implicitWidth: rect.height/2
+                    implicitHeight: rect.height
+                    color: "transparent"
                 }
-                RowLayout {
-                    id :itemsrow
-                    visible:true
-                    spacing:0
-                }
-                Item {
-                    visible: !root.invtrngl
-                    implicitWidth: rect.height/2
-                }
+                spacing:0
+                LayoutMirroring.enabled: !root.invtrngl
+                visible:true
             }
         }
         TriangleItem {
