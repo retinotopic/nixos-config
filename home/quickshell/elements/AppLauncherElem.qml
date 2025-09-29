@@ -34,7 +34,6 @@ BarItem {
             hght: root.height
             item: TextItem {
                 text: del.appname
-
             }
             onBtnclick: {
                 AppLauncher.pathname = del.sectxt
@@ -43,6 +42,7 @@ BarItem {
             }
         }
     }
+        
     BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height
@@ -81,4 +81,5 @@ BarItem {
             AppLauncher.searchApplications(gettext())
         }
     }
+
 }

@@ -109,8 +109,7 @@ BarItem {
 
     InputItem {
         id: inpt
-        Layout.fillHeight: true; Layout.fillWidth: true
-        Layout.alignment: Qt.AlignCenter
+        // Layout.alignment: Qt.AlignCenter
         
         wdth: root.scalewidthmin
         hght: root.height/1.5
@@ -125,7 +124,7 @@ BarItem {
             font.pointSize:12
         }
         onBtnclick: {
-           Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
+            Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
             Network.getNetworks = true
         }
     }

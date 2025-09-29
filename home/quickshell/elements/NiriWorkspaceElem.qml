@@ -40,8 +40,8 @@ BarItem {
             
             item: TextItem {
                 // Layout.fillHeight: true; Layout.fillWidth: true
-                // width: root.scalewidthmin
-                // height: root.height
+                width: root.scalewidthmin
+                height: root.height
                 
                 text: idx
                 color: Settings.dark

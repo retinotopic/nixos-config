@@ -15,7 +15,7 @@ Button {
     property color clr: "transparent"
     property real opac
     signal btnclick
-    Layout.alignment:Qt.AlignCenter
+    Layout.alignment:Qt.AlignLeft
     Layout.preferredWidth: wdth
     Layout.preferredHeight: hght
     implicitWidth: wdth

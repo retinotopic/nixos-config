@@ -21,6 +21,25 @@ Item {
     
     property var datamodel;
     property Component delegatecmpnnt;
+
+    // you can override default component for your own popup behavior
+    property Component popupcomponent: Rectangle {
+        id: rectpop
+        anchors.fill:parent
+        color: root.clr
+        clip:true
+        ListView {
+            // highlightRangeMode: ListView.StrictlyEnforceRange
+            highlightRangeMode: ListView.StrictlyEnforceRange
+            anchors.fill: parent
+            model: root.datamodel
+            contentWidth: root.scalewidthmin
+            contentHeight: root.height
+            delegate: root.delegatecmpnnt
+        }
+    }
+
+    property bool unfolded: false
     property real widthmin: 70
     property real scaleFactor: windowwidth / 1920
     property real maxWidth: itemcount * widthmin
@@ -29,9 +48,22 @@ Item {
     Behavior on implicitWidth { ElasticBehavior {} }
     Behavior on implicitHeight { ElasticBehavior {} }
     
-    implicitWidth:  Settings.curridx == root.indx ? scaleFactor*maxWidth : scalewidthmin
+    implicitWidth:  {
+        var w 
+        if (Settings.curridx == root.indx) {
+            w = scaleFactor*maxWidth
+        } else {
+            w = scalewidthmin
+        }
+        unfolded = !unfolded
+        flick.contentX = 0
+        return w
+        // Settings.curridx == root.indx ? scaleFactor*maxWidth : scalewidthmin
+    }
     implicitHeight: scaleheightmin
-
+    onUnfoldedChanged: {
+        flick.returnToBounds()
+    }
     default property alias content: itemsrow.data
     Rectangle {
         id: rect
@@ -46,50 +78,60 @@ Item {
             id: popup
             x: root.mapToItem(null, 0, 0).x
             y: root.height
+            height:0
             implicitWidth: root.width
             implicitHeight: scaleheightmin*3
+            Behavior on height { 
+                ElasticBehavior  {   } 
+            }
+            onOpened: {
+                popup.height = popup.implicitHeight
+            }
+
+            onAboutToHide: {
+                popup.height = 0
+            }
+
             focus: true
             visible: Settings.curridx == root.indx && root.popupvisible
             modal: false
             closePolicy: Popup.NoAutoClose
             margins:0
             padding:0
-            Rectangle {
-                id: rectpop
-                anchors.fill:parent
-                color: root.clr
-                clip:true
-                Behavior on height { 
-                    ElasticBehavior  {   } 
-                }
-                ListView {
-                    // highlightRangeMode: ListView.StrictlyEnforceRange
-                    highlightRangeMode: ListView.StrictlyEnforceRange
-                    anchors.fill: parent
-                    model: root.datamodel
-                    contentWidth: root.scalewidthmin
-                    contentHeight: root.height
-                    delegate: root.delegatecmpnnt
-                }
+            Loader {
+                anchors.fill: parent
+                sourceComponent: root.popupcomponent
             }
         }
         Flickable {
+            id: flick
             width: rect.width
             height: rect.height
             interactive:root.isscrollable
             contentWidth: itemsrow.implicitWidth
             contentHeight: itemsrow.implicitHeight
-            
+            boundsBehavior:Flickable.StopAtBounds
+            // contentX: root.scalewidthmin*2
+            // contentX: root.width === root.scalewidthmin && !root.invtrngl ? 0
+            // : root.scalewidthmin
+            // contentX: Settings.curridx != root.indx ?
+            //     root.scalewidthmin*(root.itemcount-1): root.scalewidthmin
+
+            // Component.onCompleted: {
+            //     flick.flick(root.,0)
+            // }
+            // contentY: (rect.height - flickable.height) / 2
             RowLayout {
                 id: itemsrow
                 Rectangle {
-                    Layout.fillWidth:true
+                    // Layout.fillWidth:true
                     implicitWidth: rect.height/2
                     implicitHeight: rect.height
-                    color: "transparent"
+                    color: "black"
                 }
                 spacing:0
                 LayoutMirroring.enabled: !root.invtrngl
+                // LayoutMirroring.childrenInherit: false
                 visible:true
             }
         }
