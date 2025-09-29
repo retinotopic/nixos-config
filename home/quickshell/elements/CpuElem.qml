@@ -20,10 +20,8 @@ BarItem {
     BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height
-        item: Text {
+        item: TextItem {
             text: SysInfo2.cpuUsage + " " + SysInfo2.cpuTemp
-            verticalAlignment: Text.AlignVCenter
-            font.pointSize:12
         }
         onBtnclick: {
            Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx

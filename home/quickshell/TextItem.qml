@@ -16,4 +16,7 @@ Text {
     verticalAlignment: Text.AlignVCenter
     font.pointSize: 72
     minimumPointSize: 1
+    // font "Symbols Nerd Font Mono"
+    font.family: "Symbols Nerd Font Mono,jetBrainsMono NF ExtraBold"
+    color: Settings.dark
 }

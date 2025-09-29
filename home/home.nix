@@ -86,6 +86,7 @@
     pkgs.sysstat
     pkgs.xkb-switch
     pkgs.xkblayout-state
+    pkgs.libnotify
   ];
 # brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 

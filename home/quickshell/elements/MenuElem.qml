@@ -1,3 +1,4 @@
+
 import Quickshell // for PanelWindow
 import Quickshell.Io
 import QtQuick // for Text
@@ -21,7 +22,7 @@ BarItem {
         wdth: root.scalewidthmin
         hght: root.height
         item: TextItem {
-            text: SysInfo2.diskPercent
+            text: "Menu"
         }
         onBtnclick: {
            Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx

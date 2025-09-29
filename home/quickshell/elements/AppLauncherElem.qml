@@ -15,7 +15,6 @@ BarItem {
     id:root
     itemcount: 3;
     datamodel: AppLauncher.apps;
-    windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false
     // widthmin:40

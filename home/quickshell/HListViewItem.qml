@@ -9,8 +9,10 @@ import QtQml
 
 ListView {
     id: root
-    layoutDirection:Qt.LeftToRight
-    orientation:Qt.Horizontal
+    layoutDirection: Qt.LeftToRight
+    verticalLayoutDirection:ListView.TopToBottom
+    // layoutDirection:Qt.B
+    orientation: horizontal ? Qt.Horizontal : Qt.Vertical
     // highlightFollowsCurrentItem :true
     // highlightRangeMode: ListView.StrictlyEnforceRange
     implicitWidth: wdth
@@ -20,6 +22,7 @@ ListView {
     required property Component delegatecmpnnt;
     required property real wdth;
     required property real hght;
+    property bool horizontal: true
     delegate: delegatecmpnnt
     model: datamodel
 }

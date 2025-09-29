@@ -14,7 +14,6 @@ Item {
     required property color clrtrngl;
     required property int indx;
     required property int itemcount;
-    required property real windowwidth;
     required property bool invtrngl;
     required property bool popupvisible;
     required property bool isscrollable;
@@ -39,9 +38,10 @@ Item {
         }
     }
 
+    property real windowwidth: parent.windowwidth
     property bool unfolded: false
     property real widthmin: 70
-    property real scaleFactor: windowwidth / 1920
+    property real scaleFactor: windowwidth / Settings.scaleWidth
     property real maxWidth: itemcount * widthmin
     property real scalewidthmin: scaleFactor*widthmin
     property real scaleheightmin: scaleFactor*40
@@ -61,9 +61,6 @@ Item {
         // Settings.curridx == root.indx ? scaleFactor*maxWidth : scalewidthmin
     }
     implicitHeight: scaleheightmin
-    onUnfoldedChanged: {
-        flick.returnToBounds()
-    }
     default property alias content: itemsrow.data
     Rectangle {
         id: rect
@@ -111,23 +108,13 @@ Item {
             contentWidth: itemsrow.implicitWidth
             contentHeight: itemsrow.implicitHeight
             boundsBehavior:Flickable.StopAtBounds
-            // contentX: root.scalewidthmin*2
-            // contentX: root.width === root.scalewidthmin && !root.invtrngl ? 0
-            // : root.scalewidthmin
-            // contentX: Settings.curridx != root.indx ?
-            //     root.scalewidthmin*(root.itemcount-1): root.scalewidthmin
-
-            // Component.onCompleted: {
-            //     flick.flick(root.,0)
-            // }
-            // contentY: (rect.height - flickable.height) / 2
             RowLayout {
                 id: itemsrow
                 Rectangle {
                     // Layout.fillWidth:true
                     implicitWidth: rect.height/2
                     implicitHeight: rect.height
-                    color: "black"
+                    color: "transparent"
                 }
                 spacing:0
                 LayoutMirroring.enabled: !root.invtrngl

@@ -15,7 +15,6 @@ BarItem {
     // clr: "#e67e80"
     // clrtrngl: "#d699b6"
     datamodel: Notifications.listm;
-    windowwidth: parent.parent.width;
     isscrollable: false;
     popupvisible: true
     invtrngl:false
