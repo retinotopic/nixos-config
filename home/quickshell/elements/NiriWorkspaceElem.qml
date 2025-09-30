@@ -14,7 +14,6 @@ pragma ComponentBehavior: Bound
 BarItem {
     id:root
     itemcount: 2;
-    windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false;
     Connections {

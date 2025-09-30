@@ -15,14 +15,16 @@ import QtQuick.Layouts
 
 Singleton {
     id: root
-    property ListModel listm: ListModel {id: myModel}
     
+    property list<var> notifs: []
+
     NotificationServer {
         onNotification: function(notif) {
-            myModel.append({
+            root.notifs.push({
                 body: notif.body,
                 summary: notif.summary,
             });
+            // myModel.sort
         }
     }
 }

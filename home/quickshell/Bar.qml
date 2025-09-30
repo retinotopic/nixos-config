@@ -16,6 +16,8 @@ Variants {
         id: panel
         required property ShellScreen modelData
         screen: modelData
+        property real scalefW: width/Settings.scaleWidth
+        property real scalefH: height/Settings.scaleHeight
         // height:500
         WlrLayershell.layer: WlrLayer.Overlay
         visible: true
@@ -35,34 +37,56 @@ Variants {
         //     id: barfull
         //     spacing:0
         //     Layout.alignment: Qt.AlignTop
+
+
+        // notifications popup
         HListViewItem {
             id: listvw
-            wdth: 280*(panel.width/Settings.scaleWidth)
-            hght: Settings.scaleHeight*(panel.height/Settings.scaleHeight)
+            wdth: 280*panel.scalefW
+            hght: panel.height
             // anchors.fill:parent
-            anchors.right: parent.right
-            datamodel: Notifications.listm
+            anchors {
+                right: parent.right
+                top: parent.top
+            }
+            datamodel: Notifications.notifs
             horizontal:false
-            delegatecmpnnt: ListDelegateItem {
+            // displayMarginBeginning:300
+            // leftMargin:200
+            // interactive:false
+            anchors.topMargin: 50*panel.scalefW
+            anchors.rightMargin: -50*panel.scalefW
+            delegatecmpnnt: SwipeDelegate {
                 id: del
-                
+                // text: body + " - " + summary
+                // active
+                width: listvw.width
+                height: 40*panel.scalefW
+                required property string body
+                required property string summary
                 required property int index
-                required property string body;
-                required property string summary;
-                wdth: listvw.width
-                hght: 40*(panel.height/Settings.scaleHeight)
-                idx: index
-                excludedColor:"black"
-                Component.onCompleted: {
-                    console.log("visral")
+                swipe.left: Rectangle {
+                    color: "transparent"
+                    anchors.fill: del
                 }
-                BarContentItem {
-                    wdth: del.width
-                    hght: del.height
-                    item: TextItem {
-                        text: del.summary
-                    }
-                    onBtnclick: {
+                swipe.onCompleted: {
+                    Notifications.notifs.splice(del.index, 1);
+                    console.log("deleted",del.index)
+                }
+                background:null
+                // ListView.onRemove: removeAnimation.start()
+                contentItem: ListDelegateItem {
+                    id: innerdel
+                    wdth:del.width
+                    hght:del.height
+                    idx: del.index
+                    excludedColor:root.clr
+                    BarContentItem {
+                        wdth: innerdel.width
+                        hght: innerdel.height
+                        item: TextItem {
+                            text: del.summary
+                        }
                     }
                 }
             }

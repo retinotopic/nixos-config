@@ -13,7 +13,6 @@ BarItem {
     id:root
     invtrngl:true
     itemcount: 2;
-    windowwidth: parent.parent.width;
     isscrollable: true;
     popupvisible: false
 

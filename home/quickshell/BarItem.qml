@@ -38,10 +38,9 @@ Item {
         }
     }
 
-    property real windowwidth: parent.windowwidth
     property bool unfolded: false
     property real widthmin: 70
-    property real scaleFactor: windowwidth / Settings.scaleWidth
+    property real scaleFactor: parent.windowwidth / Settings.scaleWidth
     property real maxWidth: itemcount * widthmin
     property real scalewidthmin: scaleFactor*widthmin
     property real scaleheightmin: scaleFactor*40

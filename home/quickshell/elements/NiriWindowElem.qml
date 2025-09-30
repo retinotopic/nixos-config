@@ -12,7 +12,6 @@ import "../"
 BarItem {
     id:root
     itemcount: 1;
-    windowwidth: parent.parent.width;
     isscrollable: false;
     popupvisible: false;
     invtrngl: false
