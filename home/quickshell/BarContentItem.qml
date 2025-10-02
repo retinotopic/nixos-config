@@ -12,21 +12,25 @@ Button {
     required property real wdth
     required property real hght
     required property Item item;
+    property bool isImplicit: true
     property color clr: "transparent"
     property real opac
     signal btnclick
     Layout.alignment:Qt.AlignLeft
     Layout.preferredWidth: wdth
     Layout.preferredHeight: hght
-    implicitWidth: wdth
-    implicitHeight: hght
+    implicitWidth: isImplicit ? wdth : null
+    implicitHeight: isImplicit ? hght : null
+    
     background: Rectangle {
         // implicitWidth: wdth
         // implicitHeight: hght
         Layout.preferredWidth: wdth
         Layout.preferredHeight: hght
-        implicitWidth: wdth
-        implicitHeight: hght
+        // implicitHeight: hght
+        // implicitWidth: wdth
+        height: root.height
+        width: root.width
         opacity: opac
         color: root.clr
     }

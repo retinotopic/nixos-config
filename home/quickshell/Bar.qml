@@ -33,17 +33,13 @@ Variants {
         //     left:0
         //     bottom:0
         // }
-        // RowLayout {
-        //     id: barfull
-        //     spacing:0
-        //     Layout.alignment: Qt.AlignTop
-
 
         // notifications popup
         HListViewItem {
             id: listvw
             wdth: 280*panel.scalefW
             hght: panel.height
+            interactive:false
             // anchors.fill:parent
             anchors {
                 right: parent.right
@@ -61,9 +57,10 @@ Variants {
                 // text: body + " - " + summary
                 // active
                 width: listvw.width
-                height: 40*panel.scalefW
+                height: 40*panel.scalefH
                 required property string body
                 required property string summary
+                required property string appicon
                 required property int index
                 swipe.left: Rectangle {
                     color: "transparent"
@@ -76,16 +73,30 @@ Variants {
                 background:null
                 // ListView.onRemove: removeAnimation.start()
                 contentItem: ListDelegateItem {
+                    enabled:false
                     id: innerdel
                     wdth:del.width
                     hght:del.height
                     idx: del.index
+                    isImplicit:false
                     excludedColor:root.clr
                     BarContentItem {
                         wdth: innerdel.width
                         hght: innerdel.height
-                        item: TextItem {
-                            text: del.summary
+                        item: RowLayout {
+                            id:rl
+                            Image {
+                                scale:0.8
+                                Layout.preferredWidth: rl.height
+                                Layout.preferredHeight: rl.height
+                                Layout.alignment: Qt.AlignCenter
+                                source:del.appicon
+                            }
+                            TextItem {
+                                Layout.preferredWidth: rl.width-rl.height
+                                Layout.preferredHeight: rl.height
+                                text: del.summary
+                            }
                         }
                     }
                 }

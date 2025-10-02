@@ -66,7 +66,6 @@
             };
             "modules"= [
                 "custom/darkmode"
-                "tray"
             ];
         };
         "group/power" = {

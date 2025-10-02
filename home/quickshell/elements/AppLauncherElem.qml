@@ -23,16 +23,30 @@ BarItem {
     delegatecmpnnt: ListDelegateItem {
         id: del
         required property string appname;
+        required property string appicon;
         required property int index
         wdth:root.width
-        hght:root.height
+        hght:root.scaleheightmin
         idx: index
         excludedColor:root.clr
         BarContentItem {
+            id: barcnt
             wdth: root.width
-            hght: root.height
-            item: TextItem {
-                text: del.appname
+            hght: root.scaleheightmin
+            item: RowLayout {
+                id:rl
+                Image {
+                    scale:0.8
+                    Layout.preferredWidth: rl.height
+                    Layout.preferredHeight: rl.height
+                    Layout.alignment: Qt.AlignCenter
+                    source:del.appicon
+                }
+                TextItem {
+                    Layout.preferredWidth: rl.width-rl.height
+                    Layout.preferredHeight: rl.height
+                    text: del.appname
+                }
             }
             onBtnclick: {
                 AppLauncher.pathname = del.sectxt
@@ -41,7 +55,7 @@ BarItem {
             }
         }
     }
-        
+    
     BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height
@@ -57,6 +71,7 @@ BarItem {
             root.popupvisible = false
         }
     }
+
     BarContentItem {
         visible: !root.inputactive
         wdth: root.scalewidthmin
@@ -72,6 +87,7 @@ BarItem {
             root.inputactive = true
         }
     }
+
     InputItem {
         visible: root.inputactive
         wdth: root.scalewidthmin

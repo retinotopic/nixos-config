@@ -22,14 +22,16 @@ Singleton {
         // const queryLower = query.toLowerCase().trim()
         for (const app of matches) {
             const name = (app.name || "").toLowerCase()
+            const icon = (app.icon || "").toLowerCase()
             const genericName = (app.genericName || "").toLowerCase()
             const comment = (app.comment || "").toLowerCase()
             const keywords = app.keywords ? app.keywords.map(k => k.toLowerCase()) : []
-
-            // console.log(app.name)
+            console.log(icon,"thats icon")
+            
             try {
                 apps.push({
-                    appname:  app.name
+                    appname:  name,
+                    appicon:  Quickshell.iconPath(icon, true),
                 });
             } catch (err) {
                 console.log(err)

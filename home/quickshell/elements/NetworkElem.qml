@@ -37,10 +37,15 @@ BarItem {
             wdth: root.width
             hght: scaleheightmin
             item: RowLayout {
+                // width: root.width
+                // height:scaleheightmin
                 // anchors.fill: del
                 // anchors.centerIn: del
                 TextItem {
                     Layout.fillHeight: true; Layout.fillWidth: true
+                    // Layout.preferredWidth: root.width
+                    // Layout.preferredHeight: root.scaleheightmin
+
                     Layout.alignment: Qt.AlignCenter
 
                     visible: !root.inputEnabled || root.selectedConn != index
@@ -117,10 +122,7 @@ BarItem {
         wdth: root.scalewidthmin
         hght: root.height
         item: Text {
-            text: Network.status
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pointSize:12
+            text: Network.statusConn[0] + " " + Network.statusConn[1]
         }
         onBtnclick: {
             Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx

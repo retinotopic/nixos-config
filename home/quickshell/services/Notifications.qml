@@ -23,6 +23,7 @@ Singleton {
             root.notifs.push({
                 body: notif.body,
                 summary: notif.summary,
+                appicon: notif.appIcon,
             });
             // myModel.sort
         }

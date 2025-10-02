@@ -13,14 +13,14 @@ pragma ComponentBehavior: Bound
 
 BarItem {
     id:root
-    itemcount: 2;
+    itemcount: Niri.workspaces.length;
     isscrollable: true;
     popupvisible: false;
     Connections {
         target: Niri
         function onWorkspaceChanged() {
-            console.log("wripscake change")
-            listv.positionViewAtIndex(Niri.focusedWorkspaceIndex, ListView.Center)
+            console.log("wripscake change",Niri.focusedWorkspaceIndex)
+            listv.positionViewAtIndex(Niri.focusedWorkspaceIndex, ListView.Contain)
         }
     }
 
@@ -34,12 +34,12 @@ BarItem {
             id: del
             required property string idx;
             required property string isActive;
-            wdth: root.scalewidthmin
+            wdth: root.scalewidthmin/3
             hght: root.height
             
             item: TextItem {
                 // Layout.fillHeight: true; Layout.fillWidth: true
-                width: root.scalewidthmin
+                width: root.scalewidthmin/3
                 height: root.height
                 
                 text: idx

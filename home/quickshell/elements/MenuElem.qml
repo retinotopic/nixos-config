@@ -6,6 +6,7 @@ import QtQuick.Controls
 import Quickshell.Widgets
 import QtQuick.Layouts
 import QtQuick.Shapes
+import Qt.labs.platform
 import QtQml
 import "../services"
 import "../"
@@ -17,6 +18,26 @@ BarItem {
     isscrollable: true;
     popupvisible: false
 
+    HListViewItem {
+        id:listv
+        wdth: root.width
+        hght: root.height
+        datamodel: SysTray.systrayitems
+        horizontal:true
+        delegatecmpnnt: BarContentItem {
+            id: del
+            required property string iconsrc
+            wdth: root.scalewidthmin
+            hght: root.height
+            
+            item: Image {
+                source: del.iconsrc
+            }
+
+            onBtnclick: {
+            }
+        }
+    }
     BarContentItem {
         wdth: root.scalewidthmin
         hght: root.height
@@ -24,7 +45,8 @@ BarItem {
             text: "Menu"
         }
         onBtnclick: {
-           Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
+            Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
+            SysTray.systraydo()
         }
     }
 }

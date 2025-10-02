@@ -13,10 +13,14 @@ Rectangle {
     id: root
     required property real wdth;
     required property real hght;
+    property bool isImplicit: true
     required property int idx;
     required property color excludedColor;
-    implicitWidth: wdth
-    implicitHeight: hght
+    implicitWidth: isImplicit ? wdth : null
+    implicitHeight: isImplicit ? hght : null
+
+    width: wdth
+    height: hght
     property color clr: Settings.colorpick(excludedColor,idx)
     color: "transparent"
     default property alias content: middleContent.data
@@ -28,8 +32,8 @@ Rectangle {
         scale:0.75
         TriangleItem { inverted:false; hght:root.height; clr:root.clr}
         Rectangle {
-            implicitWidth:root.wdth
-            implicitHeight:root.hght
+            implicitWidth:root.width
+            implicitHeight:root.height
             color: root.clr
             RowLayout {
                 id: middleContent

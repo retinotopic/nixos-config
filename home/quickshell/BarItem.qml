@@ -78,7 +78,7 @@ Item {
             implicitWidth: root.width
             implicitHeight: scaleheightmin*3
             Behavior on height { 
-                ElasticBehavior  {   } 
+                ElasticBehavior  {} 
             }
             onOpened: {
                 popup.height = popup.implicitHeight
@@ -109,12 +109,12 @@ Item {
             boundsBehavior:Flickable.StopAtBounds
             RowLayout {
                 id: itemsrow
-                Rectangle {
-                    // Layout.fillWidth:true
-                    implicitWidth: rect.height/2
-                    implicitHeight: rect.height
-                    color: "transparent"
-                }
+                // Rectangle {
+                //     // Layout.fillWidth:true
+                //     implicitWidth: rect.height/2
+                //     implicitHeight: rect.height
+                //     color: "transparent"
+                // }
                 spacing:0
                 LayoutMirroring.enabled: !root.invtrngl
                 // LayoutMirroring.childrenInherit: false

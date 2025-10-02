@@ -28,37 +28,40 @@ RowLayout {
     }
     Slider {
         id: sldr
-        implicitWidth:root.wdth
-        implicitHeight:root.hght/12
+        Layout.preferredWidth: root.wdth
+        Layout.preferredHeight: root.hght
         from: root.start
         value: root.initvalue
         to: root.end
         onMoved: root.slidermoved()
         background: Rectangle {
-            implicitWidth: root.wdth
-            implicitHeight: root.hght
+            anchors.centerIn: sldr
+            width: root.wdth
+            height: root.hght/12
             color:Settings.dark
         }
-        handle: RowLayout {
-            spacing: -0.8
-            x: sldr.leftPadding + (sldr.horizontal ? sldr.visualPosition * (sldr.availableWidth - width) : (sldr.availableWidth - width) / 2)
-            y: sldr.topPadding + (sldr.vertical ? sldr.visualPosition * (sldr.availableHeight - height) : (sldr.availableHeight - height) / 2)
-            TriangleItem {
-                inverted:false
-                hght:inprect.height
-                clr:Settings.dark
-            }
-            Rectangle {
-                id: inprect
-                Layout.alignment:Qt.AlignCenter
-                Layout.preferredWidth: root.hght/2
-                Layout.preferredHeight: root.hght/2
-                color:Settings.dark
-            }
-            TriangleItem {
-                inverted:true
-                hght:inprect.height
-                clr:Settings.dark
+        handle: Rectangle {
+            RowLayout {
+                spacing: -0.8
+                x: sldr.leftPadding + (sldr.horizontal ? sldr.visualPosition * (sldr.availableWidth - width) : (sldr.availableWidth - width) / 2)
+                y: sldr.topPadding + (sldr.vertical ? sldr.visualPosition * (sldr.availableHeight - height) : (sldr.availableHeight - height) / 2)
+                TriangleItem {
+                    inverted:false
+                    hght:inprect.height
+                    clr:Settings.dark
+                }
+                Rectangle {
+                    id: inprect
+                    Layout.alignment:Qt.AlignCenter
+                    Layout.preferredWidth: root.hght/2
+                    Layout.preferredHeight: root.hght/2
+                    color:Settings.dark
+                }
+                TriangleItem {
+                    inverted:true
+                    hght:inprect.height
+                    clr:Settings.dark
+                }
             }
         }
     }

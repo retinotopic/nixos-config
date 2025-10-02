@@ -20,10 +20,10 @@ RowLayout {
     function gettext(): string {
         return inp.text
     }
-    spacing:-0.8
+    spacing: -0.8
     scale: visible ? 1.0 : 0.1
     Behavior on scale { 
-        ElasticBehavior  {   } 
+        ElasticBehavior  {} 
     }
     TriangleItem {
         inverted:false
@@ -32,14 +32,10 @@ RowLayout {
     }
     Rectangle {
         id: inprect
-        // Layout.alignment:Qt.AlignCenter
         Layout.preferredWidth: root.wdth
         Layout.preferredHeight: root.hght
         color:root.bgclr
         clip:true
-        // antialiasing:true
-        // border.color: "#424b50"
-        // border.width: 1
         FontMetrics  {
             id: textMetrics
             font.pixelSize:15
@@ -61,17 +57,6 @@ RowLayout {
             horizontalAlignment: Text.AlignHCenter
             onTextChanged: { font.pixelSize=15*Math.min(1,width/(textMetrics.advanceWidth(text)*1.4));textMetrics.font.pixelSize=font.pixelSize}
 
-            // id: inpx
-            // clip:true
-            // text:"type text"
-            // focus:true
-            // color: "#d3c6aa"
-            // echoMode: TextInput.Normal
-            // anchors.centerIn: parent
-            // fontSizeMode :Text.HorizontalFit
-            // minimumPointSize: 10
-            // opacity:0.4
-            // // Layout.alignment:Qt.AlignCenter
             onAccepted: root.accepted()
             onEditingFinished: root.editingfinished()
             onTextEdited: root.textedited()

@@ -8,7 +8,8 @@ Singleton {
     id: root
     readonly property list<var> networkTypes: [["wifi"," "], ["ethernet"," "]]
 
-    property string status: "󰈂 "
+    // property string statusConn: "󰈂 "
+    property list<string> statusConn: []
     property var state: Object.freeze({
         SELECTED: 0,
         PENDING: 1,
@@ -27,7 +28,7 @@ Singleton {
     function connectToNetwork(ssid: string, password: string,profExist: bool): void {
         console.log(ssid,password,profExist)
         if (!profExist) {
-            connectProc.exec(["nmcli", "device", "wifi", "connect",ssid,"password",password]);
+            connectProc.exec(["nmcli", "device", "wifi", "connect", ssid, "password", password]);
             return
         }
         connectProc.exec(["nmcli", "conn", "up", ssid]);
@@ -40,13 +41,8 @@ Singleton {
     }
     Process {
         id: connectProc
-        // stdout: StdioCollector{
-        //      onStreamFinished: {
-        //         console.log(text) 
-        //     }
-        // }
-        onExited: (exitCode) => {
-            console.log(exitCode,"hmm")
+        onExited: (exitCode,exitStatus) => {
+            console.log(exitCode,"hmm",exitStatus)
             if (exitCode != 0) {
                 root.selected[1] = root.state.SELECTED
                 return
@@ -55,7 +51,7 @@ Singleton {
         }
     }
     Process {
-        property list<string> cmnd: ["nmcli", "-t","-f","TYPE,STATE","device"]
+        property list<string> cmnd: ["nmcli","-t","-f","TYPE,STATE,CONNECTION","device"]
         id: checkConnections
         running: false
         command: cmnd
@@ -63,15 +59,21 @@ Singleton {
             onStreamFinished: {
                 const data = root.splitterse(text)
                 console.log(data)
-                for (let i = 0; i < data.length; i++) {
+                root.statusConn = ["󰈂 ","No conn."]
+                outer: for (const col of data) {
                     for (const type of root.networkTypes) {
-                        if (data[i][0] === type[0] && data[i][1] === "connected") {
-                            root.status = type[1]
-                            return
+                        if (col[0] === type[0] && col[1] === "connected") {
+                            root.statusConn = [type[1],col[2]]
+                            break outer
                         }
                     }
                 }
-                root.status = "󰈂 "
+                for (const [i,network] of root.wifinetworks.entries()) {
+                    if (network.ssid === root.statusConn[1] && " " === root.statusConn[0]) {
+                        root.selected[0] = i
+                        root.selected[1] = root.state.ACTIVE
+                    }
+                }
             }
         }
     }
@@ -138,26 +140,6 @@ Singleton {
         })
         return res
     }
-    // Process {
-    //     id: getProfiles2
-    //     running: root.profilesactive
-    //     command: ["nmcli", "conn", "up","iPhone"]
-    //     onExited: {
-    //         console.log(exitCode,exitStatus)
-    //         root.profilesactive = false
-    //     }
-    //     stdout: StdioCollector {
-    //         onStreamFinished: {
-    //             console.log("hmmmm")
-    //         }
-    //     }
-    //     stderr: StdioCollector {
-    //         waitForEnd: true
-    //         onStreamFinished: {
-    //             console.log(data,"damn")
-    //         }
-    //     }
-    // }
 }
 // const Days = Object.freeze({
 //     SUNDAY: 0,
