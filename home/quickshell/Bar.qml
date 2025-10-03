@@ -21,9 +21,9 @@ Variants {
         // height:500
         WlrLayershell.layer: WlrLayer.Overlay
         visible: true
-        RowLayout {
+        Rectangle {
             id: rwlt
-            spacing:0
+            // spacing:0
             anchors.top: parent.top
             width: parent.width
             height: scaleheightmin
@@ -38,13 +38,10 @@ Variants {
             // }
             Rectangle {
                 id: left
-                    Layout.alignment: Qt.AlignLeft
-                Layout.fillHeight: true; Layout.fillWidth: true
-                // Layout.horizontalStretchFactor: 3
-                // Layout.preferredWidth:3
-                color: "transparent"
+                anchors.left: rwlt.left
+                // color: "transparent"
                 RowLayout {
-                    Layout.fillHeight: true; Layout.fillWidth: true
+                    // Layout.fillHeight: true; Layout.fillWidth: true
                     spacing:0
                     // width:left.width
                     // height: left.height
@@ -63,21 +60,13 @@ Variants {
                 }
             }
             Rectangle {
+                anchors.centerIn: rwlt
                 id: center
-                    Layout.alignment: Qt.AlignHCenter
-                Layout.fillHeight: true;
-                // Layout.fillWidth: true
-                // Layout.horizontalStretchFactor: 1
-                // Layout.preferredWidth:2
                 color: "blue"
             }
             Rectangle {
                 id: right
-                Layout.alignment: Qt.AlignRight
-                Layout.fillHeight: true;
-                // Layout.fillWidth: true
-                // Layout.horizontalStretchFactor: 3
-                // Layout.preferredWidth:3
+                anchors.right: rwlt.right
                 color: "red"
                 RowLayout {
                     width: right.width

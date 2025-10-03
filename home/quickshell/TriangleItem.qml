@@ -11,21 +11,9 @@ Shape {
     id: root
     required property color clr;
     required property bool inverted;
-    required property real hght;
-    property bool isanchor: false
-    Layout.preferredWidth: hght / 2
-    Layout.preferredHeight: hght
-    Layout.maximumWidth: hght/2
-    Layout.minimumWidth: hght/2
-
-    anchors {
-        left: !root.inverted && isanchor ? root.parent.left : undefined
-        right: !root.inverted && isanchor ? root.parent.right: undefined
-        margins: 0
-    }
     ShapePath {
         strokeWidth: -1
-        fillColor: clr 
+        fillColor: root.clr 
         startX: root.inverted == false ? root.width : 0
         startY: 0
         PathLine { x: root.inverted == false ?
