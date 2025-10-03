@@ -28,35 +28,26 @@ Variants {
             width: parent.width
             height: scaleheightmin
             property real minheight: 40
-                    // layoutDirection: Qt.RightToLeft
             property real scaleFactor: parent.width / Settings.scaleWidth
             property real scaleheightmin: scaleFactor*minheight
-            // Rectangle {
-            //     Layout.preferredWidth:rwlt.width
-            //     Layout.preferredHeight:rwlt.height
-            //     color: "transparent"
-            // }
-            Rectangle {
+            RowLayout {
                 id: left
                 anchors.left: rwlt.left
-                // color: "transparent"
-                RowLayout {
-                    // Layout.fillHeight: true; Layout.fillWidth: true
-                    spacing:0
-                    // width:left.width
-                    // height: left.height
-                    BarItem2 {
-                        scaleheightmin: rwlt.scaleheightmin
-                    }
-                    BarItem2 {
-                        scaleheightmin: rwlt.scaleheightmin
-                    }
-                    BarItem2 {
-                        scaleheightmin: rwlt.scaleheightmin
-                    }
-                    BarItem2 {
-                        scaleheightmin: rwlt.scaleheightmin
-                    }
+                layoutDirection: Qt.LeftToRight
+                Layout.alignment: Qt.AlignLeft
+                height: rwlt.scaleheightmin
+                spacing:0
+                BarItem2 {
+                    scaleheightmin: rwlt.scaleheightmin
+                }
+                BarItem2 {
+                    scaleheightmin: rwlt.scaleheightmin
+                }
+                BarItem2 {
+                    scaleheightmin: rwlt.scaleheightmin
+                }
+                BarItem2 {
+                    scaleheightmin: rwlt.scaleheightmin
                 }
             }
             Rectangle {
@@ -64,32 +55,24 @@ Variants {
                 id: center
                 color: "blue"
             }
-            Rectangle {
+            RowLayout {
                 id: right
                 anchors.right: rwlt.right
-                color: "red"
-                RowLayout {
-                    width: right.width
-                    height: rwlt.scaleheightmin
-                    // anchors.fill:right
-                    layoutDirection: Qt.RightToLeft
-                    Layout.alignment: Qt.AlignRight
-                    // Layout.fillHeight: true; Layout.fillWidth: true
-                    spacing:0
-                    // width:left.width
-                    // height: left.height
-                    BarItem2 {
-                        scaleheightmin: rwlt.scaleheightmin
-                    }
-                    BarItem2 {
-                        scaleheightmin: rwlt.scaleheightmin
-                    }
-                    BarItem2 {
-                        scaleheightmin: rwlt.scaleheightmin
-                    }
-                    BarItem2 {
-                        scaleheightmin: rwlt.scaleheightmin
-                    }
+                height: rwlt.scaleheightmin
+                layoutDirection: Qt.RightToLeft
+                Layout.alignment: Qt.AlignRight
+                spacing:0
+                BarItem2 {
+                    scaleheightmin: rwlt.scaleheightmin
+                }
+                BarItem2 {
+                    scaleheightmin: rwlt.scaleheightmin
+                }
+                BarItem2 {
+                    scaleheightmin: rwlt.scaleheightmin
+                }
+                BarItem2 {
+                    scaleheightmin: rwlt.scaleheightmin
                 }
             }
         }

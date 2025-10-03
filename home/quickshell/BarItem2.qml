@@ -14,7 +14,7 @@ import "./services"
 Rectangle {
     id: root
     color: "purple"
-    property real itemcount: 3
+    property real itemcount: 2
     required property real scaleheightmin
     Layout.fillHeight: true;
     Layout.preferredWidth: itemrect1.width+trngl.width
@@ -25,12 +25,6 @@ Rectangle {
         width: root.scaleheightmin
         height: root.scaleheightmin
         x: trngl.x + trngl.width
-        // Layout.maximumWidth: root.itemcount * root.scaleheightmin
-        // Layout.minimumWidth: root.scaleheightmin
-        
-        // Layout.minimumHeight: root.scaleheightmin
-        // Layout.preferredWidth: root.scaleheightmin
-        // Layout.preferredHeight: root.scaleheightmin
         Behavior on width { ElasticBehavior {} }
         color: "yellow"
         clip: true
@@ -63,38 +57,49 @@ Rectangle {
             //     sourceComponent: itemrect1.popupcomponent
             // }
         }
-        RowLayout {
-            Layout.fillHeight: true; Layout.fillWidth: true
-            spacing:0
-            BarContentItem {
-                wdth: root.scaleheightmin
-                hght: root.scaleheightmin
-                isImplicit: false
-                item: TextItem {
-                    text: ""
-                }
-                onBtnclick: {
-                    // if (root.Layout.preferredWidth === root.Layout.maximumWidth) {
-                    //     root.Layout.preferredWidth = root.Layout.minimumWidth
-                    // } else {
-                    //     root.Layout.preferredWidth = root.Layout.maximumWidth
-                    // }
-                    if (itemrect1.width === root.scaleheightmin) {
-                        itemrect1.width = root.scaleheightmin*3
-                    } else {
-                        itemrect1.width = root.scaleheightmin
+        Flickable {
+            id: flick
+            width: itemrect1.width
+            height: itemrect1.height
+            interactive:true
+            focus:true
+            contentWidth: root.scaleheightmin*2
+            contentHeight: root.scaleheightmin
+            boundsBehavior:Flickable.DragOverBounds
+            RowLayout {
+                // anchors.fill:flick
+                // Layout.fillHeight: true; Layout.fillWidth: true
+                spacing:0
+                BarContentItem {
+                    wdth: root.scaleheightmin
+                    hght: root.scaleheightmin
+                    isImplicit: false
+                    item: TextItem {
+                        text: ""
+                    }
+                    onBtnclick: {
+                        // if (root.Layout.preferredWidth === root.Layout.maximumWidth) {
+                        //     root.Layout.preferredWidth = root.Layout.minimumWidth
+                        // } else {
+                        //     root.Layout.preferredWidth = root.Layout.maximumWidth
+                        // }
+                        if (itemrect1.width === root.scaleheightmin) {
+                            itemrect1.width = root.scaleheightmin*2
+                        } else {
+                            itemrect1.width = root.scaleheightmin
+                        }
                     }
                 }
-            }
-            BarContentItem {
-                wdth: root.scaleheightmin
-                hght: root.scaleheightmin
-                isImplicit: false
-                item: TextItem {
-                    text: ""
-                }
-                onBtnclick: {
-                    popup.visible = !popup.visible
+                BarContentItem {
+                    wdth: root.scaleheightmin
+                    hght: root.scaleheightmin
+                    isImplicit: false
+                    item: TextItem {
+                        text: ""
+                    }
+                    onBtnclick: {
+                        popup.visible = !popup.visible
+                    }
                 }
             }
         }
