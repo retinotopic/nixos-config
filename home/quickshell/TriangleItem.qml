@@ -15,7 +15,8 @@ Shape {
     property bool isanchor: false
     Layout.preferredWidth: hght / 2
     Layout.preferredHeight: hght
-
+    Layout.maximumWidth: hght/2
+    Layout.minimumWidth: hght/2
 
     anchors {
         left: !root.inverted && isanchor ? root.parent.left : undefined
