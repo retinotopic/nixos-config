@@ -15,11 +15,10 @@ BarItem {
     itemcount: 3;
     isscrollable: false;
     popupvisible: false;
-    widthmin: 180
     invtrngl:true
     BarContentItem {
-        wdth: root.scalewidthmin
-        hght: root.height
+        Layout.preferredWidth: root.scaleheightmin
+        Layout.preferredHeight: root.scaleheightmin
         item: Text {
             text: Cava.output
             horizontalAlignment: Text.AlignHCenter
@@ -32,8 +31,8 @@ BarItem {
         }
     }
     BarContentItem {
-        wdth: root.scalewidthmin
-        hght: root.height
+        Layout.preferredWidth: root.scaleheightmin
+        Layout.preferredHeight: root.scaleheightmin
         item: Text {
             text: Mpris.activePlayer && Mpris.activePlayer.canTogglePlaying ? "󰐊" : "󰏤"
             horizontalAlignment: Text.AlignHCenter
@@ -46,8 +45,8 @@ BarItem {
         }
     }
     BarContentItem {
-        wdth: root.scalewidthmin
-        hght: root.height
+        Layout.preferredWidth: root.scaleheightmin
+        Layout.preferredHeight: root.scaleheightmin
         item: Text {
             text: SysInfo2.clocktime
             horizontalAlignment: Text.AlignHCenter

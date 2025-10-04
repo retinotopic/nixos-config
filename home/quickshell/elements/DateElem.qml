@@ -17,8 +17,8 @@ BarItem {
     popupvisible: false
 
     BarContentItem {
-        wdth: root.scalewidthmin
-        hght: root.height
+        Layout.preferredWidth: root.scaleheightmin
+        Layout.preferredHeight: root.scaleheightmin
         item: Text {
             text: SysInfo2.clockdate
             verticalAlignment: Text.AlignVCenter

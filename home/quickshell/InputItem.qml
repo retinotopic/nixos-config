@@ -27,7 +27,8 @@ RowLayout {
     }
     TriangleItem {
         inverted:false
-        hght:inprect.height
+        Layout.preferredWidth:inprect.height/2;
+        Layout.preferredHeight:inprect.height;
         clr: root.bgclr
     }
     Rectangle {
@@ -64,7 +65,8 @@ RowLayout {
     }
     TriangleItem {
         inverted:true
-        hght:inprect.height
+        Layout.preferredWidth:inprect.height/2;
+        Layout.preferredHeight:inprect.height;
         clr: root.bgclr
     }
 }

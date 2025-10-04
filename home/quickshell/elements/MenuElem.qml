@@ -11,6 +11,7 @@ import QtQml
 import "../services"
 import "../"
 
+pragma ComponentBehavior: Bound 
 BarItem {
     id:root
     invtrngl:true
@@ -27,8 +28,8 @@ BarItem {
         delegatecmpnnt: BarContentItem {
             id: del
             required property string iconsrc
-            wdth: root.scalewidthmin
-            hght: root.height
+            Layout.preferredWidth: root.scaleheightmin
+            Layout.preferredHeight: root.scaleheightmin
             
             item: Image {
                 source: del.iconsrc
@@ -39,8 +40,8 @@ BarItem {
         }
     }
     BarContentItem {
-        wdth: root.scalewidthmin
-        hght: root.height
+        Layout.preferredWidth: root.scaleheightmin
+        Layout.preferredHeight: root.scaleheightmin
         item: TextItem {
             text: "Menu"
         }

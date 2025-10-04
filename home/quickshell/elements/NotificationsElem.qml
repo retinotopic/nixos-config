@@ -15,7 +15,7 @@ BarItem {
     // clr: "#e67e80"
     // clrtrngl: "#d699b6"
     datamodel: Notifications.notifs;
-    isscrollable: false;
+    isscrollable: true;
     popupvisible: true
     invtrngl:false
 
@@ -31,8 +31,8 @@ BarItem {
     }
 
     BarContentItem {
-        wdth: root.scalewidthmin
-        hght: root.height
+        Layout.preferredWidth: root.scaleheightmin
+        Layout.preferredHeight: root.scaleheightmin
         item: Text {
             text: "󰎔"
             horizontalAlignment: Text.AlignHCenter

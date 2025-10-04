@@ -25,32 +25,32 @@ BarItem {
     }
 
     invtrngl:true
-    HListViewItem {
-        id:listv
-        wdth: root.width
-        hght: root.height
-        datamodel: Niri.workspaces
-        delegatecmpnnt: BarContentItem {
-            id: del
-            required property string idx;
-            required property string isActive;
-            wdth: root.scalewidthmin/3
-            hght: root.height
+    // HListViewItem {
+    //     id:listv
+    //     wdth: root.width
+    //     hght: root.height
+    //     datamodel: Niri.workspaces
+    //     delegatecmpnnt: BarContentItem {
+    //         id: del
+    //         required property string idx;
+    //         required property string isActive;
+    //         wdth: root.scalewidthmin/3
+    //         hght: root.height
             
-            item: TextItem {
-                // Layout.fillHeight: true; Layout.fillWidth: true
-                width: root.scalewidthmin/3
-                height: root.height
+    //         item: TextItem {
+    //             // Layout.fillHeight: true; Layout.fillWidth: true
+    //             width: root.scalewidthmin/3
+    //             height: root.height
                 
-                text: idx
-                color: Settings.dark
-            }
+    //             text: idx
+    //             color: Settings.dark
+    //         }
 
-            onBtnclick: {
-                Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
-                Niri.switchToWorkspace(del.idx)
-            }
-        }
-    }
+    //         onBtnclick: {
+    //             Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
+    //             Niri.switchToWorkspace(del.idx)
+    //         }
+    //     }
+    // }
 }
 

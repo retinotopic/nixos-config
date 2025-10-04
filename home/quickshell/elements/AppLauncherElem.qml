@@ -25,14 +25,14 @@ BarItem {
         required property string appname;
         required property string appicon;
         required property int index
-        wdth:root.width
-        hght:root.scaleheightmin
+        width:root.width
+        height:root.scaleheightmin
         idx: index
         excludedColor:root.clr
         BarContentItem {
             id: barcnt
-            wdth: root.width
-            hght: root.scaleheightmin
+            width: root.width
+            height: root.scaleheightmin
             item: RowLayout {
                 id:rl
                 Image {
@@ -57,8 +57,8 @@ BarItem {
     }
     
     BarContentItem {
-        wdth: root.scalewidthmin
-        hght: root.height
+        width: root.scalewidthmin
+        height: root.height
         item: Text {
             text: "󰀻"
             horizontalAlignment: Text.AlignHCenter
@@ -74,8 +74,8 @@ BarItem {
 
     BarContentItem {
         visible: !root.inputactive
-        wdth: root.scalewidthmin
-        hght: root.height
+        width: root.scalewidthmin
+        height: root.height
         item: Text {
             text: ""
             horizontalAlignment: Text.AlignHCenter
@@ -90,8 +90,8 @@ BarItem {
 
     InputItem {
         visible: root.inputactive
-        wdth: root.scalewidthmin
-        hght: root.height/1.5
+        width: root.scalewidthmin
+        height: root.height/1.5
         onTextedited: {
             AppLauncher.searchApplications(gettext())
         }

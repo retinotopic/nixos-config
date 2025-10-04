@@ -53,8 +53,8 @@ BarItem {
         }
     }
     BarContentItem {
-        wdth: root.scalewidthmin-(root.height/2)+1
-        hght: root.height
+        Layout.preferredWidth: root.scaleheightmin
+        Layout.preferredHeight: root.scaleheightmin
         item: TextItem {
             text: Battery.batteryLevel
             // horizontalAlignment: Text.AlignRight

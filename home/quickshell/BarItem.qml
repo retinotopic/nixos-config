@@ -2,14 +2,20 @@ import Quickshell // for PanelWindow
 import Quickshell.Io
 import QtQuick // for Text
 import QtQuick.Controls
-import Quickshell.Widgets
 import QtQuick.Layouts
-import QtQml
+import Quickshell.Widgets
+import Quickshell.Wayland
+import QtQuick.Shapes
+import "./elements"
+import "./services"
 
+pragma ComponentBehavior: Bound
 
-Item {
-    id:root
-
+Rectangle {
+    id: root
+    property real scaleheightmin: parent.parent.scaleheightmin
+    property real widthmax: parent.parent.minheight
+    property real scalewidthmax: parent.parent.scaleFactor*(widthmax*itemcount)
     required property color clr;
     required property color clrtrngl;
     required property int indx;
@@ -21,6 +27,7 @@ Item {
     property var datamodel;
     property Component delegatecmpnnt;
 
+    default property alias content: itemsrow.data
     // you can override default component for your own popup behavior
     property Component popupcomponent: Rectangle {
         id: rectpop
@@ -32,56 +39,38 @@ Item {
             highlightRangeMode: ListView.StrictlyEnforceRange
             anchors.fill: parent
             model: root.datamodel
-            contentWidth: root.scalewidthmin
+            contentWidth: root.scaleheightmin
             contentHeight: root.height
             delegate: root.delegatecmpnnt
         }
     }
-
-    property bool unfolded: false
-    property real widthmin: 70
-    property real scaleFactor: parent.windowwidth / Settings.scaleWidth
-    property real maxWidth: itemcount * widthmin
-    property real scalewidthmin: scaleFactor*widthmin
-    property real scaleheightmin: scaleFactor*40
-    Behavior on implicitWidth { ElasticBehavior {} }
-    Behavior on implicitHeight { ElasticBehavior {} }
-    
-    implicitWidth:  {
-        var w 
-        if (Settings.curridx == root.indx) {
-            w = scaleFactor*maxWidth
-        } else {
-            w = scalewidthmin
-        }
-        unfolded = !unfolded
-        flick.contentX = 0
-        return w
-        // Settings.curridx == root.indx ? scaleFactor*maxWidth : scalewidthmin
-    }
-    implicitHeight: scaleheightmin
-    default property alias content: itemsrow.data
+    Layout.fillHeight: true;
+    Layout.preferredWidth: itemrect1.width+trngl.width
+    // Layout.maximumWidth: root.itemcount * root.scaleheightmin
+    // Layout.minimumWidth: root.scaleheightmin
     Rectangle {
-        id: rect
-        clip: true
-        // onClipChanged
-        anchors.fill: root
-        Layout.fillHeight:true
-        Layout.fillWidth:true
+        id: itemrect1
+        // width: root.scaleheightmin
+        width: Settings.curridx == root.indx ? root.scalewidthmax : root.scaleheightmin
 
+        height: root.scaleheightmin
+        x: root.invtrngl ? 0 : trngl.x + trngl.width
+        // x: trngl.x + trngl.width
+        Behavior on width { ElasticBehavior {} }
         color: root.clr
+        clip: true
         Popup {
             id: popup
-            x: root.mapToItem(null, 0, 0).x
-            y: root.height
+            x: itemrect1.mapToItem(null, 0, 0).x
+            y: itemrect1.height
             height:0
-            implicitWidth: root.width
-            implicitHeight: scaleheightmin*3
+            width: itemrect1.width
+            // height: scaleheightmin*3
             Behavior on height { 
                 ElasticBehavior  {} 
             }
             onOpened: {
-                popup.height = popup.implicitHeight
+                popup.height = root.scaleheightmin*3
             }
 
             onAboutToHide: {
@@ -89,8 +78,8 @@ Item {
             }
 
             focus: true
-            visible: Settings.curridx == root.indx && root.popupvisible
             modal: false
+            visible: Settings.curridx == root.indx && root.popupvisible
             closePolicy: Popup.NoAutoClose
             margins:0
             padding:0
@@ -101,33 +90,29 @@ Item {
         }
         Flickable {
             id: flick
-            width: rect.width
-            height: rect.height
+            width: itemrect1.width
+            height: itemrect1.height
             interactive:root.isscrollable
-            contentWidth: itemsrow.implicitWidth
-            contentHeight: itemsrow.implicitHeight
-            boundsBehavior:Flickable.StopAtBounds
+            focus:true
+            contentWidth: root.scaleheightmin*2
+            contentHeight: root.scaleheightmin
+            boundsBehavior:Flickable.DragOverBounds
             RowLayout {
                 id: itemsrow
-                // Rectangle {
-                //     // Layout.fillWidth:true
-                //     implicitWidth: rect.height/2
-                //     implicitHeight: rect.height
-                //     color: "transparent"
-                // }
+                // anchors.fill:flick
+                // Layout.fillHeight: true; Layout.fillWidth: true
                 spacing:0
-                LayoutMirroring.enabled: !root.invtrngl
-                // LayoutMirroring.childrenInherit: false
-                visible:true
             }
         }
-        TriangleItem {
-            inverted:root.invtrngl;
-            isanchor:true;
-            hght:root.height;
-            clr:root.clrtrngl;
-            width: rect.height/2
-            height: rect.height
-        }
+    }
+    TriangleItem {
+        id: trngl
+        inverted:root.invtrngl;
+        x: !root.invtrngl ? 0 : itemrect1.x + itemrect1.width
+        clr:root.clrtrngl
+        width: root.scaleheightmin/2
+        height: root.scaleheightmin
     }
 }
+
+

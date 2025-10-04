@@ -31,11 +31,11 @@ BarItem {
         property bool inputEnabled: false
         idx: index
         excludedColor:root.clr
-        wdth: root.width
-        hght: scaleheightmin
+        width: root.width
+        height: scaleheightmin
         BarContentItem {
-            wdth: root.width
-            hght: scaleheightmin
+            width: root.width
+            height: scaleheightmin
             item: RowLayout {
                 // width: root.width
                 // height:scaleheightmin
@@ -58,8 +58,8 @@ BarItem {
                     Layout.fillHeight: true; Layout.fillWidth: true
                     Layout.alignment: Qt.AlignCenter
                     
-                    wdth: root.scalewidthmin
-                    hght: root.height
+                    width: root.scalewidthmax
+                    height: root.height
                     visible: root.inputEnabled && root.selectedConn === index
                     item: TextItem {
                         text: "Back"
@@ -74,15 +74,15 @@ BarItem {
                     Layout.alignment: Qt.AlignCenter
                     
                     visible: root.inputEnabled && root.selectedConn === index
-                    wdth: root.scalewidthmin
+                    wdth: root.scalewidthmax
                     hght: root.height/1.5
                 }
                 BarContentItem {
                     Layout.fillHeight: true; Layout.fillWidth: true
                     Layout.alignment: Qt.AlignCenter
                     
-                    wdth: root.scalewidthmin
-                    hght: root.height
+                    width: root.scalewidthmax
+                    height: root.height
                     visible: root.inputEnabled && root.selectedConn === index
                     item: TextItem {
                         text: "Connect"
@@ -111,16 +111,9 @@ BarItem {
         }
     }
 
-    InputItem {
-        id: inpt
-        // Layout.alignment: Qt.AlignCenter
-        
-        wdth: root.scalewidthmin
-        hght: root.height/1.5
-    }
     BarContentItem {
-        wdth: root.scalewidthmin
-        hght: root.height
+        width: root.scaleheightmin
+        height: root.height
         item: Text {
             text: Network.statusConn[0] + " " + Network.statusConn[1]
         }
@@ -128,5 +121,12 @@ BarItem {
             Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
             Network.getNetworks = true
         }
+    }
+    InputItem {
+        id: inpt
+        // Layout.alignment: Qt.AlignCenter
+        
+        wdth: root.scaleheightmin
+        hght: root.scaleheightmin/1.5
     }
 }

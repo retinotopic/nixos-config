@@ -23,7 +23,8 @@ RowLayout {
 
     TriangleItem {
         inverted:false
-        hght:root.hght/12
+        Layout.preferredWidth:root.hght/12;
+        Layout.preferredHeight:root.hght;
         clr:Settings.dark
     }
     Slider {
@@ -47,7 +48,8 @@ RowLayout {
                 y: sldr.topPadding + (sldr.vertical ? sldr.visualPosition * (sldr.availableHeight - height) : (sldr.availableHeight - height) / 2)
                 TriangleItem {
                     inverted:false
-                    hght:inprect.height
+                    Layout.preferredWidth:inprect.height/2;
+                    Layout.preferredHeight:inprect.height;
                     clr:Settings.dark
                 }
                 Rectangle {
@@ -59,7 +61,8 @@ RowLayout {
                 }
                 TriangleItem {
                     inverted:true
-                    hght:inprect.height
+                    Layout.preferredWidth:inprect.height/2;
+                    Layout.preferredHeight:inprect.height;
                     clr:Settings.dark
                 }
             }
@@ -67,7 +70,8 @@ RowLayout {
     }
     TriangleItem {
         inverted:true
-        hght:root.hght/12
+        Layout.preferredWidth:root.hght/12;
+        Layout.preferredHeight:root.hght;
         clr:Settings.dark
     }
 }
