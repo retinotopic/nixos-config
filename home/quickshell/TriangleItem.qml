@@ -11,6 +11,9 @@ Shape {
     id: root
     required property color clr;
     required property bool inverted;
+    property real implicitSize: 40
+    implicitWidth: implicitSize/2
+    implicitHeight: implicitSize
     ShapePath {
         strokeWidth: -1
         fillColor: root.clr 

@@ -9,18 +9,18 @@ import QtQml
 
 Button {
     id: root
-    required property Item item;
-    property bool isImplicit: true
+    property real implicitSize: 40
     property color clr: "transparent"
     property real opac
     signal btnclick
     Layout.alignment:Qt.AlignLeft
     
+    implicitWidth: root.implicitSize
+    implicitHeight: root.implicitSize
     background: Rectangle {
         opacity: root.opac
         color: root.clr
     }
-    contentItem: item
     onClicked: btnclick()
 }
 

@@ -13,11 +13,10 @@ pragma ComponentBehavior: Bound
 
 BarItem {
     id:root
-    itemcount: 3;
+    itemcount: 4;
     datamodel: AppLauncher.apps;
     isscrollable: true;
     popupvisible: false
-    // widthmin:40
     invtrngl:true
     property bool inputactive: false
     delegatecmpnnt: ListDelegateItem {
@@ -25,16 +24,19 @@ BarItem {
         required property string appname;
         required property string appicon;
         required property int index
-        width:root.width
-        height:root.scaleheightmin
+        implicitWidth: root.contentWidth
+        implicitHeight: root.scaleheightmin
         idx: index
         excludedColor:root.clr
         BarContentItem {
             id: barcnt
-            width: root.width
-            height: root.scaleheightmin
-            item: RowLayout {
+            implicitWidth: root.contentWidth
+            implicitHeight: root.scaleheightmin
+            
+            contentItem: RowLayout {
                 id:rl
+                Layout.fillHeight: true
+                Layout.fillWidth: true
                 Image {
                     scale:0.8
                     Layout.preferredWidth: rl.height
@@ -57,13 +59,10 @@ BarItem {
     }
     
     BarContentItem {
-        width: root.scalewidthmin
-        height: root.height
-        item: Text {
+        implicitSize:root.scaleheightmin
+        contentItem: TextItem {
+            // implicitSize: root.scaleheightmin
             text: "󰀻"
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pointSize:12
         }
         onBtnclick: {
             Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
@@ -74,13 +73,9 @@ BarItem {
 
     BarContentItem {
         visible: !root.inputactive
-        width: root.scalewidthmin
-        height: root.height
-        item: Text {
+        implicitSize:root.scaleheightmin
+        contentItem: TextItem {
             text: ""
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pointSize:12
         }
         onBtnclick: {
             root.popupvisible = true
@@ -89,9 +84,15 @@ BarItem {
     }
 
     InputItem {
+        id: input
+        decor: DecorTriangleItem {
+            implicitWidth:root.scaleheightmin*3
+            implicitHeight:root.scaleheightmin
+            clr: Settings.dark
+        }
         visible: root.inputactive
-        width: root.scalewidthmin
-        height: root.height/1.5
+        implicitWidth:root.scaleheightmin*3
+        implicitHeight:root.scaleheightmin
         onTextedited: {
             AppLauncher.searchApplications(gettext())
         }

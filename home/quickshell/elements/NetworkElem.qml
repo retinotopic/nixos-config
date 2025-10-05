@@ -36,7 +36,7 @@ BarItem {
         BarContentItem {
             width: root.width
             height: scaleheightmin
-            item: RowLayout {
+            contentItem: RowLayout {
                 // width: root.width
                 // height:scaleheightmin
                 // anchors.fill: del

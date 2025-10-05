@@ -14,8 +14,11 @@ pragma ComponentBehavior: Bound
 Rectangle {
     id: root
     property real scaleheightmin: parent.parent.scaleheightmin
-    property real widthmax: parent.parent.minheight
-    property real scalewidthmax: parent.parent.scaleFactor*(widthmax*itemcount)
+
+    // your own widthmax or calculated via minheight * itemcount
+    property real widthmax: parent.parent.minheight*itemcount
+    
+    property real scalewidthmax: parent.parent.scaleFactor*widthmax
     required property color clr;
     required property color clrtrngl;
     required property int indx;
@@ -28,6 +31,7 @@ Rectangle {
     property Component delegatecmpnnt;
 
     default property alias content: itemsrow.data
+    readonly property real contentWidth: itemsrow.width
     // you can override default component for your own popup behavior
     property Component popupcomponent: Rectangle {
         id: rectpop
@@ -44,19 +48,20 @@ Rectangle {
             delegate: root.delegatecmpnnt
         }
     }
-    Layout.fillHeight: true;
-    Layout.preferredWidth: itemrect1.width+trngl.width
+    implicitHeight: root.scaleheightmin
+    implicitWidth: itemrect1.implicitWidth+trngl.implicitWidth
     // Layout.maximumWidth: root.itemcount * root.scaleheightmin
     // Layout.minimumWidth: root.scaleheightmin
     Rectangle {
         id: itemrect1
         // width: root.scaleheightmin
-        width: Settings.curridx == root.indx ? root.scalewidthmax : root.scaleheightmin
+        implicitWidth: Settings.curridx == root.indx ? itemsrow.width : root.scaleheightmin
+        // implicitWidth: Settings.curridx == root.indx ? root.scalewidthmax : root.scaleheightmin
 
-        height: root.scaleheightmin
+        implicitHeight: root.scaleheightmin
         x: root.invtrngl ? 0 : trngl.x + trngl.width
         // x: trngl.x + trngl.width
-        Behavior on width { ElasticBehavior {} }
+        Behavior on implicitWidth { ElasticBehavior {} }
         color: root.clr
         clip: true
         Popup {
@@ -94,7 +99,7 @@ Rectangle {
             height: itemrect1.height
             interactive:root.isscrollable
             focus:true
-            contentWidth: root.scaleheightmin*2
+            contentWidth: root.scalewidthmax
             contentHeight: root.scaleheightmin
             boundsBehavior:Flickable.DragOverBounds
             RowLayout {
@@ -110,8 +115,8 @@ Rectangle {
         inverted:root.invtrngl;
         x: !root.invtrngl ? 0 : itemrect1.x + itemrect1.width
         clr:root.clrtrngl
-        width: root.scaleheightmin/2
-        height: root.scaleheightmin
+        implicitWidth: root.scaleheightmin/2
+        implicitHeight: root.scaleheightmin
     }
 }
 

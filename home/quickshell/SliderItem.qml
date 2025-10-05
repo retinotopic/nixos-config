@@ -9,69 +9,37 @@ import QtQml
 import "../services"
 import "../"
 
-RowLayout {
+Item {
     id: root
-    required property real wdth
-    required property real hght
+    property Component decor: null
     required property real start
     required property real initvalue
     required property real end
-    
     readonly property real val: sldr.value
     signal slidermoved
-    spacing: -0.8
-
-    TriangleItem {
-        inverted:false
-        Layout.preferredWidth:root.hght/12;
-        Layout.preferredHeight:root.hght;
-        clr:Settings.dark
-    }
+    implicitWidth: 80
+    implicitHeight: 40
     Slider {
         id: sldr
-        Layout.preferredWidth: root.wdth
-        Layout.preferredHeight: root.hght
+        width:root.width
+        height:root.height
         from: root.start
         value: root.initvalue
         to: root.end
         onMoved: root.slidermoved()
         background: Rectangle {
             anchors.centerIn: sldr
-            width: root.wdth
-            height: root.hght/12
+            width: sldr.width
+            height: sldr.height/12
             color:Settings.dark
         }
-        handle: Rectangle {
-            RowLayout {
-                spacing: -0.8
-                x: sldr.leftPadding + (sldr.horizontal ? sldr.visualPosition * (sldr.availableWidth - width) : (sldr.availableWidth - width) / 2)
-                y: sldr.topPadding + (sldr.vertical ? sldr.visualPosition * (sldr.availableHeight - height) : (sldr.availableHeight - height) / 2)
-                TriangleItem {
-                    inverted:false
-                    Layout.preferredWidth:inprect.height/2;
-                    Layout.preferredHeight:inprect.height;
-                    clr:Settings.dark
-                }
-                Rectangle {
-                    id: inprect
-                    Layout.alignment:Qt.AlignCenter
-                    Layout.preferredWidth: root.hght/2
-                    Layout.preferredHeight: root.hght/2
-                    color:Settings.dark
-                }
-                TriangleItem {
-                    inverted:true
-                    Layout.preferredWidth:inprect.height/2;
-                    Layout.preferredHeight:inprect.height;
-                    clr:Settings.dark
-                }
-            }
+        handle: DecorTriangleItem {
+            id: inprect
+            x: sldr.leftPadding + (sldr.horizontal ? sldr.visualPosition * (sldr.availableWidth - width) : (sldr.availableWidth - width) / 2)
+            y: sldr.topPadding + (sldr.vertical ? sldr.visualPosition * (sldr.availableHeight - height) : (sldr.availableHeight - height) / 2)
+            width:root.width/3
+            height:root.height/2
+            clr:Settings.dark
         }
-    }
-    TriangleItem {
-        inverted:true
-        Layout.preferredWidth:root.hght/12;
-        Layout.preferredHeight:root.hght;
-        clr:Settings.dark
     }
 }

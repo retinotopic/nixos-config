@@ -13,25 +13,15 @@ import "../"
 BarItem {
     id:root
     invtrngl:false
-    itemcount: 2;
+    itemcount: 3;
     isscrollable: true;
     popupvisible: false
 
-    Slider {
-        implicitWidth:root.scalewidthmin
-        id: sld
-        from: 0
-        value: 0.3
-        to: 1
-        onMoved: {
-            Audio.setVolume(value)
-        }
-    }
     BarContentItem {
         id: barContent1
         Layout.preferredWidth: root.scaleheightmin
         Layout.preferredHeight: root.scaleheightmin
-        item: Text {
+        contentItem: Text {
             text: Math.round(Audio.volume*100)
             verticalAlignment: Text.AlignVCenter
 
@@ -41,6 +31,17 @@ BarItem {
         }
         onBtnclick: {
            Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
+        }
+    }
+    SliderItem {
+        implicitWidth:root.scaleheightmin*3
+        implicitHeight:root.scaleheightmin
+        id: sld
+        start: 0
+        initvalue: 0.3
+        end: 1
+        onSlidermoved: {
+            Audio.setVolume(sld.val)
         }
     }
 }

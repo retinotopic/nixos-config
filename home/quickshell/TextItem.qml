@@ -11,6 +11,7 @@ import QtQml
 
 Text {
     id:root
+    property real implicitSize: 40
     fontSizeMode :Text.Fit
     horizontalAlignment: Text.AlignHCenter
     verticalAlignment: Text.AlignVCenter
