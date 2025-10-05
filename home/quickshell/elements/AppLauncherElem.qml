@@ -13,7 +13,7 @@ pragma ComponentBehavior: Bound
 
 BarItem {
     id:root
-    itemcount: 4;
+    itemcount: 5;
     datamodel: AppLauncher.apps;
     isscrollable: true;
     popupvisible: false
@@ -26,27 +26,30 @@ BarItem {
         required property int index
         implicitWidth: root.contentWidth
         implicitHeight: root.scaleheightmin
-        idx: index
-        excludedColor:root.clr
+        decor: DecorTriangleItem {
+            clr: Settings.colorpick(root.clr,del.index)
+        }
         BarContentItem {
             id: barcnt
             implicitWidth: root.contentWidth
             implicitHeight: root.scaleheightmin
-            
-            contentItem: RowLayout {
+            scale:0.9
+            contentItem: Item {
                 id:rl
-                Layout.fillHeight: true
-                Layout.fillWidth: true
+                width: barcnt.width
+                height: barcnt.height
                 Image {
                     scale:0.8
-                    Layout.preferredWidth: rl.height
-                    Layout.preferredHeight: rl.height
+                    anchors.left: parent.left
+                    width: rl.height
+                    height: rl.height
                     Layout.alignment: Qt.AlignCenter
                     source:del.appicon
                 }
                 TextItem {
-                    Layout.preferredWidth: rl.width-rl.height
-                    Layout.preferredHeight: rl.height
+                    anchors.right: parent.right
+                    width: rl.width-rl.height
+                    height: rl.height
                     text: del.appname
                 }
             }
@@ -86,12 +89,10 @@ BarItem {
     InputItem {
         id: input
         decor: DecorTriangleItem {
-            implicitWidth:root.scaleheightmin*3
-            implicitHeight:root.scaleheightmin
             clr: Settings.dark
         }
         visible: root.inputactive
-        implicitWidth:root.scaleheightmin*3
+        implicitWidth:root.scaleheightmin*5
         implicitHeight:root.scaleheightmin
         onTextedited: {
             AppLauncher.searchApplications(gettext())

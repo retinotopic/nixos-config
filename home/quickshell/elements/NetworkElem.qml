@@ -16,6 +16,7 @@ BarItem {
     popupvisible: true
     invtrngl:false
     datamodel: Network.wifinetworks;
+    
     property bool inputEnabled: false
     property int selectedConn: -1
     function selectstatus(idx: string): string {
@@ -23,19 +24,22 @@ BarItem {
         Network.selected[1] == Network.state.SELECTED ? "X ": 
         Network.selected[1] == Network.state.PENDING ? " ": " "
     }
+        
     delegatecmpnnt: ListDelegateItem {
         id:del
         required property string ssid; required property bool profileExist;
         required property string bars; required property string security;
         required property int index
         property bool inputEnabled: false
-        idx: index
-        excludedColor:root.clr
-        width: root.width
-        height: scaleheightmin
+        implicitWidth: root.contentWidth
+        implicitHeight: root.scaleheightmin
+        decor: DecorTriangleItem {
+            clr: Settings.colorpick(root.clr,del.index)
+        }
         BarContentItem {
             width: root.width
             height: scaleheightmin
+            scale: 0.9
             contentItem: RowLayout {
                 // width: root.width
                 // height:scaleheightmin
@@ -61,7 +65,7 @@ BarItem {
                     width: root.scalewidthmax
                     height: root.height
                     visible: root.inputEnabled && root.selectedConn === index
-                    item: TextItem {
+                    contentItem: TextItem {
                         text: "Back"
                     }
                     onBtnclick: {
@@ -70,12 +74,13 @@ BarItem {
                 }
                 InputItem {
                     id: inp
-                    Layout.fillHeight: true; Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignCenter
-                    
+                   
                     visible: root.inputEnabled && root.selectedConn === index
-                    wdth: root.scalewidthmax
-                    hght: root.height/1.5
+                    decor: DecorTriangleItem {
+                        clr: Settings.dark
+                    }
+                    implicitWidth:root.scaleheightmin
+                    implicitHeight:root.scaleheightmin/1.5
                 }
                 BarContentItem {
                     Layout.fillHeight: true; Layout.fillWidth: true
@@ -84,7 +89,7 @@ BarItem {
                     width: root.scalewidthmax
                     height: root.height
                     visible: root.inputEnabled && root.selectedConn === index
-                    item: TextItem {
+                    contentItem: TextItem {
                         text: "Connect"
                     }
                     onBtnclick: {
@@ -113,8 +118,8 @@ BarItem {
 
     BarContentItem {
         width: root.scaleheightmin
-        height: root.height
-        item: Text {
+        height: root.scaleheightmin
+        contentItem: TextItem {
             text: Network.statusConn[0] + " " + Network.statusConn[1]
         }
         onBtnclick: {
@@ -123,10 +128,12 @@ BarItem {
         }
     }
     InputItem {
-        id: inpt
-        // Layout.alignment: Qt.AlignCenter
-        
-        wdth: root.scaleheightmin
-        hght: root.scaleheightmin/1.5
+        id: input
+        decor: DecorTriangleItem {
+            clr: Settings.dark
+        }
+        visible: root.inputactive
+        implicitWidth:root.scaleheightmin*5
+        implicitHeight:root.scaleheightmin
     }
 }

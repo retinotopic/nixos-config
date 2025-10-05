@@ -11,17 +11,11 @@ ListView {
     id: root
     layoutDirection: Qt.LeftToRight
     verticalLayoutDirection:ListView.TopToBottom
-    // layoutDirection:Qt.B
     orientation: horizontal ? Qt.Horizontal : Qt.Vertical
-    // highlightFollowsCurrentItem :true
-    // highlightRangeMode: ListView.StrictlyEnforceRange
-    implicitWidth: wdth
-    implicitHeight: hght
-    Layout.alignment:Qt.AlignCenter
+    implicitWidth: 80
+    implicitHeight: 200
     required property var datamodel;
     required property Component delegatecmpnnt;
-    required property real wdth;
-    required property real hght;
     property bool horizontal: true
     delegate: delegatecmpnnt
     model: datamodel

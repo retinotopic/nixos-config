@@ -14,7 +14,6 @@ Button {
     property real opac
     signal btnclick
     Layout.alignment:Qt.AlignLeft
-    
     implicitWidth: root.implicitSize
     implicitHeight: root.implicitSize
     background: Rectangle {

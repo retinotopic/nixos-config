@@ -11,23 +11,16 @@ pragma ComponentBehavior: Bound
 
 Item {
     id: root
-    required property int idx;
-    property real implicitSize: 40
-    required property color excludedColor;
 
-    property color clr: Settings.colorpick(excludedColor,idx)
-    default property alias content: middleContent.data
-
-    implicitWidth:root.implicitSize*2
-    implicitHeight:root.implicitSize
-    scale:0.8
-    Rectangle {
-        id: rect
-        anchors.fill: root
-        color: root.clr
-        RowLayout {
-            anchors.fill: rect
-            id: middleContent
-        }
+    property Component decor: null
+    
+    Loader {
+        anchors.fill: parent
+        sourceComponent: root.decor
     }
+    
+    implicitWidth: 80
+    implicitHeight: 40
+    scale:0.9
+    
 }
