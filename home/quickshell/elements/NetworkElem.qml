@@ -36,61 +36,74 @@ BarItem {
         decor: DecorTriangleItem {
             clr: Settings.colorpick(root.clr,del.index)
         }
+        
         BarContentItem {
-            width: root.width
-            height: scaleheightmin
-            scale: 0.9
-            contentItem: RowLayout {
-                // width: root.width
-                // height:scaleheightmin
-                // anchors.fill: del
-                // anchors.centerIn: del
-                TextItem {
-                    Layout.fillHeight: true; Layout.fillWidth: true
-                    // Layout.preferredWidth: root.width
-                    // Layout.preferredHeight: root.scaleheightmin
+            id: netInfo
+            visible: !root.inputEnabled || root.selectedConn != index
+            anchors.fill: parent
+            TextItem {
+                id: name
+                anchors.left: parent.left
+                width: del.width * 0.7
+                height: del.height
+                
+                text: root.selectstatus(index) + ssid + bars 
+                color: Settings.dark
+            }
+            TextItem {
+                id: securityType
+                anchors.right: parent.right
+                width: del.width * 0.3
+                height: del.height
 
-                    Layout.alignment: Qt.AlignCenter
+                text: security.trim().split(/\s+/).pop()
+                color: Settings.dark
+            }
+            onBtnclick: {
+                root.selectedConn = index
+                root.inputEnabled = !root.inputEnabled
+                Network.selected[0] = index;
+                Network.selected[1] = 0;
+            }
+        }
+        Item {
+            id: netAction
+            visible: root.inputEnabled && root.selectedConn === index
+            anchors.fill: parent
+            BarContentItem {
+                id: backButton
+                anchors.left: parent.left
+                width: del.width * 0.2
+                height: del.height
+                contentItem: TextItem {
+                    text: "back"
+                }
+                onBtnclick: {
+                    root.inputEnabled = !root.inputEnabled
+                }
+            }
+            InputItem {
+                id: inp
+                width: del.width * 0.5
+                height: del.height
+                anchors.horizontalCenter: parent.horizontalCenter
+                decor: DecorTriangleItem {
+                    clr: Settings.dark
+                }
+            }
+            Item {
+                id: action
+                anchors.right: parent.right
 
-                    visible: !root.inputEnabled || root.selectedConn != index
-                    
-                    text: root.selectstatus(index) + ssid + bars + security.trim().split(/\s+/).pop()
-                    color: Settings.dark
-                }
-                //------- VISIBILITY TRICK, THIS PART WILL SHOW UP ONLY ON CLICKING THE WIFI NETWORK
+                width: del.width * 0.3
+                height: del.height
                 BarContentItem {
-                    Layout.fillHeight: true; Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignCenter
-                    
-                    width: root.scalewidthmax
-                    height: root.height
-                    visible: root.inputEnabled && root.selectedConn === index
+                    id: connectAction
+                    anchors.left: parent.left
+                    width: action.width * 0.5
+                    height: action.height
                     contentItem: TextItem {
-                        text: "Back"
-                    }
-                    onBtnclick: {
-                        root.inputEnabled = !root.inputEnabled
-                    }
-                }
-                InputItem {
-                    id: inp
-                   
-                    visible: root.inputEnabled && root.selectedConn === index
-                    decor: DecorTriangleItem {
-                        clr: Settings.dark
-                    }
-                    implicitWidth:root.scaleheightmin
-                    implicitHeight:root.scaleheightmin/1.5
-                }
-                BarContentItem {
-                    Layout.fillHeight: true; Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignCenter
-                    
-                    width: root.scalewidthmax
-                    height: root.height
-                    visible: root.inputEnabled && root.selectedConn === index
-                    contentItem: TextItem {
-                        text: "Connect"
+                        text: "conn"
                     }
                     onBtnclick: {
                         const inptext = inp.gettext()
@@ -105,13 +118,16 @@ BarItem {
                             Network.wifinetworks[Network.selected[0]].ssid,inptext,false)
                     }
                 }
-            }
 
-            onBtnclick: {
-                root.selectedConn = index
-                root.inputEnabled = !root.inputEnabled
-                Network.selected[0] = index;
-                Network.selected[1] = 0;
+                BarContentItem {
+                    id: deleteAction
+                    anchors.right: parent.right
+                    width: action.width * 0.5
+                    height: action.height
+                    contentItem: TextItem {
+                        text: "del"
+                    }
+                }
             }
         }
     }
