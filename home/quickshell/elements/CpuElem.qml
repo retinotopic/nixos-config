@@ -12,14 +12,13 @@ import "../"
 BarItem {
     id:root
     invtrngl:true
-    itemcount: 2;
     isscrollable: true;
     popupvisible: false
 
     BarContentItem {
         Layout.preferredWidth: root.scaleheightmin
         Layout.preferredHeight: root.scaleheightmin
-        item: TextItem {
+        contentItem: TextItem {
             text: SysInfo2.cpuUsage + " " + SysInfo2.cpuTemp
         }
         onBtnclick: {

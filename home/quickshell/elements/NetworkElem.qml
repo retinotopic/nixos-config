@@ -7,11 +7,12 @@ import QtQuick.Layouts
 import QtQuick.Shapes
 import QtQml
 import "../services"
+import "../decorations"
 import "../"
 
 BarItem {
     id:root
-    itemcount: 3;
+    objectName:"Network"
     isscrollable: true;
     popupvisible: true
     invtrngl:false
@@ -36,8 +37,9 @@ BarItem {
         decor: DecorTriangleItem {
             clr: Settings.colorpick(root.clr,del.index)
         }
-        
+
         BarContentItem {
+            scale: 0.9
             id: netInfo
             visible: !root.inputEnabled || root.selectedConn != index
             anchors.fill: parent
@@ -67,6 +69,7 @@ BarItem {
             }
         }
         Item {
+            scale: 0.9
             id: netAction
             visible: root.inputEnabled && root.selectedConn === index
             anchors.fill: parent
@@ -139,7 +142,7 @@ BarItem {
             text: Network.statusConn[0] + " " + Network.statusConn[1]
         }
         onBtnclick: {
-            Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
+                Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
             Network.getNetworks = true
         }
     }

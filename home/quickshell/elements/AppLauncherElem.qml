@@ -7,17 +7,19 @@ import QtQuick.Layouts
 import QtQuick.Shapes
 import QtQml
 import "../services"
+import "../decorations"
 import "../"
 
 pragma ComponentBehavior: Bound
 
 BarItem {
     id:root
-    itemcount: 5;
+    objectName:"AppLauncher"
     datamodel: AppLauncher.apps;
     isscrollable: true;
     popupvisible: false
     invtrngl:true
+    
     property bool inputactive: false
     delegatecmpnnt: ListDelegateItem {
         id: del

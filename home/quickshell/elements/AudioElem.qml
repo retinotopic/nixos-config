@@ -13,7 +13,6 @@ import "../"
 BarItem {
     id:root
     invtrngl:false
-    itemcount: 3;
     isscrollable: true;
     popupvisible: false
 
@@ -30,7 +29,7 @@ BarItem {
             clip:true
         }
         onBtnclick: {
-           Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
+                Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
         }
     }
     SliderItem {

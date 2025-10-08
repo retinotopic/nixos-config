@@ -8,14 +8,16 @@ import QtQuick // for Text
 
 Singleton {
     id: root
+    
     property var colors: [
-    ["#e67e80","#d699b6"],
-    ["#e69875","#e67e80"],
-    ["#dbbc7f","#e69875"],
-    ["#a7c080","#dbbc7f"], 
-    ["#83c092","#a7c080"],
-    ["#7fbbb3","#83c092"],]
-    property int windowwidth: Bar.width
+        "#d699b6",
+        "#e67e80",
+        "#e69875",
+        "#dbbc7f",
+        "#a7c080", 
+        "#83c092",
+        "#7fbbb3"]
+
     property list<string> windowcolors: ["#4c7fbbb3","#7fbbb3"]
     property string dark: "#424b50"
     property string white: "#d3c6aa"
@@ -24,12 +26,26 @@ Singleton {
     property real scaleHeight: 1080    
 
     property int curridx:-1
+    property var colorsMap: new Map([
+      ["left", -1],
+      ["center", -1],
+      ["right", -1],
+    ])
+
+    property list<int> indexGiveaway:[-1,-1,-1] // color indices for left, center, right bar sides
+    property string currObj: ""
     
     function colorpick(excludeColor: string,idx: int): string {
         const rm = idx % colors.length
-        if (colors[rm][0] === excludeColor) {
+        if (colors[rm] === excludeColor) {
             return "#d699b6"
         }
-        return colors[rm][0]
+        return colors[rm]
+    }
+
+    function giveindex(side: string): int {
+        const index = colorsMap.get(side)
+        colorsMap.set(side,index+1)
+        return index+1
     }
 }

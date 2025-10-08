@@ -8,30 +8,37 @@ import Quickshell.Wayland
 import QtQuick.Shapes
 import "./elements"
 import "./services"
+import "./decorations"
 
 pragma ComponentBehavior: Bound
 
-Rectangle {
+Item {
     id: root
     property real scaleheightmin: parent.parent.scaleheightmin
-
     // your own widthmax or calculated via minheight * itemcount
-    property real widthmax: parent.parent.minheight*itemcount
     
+    property int indx: -1
+    
+    Component.onCompleted: {
+        indx = Settings.giveindex(root.parent.objectName)
+        clr = Settings.colorpick("black",indx)
+        clrtrngl = clr
+    }
+
     property real scalewidthmax: parent.parent.scaleFactor*widthmax
-    required property color clr;
-    required property color clrtrngl;
-    required property int indx;
-    required property int itemcount;
+    property color clr;
+    property color clrtrngl;
     required property bool invtrngl;
     required property bool popupvisible;
     required property bool isscrollable;
+    property bool isPopupEmbedded: false;
     
     property var datamodel;
     property Component delegatecmpnnt;
 
     default property alias content: itemsrow.data
     readonly property real contentWidth: itemsrow.width
+
     // you can override default component for your own popup behavior
     property Component popupcomponent: Rectangle {
         id: rectpop
@@ -48,25 +55,47 @@ Rectangle {
             delegate: root.delegatecmpnnt
         }
     }
+
+    property Component borderDecoration: TriangleItem {
+        id: trngl
+        inverted:root.invtrngl;
+        clr:root.clrtrngl
+        implicitWidth: root.scaleheightmin/2
+        implicitHeight: root.scaleheightmin
+    }
+    // property Component rectDecoration: SemicircleItem {
+    //     implicitWidth: root.scaleheightmin/2
+    //     implicitHeight: root.scaleheightmin
+    // }
+    property Component rectDecoration: DecorTriangleItem {
+        id: trngl2
+        clr:root.clrtrngl
+        implicitWidth: root.scaleheightmin/2
+        implicitHeight: root.scaleheightmin
+    }
+
     implicitHeight: root.scaleheightmin
-    implicitWidth: itemrect1.implicitWidth+trngl.implicitWidth
+    implicitWidth: itemrect1.implicitWidth+borderDecor.implicitWidth-1
     // Layout.maximumWidth: root.itemcount * root.scaleheightmin
     // Layout.minimumWidth: root.scaleheightmin
     Rectangle {
         id: itemrect1
-        // width: root.scaleheightmin
+        Loader {
+            anchors.fill : parent
+            id: rectDecor
+            sourceComponent: root.rectDecoration
+        }
+        anchors.left: root.invtrngl ? parent.left : null
+        anchors.right: !root.invtrngl ? parent.right : null
         implicitWidth: Settings.curridx == root.indx ? itemsrow.width : root.scaleheightmin
-        // implicitWidth: Settings.curridx == root.indx ? root.scalewidthmax : root.scaleheightmin
-
         implicitHeight: root.scaleheightmin
-        x: root.invtrngl ? 0 : trngl.x + trngl.width
-        // x: trngl.x + trngl.width
+        
         Behavior on implicitWidth { ElasticBehavior {} }
         color: root.clr
         clip: true
         Popup {
             id: popup
-            x: itemrect1.mapToItem(null, 0, 0).x
+            x: root.isPopupEmbedded ? 0 : root.parent.x
             y: itemrect1.height
             height:0
             width: itemrect1.width
@@ -85,6 +114,7 @@ Rectangle {
             focus: true
             modal: false
             visible: Settings.curridx == root.indx && root.popupvisible
+            // visible: Settings.curridx == root.indx && root.popupvisible
             closePolicy: Popup.NoAutoClose
             margins:0
             padding:0
@@ -103,6 +133,7 @@ Rectangle {
             contentHeight: root.scaleheightmin
             boundsBehavior:Flickable.DragOverBounds
             RowLayout {
+                scale:0.9
                 id: itemsrow
                 // anchors.fill:flick
                 // Layout.fillHeight: true; Layout.fillWidth: true
@@ -110,13 +141,11 @@ Rectangle {
             }
         }
     }
-    TriangleItem {
-        id: trngl
-        inverted:root.invtrngl;
-        x: !root.invtrngl ? 0 : itemrect1.x + itemrect1.width
-        clr:root.clrtrngl
-        implicitWidth: root.scaleheightmin/2
-        implicitHeight: root.scaleheightmin
+    Loader {
+        anchors.left: !root.invtrngl ? parent.left : null
+        anchors.right: root.invtrngl ? parent.right : null
+        id: borderDecor
+        sourceComponent: root.borderDecoration
     }
 }
 

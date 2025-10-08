@@ -11,7 +11,7 @@ import "../"
 
 BarItem {
     id:root
-    itemcount: 2;
+    objectName: "Notifications"
     // clr: "#e67e80"
     // clrtrngl: "#d699b6"
     datamodel: Notifications.notifs;
@@ -33,14 +33,11 @@ BarItem {
     BarContentItem {
         Layout.preferredWidth: root.scaleheightmin
         Layout.preferredHeight: root.scaleheightmin
-        item: Text {
+        contentItem: TextItem {
             text: "󰎔"
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pointSize:12
         }
         onBtnclick: {
-           Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
+                Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
         }
     }
 }
