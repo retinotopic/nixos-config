@@ -88,40 +88,18 @@ Item {
         anchors.right: !root.invtrngl ? parent.right : null
         implicitWidth: Settings.curridx == root.indx ? itemsrow.width : root.scaleheightmin
         implicitHeight: root.scaleheightmin
-        
+        // onWidthChanged: {
+        //     anch.rect.width = itemrect1.width
+        //     anch.rect.height = 500
+        //     anch.rect.y = itemrect1.height
+        //     // anch.rect.x = root.parent.width-popup.width
+        //     popup.width = itemrect1.width
+        //     // console.log(itemrect1.width,itemrect1.implicitWidth,anch.rect.width)
+        //     anch.updateAnchor()
+        // }
         Behavior on implicitWidth { ElasticBehavior {} }
         color: root.clr
         clip: true
-        Popup {
-            id: popup
-            x: root.isPopupEmbedded ? 0 : root.parent.x
-            y: itemrect1.height
-            height:0
-            width: itemrect1.width
-            // height: scaleheightmin*3
-            Behavior on height { 
-                ElasticBehavior  {} 
-            }
-            onOpened: {
-                popup.height = root.scaleheightmin*3
-            }
-
-            onAboutToHide: {
-                popup.height = 0
-            }
-
-            focus: true
-            modal: false
-            visible: Settings.curridx == root.indx && root.popupvisible
-            // visible: Settings.curridx == root.indx && root.popupvisible
-            closePolicy: Popup.NoAutoClose
-            margins:0
-            padding:0
-            Loader {
-                anchors.fill: parent
-                sourceComponent: root.popupcomponent
-            }
-        }
         Flickable {
             id: flick
             width: itemrect1.width
@@ -139,6 +117,44 @@ Item {
                 spacing:0
             }
         }
+    }
+    PopupWindow {
+        id: popupwindow
+        anchor {
+            id: anch
+            item: root
+            // gravity: Edges.Bottom | Edges.Right
+            // edges: Edges.Bottom | Edges.Right
+            rect.width: popupContainer.width
+            rect.height: 1000
+            // rect.w: 500
+            // rect.h: 500
+            rect.y: itemrect1.height
+            // rect.x: root.parent.width-popup.width
+            // onAnchoring: {
+            //     console.log(itemrect1.width,itemrect1.implicitWidth,anch.rect.width)
+            // }
+        }
+        color:"transparent"
+        Rectangle {
+            color: "transparent"
+            id: popupContainer
+            width: root.parent.parent.parent.width
+            height: 500
+
+            Item {
+                id: inneritem
+                width: itemrect1.width
+                height: 500                    
+                Loader {
+                    anchors.fill: parent
+                    sourceComponent: root.popupcomponent
+                }
+            }
+        }
+        visible: Settings.curridx == root.indx && root.popupvisible
+        height: 500
+        width: root.parent.parent.parent.width
     }
     Loader {
         anchors.left: !root.invtrngl ? parent.left : null

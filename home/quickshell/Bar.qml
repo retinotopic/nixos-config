@@ -12,15 +12,18 @@ pragma ComponentBehavior: Bound
 
 Variants {
     model: Quickshell.screens
-    delegate: Window {
+    delegate: PanelWindow {
         id: panel
         required property ShellScreen modelData
         screen: modelData
         property real scalefW: width/Settings.scaleWidth
         property real scalefH: height/Settings.scaleHeight
-        // height:500
-        WlrLayershell.layer: WlrLayer.Overlay
+        height: rwlt.scaleheightmin
+        // implicitHeight:500
+        // implicitWidth:500
+        // WlrLayershell.layer: WlrLayer.Bottom
         visible: true
+        // exclusionMode: ExclusionMode.Ignore
         Rectangle {
             id: rwlt
             // spacing:0
@@ -38,10 +41,10 @@ Variants {
                 Layout.alignment: Qt.AlignLeft
                 height: rwlt.scaleheightmin
                 spacing:0
-                AppLauncherElem{}
                 // NiriWorkspaceElem{ indx: 1}
                 CpuElem{}
                 DiskElem{}
+                AppLauncherElem{}
                 // MemoryElem{ indx: 4}
                 // MenuElem{ indx: 5}
             }
@@ -62,7 +65,7 @@ Variants {
                 anchors.right: rwlt.right
                 height: rwlt.scaleheightmin
                 layoutDirection: Qt.RightToLeft
-                Layout.alignment: Qt.AlignRight
+                // Layout.alignment: Qt.AlignRight
                 spacing:0
                 NotificationsElem{ }
                 NetworkElem{ }
@@ -74,18 +77,18 @@ Variants {
 
 
 
-        // anchors {
-        //     left: true
-        //     top: true
-        //     right: true
-        //     bottom:false
-        // }
-        // margins {
-        //     top:0
-        //     right:0
-        //     left:0
-        //     bottom:0
-        // }
+        anchors {
+            left: true
+            top: true
+            right: true
+            bottom:false
+        }
+        margins {
+            top:0
+            right:0
+            left:0
+            bottom:0
+        }
 
     }
 }

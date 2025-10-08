@@ -18,7 +18,8 @@ BarItem {
     datamodel: AppLauncher.apps;
     isscrollable: true;
     popupvisible: false
-    invtrngl:true
+    invtrngl: true
+    isPopupEmbedded: false
     
     property bool inputactive: false
     delegatecmpnnt: ListDelegateItem {

@@ -12,12 +12,10 @@ Item {
     implicitWidth: 120
     implicitHeight: 40
     property color clr: "blue"
-    TriangleItem {
+    SemicircleItem {
         anchors.left: root.left
         width: root.height/2
         height: root.height
-        inverted: false
-        clr: root.clr
     }
     Rectangle {
         anchors.centerIn: root
@@ -25,12 +23,10 @@ Item {
         width: root.width-root.height
         height: root.height
     }
-    TriangleItem {
+    SemicircleItem {
         anchors.right: root.right
         width: root.height/2
         height: root.height
-        inverted: true
-        clr: root.clr
     }
 }
 
