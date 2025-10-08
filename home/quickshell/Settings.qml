@@ -25,16 +25,16 @@ Singleton {
     property real scaleWidth: 1920
     property real scaleHeight: 1080    
 
-    property int curridx:-1
+    property int curridx:-1 // current index for retractable elements
+    property int indexDistribute // indices for retractable elements
+    
+    // color indices for left, center, right bar sides
     property var colorsMap: new Map([
       ["left", -1],
       ["center", -1],
       ["right", -1],
     ])
 
-    property list<int> indexGiveaway:[-1,-1,-1] // color indices for left, center, right bar sides
-    property string currObj: ""
-    
     function colorpick(excludeColor: string,idx: int): string {
         const rm = idx % colors.length
         if (colors[rm] === excludeColor) {
@@ -43,9 +43,14 @@ Singleton {
         return colors[rm]
     }
 
-    function giveindex(side: string): int {
+    function giveColorIndex(side: string): int {
         const index = colorsMap.get(side)
         colorsMap.set(side,index+1)
         return index+1
+    }
+
+    function distributeIndex(): int {
+        indexDistribute +=1
+        return indexDistribute
     }
 }

@@ -20,12 +20,11 @@ Item {
     property int indx: -1
     
     Component.onCompleted: {
-        indx = Settings.giveindex(root.parent.objectName)
-        clr = Settings.colorpick("black",indx)
+        indx = Settings.distributeIndex(indx)
+        clr = Settings.colorpick("black",Settings.giveColorIndex(root.parent.objectName))
         clrtrngl = clr
     }
 
-    property real scalewidthmax: parent.parent.scaleFactor*widthmax
     property color clr;
     property color clrtrngl;
     required property bool invtrngl;
@@ -129,7 +128,7 @@ Item {
             height: itemrect1.height
             interactive:root.isscrollable
             focus:true
-            contentWidth: root.scalewidthmax
+            contentWidth: itemsrow.width
             contentHeight: root.scaleheightmin
             boundsBehavior:Flickable.DragOverBounds
             RowLayout {
