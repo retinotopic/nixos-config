@@ -142,8 +142,18 @@ BarItem {
             text: Network.statusConn[0] + " " + Network.statusConn[1]
         }
         onBtnclick: {
+            // root.popupvisible =false
                 Settings.curridx = root.indx == Settings.curridx ? -1 : root.indx
             Network.getNetworks = true
+        }
+    }
+    BarContentItem {
+        width: root.scaleheightmin
+        height: root.scaleheightmin
+        contentItem: TextItem {
+            text: "update anchors"
+        }
+        onBtnclick: {
         }
     }
     InputItem {

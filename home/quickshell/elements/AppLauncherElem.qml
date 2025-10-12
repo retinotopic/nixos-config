@@ -20,7 +20,6 @@ BarItem {
     popupvisible: false
     invtrngl: true
     isPopupEmbedded: false
-    
     property bool inputactive: false
     delegatecmpnnt: ListDelegateItem {
         id: del

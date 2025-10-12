@@ -16,19 +16,24 @@ Item {
     id: root
     property real scaleheightmin: parent.parent.scaleheightmin
     // your own widthmax or calculated via minheight * itemcount
-    
+    // required property Region df
     property int indx: -1
     
     Component.onCompleted: {
         indx = Settings.distributeIndex(indx)
         clr = Settings.colorpick("black",Settings.giveColorIndex(root.parent.objectName))
         clrtrngl = clr
-        // console.log(root.mapToGlobal(root.x,root.y))
-        // console.log(itemrect1.mapToGlobal(itemrect1.x,itemrect1.y))
+        // console.log(indx,clr,"hmm")
+        // console.log(root.mapToGlobal(root.x+root.width,root.y).x,indx,clr,"hmm")
+        // root.parent.children
+        for (const [i,v] of root.parent.children.entries()) {
+            console.log(v.contentWidth,"WHAT",i,root.parent.objectName)
+        }
     }
 
     property color clr;
     property color clrtrngl;
+    property real xcord;
     required property bool invtrngl;
     required property bool popupvisible;
     required property bool isscrollable;
@@ -39,7 +44,6 @@ Item {
 
     default property alias content: itemsrow.data
     readonly property real contentWidth: itemsrow.width
-
     // you can override default component for your own popup behavior
     property Component popupcomponent: Rectangle {
         id: rectpop
@@ -76,7 +80,7 @@ Item {
     }
 
     implicitHeight: root.scaleheightmin
-    implicitWidth: itemrect1.implicitWidth+borderDecor.implicitWidth-1
+    implicitWidth: itemrect1.implicitWidth+borderDecor.implicitWidth-0.8
     // Layout.maximumWidth: root.itemcount * root.scaleheightmin
     // Layout.minimumWidth: root.scaleheightmin
     Rectangle {
@@ -90,135 +94,144 @@ Item {
         anchors.right: !root.invtrngl ? parent.right : null
         implicitWidth: Settings.curridx == root.indx ? itemsrow.width : root.scaleheightmin
         implicitHeight: root.scaleheightmin
-        // onWidthChanged: {
-        //     anch.rect.width = itemrect1.width
-        //     anch.rect.height = 500
-        //     anch.rect.y = itemrect1.height
-        //     // anch.rect.x = root.parent.width-popup.width
-        //     popup.width = itemrect1.width
-        //     // console.log(itemrect1.width,itemrect1.implicitWidth,anch.rect.width)
-        //     anch.updateAnchor()
+        // Rectangle {
+        //     id: anchRect
+        //     anchors.right: itemrect1.right
+
+        //     color: "transparent"
+        //     width: 0
+        //     height: root.scaleheightmin
+        // }
+        Popup {
+            id: popup
+            x: 0
+            // x: root.isPopupEmbedded ? 0 : root.parent.x
+            y: itemrect1.height
+            height:0
+            // parent: root.parent.parent.children[2].children[1]
+            width: itemrect1.width
+            // height: scaleheightmin*3
+            // Behavior on height { 
+            //     ElasticBehavior  {} 
+            // }
+            onAboutToShow: {
+                Settings.popupLoader = popuploader
+                Settings.popupOpen = !Settings.popupOpen
+            }
+            onOpened: {
+                Settings.popupLoader = popuploader
+                Settings.popupOpen = !Settings.popupOpen
+                popup.height = root.scaleheightmin*3
+            }
+
+            onAboutToHide: {
+                popup.height = 0
+            }
+            focus: true
+            modal: false
+            // visible: false
+            visible: Settings.curridx == root.indx && root.popupvisible
+            closePolicy: Popup.NoAutoClose
+            margins:0
+            padding:0
+            Loader {
+                id: popuploader
+                anchors.fill: parent
+                sourceComponent: root.popupcomponent
+            }
+        }
+        // PopupWindow {
+        //     id: popupwindow
+        //     anchor {
+        //         id: anch
+        //         item: anchRect
+        //         // gravity: Edges.Top | Edges.Left
+        //         // edges: Edges.Top | Edges.Left
+        //         rect.width: itemsrow.width
+        //         rect.height: 1000
+        //         // rect.w: 500
+        //         // rect.h: 500
+        //         rect.y: itemrect1.height
+        //         rect.x: -itemsrow.width
+        //         // onAnchoring: {
+        //         //     console.log(itemrect1.width,itemrect1.implicitWidth,anch.rect.width)
+        //         // }
+        //     }
+            
+        //     color:"transparent"
+        //     Rectangle {
+        //         color: "transparent"
+        //         id: popupContainer
+        //         width: itemsrow.width
+        //         height: 500
+
+        //         Item {
+        //             id: inneritem
+        //             width: itemrect1.width
+        //             height: 500                    
+        //             Loader {
+        //                 anchors.fill: parent
+        //                 sourceComponent: root.popupcomponent
+        //             }
+        //         }
+        //     }
+        //     visible: Settings.curridx == root.indx && root.popupvisible
+        //     height: 500
+        //     width: itemsrow.width
         // }
         Behavior on implicitWidth {
+            id: bhvr
+            enabled:true
             ElasticBehavior {
-                // onRunningChanged: {
-                //     if (!running) {
-                //         const xcord = root.mapToGlobal(root.x,root.y)
-                //         switch (root.objectName) {
-                //             case "left":
-                //                 popupContainer.x = xcord.x
-                //             case "right":
-                //                 popupContainer.x = root.parent.parent.parent.width - xcord.x
-                //         }
-                //         console.log(root.mapToGlobal(root.x,root.y),root.indx,popupContainer.x)
-                //     }
-                // }
+                onRunningChanged: {
+                    if (!running) {
+                        // console.log(itemrect1.mapToGlobal(itemrect1.width,0).x,"2")
+                    }
+                }
             }
         }
+        // PanelWindow {
+        //     id:wndw
+        //     anchors {
+        //         left: false
+        //         right: true
 
-        PopupWindow {
-            id: popupwindow
-            anchor {
-                id: anch
-                item: itemrect1
-                // item: root.parent.parent.parent
-                // gravity: Edges.Bottom | Edges.Right
-                // edges: Edges.Bottom | Edges.Right
-                rect.width: itemsrow.width
-                // rect.height: 1000
-                // rect.w: itemsrow.width
-                // rect.h: 500
-                rect.y: root.scaleheightmin
-                // edges: Edges.Top | Edges.Right
-                rect.x: 0
-                onAnchoring: {
-                    console.log(itemrect1.width,itemrect1.implicitWidth,anch.rect.width,itemrect1.mapToGlobal(itemrect1.x,itemrect1.y))
-                }
-            }
-            color:"transparent"
+        //         bottom: false
+        //         top: true
+        //     }
 
-            // Loader {
-            //     anchors.fill: itemrect1
-            //     id: popupContainer
-            //     width: itemrect1.width
-            //     height: 500                    
-            //         // anchors.fill: parent
-            //     x: itemrect1.x
-            //     sourceComponent: root.popupcomponent
-            // }
-            Popup {
-                id: popup
-                x: 0
-                // anchors.centerIn:parent
-                // x: root.isPopupEmbedded ? 0 : root.parent.x
-                y: itemrect1.height
-                height:0
+        //     margins {
+        //         top:0
+        //         right: 0
+        //         // right: itemrect1.mapToItem(root.parent.parent,root.parent.parent.width, root.scaleheightmin) 
+        //         // right:root.parent.parent.width - itemrect1.mapToGlobal(itemrect1.x+itemrect1.width,itemrect1.y).x + root.scaleheightmin/2
+        //         left:0
+        //         bottom:0
+        //     }
+        //     // color: "transparent"
+        //     visible: false
+        //     // visible: Settings.curridx == root.indx && root.popupvisible
+        //     width:root.parent.parent.parent.width/3
+        //     // width:itemsrow.width
+        //     height:400
+        //     // Component.onCompleted: {
+        //     //     console.log(wndw.mapFromItem(itemrect1).x,"AAAAAAAAA1")
+        //     // }
+        //     Item {
+        //         anchors.right: itemrect1.right
+        //         id: inneritem
+        //         width: itemsrow.width
+        //         height: 500                    
+        //         x: itemrect1.mapToItem(inneritem,itemrect1.x,itemrect1.y).x
+        //         Loader {
+        //             anchors.fill: parent
+        //             sourceComponent: root.popupcomponent
+        //         }
+        //     }
 
-                // width: itemrect1.width
-                width: itemsrow.width
-                // height: scaleheightmin*3
-                Behavior on height { 
-                    ElasticBehavior  {} 
-                }
-                onOpened: {
-                    popup.height = root.scaleheightmin*3
-                }
-
-                onAboutToHide: {
-                    popup.height = 0
-                }
-
-                focus: true
-                modal: false
-                // visible:true
-                visible: Settings.curridx == root.indx && root.popupvisible
-                // visible: Settings.curridx == root.indx && root.popupvisible
-                closePolicy: Popup.NoAutoClose
-                margins:0
-                padding:0
-                Loader {
-                    anchors.fill: parent
-                    sourceComponent: root.popupcomponent
-                }
-            }
-        
-            visible: Settings.curridx == root.indx && root.popupvisible
-            height: 500
-            width: root.scaleheightmin
-        }
+        // }
         color: root.clr
         clip: true
-        // Popup {
-        //     id: popup
-        //     x: 0
-        //     // x: root.isPopupEmbedded ? 0 : root.parent.x
-        //     y: itemrect1.height
-        //     height:0
-        //     width: itemrect1.width
-        //     // height: scaleheightmin*3
-        //     Behavior on height { 
-        //         ElasticBehavior  {} 
-        //     }
-        //     onOpened: {
-        //         popup.height = root.scaleheightmin*3
-        //     }
-
-        //     onAboutToHide: {
-        //         popup.height = 0
-        //     }
-
-        //     focus: true
-        //     modal: false
-        //     visible: Settings.curridx == root.indx && root.popupvisible
-        //     // visible: Settings.curridx == root.indx && root.popupvisible
-        //     closePolicy: Popup.NoAutoClose
-        //     margins:0
-        //     padding:0
-        //     Loader {
-        //         anchors.fill: parent
-        //         sourceComponent: root.popupcomponent
-        //     }
-        // }
         Flickable {
             id: flick
             width: itemrect1.width
@@ -237,49 +250,6 @@ Item {
             }
         }
     }
-    // PopupWindow {
-    //     id: popupwindow
-    //     anchor {
-    //         id: anch
-    //         item: root.parent.parent.parent
-    //         // item: root.parent.parent.parent
-    //         // gravity: Edges.Bottom | Edges.Right
-    //         // edges: Edges.Bottom | Edges.Right
-    //         rect.width: popupwindow.width
-    //         rect.height: 1000
-    //         // rect.w: 500
-    //         // rect.h: 500
-    //         rect.y: root.scaleheightmin
-    //         // rect.x: itemrect1
-    //         onAnchoring: {
-    //             console.log(itemrect1.width,itemrect1.implicitWidth,anch.rect.width,itemrect1.mapToGlobal(itemrect1.x,itemrect1.y))
-    //         }
-    //     }
-    //     color:"transparent"
-
-    //     Loader {
-    //         id: popupContainer
-    //         width: itemrect1.width
-    //         height: 500                    
-    //             // anchors.fill: parent
-    //         x: 1400
-    //         sourceComponent: root.popupcomponent
-    //     }
-    //     // Item {
-    //     //     // anchors.right: parent.right
-    //     //     id: inneritem
-    //     //     width: itemrect1.width
-    //     //     height: 500                    
-    //     //     Loader {
-    //     //         anchors.fill: parent
-    //     //         sourceComponent: root.popupcomponent
-    //     //     }
-    //     // }
-        
-    //     visible: Settings.curridx == root.indx && root.popupvisible
-    //     height: 500
-    //     width: root.parent.parent.parent.width
-    // }
     Loader {
         anchors.left: !root.invtrngl ? parent.left : null
         anchors.right: root.invtrngl ? parent.right : null

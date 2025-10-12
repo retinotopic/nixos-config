@@ -18,15 +18,35 @@ Variants {
         screen: modelData
         property real scalefW: width/Settings.scaleWidth
         property real scalefH: height/Settings.scaleHeight
-        height: rwlt.scaleheightmin
-        // implicitHeight:500
-        // implicitWidth:500
-        // WlrLayershell.layer: WlrLayer.Bottom
+        height: modelData.height
+        WlrLayershell.layer: WlrLayer.Top
         visible: true
-        // exclusionMode: ExclusionMode.Ignore
+        color: "transparent"
+        exclusionMode: ExclusionMode.Ignore
+        focusable:true
+        Connections {
+            target: Settings
+            function onPopupOpenChanged() {
+                inreg.childrenChanged()
+
+            }
+        }
+        mask: Region {
+            item: rwlt
+            id: inreg
+            onChanged: {
+                console.log("HEH")
+            }
+            Region {
+                item: Settings.popupLoader
+                intersection: Intersection.Combine
+            }
+        }
+
         Rectangle {
             id: rwlt
             // spacing:0
+            color: "transparent"
             anchors.top: parent.top
             width: parent.width
             height: scaleheightmin
@@ -37,9 +57,12 @@ Variants {
                 id: left
                 objectName: "left"
                 anchors.left: rwlt.left
+                // anchors.fill: rwlt
                 layoutDirection: Qt.LeftToRight
-                Layout.alignment: Qt.AlignLeft
+                // Layout.alignment: Qt.AlignLeft
                 height: rwlt.scaleheightmin
+                // width: panel.width/3
+                // Layout.maximumWidth: panel.width/3
                 spacing:0
                 // NiriWorkspaceElem{ indx: 1}
                 CpuElem{}

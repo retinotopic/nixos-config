@@ -28,6 +28,9 @@ Singleton {
     property int curridx:-1 // current index for retractable elements
     property int indexDistribute // indices for retractable elements
     
+    property bool popupOpen: false
+    property Item popupLoader: null
+
     // color indices for left, center, right bar sides
     property var colorsMap: new Map([
       ["left", -1],
