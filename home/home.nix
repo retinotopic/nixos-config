@@ -133,8 +133,6 @@
     };
     git = {
       enable = true;
-      userName = "retinotopic";
-      userEmail = "retinotopic@proton.me";
     };
     home-manager = {
       enable = true;       
