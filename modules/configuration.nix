@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, pkgs-unstable, inputs,... }:
+{ config, lib, pkgs, pkgs-unstable,pkgs-staging, inputs,... }:
 
 {
 
@@ -61,7 +61,6 @@
     extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ];
   };
   
-
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
@@ -107,9 +106,6 @@
     };
   };
 
-  qt = {
-    enable = true;
-  };
   programs = {
     nekoray = {
       enable = true;
@@ -139,7 +135,6 @@
     };
   }; 
   environment.systemPackages = [
-    pkgs-unstable.helix
     pkgs.wget
     pkgs.bc
     pkgs.lm_sensors
@@ -153,7 +148,6 @@
     pkgs.scc
     pkgs.streamlink
     pkgs.docker-compose
-    pkgs.amneziawg-go
     pkgs-unstable.amneziawg-tools
     pkgs.linuxKernel.packages.linux_zen.amneziawg # for zen amd cpus only
     pkgs.mate.engrampa
@@ -166,23 +160,12 @@
     pkgs.qbittorrent
     pkgs.dysk
     pkgs.xwayland-satellite
-    pkgs.kdePackages.qtdeclarative
-    (inputs.quickshell.packages.${pkgs.system}.default.override {
-      withJemalloc = true;
-      withQtSvg = true;
-      withWayland = true;
-      withX11 = false;
-      withPipewire = true;
-      withPam = false;
-      withHyprland = false;
-      withI3 = false;
-    })
+    pkgs.git-filter-repo
   ];
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
-    QT_QPA_PLATFORM = "wayland";
   };
 
   hardware = {
@@ -195,6 +178,7 @@
     wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal
       pkgs.xdg-desktop-portal-termfilechooser
       pkgs.xdg-desktop-portal-hyprland

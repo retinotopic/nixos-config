@@ -1,4 +1,4 @@
-{ lib,config, pkgs, pkgs-unstable, inputs, ... }:
+{ lib,config, pkgs, pkgs-unstable, pkgs-staging, inputs, ... }:
 {
   imports = [
     ./configs/waybar.nix
@@ -31,8 +31,8 @@
       "nixos-everforest-dark.png" = {
         source = ./nixos-everforest-dark-outline.png;
       };
-      "nixos-everforest-color.png" = {
-        source = ./nixos-everforest-color-outline.png;
+      "nixos-onedark-onedark.png" = {
+        source = ./nixos-onedark-onedark.png;
       };
       "swwwitcher.sh" = {
         source = ./swwwitcher.sh;
@@ -59,35 +59,41 @@
     };
   };
   services = {
-    mako.enable = true;
     # mpd-mpris.enable = true;
     swww.enable = true;
-    # hyprpaper.enable = false;
-    # hyprpaper.settings = {
-    #   ipc = "off";
-    #   splash = false;
-    #   splash_offset = 2.0;
-    #   preload = [ "${./nixos-everforest.png}" ];
-    #   wallpaper = [ "HDMI-A-1, ${./nixos-everforest.png}" ];
-    # };
-    # easyeffects.enable = true;
+    hyprpaper.enable = false;
+    hyprpaper.settings = {
+      ipc = "off";
+      splash = false;
+      splash_offset = 2.0;
+      preload = [ "${./nixos-everforest.png}" ];
+      wallpaper = [ "HDMI-A-1, ${./nixos-onedark.png}" ];
+    };
+    easyeffects.enable = true;
   };
-  
   home.packages = [
+    pkgs-unstable.helix
     pkgs-unstable.telegram-desktop
     pkgs-unstable.brave
     pkgs.waypaper
     pkgs-unstable.prismlauncher
     pkgs.discord
-    pkgs.qtcreator
     pkgs.usbimager
-    pkgs.dmenu
-    pkgs.dex
-    pkgs.sysstat
     pkgs.xkb-switch
     pkgs.xkblayout-state
     pkgs.libnotify
-    pkgs.kdePackages.qtshadertools
+    pkgs.socat
+    pkgs-staging.kdePackages.qtdeclarative
+    (inputs.quickshell.packages.${pkgs.system}.default.override {
+      withJemalloc = true;
+      withQtSvg = true;
+      withWayland = true;
+      withX11 = false;
+      withPipewire = true;
+      withPam = false;
+      withHyprland = true;
+      withI3 = false;
+    })
   ];
 # brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 
@@ -106,15 +112,24 @@
     cava = {
       enable = true;
     };
-    
+    obs-studio = {
+      enable = true;
+
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+        obs-vaapi
+        obs-gstreamer
+        obs-vkcapture
+      ];
+    };
+
     tmux = {
       enable = true;
       shortcut = "a";
       shell = "${pkgs.fish}/bin/fish";
       keyMode = "vi";
-    };
-    obs-studio = {
-      enable = true;
     };
     git = {
       enable = true;

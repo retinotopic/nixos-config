@@ -71,8 +71,8 @@ binds {
     Mod+Right { focus-column-right; }
 
     Mod+H     { focus-column-left; }
-    Mod+J     { focus-workspace-down; }
-    Mod+K     { focus-workspace-up; }
+    Mod+J     { focus-window-or-workspace-down; }
+    Mod+K     { focus-window-or-workspace-up; }
     Mod+L     { focus-column-right; }
 
     Mod+Shift+Left  { move-column-left; }

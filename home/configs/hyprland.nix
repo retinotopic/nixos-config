@@ -1,7 +1,7 @@
 { lib, pkgs-unstable, pkgs, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
-    plugins = [ pkgs.hyprlandPlugins.hyprscrolling ];
+    # plugins = [ pkgs.hyprlandPlugins.hyprscrolling ];
     xwayland.enable = true;
     systemd.enable = true;
     extraConfig = lib.concatStrings [
@@ -58,11 +58,6 @@ decoration {
     }
 }
 
-plugin:hyprscrolling {
-    column_width = 0.5
-    fullscreen_on_one_column = true
-    explicit_column_widths = 0.5, 1.0
-}
 
 animations {
     enabled = false

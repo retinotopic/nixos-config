@@ -5,7 +5,9 @@
     settings = {
       colors = {
         alpha = "0.55";
-        background = "323d43";
+        background="282c34";
+        # background="323d43"
+
         foreground = "d3c6aa";
         
         regular0 = "505a60"; # black

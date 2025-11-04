@@ -4,6 +4,7 @@
     disko.url = "https://github.com/nix-community/disko/archive/v1.11.0.tar.gz";  
     
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-staging.url = "github:nixos/nixpkgs/staging-next";
     
     home-manager = {
       url = "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
@@ -12,16 +13,20 @@
 
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-staging";
     };
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs: let 
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-staging, ... }@inputs: let 
     system = "x86_64-linux";
 
     specialArgs = {
       pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      pkgs-staging = import nixpkgs-staging {
         inherit system;
         config.allowUnfree = true;
       };
