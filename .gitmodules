@@ -1,0 +1,4 @@
+[submodule "home/CuteShell_submodule"]
+	path = home/CuteShell_submodule
+	url = https://github.com/retinotopic/CuteShell.git
+	branch = nixos-config-retinotopic
