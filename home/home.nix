@@ -1,7 +1,6 @@
 { lib,config, pkgs, pkgs-unstable, pkgs-staging, inputs, ... }:
 {
   imports = [
-    ./configs/waybar.nix
     ./configs/hyprland.nix
     ./configs/foot.nix
     ./configs/yazi.nix
@@ -17,12 +16,12 @@
         source = ./helix;
         recursive = true;        
       };
-      ".config/niri" = {
-        source = ./niri;
+      "CuteShell" = {
+        source = inputs.cuteshell;
         recursive = true;        
       };
-      ".config/cava" = {
-        source = ./configs/cava;
+      ".config/niri" = {
+        source = ./niri;
         recursive = true;        
       };
       "nixos-everforest-light.png" = {
@@ -33,12 +32,6 @@
       };
       "nixos-onedark-onedark.png" = {
         source = ./nixos-onedark-onedark.png;
-      };
-      "swwwitcher.sh" = {
-        source = ./swwwitcher.sh;
-      };
-      "startup.sh" = {
-        source = ./startup.sh;
       };
       # ".config/helix".source = config.lib.file.mkOutOfStoreSymlink "/home/retinotopic/nixos-config/helix";
     };
@@ -58,6 +51,7 @@
       size = 20;
     };
   };
+
   services = {
     # mpd-mpris.enable = true;
     swww.enable = true;

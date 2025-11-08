@@ -15,7 +15,11 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs-staging";
     };
-
+  
+    cuteshell = {
+      flake = false;
+      url = "git+file:./home/CuteShell_submodule";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-staging, ... }@inputs: let 

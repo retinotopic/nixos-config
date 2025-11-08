@@ -176,7 +176,7 @@ environment {
     DISPLAY ":0"
 }
 prefer-no-csd
-spawn-at-startup "quickshell -p ./CuteShell_submodule"
+spawn-at-startup "quickshell" "-p" "CuteShell"
 // spawn-at-startup "xwayland-satellite"
 spawn-at-startup "foot"
 output "HDMI-A-1" {

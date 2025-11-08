@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "cuteshell": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1762619531,
+        "narHash": "sha256-Lc3JMpDwyNxKBr8wPpBQnNgTFX5gf9j5oOLEswxiFHc=",
+        "ref": "refs/heads/nixos-config-retinotopic",
+        "rev": "39de0ea1de78646d457f8bad3a61c767c36acc5d",
+        "revCount": 87,
+        "type": "git",
+        "url": "file:./home/CuteShell_submodule"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:./home/CuteShell_submodule"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -118,6 +134,7 @@
     },
     "root": {
       "inputs": {
+        "cuteshell": "cuteshell",
         "disko": "disko",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
