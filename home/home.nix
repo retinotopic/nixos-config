@@ -84,6 +84,7 @@
     pkgs.libnotify
     pkgs.socat
     pkgs-staging.kdePackages.qtdeclarative
+    pkgs.shotcut
     (inputs.quickshell.packages.${pkgs.system}.default.override {
       withJemalloc = true;
       withQtSvg = true;

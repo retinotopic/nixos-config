@@ -81,7 +81,6 @@ binds {
     Mod+Shift+L     { move-column-right; }
 
 	Mod+Q { spawn "foot"; }
-	Mod+X { spawn "bash" "swwwitcher.sh"; }
 	Mod+E { spawn "thunar"; }
 	Mod+R { spawn "fuzzel"; }
 	Mod+M { quit skip-confirmation=true; }
@@ -177,9 +176,8 @@ environment {
     DISPLAY ":0"
 }
 prefer-no-csd
-spawn-at-startup "waybar"
-spawn-at-startup "xwayland-satellite"
-spawn-at-startup "bash" "startup.sh"
+spawn-at-startup "quickshell -p ./CuteShell_submodule"
+// spawn-at-startup "xwayland-satellite"
 spawn-at-startup "foot"
 output "HDMI-A-1" {
     mode "1920x1080"

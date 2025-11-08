@@ -71,11 +71,6 @@
   font-weight: 300;
 }
 
-#custom-cavacolors {
-  font-size: 15px;
-  font-weight: 300;
-	background: rgba(127, 187, 179, 0.3);
-}
 #workspaces button label {
     margin:  0;
     padding: 0;

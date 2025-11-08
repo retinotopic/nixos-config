@@ -32,7 +32,6 @@
           "custom/arrowcenterL1"
           "custom/arrowcenterL2"
           "niri/window"
-          "custom/cavacolors"
           "custom/arrowcenterR1"
           "custom/arrowcenterR2"
         ];
@@ -99,16 +98,6 @@
         "custom/menupower"= {
             "format"= " ⏼ ";
             "tooltip"= false;
-        };
-        "custom/cavacolors"= {
-          "format" = "{text}";
-          "tooltip" = false;
-          "exec" = "${pkgs.go}/bin/go run ${../go-cli-tools/cavacolors/main.go}";
-          # "exec" = "${pkgs.luajit}/bin/luajit -O3 ${../cavacolors.lua}";
-          "return-type" = "json";
-          "exec-on-event" = true;
-          "on-click" = " ";
-          "tail" = true;
         };
 
         user = {
