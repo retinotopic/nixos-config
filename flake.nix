@@ -22,26 +22,26 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-staging, ... }@inputs: let 
-    system = "x86_64-linux";
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-staging, ... }@inputs: rec { 
+    supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+    system = builtins.elemAt supportedSystems 0;
 
     specialArgs = {
       pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
+        config.allowUnfree = true; inherit system;
       };
       pkgs-staging = import nixpkgs-staging {
-        inherit system;
-        config.allowUnfree = true;
+        config.allowUnfree = true; inherit system;
       };
       inherit inputs;
     };
-    supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
-    forEachSupportedSystem = f: inputs.nixpkgs.lib.genAttrs supportedSystems (system: f {
-      pkgs = import nixpkgs { inherit system; };
-    });
+    forEachSupportedSystem = f:
+      inputs.nixpkgs.lib.genAttrs
+      supportedSystems (system: f {
+        pkgs = import nixpkgs { inherit system; };
+      });
+
     lib = nixpkgs.lib;
-  in {
     nixosConfigurations = {
       pc = lib.nixosSystem {
         inherit specialArgs;
@@ -68,20 +68,8 @@
       default = pkgs.mkShell {
         packages = with pkgs; [
           nixd
+          nixfmt-rfc-style
           nil
-          cachix
-          lorri
-          niv
-          nixfmt-classic
-          statix
-          vulnix
-          haskellPackages.dhall-nix
-          luajit
-          lua-language-server
-          go
-          gopls
-          golangci-lint
-          gotools
         ];
       };
     });
