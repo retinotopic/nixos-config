@@ -28,21 +28,19 @@
     pkgsChannelsOptions = { config.allowUnfree = true; inherit system; };
     lib = nixpkgs.lib;
 
-    common = {
-      pkgs = import nixpkgs pkgsChannelsOptions;
-      specialArgs = {
-        pkgs-unstable = import nixpkgs-unstable pkgsChannelsOptions;
-        pkgs-staging = import nixpkgs-staging pkgsChannelsOptions;
-        inherit inputs;
-      };
+    pkgs = import nixpkgs pkgsChannelsOptions;
+    specialArgs = {
+      pkgs-unstable = import nixpkgs-unstable pkgsChannelsOptions;
+      pkgs-staging = import nixpkgs-staging pkgsChannelsOptions;
+      inherit inputs;
     };
 
     forEachSupportedSystem = f: inputs.nixpkgs.lib.genAttrs
-      supportedSystems (system: f common.pkgs );
+      supportedSystems (system: f pkgs // specialArgs );
 
     nixosConfigurations = {
       pc = lib.nixosSystem {
-        inherit (common) pkgs specialArgs;
+        inherit pkgs specialArgs;
         modules = [
           ./hosts/pc/default.nix
           ./hosts/pc/disk-config.nix
@@ -51,7 +49,7 @@
         ];
       };
       laptop = lib.nixosSystem {
-        inherit (common) pkgs specialArgs;
+        inherit pkgs specialArgs;
         modules = [
           ./hosts/laptop/default.nix
           ./hosts/laptop/disk-config.nix
