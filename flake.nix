@@ -36,7 +36,7 @@
     };
 
     forEachSupportedSystem = f: inputs.nixpkgs.lib.genAttrs
-      supportedSystems (system: f pkgs // specialArgs );
+      supportedSystems (system: f {inherit pkgs specialArgs;} );
 
     nixosConfigurations = {
       pc = lib.nixosSystem {
@@ -58,8 +58,7 @@
         ];
       };
     };
-
-    devShells = forEachSupportedSystem ({ pkgs,... }: {
+    devShells = forEachSupportedSystem ({ pkgs,specialArgs }: {
       default = pkgs.mkShell {
         packages = with pkgs; [
           nixd
