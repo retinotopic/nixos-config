@@ -25,46 +25,43 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-staging, ... }@inputs: rec { 
     supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     system = builtins.elemAt supportedSystems 0;
-
-    specialArgs = {
-      pkgs-unstable = import nixpkgs-unstable {
-        config.allowUnfree = true; inherit system;
-      };
-      pkgs-staging = import nixpkgs-staging {
-        config.allowUnfree = true; inherit system;
-      };
-      inherit inputs;
-    };
-    forEachSupportedSystem = f:
-      inputs.nixpkgs.lib.genAttrs
-      supportedSystems (system: f {
-        pkgs = import nixpkgs { inherit system; };
-      });
-
+    pkgsChannelsOptions = { config.allowUnfree = true; inherit system; };
     lib = nixpkgs.lib;
+
+    common = {
+      pkgs = import nixpkgs pkgsChannelsOptions;
+      specialArgs = {
+        pkgs-unstable = import nixpkgs-unstable pkgsChannelsOptions;
+        pkgs-staging = import nixpkgs-staging pkgsChannelsOptions;
+        inherit inputs;
+      };
+    };
+
+    forEachSupportedSystem = f: inputs.nixpkgs.lib.genAttrs
+      supportedSystems (system: f common.pkgs );
+
     nixosConfigurations = {
       pc = lib.nixosSystem {
-        inherit specialArgs;
+        inherit (common) pkgs specialArgs;
         modules = [
           ./hosts/pc/default.nix
           ./hosts/pc/disk-config.nix
           inputs.disko.nixosModules.disko
-          { nixpkgs.config.allowUnfree = true; }
           ./modules/home-manager.nix
         ];
       };
       laptop = lib.nixosSystem {
-        inherit specialArgs;
+        inherit (common) pkgs specialArgs;
         modules = [
           ./hosts/laptop/default.nix
           ./hosts/laptop/disk-config.nix
           inputs.disko.nixosModules.disko
-          { nixpkgs.config.allowUnfree = true; }
           ./modules/home-manager.nix
         ];
       };
     };
-    devShells = forEachSupportedSystem ({ pkgs }: {
+
+    devShells = forEachSupportedSystem ({ pkgs,... }: {
       default = pkgs.mkShell {
         packages = with pkgs; [
           nixd
