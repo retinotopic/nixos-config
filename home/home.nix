@@ -69,7 +69,6 @@
     pkgs-unstable.helix
     pkgs-unstable.telegram-desktop
     pkgs-unstable.brave
-    pkgs.waypaper
     pkgs-unstable.prismlauncher
     pkgs.discord
     pkgs.usbimager

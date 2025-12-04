@@ -1,13 +1,13 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-25.11";
     disko.url = "https://github.com/nix-community/disko/archive/v1.11.0.tar.gz";  
     
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-staging.url = "github:nixos/nixpkgs/staging-next";
     
     home-manager = {
-      url = "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
+      url = "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,22 +25,28 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-staging, ... }@inputs: rec { 
     supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     system = builtins.elemAt supportedSystems 0;
-    pkgsChannelsOptions = { config.allowUnfree = true; inherit system; };
+    pkgsOptions = { config.allowUnfree = true; inherit system; };
     lib = nixpkgs.lib;
 
-    pkgs = import nixpkgs pkgsChannelsOptions;
-    specialArgs = {
-      pkgs-unstable = import nixpkgs-unstable pkgsChannelsOptions;
-      pkgs-staging = import nixpkgs-staging pkgsChannelsOptions;
+    pkgs = {options ? self.pkgsOptions }: import nixpkgs options;
+
+    specialArgs = {options ? self.pkgsOptions }: {
+      pkgs-unstable = import nixpkgs-unstable options;
+      pkgs-staging = import nixpkgs-staging options;
       inherit inputs;
     };
+    
 
     forEachSupportedSystem = f: inputs.nixpkgs.lib.genAttrs
-      supportedSystems (system: f {inherit pkgs specialArgs;} );
+      supportedSystems (system: f {
+        pkgs = (pkgs {options = pkgsOptions // {inherit system;}; });
+        specialArgs = (specialArgs {options = pkgsOptions // {inherit system;}; });
+      });
 
     nixosConfigurations = {
       pc = lib.nixosSystem {
-        inherit pkgs specialArgs;
+        pkgs = self.pkgs {};
+        specialArgs = self.specialArgs {};
         modules = [
           ./hosts/pc/default.nix
           ./hosts/pc/disk-config.nix
@@ -49,7 +55,8 @@
         ];
       };
       laptop = lib.nixosSystem {
-        inherit pkgs specialArgs;
+        pkgs = self.pkgs {};
+        specialArgs = self.specialArgs {};
         modules = [
           ./hosts/laptop/default.nix
           ./hosts/laptop/disk-config.nix

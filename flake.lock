@@ -38,14 +38,14 @@
         ]
       },
       "locked": {
-        "lastModified": 1758463745,
-        "narHash": "sha256-uhzsV0Q0I9j2y/rfweWeGif5AWe0MGrgZ/3TjpDYdGA=",
+        "lastModified": 1764866045,
+        "narHash": "sha256-0GsEtXV9OquDQ1VclQfP16cU5VZh7NEVIOjSH4UaJuM=",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz"
+        "url": "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz"
       },
       "original": {
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz"
+        "url": "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz"
       }
     },
     "nixpkgs": {
@@ -98,16 +98,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1760139962,
-        "narHash": "sha256-4xggC56Rub3WInz5eD7EZWXuLXpNvJiUPahGtMkwtuc=",
+        "lastModified": 1764677808,
+        "narHash": "sha256-H3lC7knbXOBrHI9hITQ7modLuX20mYJVhZORL5ioms0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7e297ddff44a3cc93673bb38d0374df8d0ad73e4",
+        "rev": "1aab89277eb2d87823d5b69bae631a2496cff57a",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-25.05",
+        "ref": "nixos-25.11",
         "repo": "nixpkgs",
         "type": "github"
       }
