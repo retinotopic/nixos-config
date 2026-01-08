@@ -83,11 +83,11 @@
       };
       hostKeys = [
         {
-          bits = 4096;
           path = "/etc/ssh/ssh_host_ed25519_key";
+          rounds = 100;
           type = "ed25519";         
         }
-      ];
+      ]; # ssh-keygen -t ed25519 -a 100 (on client)
       extraConfig = ''
         MaxStartups 5:50:10
         MaxSessions 1
