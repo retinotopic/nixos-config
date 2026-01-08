@@ -41,7 +41,7 @@
   networking = {
     networkmanager.enable = true;
     nftables.enable = true;
-    nameservers = [ "1.1.1.1" "8.8.8.8" ];
+    nameservers = [ "1.1.1.1" "8.8.8.8" "1.0.0.1" "8.8.4.4" ];
     firewall.allowedTCPPorts = [ 22 ];
   };
 
@@ -74,7 +74,7 @@
       dnsovertls = "true";
     };
     openssh = {
-      enable =false;
+      enable = true;
       authorizedKeysInHomedir = true;
       settings = {
         PermitRootLogin = "without-password";
@@ -83,8 +83,8 @@
       };
       hostKeys = [
         {
+          bits = 4096;
           path = "/etc/ssh/ssh_host_ed25519_key";
-          rounds = 100;
           type = "ed25519";         
         }
       ];

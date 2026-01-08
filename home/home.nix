@@ -106,6 +106,9 @@
     cava = {
       enable = true;
     };
+    firefox = {
+      enable = true;
+    };
     obs-studio = {
       enable = true;
 
