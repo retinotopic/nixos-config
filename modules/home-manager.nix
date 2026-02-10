@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, pkgs-unstable, pkgs-staging, ... }:
+{ config, pkgs, lib, inputs, pkgs-unstable, ... }:
 {
   imports = [ inputs.home-manager.nixosModules.home-manager ];
 
@@ -7,6 +7,6 @@
   home-manager.useUserPackages = true;
 
   home-manager.extraSpecialArgs = {
-    inherit inputs pkgs-unstable pkgs-staging;
+    inherit inputs pkgs-unstable;
   };
 }

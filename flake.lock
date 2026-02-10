@@ -3,18 +3,14 @@
     "cuteshell": {
       "flake": false,
       "locked": {
-        "lastModified": 1762619531,
-        "narHash": "sha256-Lc3JMpDwyNxKBr8wPpBQnNgTFX5gf9j5oOLEswxiFHc=",
-        "ref": "refs/heads/nixos-config-retinotopic",
-        "rev": "39de0ea1de78646d457f8bad3a61c767c36acc5d",
-        "revCount": 87,
-        "type": "git",
-        "url": "file:./home/CuteShell_submodule"
+        "path": "./home/CuteShell_submodule",
+        "type": "path"
       },
       "original": {
-        "type": "git",
-        "url": "file:./home/CuteShell_submodule"
-      }
+        "path": "./home/CuteShell_submodule",
+        "type": "path"
+      },
+      "parent": []
     },
     "disko": {
       "inputs": {
@@ -38,8 +34,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1764866045,
-        "narHash": "sha256-0GsEtXV9OquDQ1VclQfP16cU5VZh7NEVIOjSH4UaJuM=",
+        "lastModified": 1769580047,
+        "narHash": "sha256-tNqCP/+2+peAXXQ2V8RwsBkenlfWMERb+Uy6xmevyhM=",
         "type": "tarball",
         "url": "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz"
       },
@@ -64,29 +60,13 @@
         "type": "github"
       }
     },
-    "nixpkgs-staging": {
-      "locked": {
-        "lastModified": 1760465429,
-        "narHash": "sha256-mptllJkmFEx87hKIJqwG40R4z2I2xPu4P+dwgnN+CfY=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "f0f4caebbbbb45c716b98dd6c7d6bc3a4c1ab412",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "staging-next",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1760349414,
-        "narHash": "sha256-W4Ri1ZwYuNcBzqQQa7NnWfrv0wHMo7rduTWjIeU9dZk=",
+        "lastModified": 1770141374,
+        "narHash": "sha256-yD4K/vRHPwXbJf5CK3JkptBA6nFWUKNX/jlFp2eKEQc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c12c63cd6c5eb34c7b4c3076c6a99e00fcab86ec",
+        "rev": "41965737c1797c1d83cfb0b644ed0840a6220bd1",
         "type": "github"
       },
       "original": {
@@ -98,11 +78,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1764677808,
-        "narHash": "sha256-H3lC7knbXOBrHI9hITQ7modLuX20mYJVhZORL5ioms0=",
+        "lastModified": 1770136044,
+        "narHash": "sha256-tlFqNG/uzz2++aAmn4v8J0vAkV3z7XngeIIB3rM3650=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1aab89277eb2d87823d5b69bae631a2496cff57a",
+        "rev": "e576e3c9cf9bad747afcddd9e34f51d18c855b4e",
         "type": "github"
       },
       "original": {
@@ -115,15 +95,15 @@
     "quickshell": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs-staging"
+          "nixpkgs-unstable"
         ]
       },
       "locked": {
-        "lastModified": 1760315601,
-        "narHash": "sha256-cvguRikKX0yXZ7jaK4Gt3qB1I33T5TzYZQf0Ampx8ko=",
+        "lastModified": 1769593411,
+        "narHash": "sha256-WW00FaBiUmQyxvSbefvgxIjwf/WmRrEGBbwMHvW/7uQ=",
         "ref": "refs/heads/master",
-        "rev": "00858812f25b748d08b075a0d284093685fa3ffd",
-        "revCount": 696,
+        "rev": "1e4d804e7f3fa7465811030e8da2bf10d544426a",
+        "revCount": 732,
         "type": "git",
         "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
       },
@@ -138,7 +118,6 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-staging": "nixpkgs-staging",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "quickshell": "quickshell"
       }

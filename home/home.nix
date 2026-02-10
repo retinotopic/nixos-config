@@ -1,4 +1,4 @@
-{ lib,config, pkgs, pkgs-unstable, pkgs-staging, inputs, ... }:
+{ lib,config, pkgs, pkgs-unstable, inputs, ... }:
 {
   imports = [
     ./configs/hyprland.nix
@@ -76,7 +76,7 @@
     pkgs.xkblayout-state
     pkgs.libnotify
     pkgs.socat
-    pkgs-staging.kdePackages.qtdeclarative
+    pkgs-unstable.kdePackages.qtdeclarative
     pkgs.shotcut
     (inputs.quickshell.packages.${pkgs.system}.default.override {
       withJemalloc = true;

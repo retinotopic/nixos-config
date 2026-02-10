@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, pkgs-unstable,pkgs-staging, inputs,... }:
+{ config, lib, pkgs, pkgs-unstable, inputs,... }:
 
 {
 
@@ -17,10 +17,12 @@
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
         "https://hyprland.cachix.org"
+        "https://chaotic-nyx.cachix.org/"
       ];
       extra-trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
       ];
     };
     

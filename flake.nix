@@ -4,7 +4,7 @@
     disko.url = "https://github.com/nix-community/disko/archive/v1.11.0.tar.gz";  
     
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixpkgs-staging.url = "github:nixos/nixpkgs/staging-next";
+    # nixpkgs-staging.url = "github:nixos/nixpkgs/staging-next";
     
     home-manager = {
       url = "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
@@ -13,16 +13,17 @@
 
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs-staging";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   
     cuteshell = {
       flake = false;
-      url = "git+file:./home/CuteShell_submodule";
+      url = "path:./home/CuteShell_submodule";
+      # url = "git+file:./home/CuteShell_submodule";
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-staging, ... }@inputs: rec { 
+  outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs: rec { 
     supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
     system = builtins.elemAt supportedSystems 0;
     pkgsOptions = { config.allowUnfree = true; inherit system; };
@@ -32,7 +33,6 @@
 
     specialArgs = {options ? self.pkgsOptions }: {
       pkgs-unstable = import nixpkgs-unstable options;
-      pkgs-staging = import nixpkgs-staging options;
       inherit inputs;
     };
     
