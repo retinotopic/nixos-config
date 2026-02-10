@@ -18,8 +18,9 @@
   
     cuteshell = {
       flake = false;
-      url = "path:./home/CuteShell_submodule";
-      # url = "git+file:./home/CuteShell_submodule";
+      # url = "./home/CuteShell_submodule";
+      # url = "path:./home/CuteShell_submodule";
+      url = "git+file:./home/CuteShell_submodule?submodules=1";
     };
   };
 

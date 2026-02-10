@@ -3,14 +3,20 @@
     "cuteshell": {
       "flake": false,
       "locked": {
-        "path": "./home/CuteShell_submodule",
-        "type": "path"
+        "lastModified": 1770719742,
+        "narHash": "sha256-q3Ls0oBiKNisy0NXLF0j/cM0F3foaUuMzfPCKp7E1a4=",
+        "ref": "refs/heads/nixos-config-retinotopic",
+        "rev": "216a276980839ef058590394d48d1e0939128d50",
+        "revCount": 96,
+        "submodules": true,
+        "type": "git",
+        "url": "file:./home/CuteShell_submodule"
       },
       "original": {
-        "path": "./home/CuteShell_submodule",
-        "type": "path"
-      },
-      "parent": []
+        "submodules": true,
+        "type": "git",
+        "url": "file:./home/CuteShell_submodule"
+      }
     },
     "disko": {
       "inputs": {

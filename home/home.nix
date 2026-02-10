@@ -18,6 +18,7 @@
       };
       "CuteShell" = {
         source = inputs.cuteshell;
+        # source = "${inputs.cuteshell}";
         recursive = true;        
       };
       ".config/niri" = {
