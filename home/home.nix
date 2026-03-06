@@ -78,7 +78,9 @@
     pkgs.libnotify
     pkgs.socat
     pkgs-unstable.kdePackages.qtdeclarative
+    pkgs.protonup-qt
     pkgs.shotcut
+    pkgs.bottles
     (inputs.quickshell.packages.${pkgs.system}.default.override {
       withJemalloc = true;
       withQtSvg = true;

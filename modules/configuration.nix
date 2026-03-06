@@ -152,6 +152,8 @@
     pkgs.dysk
     pkgs.xwayland-satellite
     pkgs.git-filter-repo
+    pkgs.winetricks
+    pkgs.wineWow64Packages.waylandFull
   ];
 
   environment.sessionVariables = {
