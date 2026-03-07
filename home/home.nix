@@ -81,6 +81,7 @@
     pkgs.protonup-qt
     pkgs.shotcut
     pkgs.bottles
+    pkgs.umu-launcher
     (inputs.quickshell.packages.${pkgs.system}.default.override {
       withJemalloc = true;
       withQtSvg = true;

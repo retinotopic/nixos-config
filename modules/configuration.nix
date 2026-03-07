@@ -98,6 +98,7 @@
   };
 
   programs = {
+    gamescope.enable = true;
     nekoray = {
       enable = true;
       tunMode.enable = true;
