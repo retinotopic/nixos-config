@@ -82,6 +82,7 @@
     pkgs.shotcut
     pkgs.bottles
     pkgs.umu-launcher
+    pkgs.stremio-linux-shell
     (inputs.quickshell.packages.${pkgs.system}.default.override {
       withJemalloc = true;
       withQtSvg = true;

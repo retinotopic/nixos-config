@@ -22,6 +22,12 @@
       # url = "path:./home/CuteShell_submodule";
       url = "git+file:./home/CuteShell_submodule?submodules=1";
     };
+
+    helium-flake = {
+      url = "github:oxcl/nix-flake-helium-browser";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, ... }@inputs: rec { 

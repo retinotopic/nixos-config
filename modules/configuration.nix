@@ -5,6 +5,9 @@
 { config, lib, pkgs, pkgs-unstable, inputs,... }:
 
 {
+  imports = [
+      ./helium.nix
+  ];
 
   nix = {
     settings = {
@@ -36,6 +39,7 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+    kernelPackages = pkgs.linuxPackages_latest;
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   time.timeZone = "Europe/Moscow";
@@ -99,7 +103,7 @@
 
   programs = {
     gamescope.enable = true;
-    nekoray = {
+    throne = {
       enable = true;
       tunMode.enable = true;
     };
@@ -140,8 +144,6 @@
     pkgs.scc
     pkgs.streamlink
     pkgs.docker-compose
-    pkgs-unstable.amneziawg-tools
-    pkgs.linuxKernel.packages.linux_zen.amneziawg # for zen amd cpus only
     pkgs.mate.engrampa
     pkgs.unrar
     pkgs.unzip
