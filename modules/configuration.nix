@@ -110,10 +110,10 @@
 
   programs = {
     gamescope.enable = true;
-    # throne = {
-    #   enable = true;
-    #   tunMode.enable = true;
-    # };
+    throne = {
+      enable = true;
+      tunMode.enable = true;
+    };
     niri.enable = true;
     mosh.enable = true;
     virt-manager.enable = true;

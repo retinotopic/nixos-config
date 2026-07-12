@@ -71,7 +71,6 @@
     pkgs-unstable.telegram-desktop
     pkgs-unstable.brave
     pkgs-unstable.prismlauncher
-    pkgs-unstable.throne
     pkgs.discord
     pkgs.usbimager
     pkgs.xkb-switch
