@@ -55,7 +55,7 @@
 
   services = {
     # mpd-mpris.enable = true;
-    swww.enable = true;
+    awww.enable = true;
     hyprpaper.enable = false;
     hyprpaper.settings = {
       ipc = "off";
@@ -71,6 +71,7 @@
     pkgs-unstable.telegram-desktop
     pkgs-unstable.brave
     pkgs-unstable.prismlauncher
+    pkgs-unstable.throne
     pkgs.discord
     pkgs.usbimager
     pkgs.xkb-switch
@@ -80,9 +81,7 @@
     pkgs-unstable.kdePackages.qtdeclarative
     pkgs.protonup-qt
     pkgs.shotcut
-    pkgs.bottles
     pkgs.umu-launcher
-    pkgs.stremio-linux-shell
     (inputs.quickshell.packages.${pkgs.system}.default.override {
       withJemalloc = true;
       withQtSvg = true;
@@ -111,12 +110,8 @@
     cava = {
       enable = true;
     };
-    firefox = {
-      enable = true;
-    };
     obs-studio = {
       enable = true;
-
       plugins = with pkgs.obs-studio-plugins; [
         wlrobs
         obs-backgroundremoval

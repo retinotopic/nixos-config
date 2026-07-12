@@ -16,6 +16,8 @@
         "nix-command"
         "flakes"
       ];
+      max-jobs = 3;
+      cores = 3;
       extra-substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
@@ -43,7 +45,7 @@
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   time.timeZone = "Europe/Moscow";
-
+  security.pam.services.login.enableGnomeKeyring = true;
   networking = {
     networkmanager.enable = true;
     nftables.enable = true;
@@ -66,6 +68,7 @@
     fstrim.enable = true;
     gvfs.enable = true;
     tumbler.enable = true;
+    gnome.gnome-keyring.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -73,11 +76,15 @@
       pulse.enable = true;
     };
     resolved = { 
+      settings = {
+        Resolve = {
+          DNSSEC = "true";
+          Domains = [ "~." ];
+          FallbackDNS = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
+          DNSOverTLS = "true";
+        };
+      };
       enable = true;
-      dnssec = "true";
-      domains = [ "~." ];
-      fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-      dnsovertls = "true";
     };
     openssh = {
       enable = true;
@@ -103,10 +110,10 @@
 
   programs = {
     gamescope.enable = true;
-    throne = {
-      enable = true;
-      tunMode.enable = true;
-    };
+    # throne = {
+    #   enable = true;
+    #   tunMode.enable = true;
+    # };
     niri.enable = true;
     mosh.enable = true;
     virt-manager.enable = true;
@@ -124,9 +131,9 @@
     xwayland.enable = true;
     thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [
-        thunar-archive-plugin
-        thunar-volman
+      plugins = [
+        pkgs.thunar-archive-plugin
+        pkgs.thunar-volman
       ];
     };
   }; 
@@ -144,7 +151,7 @@
     pkgs.scc
     pkgs.streamlink
     pkgs.docker-compose
-    pkgs.mate.engrampa
+    pkgs.engrampa
     pkgs.unrar
     pkgs.unzip
     pkgs.p7zip
@@ -157,6 +164,7 @@
     pkgs.git-filter-repo
     pkgs.winetricks
     pkgs.wineWow64Packages.waylandFull
+    pkgs.cosmic-applets
   ];
 
   environment.sessionVariables = {

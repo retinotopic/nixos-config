@@ -1,6 +1,7 @@
 { lib, pkgs-unstable, pkgs, ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "lua";
     # plugins = [ pkgs.hyprlandPlugins.hyprscrolling ];
     xwayland.enable = true;
     systemd.enable = true;

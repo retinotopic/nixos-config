@@ -4,6 +4,7 @@
     # flavors = {
     #   everforest = ./everforest.yazi;
     # };
+    shellWrapperName = "y";
     theme = {
       mgr = {
         cwd = { fg = "#7fbbb3"; };  

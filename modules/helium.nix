@@ -19,12 +19,12 @@
 
     # 🎯 Policies - Written to /etc/chromium/policies/managed/helium-nixos.json
     # Also written to /etc/helium/policies/managed/ for future compatibility
-    policies = {
-      "BrowserSignin" = 0;
-      "PasswordManagerEnabled" = false;
-      "SyncDisabled" = true;
-      "SpellcheckEnabled" = true;
-      "SpellcheckLanguage" = [ "en-US" ];
-    };
+    # policies = {
+    #   "BrowserSignin" = 0;
+    #   "PasswordManagerEnabled" = false;
+    #   "SyncDisabled" = true;
+    #   "SpellcheckEnabled" = true;
+    #   "SpellcheckLanguage" = [ "en-US" ];
+    # };
   };
 }

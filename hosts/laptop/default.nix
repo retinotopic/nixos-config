@@ -4,7 +4,13 @@
     ../../modules/configuration.nix
   ];
   networking.hostName = "nixos_lp";
-  hardware.cpu.amd.ryzen-smu.enable = true; 
+  hardware = {
+    cpu.amd.ryzen-smu.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
+  };
   services = {
     power-profiles-daemon.enable = false;
     upower.enable = true;

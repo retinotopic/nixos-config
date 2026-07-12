@@ -3,7 +3,7 @@
     enable = true;
     server.enable = true;
     settings = {
-      colors = {
+      colors-dark = {
         alpha = "0.55";
         background="282c34";
         # background="323d43"
