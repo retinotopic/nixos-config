@@ -176,10 +176,10 @@ environment {
     DISPLAY ":0"
 }
 prefer-no-csd
-spawn-sh-at-startup "quickshell -p CuteShell"
-spawn-at-startup "awww-daemon"
+spawn-sh-at-startup "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && awww-daemon & quickshell -p CuteShell"
+// spawn-at-startup "awww-daemon"
 // spawn-at-startup "quickshell" "-p" "CuteShell"
-spawn-sh-at-startup "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+// spawn-sh-at-startup "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
 spawn-at-startup "foot"
 output "HDMI-A-1" {

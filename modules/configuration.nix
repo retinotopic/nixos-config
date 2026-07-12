@@ -165,6 +165,7 @@
     pkgs.winetricks
     pkgs.wineWow64Packages.waylandFull
     pkgs.cosmic-applets
+    pkgs-unstable.clash-verge-rev
   ];
 
   environment.sessionVariables = {
