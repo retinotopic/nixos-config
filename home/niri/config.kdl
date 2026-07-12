@@ -177,6 +177,7 @@ environment {
 }
 prefer-no-csd
 spawn-sh-at-startup "quickshell -p CuteShell"
+spawn-at-startup "awww-daemon"
 // spawn-at-startup "quickshell" "-p" "CuteShell"
 spawn-sh-at-startup "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
