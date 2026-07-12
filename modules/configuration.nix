@@ -50,7 +50,10 @@
     networkmanager.enable = true;
     nftables.enable = true;
     nameservers = [ "1.1.1.1" "8.8.8.8" "1.0.0.1" "8.8.4.4" ];
-    firewall.allowedTCPPorts = [ 22 ];
+    firewall = {
+      allowedTCPPorts = [ 22 ];
+      trustedInterfaces = [ "utun0" ];
+    };
   };
 
   users.users.retinotopic = {
@@ -109,6 +112,13 @@
   };
 
   programs = {
+    clash-verge = {
+      # package = pkgs-unstable.clash-verge-rev;
+      enable = true;
+      tunMode = true;
+      serviceMode = true;
+      autoStart = false;
+    };
     gamescope.enable = true;
     throne = {
       enable = true;
@@ -165,7 +175,6 @@
     pkgs.winetricks
     pkgs.wineWow64Packages.waylandFull
     pkgs.cosmic-applets
-    pkgs-unstable.clash-verge-rev
   ];
 
   environment.sessionVariables = {
