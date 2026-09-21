@@ -1,0 +1,45 @@
+error: Cannot build '/nix/store/gqdfaafk024i0x1bbzw8pnllaav84y92-ryzen-smu-7.2.3-0.1.7-unstable-2025-10-22.drv'.
+       Reason: builder failed with exit code 2.
+       Output paths:
+         /nix/store/nzbhvwhgh5chxs91fx4kzzvw5lhran8j-ryzen-smu-7.2.3-0.1.7-unstable-2025-10-22
+       Last 25 log lines:
+       > source root is source
+       > Running phase: patchPhase
+       > Running phase: updateAutotoolsGnuConfigScriptsPhase
+       > Running phase: configurePhase
+       > no configure script, doing nothing
+       > Running phase: buildPhase
+       > build flags: SHELL=/nix/store/axl12yr00f105bjqvj628f5f0s6r0cnp-bash-5.3p9/bin/bash TARGET=7.2.3 KERNEL_BUILD=/nix/store/m0qzcx746454jq1h4p6rcjj2mxn0pnp6-linux-7.2.3-dev/lib/modules/7.2.3/build CC=cc
+       > make[1]: Entering directory '/nix/store/m0qzcx746454jq1h4p6rcjj2mxn0pnp6-linux-7.2.3-dev/lib/modules/7.2.3/build'
+       > make[2]: Entering directory '/build/source'
+       >   CC [M]  drv.o
+       >   CC [M]  smu.o
+       > smu.c: In function 'smu_resolve_cpu_class':
+       > smu.c:241:11: error: implicit declaration of function 'cpuid_eax' [-Wimplicit-function-declaration]
+       >   241 |   cpuid = cpuid_eax(0x00000001);
+       >       |           ^~~~~~~~~
+       > smu.c:249:14: error: implicit declaration of function 'cpuid_ebx' [-Wimplicit-function-declaration]
+       >   249 |   pkg_type = cpuid_ebx(0x80000001) >> 28;
+       >       |              ^~~~~~~~~
+       > make[4]: *** [/nix/store/m0qzcx746454jq1h4p6rcjj2mxn0pnp6-linux-7.2.3-dev/lib/modules/7.2.3/source/scripts/Makefile.build:289: smu.o] Error 1
+       > make[3]: *** [/nix/store/m0qzcx746454jq1h4p6rcjj2mxn0pnp6-linux-7.2.3-dev/lib/modules/7.2.3/source/Makefile:2187: .] Error 2
+       > make[2]: *** [/nix/store/m0qzcx746454jq1h4p6rcjj2mxn0pnp6-linux-7.2.3-dev/lib/modules/7.2.3/source/Makefile:248: __sub-make] Error 2
+       > make[2]: Leaving directory '/build/source'
+       > make[1]: *** [/nix/store/m0qzcx746454jq1h4p6rcjj2mxn0pnp6-linux-7.2.3-dev/lib/modules/7.2.3/source/Makefile:248: __sub-make] Error 2
+       > make[1]: Leaving directory '/nix/store/m0qzcx746454jq1h4p6rcjj2mxn0pnp6-linux-7.2.3-dev/lib/modules/7.2.3/build'
+       > make: *** [Makefile:29: modules] Error 2
+       For full logs, run:
+         nix log /nix/store/gqdfaafk024i0x1bbzw8pnllaav84y92-ryzen-smu-7.2.3-0.1.7-unstable-2025-10-22.drv
+error: Cannot build '/nix/store/bpmd563h7p5nx86v4ypfzdbakmj7kadi-linux-7.2.3-modules.drv'.
+       Reason: 1 dependency failed.
+       Output paths:
+         /nix/store/9fcmgxms8fa82cgxay7pkr267z3f8s19-linux-7.2.3-modules
+error: Cannot build '/nix/store/scwpadzgk46ngq2m1kgyrp6x3mb7bgdx-system-path.drv'.
+       Reason: 1 dependency failed.
+       Output paths:
+         /nix/store/vjfy4hnrvrr0fgvb4za5nihrrkgprch6-system-path
+error: Cannot build '/nix/store/pl61hq9csh3csdii0fli87rm0i4ljcjd-nixos-system-nixos_lp-26.05.20260906.c257840.drv'.
+       Reason: 1 dependency failed.
+       Output paths:
+         /nix/store/qmk0ciz8rb7dpv9qshm4kjxyllx077jf-nixos-system-nixos_lp-26.05.20260906.c257840
+Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths '.#nixosConfigurations."laptop".config.system.build.toplevel' --no-link --option max-jobs 2 --option cores 4' returned non-zero exit status 1.

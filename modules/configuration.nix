@@ -6,7 +6,8 @@
 
 {
   imports = [
-      ./helium.nix
+    ./helium.nix
+    inputs.happ-nix.nixosModules.default
   ];
 
   nix = {
@@ -16,8 +17,8 @@
         "nix-command"
         "flakes"
       ];
-      max-jobs = 3;
-      cores = 3;
+      max-jobs = 2;
+      cores = 4;
       extra-substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
@@ -45,14 +46,28 @@
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   time.timeZone = "Europe/Moscow";
-  security.pam.services.login.enableGnomeKeyring = true;
+  security = {
+    pam = {
+      services = {
+        login.enableGnomeKeyring = true;
+      };
+    };
+  };
+  
+
   networking = {
     networkmanager.enable = true;
     nftables.enable = true;
     nameservers = [ "1.1.1.1" "8.8.8.8" "1.0.0.1" "8.8.4.4" ];
     firewall = {
-      allowedTCPPorts = [ 22 ];
-      trustedInterfaces = [ "utun0" ];
+      # allowedTCPPorts = [ 22 38847 25565 ];
+      # allowedTCPPortRanges = [
+      #   {
+      #     from = 20000;
+      #     to = 30000;
+      #   }
+      # ]; 
+      trustedInterfaces = [ "utun0" "tailscale0" ];
     };
   };
 
@@ -68,6 +83,7 @@
   ];
     
   services = {
+    tailscale.enable = false;
     fstrim.enable = true;
     gvfs.enable = true;
     tumbler.enable = true;
@@ -112,12 +128,9 @@
   };
 
   programs = {
-    clash-verge = {
-      # package = pkgs-unstable.clash-verge-rev;
+    happ = {
       enable = true;
-      tunMode = true;
-      serviceMode = true;
-      autoStart = false;
+      tunMode.enable = true;
     };
     gamescope.enable = true;
     throne = {
@@ -127,7 +140,9 @@
     niri.enable = true;
     mosh.enable = true;
     virt-manager.enable = true;
-    nix-ld.enable = true;
+    nix-ld = {
+      enable = true;
+    };
     steam.enable = true;
     appimage = {
       enable = true;
@@ -175,6 +190,7 @@
     pkgs.winetricks
     pkgs.wineWow64Packages.waylandFull
     pkgs.cosmic-applets
+    pkgs.gearlever
   ];
 
   environment.sessionVariables = {

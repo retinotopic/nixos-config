@@ -8,6 +8,7 @@
     ./configs/fish.nix
     ./configs/fastfetch.nix
     ./configs/btop.nix
+    ./configs/zed.nix
   ];
   
   home = {
@@ -81,16 +82,7 @@
     pkgs.protonup-qt
     pkgs.shotcut
     pkgs.umu-launcher
-    (inputs.quickshell.packages.${pkgs.system}.default.override {
-      withJemalloc = true;
-      withQtSvg = true;
-      withWayland = true;
-      withX11 = false;
-      withPipewire = true;
-      withPam = false;
-      withHyprland = true;
-      withI3 = false;
-    })
+    pkgs.quickshell
   ];
 # brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 

@@ -5,7 +5,7 @@
   ];
   networking.hostName = "nixos_lp";
   hardware = {
-    cpu.amd.ryzen-smu.enable = true;
+    # cpu.amd.ryzen-smu.enable = true;
     bluetooth = {
       enable = true;
       powerOnBoot = false;

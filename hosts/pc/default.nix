@@ -10,12 +10,13 @@
   networking.hostName = "nixos_pc";
 
   hardware = {
-    graphics = {
-      extraPackages = with pkgs; [ nvidia-vaapi-driver vulkan-tools wgpu-utils ];
-    };
+    # graphics = {
+    #   extraPackages = with pkgs; [ nvidia-vaapi-driver vulkan-tools wgpu-utils ];
+    # };
     nvidia = {
       modesetting.enable = true;
       open = false;
+      package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
     };
   };
 }
