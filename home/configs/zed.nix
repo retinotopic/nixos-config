@@ -1,4 +1,4 @@
-{
+{ lib, pkgs-unstable, ... }: {
   programs.zed-editor = {
     enable = true;
 
@@ -7,10 +7,12 @@
 
     # Everything inside of these brackets are Zed options
     userSettings = {
-
       hour_format = "hour24";
       auto_update = false;
-
+      disable_ai = true;
+      buffer_font_weight = 900;
+      buffer_font_family = "JetBrainsMono Nerd Font";
+      buffer_font_size = 16;
       terminal = {
         alternate_scroll = "off";
         blinking = "off";
@@ -22,33 +24,54 @@
             activate_script = "default";
           };
         };
-        env = {
-          TERM = "foot";
-        };
-        font_family = "JetBrains Mono";
+        font_family = "JetBrainsMono Nerd Font";
         font_features = null;
-        font_size = null;
+        font_size = 16;
         line_height = "comfortable";
         option_as_meta = false;
         button = false;
-        shell = "system";
-        # shell = {
-        #   program = "zsh";
-        # };
+        shell = {
+          program = "fish";
+        };
         toolbar = {
           title = true;
         };
         working_directory = "current_project_directory";
       };
+      project_panel = {
+        button = true;
+        default_width = 240;
+        dock = "left";
+        entry_spacing = "comfortable";
+        file_icons = true;
+        folder_indicator = "icon";
+        git_status = true;
+        indent_size = 30;
+        auto_reveal_entries = true;
+        auto_fold_dirs = true;
+        bold_folder_labels = false;
+        drag_and_drop = true;
+        scrollbar = {
+          show = null;
+          horizontal_scroll = true;
+        };
+        sticky_scroll = true;
+        show_diagnostics = "all";
+        indent_guides = {
+          show = "always";
+        };
+        sort_mode = "directories_first";
+        hide_root = false;
+        hide_hidden = false;
+        starts_open = true;
+        auto_open = {
+          on_create = true;
+          on_paste = true;
+          on_drop = true;
+        };
+      };
 
       lsp = {
-        rust-analyzer = {
-          binary = {
-            # path = lib.getExe pkgs.rust-analyzer;
-            path_lookup = true;
-          };
-        };
-
         nix = {
           binary = {
             path_lookup = true;
@@ -60,17 +83,18 @@
 
       # Tell Zed to use direnv and direnv can use a flake.nix environment
       load_direnv = "shell_hook";
-      base_keymap = "VSCode";
+      # base_keymap = "VSCode";
 
       theme = {
-        mode = "system";
-        light = "Everforest Light Hard (blur)";
-        dark = "Everforest Dark Hard (blur)";
+        mode = "dark";
+        light = "Everforest Light Soft (blur)";
+        dark = "Everforest Dark Soft (blur)";
       };
 
       show_whitespaces = "all";
       ui_font_size = 16;
-      buffer_font_size = 16;
+      ui_font_weight = 900;
+      ui_font_family = "JetBrainsMono Nerd Font";
     };
   };
 }
