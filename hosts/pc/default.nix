@@ -19,4 +19,7 @@
       package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
     };
   };
+  environment.systemPackages = [
+    pkgs-unstable.lmstudio
+  ];
 }

@@ -47,6 +47,10 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   time.timeZone = "Europe/Moscow";
   security = {
+    pki.caCertificateBlacklist = [
+      "Comodo AAA Services root"
+      "emSign ECC Root CA - G3"
+    ];
     pam = {
       services = {
         login.enableGnomeKeyring = true;
@@ -171,7 +175,6 @@
     pkgs.delta
     pkgs.byedpi
     pkgs.pwvucontrol
-    pkgs.vlc
     pkgs.ffmpeg
     pkgs.scc
     pkgs.streamlink
@@ -191,6 +194,7 @@
     pkgs.wineWow64Packages.waylandFull
     pkgs.cosmic-applets
     pkgs.gearlever
+    pkgs-unstable.stremio-service
   ];
 
   environment.sessionVariables = {

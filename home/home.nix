@@ -79,10 +79,12 @@
     pkgs.libnotify
     pkgs.socat
     pkgs-unstable.kdePackages.qtdeclarative
+    pkgs-unstable.haruna
     pkgs.protonup-qt
     pkgs.shotcut
     pkgs.umu-launcher
     pkgs.quickshell
+    pkgs-unstable.stremio-linux-shell
   ];
 # brave --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,VaapiIgnoreDriverChecks,CanvasOopRasterization --ozone-platform-hint=x11
 

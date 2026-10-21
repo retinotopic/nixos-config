@@ -55,6 +55,9 @@
           show = null;
           horizontal_scroll = true;
         };
+        minimap = {
+          show = true;
+        };
         sticky_scroll = true;
         show_diagnostics = "all";
         indent_guides = {
