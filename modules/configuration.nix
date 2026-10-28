@@ -77,6 +77,7 @@
 
   users.users.retinotopic = {
     isNormalUser = true;
+    home = "/home/retinotopic";
     extraGroups = [ "wheel" "networkmanager" "libvirtd" "docker" ];
   };
   
@@ -158,6 +159,21 @@
     dconf.enable = true;
     chromium.enable = true;
     xwayland.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+    obs-studio = {
+      enable = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+        obs-vaapi
+        obs-gstreamer
+        obs-vkcapture
+      ];
+    };
     thunar = {
       enable = true;
       plugins = [
@@ -195,11 +211,30 @@
     pkgs.cosmic-applets
     pkgs.gearlever
     pkgs-unstable.stremio-service
+    pkgs-unstable.helix
+    pkgs-unstable.telegram-desktop
+    pkgs-unstable.brave
+    pkgs-unstable.prismlauncher
+    pkgs.discord
+    pkgs.usbimager
+    pkgs.xkb-switch
+    pkgs.xkblayout-state
+    pkgs.libnotify
+    pkgs.socat
+    pkgs-unstable.kdePackages.qtdeclarative
+    pkgs-unstable.haruna
+    pkgs.protonup-qt
+    pkgs.shotcut
+    pkgs.umu-launcher
+    pkgs.quickshell
+    pkgs-unstable.stremio-linux-shell
   ];
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
+    QT_QPA_PLATFORM = "wayland;xcb";
+    # QT_QML_GENERATE_QMLLS_INI = "ON";
   };
 
   hardware = {
