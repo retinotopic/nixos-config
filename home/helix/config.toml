@@ -10,9 +10,12 @@ idle-timeout = 300
 completion-trigger-len = 2
 auto-info = true
 shell = ["sh", "-c"]
-bufferline = "multiple"
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
 true-color = true
+# [editor.bufferline]
+# render-mode = "multiple"
+# separator = ""
+bufferline = "multiple"
 [editor.indent-guides]
 render = true
 character = "|" # Some characters that work well: "▏", "┆", "┊", "⸽"

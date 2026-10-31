@@ -73,23 +73,24 @@
         "type": "github"
       }
     },
-    "home-manager": {
+    "hjem": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs-unstable"
         ]
       },
       "locked": {
-        "lastModified": 1792438572,
-        "narHash": "sha256-5mQQOcggBRBXB7NlzUxO0dbvQN4euJOISjNybrtfxPk=",
-        "rev": "24f8f8e786f87d6a818e1746cb2389bf922afdab",
-        "revCount": 6841,
-        "type": "tarball",
-        "url": "https://api.flakehub.com/f/pinned/nix-community/home-manager/0.2605.6841%2Brev-24f8f8e786f87d6a818e1746cb2389bf922afdab/01a157d5-91e6-7ed0-aaa3-005de397eafe/source.tar.gz"
+        "lastModified": 1793333241,
+        "narHash": "sha256-hmlUXxCk6On7Hrop/TyS3//dgI2BLvaN4TEsOq1ma+Y=",
+        "owner": "feel-co",
+        "repo": "hjem",
+        "rev": "8408642aa3035135fa6d70269dc93e0814e2a4f6",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://flakehub.com/f/nix-community/home-manager/0.2605.6835"
+        "owner": "feel-co",
+        "repo": "hjem",
+        "type": "github"
       }
     },
     "nixpkgs": {
@@ -178,10 +179,31 @@
         "disko": "disko",
         "happ-nix": "happ-nix",
         "helium-flake": "helium-flake",
-        "home-manager": "home-manager",
+        "hjem": "hjem",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "quickshell": "quickshell"
+        "quickshell": "quickshell",
+        "wrappers": "wrappers"
+      }
+    },
+    "wrappers": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792487907,
+        "narHash": "sha256-X/+r5QLrzFmlO4Kx4WKEu2Ol/Xr6XWSjyIMd//Sl0Mo=",
+        "owner": "lassulus",
+        "repo": "wrappers",
+        "rev": "37d05efcab820ef96f083b251040ae2848445959",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lassulus",
+        "repo": "wrappers",
+        "type": "github"
       }
     }
   },

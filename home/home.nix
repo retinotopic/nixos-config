@@ -1,61 +1,41 @@
-{ lib,config, pkgs, pkgs-unstable, inputs, ... }:
+{ lib, config, pkgs, pkgs-unstable, inputs, ... }:
 {
   imports = [
-    ./configs/foot.nix
     ./configs/fuzzel.nix
-    ./configs/fish.nix
-
-    ./configs/yazi.nix
     ./configs/fastfetch.nix
     ./configs/btop.nix
-    ./configs/zed.nix
+    ./configs/yazi.nix
+    ./configs/nushell.nix
+    ./configs/foot.nix
   ];
-  
-  home = {
-    file = {
-      ".config/helix" = {
-        source = ./helix;
-        recursive = true;        
-      };
-      "CuteShell" = {
-        source = inputs.cuteshell;
-        # source = "${inputs.cuteshell}";
-        recursive = true;        
-      };
-      ".config/niri" = {
-        source = ./niri;
-        recursive = true;        
-      };
-      "nixos-everforest-light.png" = {
-        source = ./nixos-everforest-light-outline.png;
-      };
-      "nixos-everforest-dark.png" = {
-        source = ./nixos-everforest-dark-outline.png;
-      };
-      "nixos-onedark-onedark.png" = {
-        source = ./nixos-onedark-onedark.png;
-      };
-      # ".config/helix".source = config.lib.file.mkOutOfStoreSymlink "/home/retinotopic/nixos-config/helix";
-    };
-    username = "aboba";
-    homeDirectory = "/home/aboba";
-    stateVersion = "24.11";
-    
-    pointerCursor = {
-      enable = true;
-      package = pkgs.lyra-cursors;
-      name = "LyraF-cursors";
-      size = 20;
+
+  options = {
+    pkgs-wrapped = lib.mkOption {
+      type = lib.types.attrsOf lib.types.package;
+      default = {};
+      description = "Packages built with wrappers";
     };
   };
+  config = {
+    hjem.users.retinotopic = {
+      directory = "/home/retinotopic";
 
-  
-  programs = {
-    cava = {
-      enable = true;
-    };
-    home-manager = {
-      enable = true;       
+      files = {
+        ".config/helix".source = ./helix;
+
+        "CuteShell".source = inputs.cuteshell;
+
+        ".config/niri".source = ./niri;
+
+        "nixos-everforest-light.png".source =
+          ./nixos-everforest-light-outline.png;
+
+        "nixos-everforest-dark.png".source =
+          ./nixos-everforest-dark-outline.png;
+
+        "nixos-onedark-onedark.png".source =
+          ./nixos-onedark-onedark.png;
+      };
     };
   };
 }

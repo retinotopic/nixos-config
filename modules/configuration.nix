@@ -8,6 +8,7 @@
   imports = [
     ./helium.nix
     inputs.happ-nix.nixosModules.default
+    ../home/home.nix
   ];
 
   nix = {
@@ -18,7 +19,7 @@
         "flakes"
       ];
       max-jobs = 2;
-      cores = 4;
+      cores = 3;
       extra-substituters = [
         "https://nix-community.cachix.org"
         "https://cache.nixos.org/"
@@ -58,7 +59,6 @@
     };
   };
   
-
   networking = {
     networkmanager.enable = true;
     nftables.enable = true;
@@ -182,6 +182,7 @@
       ];
     };
   }; 
+
   environment.systemPackages = [
     pkgs.wget
     pkgs.bc
@@ -228,12 +229,22 @@
     pkgs.umu-launcher
     pkgs.quickshell
     pkgs-unstable.stremio-linux-shell
+    pkgs.lyra-cursors
+    pkgs.cava
+    config.pkgs-wrapped.foot
+    config.pkgs-wrapped.yazi
+    config.pkgs-wrapped.nushell
+    config.pkgs-wrapped.fuzzel
+    config.pkgs-wrapped.btop
+    config.pkgs-wrapped.fastfetch
   ];
 
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORM = "wayland;xcb";
+    XCURSOR_THEME = "LyraF-cursors";
+    XCURSOR_SIZE = "20";
     # QT_QML_GENERATE_QMLLS_INI = "ON";
   };
 
@@ -242,6 +253,7 @@
       enable = true;
     };
   };
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;
@@ -279,26 +291,9 @@
     };
     libvirtd.enable = true;
   };
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  system.stateVersion = "24.11"; # Did you read the comment?
-
+  #
+  system.stateVersion = "24.11";
+  #
 }
 

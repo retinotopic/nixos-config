@@ -6,11 +6,6 @@
     nixpkgs-unstable.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1";
     # nixpkgs-staging.url = "github:nixos/nixpkgs/staging-next";
     
-    home-manager = {
-      url = "https://flakehub.com/f/nix-community/home-manager/0.2605.6835";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -31,6 +26,18 @@
     happ-nix = {
       url = "github:DaHL-gh/happ-nix";
     };
+    wrappers = {
+      url = "github:lassulus/wrappers";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    # helix-fork = {
+    #   url = "github:gj1118/helix";
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
+    # };
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
   };
 
@@ -42,7 +49,7 @@
       inherit system;
       overlays = [
         self.overlays.qsOverlay
-        # self.overlays.karing
+        # self.overlays.helixOverlay
       ];
     };
     lib = nixpkgs.lib;
@@ -54,23 +61,24 @@
       inherit inputs;
     };
 
-    overlays.qsOverlay = final: prev: {
-      quickshell = inputs.quickshell.packages.${prev.system}.default.override {
-        withJemalloc = true;
-        withQtSvg = true;
-        withWayland = true;
-        withX11 = false;
-        withPipewire = true;
-        withPam = true;
-        withHyprland = true;
-        withI3 = false;
+    overlays = {
+      qsOverlay = final: prev: {
+        quickshell = inputs.quickshell.packages.${prev.system}.default.override {
+          withJemalloc = true;
+          withQtSvg = true;
+          withWayland = true;
+          withX11 = false;
+          withPipewire = true;
+          withPam = true;
+          withHyprland = true;
+          withI3 = false;
+        };
       };
+      # helixOverlay = final: prev: {
+      #   helix = inputs.helix-fork.packages.${prev.system}.default; 
+      # };
     };
-
-    # overlays.karing = final: prev: {
-    #   karing = prev.callPackage ./modules/karing.nix { };
-    # };
-
+    
     forEachSupportedSystem = f: inputs.nixpkgs.lib.genAttrs
       supportedSystems (system: f {
         pkgs = (pkgs {options = pkgsOptions // {inherit system;}; });
@@ -85,7 +93,7 @@
           ./hosts/pc/default.nix
           ./hosts/pc/disk-config.nix
           inputs.disko.nixosModules.disko
-          ./modules/home-manager.nix
+          inputs.hjem.nixosModules.default
         ];
       };
       laptop = lib.nixosSystem {
@@ -95,7 +103,7 @@
           ./hosts/laptop/default.nix
           ./hosts/laptop/disk-config.nix
           inputs.disko.nixosModules.disko
-          ./modules/home-manager.nix
+          inputs.hjem.nixosModules.default
         ];
       };
     };

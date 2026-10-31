@@ -1,15 +1,15 @@
-{
-  programs.foot = {
-    enable = true;
-    server.enable = true;
+{ pkgs-unstable, inputs, ... }: {
+  pkgs-wrapped.foot = (inputs.wrappers.wrapperModules.foot.apply {
+    pkgs = pkgs-unstable;
+
     settings = {
       colors-dark = {
         alpha = "0.55";
-        background="282c34";
-        # background="323d43"
+        background = "282c34";
+        # background = "323d43";
 
         foreground = "d3c6aa";
-        
+
         regular0 = "505a60"; # black
         regular1 = "e67e80"; # red
         regular2 = "a7c080"; # green
@@ -18,7 +18,7 @@
         regular5 = "d699b6"; # magenta
         regular6 = "83c092"; # cyan
         regular7 = "d3c6aa"; # white
-        
+
         bright0 = "4b565c"; # black
         bright1 = "e67e80"; # red
         bright2 = "a7c080"; # green
@@ -27,15 +27,17 @@
         bright5 = "d699b6"; # magenta
         bright6 = "83c092"; # cyan
         bright7 = "d3c6aa"; # white
+
         selection-foreground = "83c092";
         selection-background = "505a60";
       };
+
       main = {
         term = "xterm-256color";
         font = "jetBrainsMono NF ExtraBold:size=11,Symbols Nerd Font,Noto Color Emoji";
         dpi-aware = "yes";
-        shell = "fish";
+        shell = "nu";
       };
     };
-  };
+  }).wrapper;
 }

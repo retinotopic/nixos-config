@@ -1,30 +1,30 @@
-{
-  programs.fastfetch = {
-      enable = true;
-      settings = {
-        logo = {
-          type = "file";
-          source = ./nixos.txt;
-          color = {
-              "1" = "blue";
-              "2" = "cyan";
-              "3" = "red";
-              "4" = "yellow";
-          };
+{pkgs-unstable, inputs, ... }: {
+  pkgs-wrapped.fastfetch = (inputs.wrappers.wrapperModules.fastfetch.apply {
+    pkgs = pkgs-unstable;
+    settings = {
+      logo = {
+        type = "file";
+        source = ./nixos.txt;
+        color = {
+            "1" = "blue";
+            "2" = "cyan";
+            "3" = "red";
+            "4" = "yellow";
         };
-        modules = [
-          "title"
-          "separator"
-          "os"
-          "kernel"
-          "cpu"
-          "memory"
-          "wm"
-          "shell"
-          "cursor"
-          "terminal"
-          "colors"
-        ];
-      };  
-    };
+      };
+      modules = [
+        "title"
+        "separator"
+        "os"
+        "kernel"
+        "cpu"
+        "memory"
+        "wm"
+        "shell"
+        "cursor"
+        "terminal"
+        "colors"
+      ];
+    };  
+  }).wrapper;
 }
