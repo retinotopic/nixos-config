@@ -30,10 +30,10 @@
       url = "github:lassulus/wrappers";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    # helix-fork = {
-    #   url = "github:gj1118/helix";
-    #   inputs.nixpkgs.follows = "nixpkgs-unstable";
-    # };
+    helix-fork = {
+      url = "github:mitos-editor/mitos";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -49,7 +49,7 @@
       inherit system;
       overlays = [
         self.overlays.qsOverlay
-        # self.overlays.helixOverlay
+        self.overlays.helixOverlay
       ];
     };
     lib = nixpkgs.lib;
@@ -74,9 +74,9 @@
           withI3 = false;
         };
       };
-      # helixOverlay = final: prev: {
-      #   helix = inputs.helix-fork.packages.${prev.system}.default; 
-      # };
+      helixOverlay = final: prev: {
+        helix = inputs.helix-fork.packages.${prev.system}.default; 
+      };
     };
     
     forEachSupportedSystem = f: inputs.nixpkgs.lib.genAttrs

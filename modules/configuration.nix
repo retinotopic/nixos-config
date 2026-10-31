@@ -212,7 +212,7 @@
     pkgs.cosmic-applets
     pkgs.gearlever
     pkgs-unstable.stremio-service
-    pkgs-unstable.helix
+    pkgs.helix
     pkgs-unstable.telegram-desktop
     pkgs-unstable.brave
     pkgs-unstable.prismlauncher

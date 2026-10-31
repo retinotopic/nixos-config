@@ -21,7 +21,7 @@
       directory = "/home/retinotopic";
 
       files = {
-        ".config/helix".source = ./helix;
+        ".config/mitos".source = ./helix;
 
         "CuteShell".source = inputs.cuteshell;
 

@@ -8,6 +8,7 @@
         '';
 
         "config.nu".content = ''
+        alias hx = ms
         # Editor
         $env.config.buffer_editor = "hx"
 
