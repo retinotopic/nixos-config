@@ -174,13 +174,6 @@
         obs-vkcapture
       ];
     };
-    thunar = {
-      enable = true;
-      plugins = [
-        pkgs.thunar-archive-plugin
-        pkgs.thunar-volman
-      ];
-    };
   }; 
 
   environment.systemPackages = [
@@ -231,6 +224,8 @@
     pkgs-unstable.stremio-linux-shell
     pkgs.lyra-cursors
     pkgs.cava
+    pkgs-unstable.kdePackages.dolphin
+    pkgs-unstable.kdePackages.dolphin-plugins
     config.pkgs-wrapped.foot
     config.pkgs-wrapped.yazi
     config.pkgs-wrapped.nushell

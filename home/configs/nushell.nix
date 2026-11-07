@@ -1,6 +1,7 @@
 { pkgs-unstable, inputs, ... }: {
     pkgs-wrapped.nushell = (inputs.wrappers.wrapperModules.nushell.apply {
         pkgs = pkgs-unstable;
+
         "env.nu".content = ''
         # Editor
         $env.EDITOR = "hx"
@@ -8,9 +9,27 @@
         '';
 
         "config.nu".content = ''
+        $env.config.show_banner = false
         alias hx = ms
+        use std/config *
+
+        # Initialize the PWD hook as an empty list if it doesn't exist
+        $env.config.hooks.env_change.PWD = $env.config.hooks.env_change.PWD? | default []
+
+        $env.config.hooks.env_change.PWD ++= [{||
+        if (which direnv | is-empty) {
+            # If direnv isn't installed, do nothing
+            return
+        }
+
+        direnv export json | from json | default {} | load-env
+        # If direnv changes the PATH, it will become a string and we need to re-convert it to a list
+        $env.PATH = do (env-conversions).path.from_string $env.PATH
+        }]
         # Editor
         $env.config.buffer_editor = "hx"
+        $env.config.edit_mode = 'helix'
+
 
         # Disable right prompt
         $env.PROMPT_COMMAND_RIGHT = ""

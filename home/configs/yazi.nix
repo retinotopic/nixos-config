@@ -3,19 +3,29 @@
     pkgs = pkgs-unstable;
 
     theme = {
+      indicator = {
+        parent = {
+          fg = "#424b50";
+          bg = "#7fbbb3";
+        };
+
+        current = {
+          fg = "#424b50";
+          bg = "#7fbbb3";
+        };
+
+        preview = {
+          fg = "#424b50";
+          bg = "#7fbbb3";
+        };
+
+        padding = {
+          open = "█";
+          close = "█";
+        };
+      };
       mgr = {
         cwd = { fg = "#7fbbb3"; };
-
-        # Hovered
-        hovered = {
-          fg = "#424b50";
-          bg = "#7fbbb3";
-        };
-        preview_hovered = {
-          fg = "#424b50";
-          bg = "#7fbbb3";
-        };
-
         # Find
         find_keyword = {
           fg = "#83c092";
@@ -157,7 +167,15 @@
         value = { };
         selected = { reversed = true; };
       };
-
+      icon = {
+        prepend_conds = [
+          {
+            "if" = "dir";
+            text = "";
+            fg = "#83c092";
+          }
+        ];
+      };
       cmp = {
         border = { fg = "#7fbbb3"; };
         active = {

@@ -1,3 +1,7 @@
 [language-server.qmlls]
 args = ["-E"]
 command = "qmlls"
+
+[[language]]
+name = "lean"
+language-servers = ["lean"]
